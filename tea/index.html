@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>一叶归真 · 中国茶渠道招商</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;600&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dim: #8A6F2E;
+    --gold-bg: rgba(201,168,76,0.06);
+    --bg: #080808;
+    --bg2: #0E0E0E;
+    --bg3: #141414;
+    --text: #F0EDE6;
+    --text-muted: #888070;
+    --text-dim: #4A4640;
+    --red: #C45454;
+    --border: rgba(201,168,76,0.15);
+    --border-lt: rgba(201,168,76,0.08);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width:2px; }
+  ::-webkit-scrollbar-track { background:var(--bg); }
+  ::-webkit-scrollbar-thumb { background:var(--gold-dim); }
+
+  /* ─── SVG ICONS ─── */
+  .icon-svg {
+    width: 36px; height: 36px;
+    stroke: var(--gold);
+    stroke-width: 1.2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-bottom: 20px;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top:0; left:0; right:0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    transition: all 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  nav.scrolled {
+    background: rgba(8,8,8,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 16px 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    clip-path: inset(0 0 15% 0);
+  }
+  .nav-logo-zh {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: var(--gold);
+  }
+  .nav-logo-sep {
+    width: 1px; height: 18px;
+    background: rgba(201,168,76,0.3);
+  }
+  .nav-logo-sub {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+  }
+  .nav-links { display:flex; gap:32px; list-style:none; }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content:'';
+    position:absolute;
+    bottom:-4px; left:0;
+    width:0; height:1px;
+    background:var(--gold);
+    transition: width 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width:100%; }
+  .nav-cta {
+    padding: 8px 24px;
+    border: 1px solid rgba(201,168,76,0.4);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    text-decoration: none;
+    transition: all 0.4s;
+  }
+  .nav-cta:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+  .hero-left {
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left::before {
+    content: '';
+    position: absolute;
+    top: -15%; right: -8%;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, rgba(201,168,76,0.02) 40%, transparent 70%);
+    pointer-events: none;
+    animation: breathe 8s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%,100% { transform:scale(1); opacity:1; }
+    50% { transform:scale(1.08); opacity:0.7; }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 44px;
+    opacity: 0;
+    animation: fadeUp 1s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(36px, 4.5vw, 64px);
+    font-weight: 200;
+    letter-spacing: 8px;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 300;
+  }
+  .hero-subtitle {
+    font-size: 13px;
+    line-height: 2.4;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 56px;
+    max-width: 400px;
+    opacity: 0;
+    animation: fadeUp 1s 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    background: var(--gold);
+    color: var(--bg);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-decoration: none;
+    transition: all 0.4s;
+    max-width: 300px;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform:translateY(-1px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+    max-width: 300px;
+  }
+  .btn-secondary:hover { color: var(--gold); }
+  .btn-arrow { font-size: 16px; transition: transform 0.3s; }
+  .btn-primary:hover .btn-arrow,
+  .btn-secondary:hover .btn-arrow { transform: translateX(4px); }
+
+  /* 右侧：已验证数据 */
+  .hero-right {
+    background: var(--bg2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 64px 80px;
+    position: relative;
+    border-left: 1px solid var(--border-lt);
+  }
+  .hero-right::before {
+    content:'';
+    position:absolute;
+    top:0; right:0;
+    width:200px; height:200px;
+    background: radial-gradient(circle at top right, rgba(201,168,76,0.06), transparent 70%);
+    pointer-events:none;
+  }
+  .proof-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+  .proof-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .proof-card {
+    padding: 24px 28px;
+    background: var(--bg3);
+    border: 1px solid var(--border-lt);
+    border-left: 3px solid var(--gold-dim);
+    opacity: 0;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .proof-card:hover {
+    transform: translateX(4px);
+    border-left-color: var(--gold);
+  }
+  .proof-card:nth-child(1) { animation: fadeLeft 0.8s 0.7s forwards; }
+  .proof-card:nth-child(2) { animation: fadeLeft 0.8s 0.9s forwards; }
+  .proof-card:nth-child(3) { animation: fadeLeft 0.8s 1.1s forwards; }
+  .proof-card:nth-child(4) { animation: fadeLeft 0.8s 1.3s forwards; }
+
+  .proof-channel {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+  }
+  .proof-headline {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .proof-headline strong { color: var(--gold); font-weight: 400; }
+  .proof-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ─── 装饰分割线 ─── */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+    background: var(--bg);
+  }
+  .divider-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  }
+  .divider-dot {
+    width: 5px; height: 5px;
+    border: 1px solid var(--gold-dim);
+    transform: rotate(45deg);
+  }
+
+  /* ─── SECTION COMMON ─── */
+  .container { max-width: 1200px; margin: 0 auto; }
+  .sec-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .sec-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 3vw, 38px);
+    font-weight: 200;
+    letter-spacing: 6px;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .sec-subtitle {
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    max-width: 560px;
+    margin-bottom: 64px;
+  }
+
+  /* ─── SECTION: 为什么选茶赛道 ─── */
+  .section-why {
+    padding: 120px 72px;
+    background: var(--bg);
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-lt);
+    border: 1px solid var(--border-lt);
+  }
+  .why-card {
+    background: var(--bg);
+    padding: 56px 44px;
+    transition: background 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-card:hover { background: var(--bg2); }
+  .why-card::after {
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:0;
+    background: linear-gradient(180deg, rgba(201,168,76,0.06), transparent);
+    transition: height 0.5s;
+  }
+  .why-card:hover::after { height: 60px; }
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(201,168,76,0.12);
+    position: absolute;
+    top: 20px; right: 24px;
+  }
+  .why-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--text);
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .why-body {
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+  }
+  .why-body strong { color: var(--gold); font-weight: 400; }
+
+  /* ─── SECTION: 高铁商务座背书 ─── */
+  .section-hsr {
+    padding: 100px 72px;
+    background: var(--bg2);
+    border-top: 1px solid var(--border-lt);
+    border-bottom: 1px solid var(--border-lt);
+  }
+  .hsr-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .hsr-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .hsr-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 200;
+    letter-spacing: 6px;
+    color: var(--text);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .hsr-body {
+    font-size: 13px;
+    line-height: 2.4;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+  }
+  .hsr-body strong { color: var(--gold); font-weight: 400; }
+  .hsr-note {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    padding: 10px 16px;
+    border-left: 2px solid var(--gold-dim);
+    background: rgba(201,168,76,0.03);
+  }
+  .hsr-right {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .hsr-stat {
+    border-left: 1px solid var(--gold-dim);
+    padding-left: 24px;
+  }
+  .hsr-stat-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+  }
+  .hsr-stat-value {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .hsr-stat-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ─── SECTION: 产品矩阵 ─── */
+  .section-products {
+    padding: 120px 72px;
+    background: var(--bg);
+    border-top: 1px solid var(--border-lt);
+  }
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 64px;
+  }
+  .products-note {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-align: right;
+    line-height: 1.8;
+    border-right: 2px solid var(--gold-dim);
+    padding-right: 16px;
+  }
+
+  .product-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border-lt);
+    border: 1px solid var(--border-lt);
+  }
+  .product-row {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    align-items: center;
+    gap: 0;
+    background: var(--bg);
+    padding: 28px 40px;
+    transition: all 0.4s;
+    cursor: default;
+    position: relative;
+  }
+  .product-row::before {
+    content:'';
+    position:absolute;
+    left:0; top:0; bottom:0;
+    width:0;
+    background: var(--gold);
+    transition: width 0.4s;
+  }
+  .product-row:hover { background: var(--bg2); padding-left:48px; }
+  .product-row:hover::before { width:3px; }
+
+  .product-category {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+  }
+  .product-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--text);
+  }
+  .product-name span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-left: 12px;
+  }
+  .product-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 3px 12px;
+    background: var(--gold-bg);
+    transition: all 0.3s;
+  }
+  .tag-red {
+    color: var(--red);
+    border-color: rgba(196,84,84,0.25);
+    background: rgba(196,84,84,0.06);
+  }
+
+  /* ─── SECTION: 已验证渠道 ─── */
+  .section-proof {
+    padding: 120px 72px;
+    background: var(--bg2);
+    border-top: 1px solid var(--border-lt);
+  }
+  .proof-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border-lt);
+    border: 1px solid var(--border-lt);
+    margin-top: 64px;
+  }
+  .proof-big {
+    background: var(--bg3);
+    padding: 72px 56px;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .proof-big::before {
+    content:'';
+    position:absolute;
+    bottom:-20%; right:-10%;
+    width:300px; height:300px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06), transparent 70%);
+    pointer-events:none;
+  }
+  .proof-big-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+  .proof-big-roi {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .proof-big-roi-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    margin-bottom: 40px;
+  }
+  .proof-big-body {
+    font-size: 13px;
+    line-height: 2.4;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+  .proof-big-body strong { color: var(--gold); font-weight: 400; }
+  .proof-big-source {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-lt);
+  }
+
+  .proof-small {
+    background: var(--bg);
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background 0.4s;
+  }
+  .proof-small:hover { background: var(--bg2); }
+  .proof-small-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .proof-small-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .proof-small-unit { font-size: 20px; color: var(--text-dim); }
+  .proof-small-desc {
+    font-size: 12px;
+    line-height: 2;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-top: 8px;
+  }
+
+  /* ─── SECTION: 合作模式 ─── */
+  .section-model {
+    padding: 120px 72px;
+    background: var(--bg);
+    border-top: 1px solid var(--border-lt);
+  }
+  .model-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border-lt);
+    border: 1px solid var(--border-lt);
+    margin-top: 64px;
+  }
+  .model-card {
+    background: var(--bg);
+    padding: 56px 44px;
+    text-align: center;
+    transition: background 0.4s;
+    position: relative;
+  }
+  .model-card:hover { background: var(--bg2); }
+  .model-step {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .model-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .model-body {
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+  .model-body strong { color: var(--gold); font-weight: 400; }
+  .model-arrow {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--gold);
+    z-index: 1;
+    background: var(--bg);
+    width: 24px; height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+  }
+  .model-note {
+    margin-top: 40px;
+    padding: 20px 28px;
+    background: var(--gold-bg);
+    border-left: 3px solid var(--gold-dim);
+    font-size: 12px;
+    line-height: 2;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .model-note strong { color: var(--gold); font-weight: 400; }
+
+  /* ─── SECTION: 我们为主播准备了什么 ─── */
+  .section-support {
+    padding: 120px 72px;
+    background: var(--bg2);
+    border-top: 1px solid var(--border-lt);
+  }
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border-lt);
+    border: 1px solid var(--border-lt);
+    margin-top: 64px;
+  }
+  .support-card {
+    padding: 48px 36px;
+    background: var(--bg);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .support-card::after {
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:0;
+    background: linear-gradient(180deg, rgba(201,168,76,0.06), transparent);
+    transition: height 0.5s;
+  }
+  .support-card:hover { background: var(--bg2); }
+  .support-card:hover::after { height: 60px; }
+  .support-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--text);
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .support-body {
+    font-size: 12px;
+    line-height: 2.2;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+  }
+  .support-body strong { color: var(--gold); font-weight: 400; }
+
+  /* ─── SECTION: 主播话术框架 ─── */
+  .section-script {
+    padding: 120px 72px;
+    background: var(--bg);
+    border-top: 1px solid var(--border-lt);
+  }
+  .script-note {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    background: var(--gold-bg);
+    border-left: 3px solid var(--gold-dim);
+    padding: 14px 24px;
+    margin-bottom: 56px;
+    display: inline-block;
+  }
+  .script-tabs {
+    display: flex;
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 0;
+  }
+  .script-tab {
+    flex: 1;
+    padding: 18px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    border: none;
+    background: var(--bg2);
+    cursor: pointer;
+    transition: all 0.4s;
+    border-right: 1px solid var(--border);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-weight: 400;
+    position: relative;
+  }
+  .script-tab:last-child { border-right: none; }
+  .script-tab.active {
+    background: var(--bg3);
+    color: var(--gold);
+  }
+  .script-tab::after {
+    content:'';
+    position:absolute;
+    bottom:0; left:50%;
+    transform:translateX(-50%);
+    width:0; height:2px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+  .script-tab.active::after { width:40px; }
+  .script-content {
+    display: none;
+    padding: 52px;
+    background: var(--bg2);
+    border: 1px solid var(--border-lt);
+    border-top: none;
+  }
+  .script-content.active { display: block; }
+  .script-block {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border-lt);
+  }
+  .script-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .script-block-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .script-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 2.4;
+    color: var(--text);
+    letter-spacing: 1px;
+  }
+  .script-text em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .script-warning {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--red);
+    background: rgba(196,84,84,0.06);
+    border-left: 2px solid var(--red);
+    padding: 12px 18px;
+    margin-top: 16px;
+    line-height: 1.8;
+  }
+
+  /* ─── SECTION: 联系 ─── */
+  .section-contact {
+    background: var(--bg2);
+    padding: 120px 72px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--border-lt);
+  }
+  .section-contact::before {
+    content:'';
+    position:absolute;
+    top:-100px; left:50%;
+    transform:translateX(-50%);
+    width:800px; height:400px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.04), transparent 70%);
+    pointer-events:none;
+  }
+  .contact-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 5px;
+    color: var(--gold);
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .contact-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 200;
+    letter-spacing: 8px;
+    color: var(--text);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .contact-sub {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 64px;
+    line-height: 2.2;
+    position: relative;
+  }
+  .contact-qr-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  .qr-wrapper {
+    width: 220px;
+    height: 220px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(201,168,76,0.15);
+    transition: transform 0.4s, box-shadow 0.4s;
+  }
+  .qr-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 56px rgba(0,0,0,0.4), 0 0 0 1px rgba(201,168,76,0.25);
+  }
+  .qr-placeholder {
+    width: 180px;
+    height: 180px;
+    border: 2px dashed rgba(201,168,76,0.3);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--gold-dim);
+  }
+  .qr-placeholder svg {
+    width: 40px;
+    height: 40px;
+    stroke: var(--gold-dim);
+    stroke-width: 1.2;
+    fill: none;
+  }
+  .qr-placeholder span {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold-dim);
+  }
+  .qr-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-color: var(--gold);
+    border-style: solid;
+    border-width: 0;
+  }
+  .qr-corner-tl { top: -4px; left: -4px; border-top-width: 2px; border-left-width: 2px; }
+  .qr-corner-tr { top: -4px; right: -4px; border-top-width: 2px; border-right-width: 2px; }
+  .qr-corner-bl { bottom: -4px; left: -4px; border-bottom-width: 2px; border-left-width: 2px; }
+  .qr-corner-br { bottom: -4px; right: -4px; border-bottom-width: 2px; border-right-width: 2px; }
+  .qr-label {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-top: 32px;
+  }
+  .qr-hint {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    margin-top: 12px;
+    line-height: 2;
+  }
+  .qr-steps {
+    display: flex;
+    gap: 48px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-lt);
+  }
+  .qr-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .qr-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.5;
+  }
+  .qr-step-text {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .contact-disclaimer {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    margin-top: 48px;
+    line-height: 1.8;
+    text-align: center;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg);
+    padding: 40px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-lt);
+  }
+  .footer-left {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold-dim);
+  }
+  .footer-center {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    text-align: center;
+    line-height: 1.8;
+  }
+  .footer-right {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-dim);
+    text-align: right;
+    line-height: 2.2;
+  }
+  .back-link {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .back-link:hover { color: var(--gold); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(28px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity:0; transform:translateX(-24px); }
+    to   { opacity:1; transform:translateX(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+  .reveal-d4 { transition-delay: 0.4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 960px) {
+    nav { padding: 14px 16px; }
+    nav.scrolled { padding: 10px 16px; }
+    .nav-links { display:none; }
+    .nav-cta { font-size:10px; padding:6px 12px; letter-spacing:1px; }
+    .nav-logo-zh { font-size:14px; letter-spacing:3px; }
+    .nav-logo-sub { font-size:9px; letter-spacing:1.5px; }
+    .nav-logo img { height:28px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 100px 24px 48px; }
+    .hero-right { padding: 48px 24px; border-left:none; border-top: 1px solid var(--border-lt); }
+    .section-why, .section-products, .section-proof, .section-support, .section-script, .section-contact, .section-model { padding: 64px 20px; }
+    .section-hsr { padding: 64px 20px; }
+    .hsr-inner { grid-template-columns: 1fr; gap:36px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .proof-big { grid-row: span 1; }
+    .proof-big-roi { font-size: 72px; }
+    .support-grid { grid-template-columns: 1fr; }
+    .model-grid { grid-template-columns: 1fr; }
+    .model-arrow { display:none; }
+    .qr-steps { flex-direction: column; gap: 20px; align-items: center; }
+    footer { flex-direction:column; gap:16px; text-align:center; padding: 28px 20px; }
+    .footer-right { text-align:center; }
+    .products-header { flex-direction:column; gap:16px; align-items:flex-start; }
+    .product-row { grid-template-columns: 1fr; gap:8px; padding: 20px 24px; }
+    .product-tags { justify-content: flex-start; }
+    .divider { padding: 24px 0; }
+    .hero-title { font-size: 32px; letter-spacing: 6px; }
+    .hero-subtitle { font-size: 12px; line-height: 2.2; }
+    .proof-card { padding: 18px 20px; }
+    .script-tabs { flex-direction: column; }
+    .script-tab { border-right: none; border-bottom: 1px solid var(--border); }
+    .script-tab:last-child { border-bottom: none; }
+    .script-content { padding: 28px 20px; }
+  }
+
+  @media (max-width: 375px) {
+    .hero-title { font-size: 28px; letter-spacing: 4px; }
+    .nav-logo-zh { font-size: 12px; }
+    .nav-logo-sep { display: none; }
+    .nav-logo-sub { display: none; }
+    .proof-big-roi { font-size: 56px; }
+  }
+
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    nav { padding-top: calc(14px + env(safe-area-inset-top)); }
+    footer { padding-bottom: calc(28px + env(safe-area-inset-bottom)); }
+  }
+
+  @media (hover: none) {
+    .why-card:active { background: var(--bg2); }
+    .proof-card:active { transform: translateX(4px); border-left-color: var(--gold); }
+    .support-card:active { background: var(--bg2); }
+    .model-card:active { background: var(--bg2); }
+    .btn-primary:active { background: var(--gold-light); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="../">
+    <img src="../logo.png" alt="一叶归真">
+    <span class="nav-logo-zh">一叶归真</span>
+    <span class="nav-logo-sep"></span>
+    <span class="nav-logo-sub">中国茶招商</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#why">茶赛道</a></li>
+    <li><a href="#products">产品矩阵</a></li>
+    <li><a href="#proof">验证数据</a></li>
+    <li><a href="#model">合作模式</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">申请合作</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Chinese Tea · Channel Partnership</p>
+    <h1 class="hero-title">
+      我们已经<em>跑通了</em><br>
+      现在邀你入局
+    </h1>
+    <p class="hero-subtitle">
+      一叶归真中国茶，已经有人跑通了。茹涵MCN年销数千万、快团团ROI 1:5.3、天猫陈皮复购率60%。我们要找的，是下一个跑进来的人。
+    </p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#contact">
+        <span>申请成为合作伙伴</span>
+        <span class="btn-arrow">→</span>
+      </a>
+      <a class="btn-secondary" href="#proof">
+        <span>查看真实数据</span>
+        <span class="btn-arrow">↓</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <p class="proof-label">Proven Results · 已验证的成绩</p>
+    <div class="proof-cards">
+      <div class="proof-card">
+        <div class="proof-channel">茹涵 MCN · 独家合作</div>
+        <div class="proof-headline">年销售额 <strong>数千万</strong></div>
+        <div class="proof-sub">头部茶叶生活方式MCN，持续合作中</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-channel">快团团 · 私域团购</div>
+        <div class="proof-headline">年销 <strong>30吨</strong> · ROI <strong>1:5.3</strong></div>
+        <div class="proof-sub">团购渠道验证，投入产出比已跑通</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-channel">天猫旗舰店 · 陈皮系列</div>
+        <div class="proof-headline">年销 <strong>100万+</strong> · 复购率 <strong>60%</strong></div>
+        <div class="proof-sub">高复购证明产品力，非流量依赖型</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-channel">一条 · 高端品质内容平台</div>
+        <div class="proof-headline">高端品质验证 <strong>已上架</strong></div>
+        <div class="proof-sub">一条平台标准即品质门槛，背书可用</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <span class="divider-line"></span>
+  <span class="divider-dot"></span>
+  <span class="divider-line"></span>
+</div>
+
+<!-- 为什么选茶赛道 -->
+<section class="section-why" id="why">
+  <div class="container">
+    <p class="sec-label reveal">Why Tea · 为什么是茶</p>
+    <h2 class="sec-title reveal reveal-d1">茶，是主播最好讲的品类之一</h2>
+    <p class="sec-subtitle reveal reveal-d2">不需要教育用户为什么要买茶，只需要告诉他为什么买这款。品类认知成本低，复购逻辑天然成立，内容素材我们给得足。</p>
+    <div class="why-grid">
+      <div class="why-card reveal reveal-d1">
+        <span class="why-num">01</span>
+        <svg class="icon-svg" viewBox="0 0 36 36"><path d="M18 4c-2 6-8 10-14 12 6 2 12 6 14 12 2-6 8-10 14-12-6-2-12-6-14-12z"/></svg>
+        <div class="why-title">品类认知成本低</div>
+        <p class="why-body">茶是中国人日常消费品，用户不需要被教育"为什么买"，只需要被说服"为什么买这款"。和功能性食品相比，<strong>转化链路短很多</strong>。</p>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <span class="why-num">02</span>
+        <svg class="icon-svg" viewBox="0 0 36 36"><circle cx="18" cy="18" r="12"/><path d="M18 6v12l8 4"/></svg>
+        <div class="why-title">复购逻辑天然成立</div>
+        <p class="why-body">茶是消耗品，喝完了自然再买。天猫陈皮系列<strong>复购率60%</strong>，不是靠优惠券，是产品本身的复购属性在起作用。</p>
+      </div>
+      <div class="why-card reveal reveal-d3">
+        <span class="why-num">03</span>
+        <svg class="icon-svg" viewBox="0 0 36 36"><rect x="6" y="4" width="24" height="28" rx="2"/><line x1="11" y1="11" x2="25" y2="11"/><line x1="11" y1="17" x2="25" y2="17"/><line x1="11" y1="23" x2="19" y2="23"/></svg>
+        <div class="why-title">内容素材给得足</div>
+        <p class="why-body">科研背书、文化背书、品质背书，三个维度都有。院士团队、非遗大师、一条平台认证，主播<strong>不愁没内容讲</strong>。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 高铁商务座背书 -->
+<section class="section-hsr" id="hsr">
+  <div class="hsr-inner">
+    <div class="hsr-left">
+      <p class="hsr-label reveal">Brand Endorsement · 场景背书</p>
+      <h2 class="hsr-title reveal reveal-d1">京沪高铁商务座<br>选用品牌</h2>
+      <p class="hsr-body reveal reveal-d2">
+        高铁的选品标准，不是最便宜的，是坐在那个座位上喝着不丢人的。一叶归真能进入京沪高铁商务座，本身就是一道<strong>品质筛选</strong>。这个背书在直播间里讲，比任何广告语都管用。
+      </p>
+      <p class="hsr-note reveal reveal-d3">使用此背书时须确认合作协议在有效期内</p>
+    </div>
+    <div class="hsr-right">
+      <div class="hsr-stat reveal reveal-d1">
+        <div class="hsr-stat-label">覆盖线路</div>
+        <div class="hsr-stat-value">京沪线</div>
+        <div class="hsr-stat-desc">中国最繁忙的高铁线路，商务客群精准</div>
+      </div>
+      <div class="hsr-stat reveal reveal-d2">
+        <div class="hsr-stat-label">服务舱位</div>
+        <div class="hsr-stat-value">商务座</div>
+        <div class="hsr-stat-desc">最高等级舱位，品牌调性天然匹配</div>
+      </div>
+      <div class="hsr-stat reveal reveal-d3">
+        <div class="hsr-stat-label">主播话术价值</div>
+        <div class="hsr-stat-value">场景锚点</div>
+        <div class="hsr-stat-desc">一句话建立价格认知，省去大量铺垫</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 产品矩阵 -->
+<section class="section-products" id="products">
+  <div class="container">
+    <div class="products-header">
+      <div>
+        <p class="sec-label reveal">Products · 产品矩阵</p>
+        <h2 class="sec-title reveal reveal-d1" style="margin-bottom:0">六大茶类，每类都有讲法</h2>
+      </div>
+      <div class="products-note reveal">
+        不挂具体产品详情<br>
+        联系我们获取完整产品手册
+      </div>
+    </div>
+    <div class="product-rows reveal">
+      <div class="product-row">
+        <div class="product-category">大红袍 · 岩茶</div>
+        <div class="product-name">大红袍红茶精粹 <span>Rock Oolong Extract</span></div>
+        <div class="product-tags">
+          <span class="tag">院士提取技术</span>
+          <span class="tag-red tag">高客单</span>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-category">陈皮普洱 · 黑茶</div>
+        <div class="product-name">陈皮系列 <span>Aged Peel & Puerh</span></div>
+        <div class="product-tags">
+          <span class="tag">天猫验证</span>
+          <span class="tag">60%复购</span>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-category">绿茶 · 白茶</div>
+        <div class="product-name">应季鲜茶系列 <span>Seasonal Fresh Tea</span></div>
+        <div class="product-tags">
+          <span class="tag">时令内容</span>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-category">红茶 · 花茶</div>
+        <div class="product-name">日常饮茶系列 <span>Everyday Tea</span></div>
+        <div class="product-tags">
+          <span class="tag">快团团爆款</span>
+          <span class="tag-red tag">复购刚需</span>
+        </div>
+      </div>
+      <div class="product-row">
+        <div class="product-category">礼品茶 · 节令</div>
+        <div class="product-name">非遗大师合作礼盒 <span>Heritage Edition</span></div>
+        <div class="product-tags">
+          <span class="tag">非遗背书</span>
+          <span class="tag">节令礼品</span>
+          <span class="tag-red tag">高利润</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 已验证渠道 -->
+<section class="section-proof" id="proof">
+  <div class="container">
+    <p class="sec-label reveal">Proven Results · 真实数据</p>
+    <h2 class="sec-title reveal reveal-d1">这些数字，都是真的</h2>
+    <p class="sec-subtitle reveal reveal-d2">每一个数字背后都有可追溯的渠道和时间。</p>
+    <div class="proof-grid reveal">
+      <div class="proof-big">
+        <div>
+          <div class="proof-big-label">快团团 · 私域团购渠道</div>
+          <div class="proof-big-roi">1:5.3</div>
+          <div class="proof-big-roi-label">已验证投入产出比</div>
+          <p class="proof-big-body">
+            年销 <strong>30吨</strong>，不是偶发的爆单，是稳定运营的渠道结果。花1块钱推广，带回5.3块销售额。茶叶品类能跑出这个数字，说明产品本身有复购逻辑支撑，不依赖持续大力度投流。
+          </p>
+          <div class="proof-big-source">数据来源：快团团合作渠道实际运营数据</div>
+        </div>
+      </div>
+      <div class="proof-small">
+        <div class="proof-small-label">茹涵 MCN · 独家合作</div>
+        <div class="proof-small-num">千万<span class="proof-small-unit">+</span></div>
+        <div class="proof-small-desc">头部茶叶生活方式MCN，持续合作，年销售额数千万。MCN选品有严格标准，能长期合作说明产品经得起流量考验。</div>
+      </div>
+      <div class="proof-small">
+        <div class="proof-small-label">天猫旗舰店 · 陈皮系列</div>
+        <div class="proof-small-num">60<span class="proof-small-unit">%</span></div>
+        <div class="proof-small-desc">复购率60%，年销售额100万+。高复购不靠优惠券，靠的是产品力。粉丝买了第一次，大概率自己回来买第二次。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 合作模式 -->
+<section class="section-model" id="model">
+  <div class="container">
+    <p class="sec-label reveal">Partnership Model · 合作模式</p>
+    <h2 class="sec-title reveal reveal-d1">三步开始，门槛不高</h2>
+    <p class="sec-subtitle reveal reveal-d2">我们不设高门槛筛选，看的是你愿不愿意认真做。流程简单，从申请到首播，最快一周。</p>
+    <div class="model-grid">
+      <div class="model-card reveal reveal-d1">
+        <div class="model-step">Step 01</div>
+        <svg class="icon-svg" viewBox="0 0 36 36" style="margin:0 auto 20px;display:block;"><path d="M18 4v28M4 18h28"/><circle cx="18" cy="18" r="14"/></svg>
+        <div class="model-title">提交申请</div>
+        <p class="model-body">填写基本信息，我们<strong>24小时内</strong>主动联系你。不需要缴纳任何费用，不需要囤货。</p>
+        <span class="model-arrow">›</span>
+      </div>
+      <div class="model-card reveal reveal-d2">
+        <div class="model-step">Step 02</div>
+        <svg class="icon-svg" viewBox="0 0 36 36" style="margin:0 auto 20px;display:block;"><rect x="4" y="8" width="28" height="20" rx="2"/><polyline points="4 12 18 22 32 12"/></svg>
+        <div class="model-title">选品试样</div>
+        <p class="model-body">根据你的内容方向推荐适合的产品线，<strong>寄送样品</strong>，先喝再卖。同步提供话术框架和素材包。</p>
+        <span class="model-arrow">›</span>
+      </div>
+      <div class="model-card reveal reveal-d3">
+        <div class="model-step">Step 03</div>
+        <svg class="icon-svg" viewBox="0 0 36 36" style="margin:0 auto 20px;display:block;"><path d="M6 20l8 8L30 8"/></svg>
+        <div class="model-title">上架开播</div>
+        <p class="model-body">1对1对接，从选品到首播<strong>全程陪跑</strong>。一件代发，你只管讲，物流售后我们兜底。</p>
+      </div>
+    </div>
+    <div class="model-note reveal">
+      <strong>合作政策细节</strong>（佣金比例、阶梯激励、独家权益等）在留资后一对一沟通，不在网站公开。每个合作伙伴的条件根据渠道体量定制。
+    </div>
+  </div>
+</section>
+
+<!-- 我们为主播准备了什么 -->
+<section class="section-support" id="support">
+  <div class="container">
+    <p class="sec-label reveal">Our Support · 我们的支持</p>
+    <h2 class="sec-title reveal reveal-d1">四件事，让你有底气开口讲</h2>
+    <div class="support-grid">
+      <div class="support-card reveal reveal-d1">
+        <svg class="icon-svg" viewBox="0 0 36 36"><circle cx="18" cy="12" r="6"/><path d="M8 30c0-6 4-10 10-10s10 4 10 10"/><path d="M24 8l4-4M24 4l4 4"/></svg>
+        <div class="support-title">科研授权标识</div>
+        <p class="support-body">刘仲华院士团队研发背书，国家级实验室授权标识，<strong>直播间展示合法授权</strong>，让你说话有来源。</p>
+      </div>
+      <div class="support-card reveal reveal-d2">
+        <svg class="icon-svg" viewBox="0 0 36 36"><rect x="6" y="4" width="24" height="28" rx="2"/><line x1="11" y1="12" x2="25" y2="12"/><line x1="11" y1="18" x2="25" y2="18"/><line x1="11" y1="24" x2="19" y2="24"/></svg>
+        <div class="support-title">话术框架</div>
+        <p class="support-body">三大维度话术已整理好。科研讲法、文化讲法、场景讲法，<strong>拿来就能用</strong>，不用自己从零想内容。</p>
+      </div>
+      <div class="support-card reveal reveal-d3">
+        <svg class="icon-svg" viewBox="0 0 36 36"><path d="M18 4L4 14v14l14 4 14-4V14z"/><path d="M4 14l14 4 14-4"/><path d="M18 18v14"/></svg>
+        <div class="support-title">样品支持</div>
+        <p class="support-body">新合作伙伴提供样品，<strong>先喝再卖</strong>，自己用过才能在直播间真实呈现，这个逻辑我们支持。</p>
+      </div>
+      <div class="support-card reveal reveal-d4">
+        <svg class="icon-svg" viewBox="0 0 36 36"><path d="M4 28V12l14-8 14 8v16l-14 4z"/><circle cx="18" cy="18" r="5"/></svg>
+        <div class="support-title">专属对接</div>
+        <p class="support-body">1对1客服跟进，<strong>从选品到首播</strong>全程陪跑，不是发个产品手册就让你自己摸索。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 主播话术框架 -->
+<section class="section-script" id="script">
+  <div class="container">
+    <p class="sec-label reveal">Script Framework · 话术框架</p>
+    <h2 class="sec-title reveal reveal-d1">三种讲法，你选最顺手的</h2>
+    <div class="script-note reveal">
+      以下话术框架均已按食品类目合规要求审核，主播可直接参考使用
+    </div>
+
+    <div class="script-tabs reveal">
+      <button class="script-tab active" onclick="switchTab(0)">科研讲法</button>
+      <button class="script-tab" onclick="switchTab(1)">文化讲法</button>
+      <button class="script-tab" onclick="switchTab(2)">场景讲法</button>
+    </div>
+
+    <div class="script-content active">
+      <div class="script-block">
+        <div class="script-block-label">开场钩子</div>
+        <div class="script-text">你知道同一片茶叶，为什么有的喝完精神，有的喝完胃不舒服？差别在<em>提取方式</em>，不在茶叶本身。</div>
+      </div>
+      <div class="script-block">
+        <div class="script-block-label">产品核心话术</div>
+        <div class="script-text">一叶归真背后是刘仲华院士团队，<em>30年</em>做植物功能成分研究。普通茶叶是把叶子泡一泡，他们是用现代提取技术，把叶子里真正有价值的成分<em>15倍浓缩</em>出来。同样一杯茶，你喝到的东西不一样。</div>
+      </div>
+      <div class="script-block">
+        <div class="script-block-label">信任背书话术</div>
+        <div class="script-text">两个<em>国家科技进步二等奖</em>，不是那种买来的奖，是国家科技部颁的，你可以查。我们合作之前我也查了，这个背书在直播间用，底气很足。</div>
+      </div>
+      <div class="script-warning">注意：不得描述具体功效，只描述原料和工艺。"让你更健康"等表述不合规。</div>
+    </div>
+
+    <div class="script-content">
+      <div class="script-block">
+        <div class="script-block-label">开场钩子</div>
+        <div class="script-text">中国喝茶几千年，但你喝的那杯茶，真的是<em>好茶</em>吗？</div>
+      </div>
+      <div class="script-block">
+        <div class="script-block-label">产品核心话术</div>
+        <div class="script-text">一叶归真有一款是和<em>非遗大师</em>合作的礼盒，非遗传承人亲自参与制作工艺，不是贴个名字。买的不只是茶，是那门快要失传的手艺，是可以说故事的东西。送礼的人觉得有面子，收礼的人觉得被认真对待。</div>
+      </div>
+      <div class="script-block">
+        <div class="script-block-label">场景延伸话术</div>
+        <div class="script-text">陈皮系列是<em>年份的东西</em>，越放越值。买来自己喝，是一种生活方式；送人，是体面；存起来，还有升值的想象空间。所以它在天猫复购率60%，买一次就回来了。</div>
+      </div>
+      <div class="script-warning">注意：不得声称"升值保值"作为投资承诺，仅作为生活方式描述。</div>
+    </div>
+
+    <div class="script-content">
+      <div class="script-block">
+        <div class="script-block-label">开场钩子</div>
+        <div class="script-text">每天盯屏幕，开会，做决策，最后一杯茶就是自己的时间。你喝的那杯，值得被认真对待。</div>
+      </div>
+      <div class="script-block">
+        <div class="script-block-label">产品核心话术</div>
+        <div class="script-text">一叶归真是京沪高铁<em>商务座</em>选的茶，高铁的选品标准你们懂，不是最便宜的，是坐在那个座位上喝着不丢人的。我在高铁上喝到这个，然后来谈合作的。</div>
+      </div>
+      <div class="script-block">
+        <div class="script-block-label">送礼场景话术</div>
+        <div class="script-text">送领导、送客户，茶是最不会踩雷的礼。但<em>普通茶叶不够体面</em>，院士团队研发加上非遗大师参与的礼盒，打开的时候对方就知道你用心了。</div>
+      </div>
+      <div class="script-warning">注意：商务座场景为真实合作背书，使用时须确认合作协议在有效期内。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 联系 -->
+<section class="section-contact" id="contact">
+  <p class="contact-label">Partnership · 申请合作</p>
+  <h2 class="contact-title">和你一起，分一杯稳定的钱</h2>
+  <p class="contact-sub">
+    扫码添加企业微信，24小时内响应<br>
+    备注「渠道合作」优先处理
+  </p>
+  <div class="contact-qr-area">
+    <div class="qr-wrapper">
+      <div class="qr-corner qr-corner-tl"></div>
+      <div class="qr-corner qr-corner-tr"></div>
+      <div class="qr-corner qr-corner-bl"></div>
+      <div class="qr-corner qr-corner-br"></div>
+      <div class="qr-placeholder">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/><rect x="14" y="18" width="3" height="3"/><rect x="18" y="14" width="3" height="3"/></svg>
+        <span>企微二维码占位</span>
+      </div>
+    </div>
+    <p class="qr-label">扫码添加企业微信</p>
+    <p class="qr-hint">备注「渠道合作」，发送完整产品手册与合作政策</p>
+
+    <div class="qr-steps">
+      <div class="qr-step">
+        <span class="qr-step-num">1</span>
+        <span class="qr-step-text">扫码添加<br>企业微信</span>
+      </div>
+      <div class="qr-step">
+        <span class="qr-step-num">2</span>
+        <span class="qr-step-text">备注「渠道合作」<br>获取产品手册</span>
+      </div>
+      <div class="qr-step">
+        <span class="qr-step-num">3</span>
+        <span class="qr-step-text">1对1沟通<br>定制合作方案</span>
+      </div>
+    </div>
+
+    <p class="contact-disclaimer">
+      本网站面向B端渠道合作伙伴，不直接面向消费者零售
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">一叶归真 · 中国茶</div>
+  <div class="footer-center">
+    北京一叶归真生物科技有限公司<br>
+    ICP备案号待填入
+  </div>
+  <div class="footer-right">
+    <a class="back-link" href="../">返回集团主站</a><br>
+    <a class="back-link" href="https://www.yiyeguizhen.com" style="opacity:0.6;">大健康招商站 →</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  function switchTab(index) {
+    const tabs = document.querySelectorAll('.script-tab');
+    const contents = document.querySelectorAll('.script-content');
+    tabs.forEach((t, i) => t.classList.toggle('active', i === index));
+    contents.forEach((c, i) => c.classList.toggle('active', i === index));
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>

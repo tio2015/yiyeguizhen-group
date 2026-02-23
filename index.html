@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>一叶归真 · 北京一叶归真生物科技有限公司</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;600&family=Noto+Sans+SC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --gold-dim: #8A6F2E;
+    --bg: #080808;
+    --bg2: #0E0E0E;
+    --bg3: #141414;
+    --text: #F0EDE6;
+    --text-muted: #888070;
+    --text-dim: #4A4640;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: default;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::-webkit-scrollbar { width: 2px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 48px;
+    transition: background 0.6s, padding 0.4s;
+  }
+  nav.scrolled {
+    background: rgba(8,8,8,0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 16px 48px;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    clip-path: inset(0 0 15% 0);
+  }
+  .nav-logo-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: var(--gold);
+  }
+  .nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .nav-about {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-right: 16px;
+  }
+  .nav-about:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    padding: 8px 20px;
+    border: 1px solid rgba(201,168,76,0.4);
+    text-decoration: none;
+    transition: all 0.3s;
+    white-space: nowrap;
+  }
+  .nav-cta:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0 24px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 55%, rgba(201,168,76,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 20% 20%, rgba(201,168,76,0.03) 0%, transparent 60%);
+  }
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-logo {
+    width: 72px;
+    height: auto;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s 0.2s forwards;
+    filter: drop-shadow(0 4px 20px rgba(201,168,76,0.15));
+    clip-path: inset(0 0 15% 0);
+  }
+  .hero-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 1s 0.4s forwards;
+  }
+  .hero-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(40px, 8vw, 88px);
+    font-weight: 300;
+    letter-spacing: 16px;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 6px;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+  .hero-title-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(11px, 1.4vw, 15px);
+    font-weight: 300;
+    letter-spacing: 8px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1s 0.65s forwards;
+  }
+
+  /* 首屏数据条 */
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1s 0.8s forwards;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-stat {
+    text-align: center;
+    position: relative;
+    min-width: 72px;
+  }
+  .hero-stat:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 28px;
+    background: rgba(201,168,76,0.2);
+  }
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-unit { font-size: 12px; color: var(--gold-dim); }
+  .hero-stat-label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-top: 5px;
+  }
+
+  .hero-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    margin: 0 auto 20px;
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
+  }
+  .hero-desc {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    line-height: 2;
+    max-width: 400px;
+    opacity: 0;
+    animation: fadeUp 1s 1.1s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0;
+    animation: fadeIn 1s 1.8s forwards;
+  }
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+  }
+  .scroll-dot {
+    width: 1px;
+    height: 28px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollPulse 2s 2s infinite;
+  }
+
+  /* ─── SECTION: 集团简介 + 科研 ─── */
+  .section-about {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .about-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+  .about-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .about-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 300;
+    letter-spacing: 5px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+  .about-body {
+    font-size: 13px;
+    line-height: 2.2;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+  }
+  .stat-item {
+    border-left: 1px solid var(--gold-dim);
+    padding-left: 20px;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-unit { font-size: 13px; color: var(--gold-dim); }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-top: 5px;
+  }
+
+  /* 院士区块 */
+  .academician-block {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 44px 48px;
+    background: var(--bg2);
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+  .academician-portrait {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.15), rgba(201,168,76,0.04));
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .portrait-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 2px;
+  }
+  .academician-info { flex: 1; }
+  .academician-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 5px;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .academician-title-text {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .academician-desc {
+    font-size: 12px;
+    line-height: 1.9;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+  }
+  .academician-divider {
+    width: 1px;
+    height: 64px;
+    background: rgba(201,168,76,0.2);
+    flex-shrink: 0;
+  }
+  .academician-awards { flex: 1; }
+  .award-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .award-item:last-child { margin-bottom: 0; }
+  .award-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+  .award-text {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  /* ─── SECTION: 选择赛道 ─── */
+  .section-choose {
+    padding: 80px 0;
+    background: var(--bg2);
+    border-top: 1px solid rgba(201,168,76,0.08);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .choose-header {
+    text-align: center;
+    margin-bottom: 56px;
+    padding: 0 24px;
+  }
+  .section-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  .choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .choose-card {
+    background: var(--bg);
+    padding: 64px 56px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.5s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .choose-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s;
+  }
+  .choose-card:hover { background: rgba(201,168,76,0.03); }
+  .choose-card:hover::before { transform: scaleX(1); }
+
+  .choose-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 4px 12px;
+    margin-bottom: 24px;
+  }
+  .choose-name {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(26px, 3vw, 32px);
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .choose-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .choose-divider {
+    width: 28px;
+    height: 1px;
+    background: var(--gold-dim);
+    margin-bottom: 20px;
+    transition: width 0.4s;
+  }
+  .choose-card:hover .choose-divider { width: 48px; }
+  .choose-desc {
+    font-size: 13px;
+    line-height: 2.1;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 36px;
+    max-width: 380px;
+  }
+  .choose-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-top: auto;
+    padding: 12px 32px;
+    border: 1px solid rgba(201,168,76,0.4);
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+  .choose-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+    z-index: 0;
+  }
+  .choose-card:hover .choose-cta::before { transform: scaleX(1); }
+  .choose-card:hover .choose-cta { color: var(--bg); }
+  .choose-cta span { position: relative; z-index: 1; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 40px 48px;
+    background: var(--bg2);
+    border-top: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-left img {
+    height: 24px;
+    width: auto;
+    opacity: 0.5;
+    clip-path: inset(0 0 15% 0);
+  }
+  .footer-logo {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--gold-dim);
+  }
+  .footer-info {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s, transform 0.8s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ═══════════════════════════════════════════
+     移动端适配
+     ═══════════════════════════════════════════ */
+
+  /* 手机（<= 768px） */
+  @media (max-width: 768px) {
+    nav {
+      padding: 14px 16px;
+    }
+    nav.scrolled {
+      padding: 10px 16px;
+    }
+    .nav-logo img {
+      height: 26px;
+    }
+    .nav-logo-text {
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+    .nav-about { display: none; }
+    .nav-cta {
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 6px 10px;
+    }
+    .nav-right { gap: 6px; }
+
+    /* Hero */
+    .hero {
+      min-height: 100dvh;
+      min-height: -webkit-fill-available;
+      padding: 70px 20px 50px;
+    }
+    .hero-logo {
+      width: 52px;
+      margin-bottom: 16px;
+    }
+    .hero-eyebrow {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: 38px;
+      letter-spacing: 10px;
+      margin-bottom: 4px;
+    }
+    .hero-title-en {
+      font-size: 9px;
+      letter-spacing: 5px;
+      margin-bottom: 24px;
+    }
+    .hero-stats {
+      gap: 0;
+      margin-bottom: 24px;
+      width: 100%;
+      max-width: 300px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      row-gap: 18px;
+    }
+    .hero-stat {
+      min-width: auto;
+    }
+    .hero-stat:not(:last-child)::after {
+      display: none;
+    }
+    .hero-stat-num {
+      font-size: 22px;
+    }
+    .hero-stat-unit { font-size: 10px; }
+    .hero-stat-label {
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+    .hero-line {
+      height: 20px;
+      margin-bottom: 14px;
+    }
+    .hero-desc {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      line-height: 2;
+    }
+    .scroll-hint {
+      bottom: 16px;
+    }
+    .scroll-hint span {
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+    .scroll-dot { height: 20px; }
+
+    /* 集团简介 */
+    .section-about {
+      padding: 48px 20px;
+    }
+    .about-top {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .about-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+    .about-title {
+      font-size: 22px;
+      letter-spacing: 3px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .about-body {
+      font-size: 12px;
+      line-height: 2;
+      letter-spacing: 0.3px;
+    }
+    .about-stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .stat-num {
+      font-size: 30px;
+    }
+    .stat-unit { font-size: 11px; }
+    .stat-item {
+      padding-left: 14px;
+    }
+    .stat-label {
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    /* 院士 */
+    .academician-block {
+      flex-direction: column;
+      gap: 16px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .academician-portrait {
+      width: 56px;
+      height: 56px;
+    }
+    .portrait-text {
+      font-size: 11px;
+    }
+    .academician-info {
+      text-align: center;
+    }
+    .academician-name {
+      font-size: 17px;
+      letter-spacing: 3px;
+    }
+    .academician-title-text {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+    .academician-desc {
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .academician-divider {
+      width: 36px;
+      height: 1px;
+    }
+    .academician-awards {
+      text-align: left;
+      width: 100%;
+    }
+    .award-item { gap: 8px; margin-bottom: 10px; }
+    .award-text {
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    /* 选择赛道 */
+    .section-choose {
+      padding: 48px 0;
+    }
+    .choose-header {
+      margin-bottom: 28px;
+      padding: 0 20px;
+    }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: 20px;
+      letter-spacing: 3px;
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      line-height: 1.8;
+    }
+    .choose-grid {
+      grid-template-columns: 1fr;
+      margin: 0 16px;
+    }
+    .choose-card {
+      padding: 32px 22px;
+    }
+    .choose-tag {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      padding: 3px 10px;
+      margin-bottom: 16px;
+    }
+    .choose-name {
+      font-size: 24px;
+      letter-spacing: 4px;
+    }
+    .choose-name-en {
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .choose-divider { margin-bottom: 14px; }
+    .choose-desc {
+      font-size: 12px;
+      line-height: 2;
+      letter-spacing: 0.3px;
+      margin-bottom: 24px;
+    }
+    .choose-cta {
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      padding: 12px 24px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* Footer */
+    footer {
+      flex-direction: column;
+      gap: 14px;
+      text-align: center;
+      padding: 28px 20px;
+    }
+    .footer-left img { height: 20px; }
+    .footer-logo { font-size: 12px; letter-spacing: 3px; }
+    .footer-info {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+  }
+
+  /* 平板竖屏 */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    nav { padding: 20px 32px; }
+    nav.scrolled { padding: 14px 32px; }
+    .section-about { padding: 80px 32px; }
+    .about-top { gap: 48px; }
+    .choose-card { padding: 48px 36px; }
+    .academician-block { padding: 36px 32px; gap: 28px; }
+    footer { padding: 36px 32px; }
+  }
+
+  /* 小屏手机（iPhone SE等） */
+  @media (max-width: 375px) {
+    .hero-title {
+      font-size: 32px;
+      letter-spacing: 8px;
+    }
+    .hero-stats {
+      max-width: 260px;
+    }
+    .hero-stat-num {
+      font-size: 20px;
+    }
+    .nav-logo-text {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+    .nav-cta {
+      font-size: 9px;
+      padding: 5px 8px;
+      letter-spacing: 0.5px;
+    }
+    .choose-name {
+      font-size: 20px;
+      letter-spacing: 3px;
+    }
+    .about-title {
+      font-size: 20px;
+    }
+    .stat-num {
+      font-size: 26px;
+    }
+  }
+
+  /* 安全区域适配（iPhone X+刘海屏/灵动岛） */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    nav {
+      padding-top: calc(14px + env(safe-area-inset-top));
+    }
+    footer {
+      padding-bottom: calc(28px + env(safe-area-inset-bottom));
+    }
+    .scroll-hint {
+      bottom: calc(16px + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* 横屏手机 */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+      min-height: 480px;
+      padding: 50px 24px 30px;
+    }
+    .hero-logo { width: 36px; margin-bottom: 8px; }
+    .hero-eyebrow { margin-bottom: 6px; }
+    .hero-title { font-size: 28px; letter-spacing: 8px; }
+    .hero-title-en { margin-bottom: 16px; }
+    .hero-stats { margin-bottom: 12px; }
+    .hero-stat-num { font-size: 18px; }
+    .hero-line { height: 12px; margin-bottom: 8px; }
+    .hero-desc { font-size: 10px; }
+    .scroll-hint { display: none; }
+  }
+
+  /* 触摸设备：CTA按钮active状态 */
+  @media (hover: none) {
+    .choose-card:active { background: rgba(201,168,76,0.03); }
+    .choose-card:active::before { transform: scaleX(1); }
+    .choose-card:active .choose-divider { width: 48px; }
+    .choose-card:active .choose-cta::before { transform: scaleX(1); }
+    .choose-card:active .choose-cta { color: var(--bg); }
+    .nav-cta:active {
+      background: rgba(201,168,76,0.1);
+      border-color: var(--gold);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <img src="logo.png" alt="一叶归真">
+    <span class="nav-logo-text">一叶归真</span>
+  </a>
+  <div class="nav-right">
+    <a class="nav-about" href="#about">关于集团</a>
+    <a class="nav-cta" href="/tea/">中国茶招商</a>
+    <a class="nav-cta" href="https://www.yiyeguizhen.com">大健康招商</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <img class="hero-logo" src="logo.png" alt="一叶归真">
+  <p class="hero-eyebrow">Botanicals · Science · Life</p>
+  <h1 class="hero-title">一叶归真</h1>
+  <p class="hero-title-en">YIYEGUIZHEN GROUP</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num">30<span class="hero-stat-unit">年</span></div>
+      <div class="hero-stat-label">院士科研积累</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">2<span class="hero-stat-unit">项</span></div>
+      <div class="hero-stat-label">国家科技进步奖</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">3<span class="hero-stat-unit">个</span></div>
+      <div class="hero-stat-label">国家级科研平台</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">200<span class="hero-stat-unit">+</span></div>
+      <div class="hero-stat-label">合作渠道伙伴</div>
+    </div>
+  </div>
+
+  <div class="hero-line"></div>
+  <p class="hero-desc">
+    院士科研为根基，植物提取为路径<br>
+    中国茶与大健康，两条赛道开放招商
+  </p>
+
+  <div class="scroll-hint">
+    <span>了解更多</span>
+    <div class="scroll-dot"></div>
+  </div>
+</section>
+
+<!-- 集团简介 + 科研 -->
+<section class="section-about" id="about">
+  <div class="about-top">
+    <div>
+      <p class="about-label reveal">About · 关于集团</p>
+      <h2 class="about-title reveal reveal-delay-1">
+        让植物科学<br>真正走进生活
+      </h2>
+      <p class="about-body reveal reveal-delay-2">
+        北京一叶归真生物科技有限公司，依托刘仲华院士团队三十年植物功能成分研究积累，以三个国家级科研平台为技术支撑，将传统药食同源植物的活性成分以现代提取技术精准还原。集团旗下覆盖中国茶与大健康两大业务方向，面向视频号主播及渠道合作伙伴开放招商。
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">2<span class="stat-unit">项</span></div>
+        <div class="stat-label">国家科技进步二等奖</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">15<span class="stat-unit">x</span></div>
+        <div class="stat-label">活性成分浓缩倍数</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">7<span class="stat-unit">味</span></div>
+        <div class="stat-label">药食同源核心原料</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">2030<span class="stat-unit">年</span></div>
+        <div class="stat-label">院士独家授权期限</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="academician-block reveal">
+    <div class="academician-portrait">
+      <span class="portrait-text">院士</span>
+    </div>
+    <div class="academician-info">
+      <div class="academician-name">刘仲华</div>
+      <div class="academician-title-text">中国工程院院士 · 独家授权合作</div>
+      <div class="academician-desc">
+        国家植物功能成分利用工程技术研究中心主任<br>
+        中共第二十届中央候补委员<br>
+        深耕植物功能成分研究三十年
+      </div>
+    </div>
+    <div class="academician-divider"></div>
+    <div class="academician-awards">
+      <div class="award-item">
+        <div class="award-dot"></div>
+        <div class="award-text">国家植物功能成分利用<br>工程技术研究中心</div>
+      </div>
+      <div class="award-item">
+        <div class="award-dot"></div>
+        <div class="award-text">国家中医药管理局<br>亚健康干预重点实验室</div>
+      </div>
+      <div class="award-item">
+        <div class="award-dot"></div>
+        <div class="award-text">湖南师范大学<br>大健康研究院</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 选择赛道 -->
+<section class="section-choose" id="choose">
+  <div class="choose-header">
+    <p class="section-label reveal">Choose Your Track · 选择赛道</p>
+    <h2 class="section-title reveal reveal-delay-1">两大方向，各有归处</h2>
+    <p class="section-subtitle reveal reveal-delay-2">视频号主播、私域运营者、渠道合作伙伴，选择适合你的赛道</p>
+  </div>
+
+  <div class="choose-grid">
+    <a class="choose-card reveal" href="/tea/" id="choose-tea">
+      <div class="choose-tag">中国茶 · 渠道招商</div>
+      <div class="choose-name">中国茶</div>
+      <div class="choose-name-en">Chinese Tea Collection</div>
+      <div class="choose-divider"></div>
+      <p class="choose-desc">
+        以院士科研标准重新定义中国茶。六大茶类、非遗联名礼盒、陈皮系列、高铁专供系列，成熟供应链与验证过的渠道模型。
+      </p>
+      <div class="choose-cta">
+        <span>进入中国茶招商站</span>
+        <span>→</span>
+      </div>
+    </a>
+
+    <a class="choose-card reveal reveal-delay-1" href="https://www.yiyeguizhen.com" id="choose-health">
+      <div class="choose-tag">大健康 · 渠道招商</div>
+      <div class="choose-name">大健康</div>
+      <div class="choose-name-en">Health & Wellness Series</div>
+      <div class="choose-divider"></div>
+      <p class="choose-desc">
+        院士科研成果直接转化的产品线。植养萃、且酌、金萃叶，覆盖睡眠管理、日常养颜、肠道健康等高增长赛道。
+      </p>
+      <div class="choose-cta">
+        <span>进入大健康招商站</span>
+        <span>→</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <img src="logo.png" alt="">
+    <span class="footer-logo">一叶归真</span>
+  </div>
+  <div class="footer-info">
+    北京一叶归真生物科技有限公司<br>
+    集团入口站 · 具体产品及招商详情请进入对应招商站了解
+  </div>
+</footer>
+
+<script>
+  // 导航滚动效果
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // 滚动显示动画
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
