@@ -137,8 +137,32 @@
     height: auto;
     margin-bottom: 24px;
     opacity: 0;
-    animation: fadeUp 1s 0.2s forwards;
+    animation: fadeUp 1s 0.2s forwards, logoSpin 6s 1.2s ease-in-out infinite;
     filter: drop-shadow(0 4px 20px rgba(201,168,76,0.15));
+    perspective: 800px;
+  }
+
+  @keyframes logoSpin {
+    0% {
+      transform: rotateY(0deg);
+      filter: drop-shadow(0 4px 20px rgba(201,168,76,0.15));
+    }
+    25% {
+      transform: rotateY(90deg);
+      filter: drop-shadow(4px 4px 30px rgba(201,168,76,0.4));
+    }
+    50% {
+      transform: rotateY(180deg);
+      filter: drop-shadow(0 4px 20px rgba(201,168,76,0.15));
+    }
+    75% {
+      transform: rotateY(270deg);
+      filter: drop-shadow(-4px 4px 30px rgba(201,168,76,0.4));
+    }
+    100% {
+      transform: rotateY(360deg);
+      filter: drop-shadow(0 4px 20px rgba(201,168,76,0.15));
+    }
   }
   .hero-eyebrow {
     font-family: 'Cormorant Garamond', serif;
