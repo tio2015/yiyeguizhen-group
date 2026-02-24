@@ -353,12 +353,14 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.15), rgba(201,168,76,0.04));
     border: 1px solid rgba(201,168,76,0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     flex-shrink: 0;
+    overflow: hidden;
+  }
+  .academician-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   .portrait-text {
     font-family: 'Noto Serif SC', serif;
@@ -1044,7 +1046,7 @@
 
   <div class="academician-block reveal">
     <div class="academician-portrait">
-      <span class="portrait-text">院士</span>
+      <img src="academician.jpg" alt="刘仲华院士">
     </div>
     <div class="academician-info">
       <div class="academician-name">刘仲华</div>
