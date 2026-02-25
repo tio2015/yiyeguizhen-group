@@ -1,0 +1,36 @@
+name: 部署主站和茶站到阿里云OSS
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 安装 ossutil
+        run: |
+          wget -q https://gosspublic.alicdn.com/ossutil/v1.7.18/ossutil-v1.7.18-linux-amd64.zip -O ossutil.zip
+          unzip -o ossutil.zip
+          sudo mv ossutil-v1.7.18-linux-amd64/ossutil /usr/local/bin/ossutil
+          rm -rf ossutil.zip ossutil-v1.7.18-linux-amd64
+
+      - name: 配置 ossutil
+        run: |
+          ossutil config \
+            -e oss-cn-hongkong.aliyuncs.com \
+            -i "${{ secrets.OSS_ACCESS_KEY_ID }}" \
+            -k "${{ secrets.OSS_ACCESS_KEY_SECRET }}"
+
+      - name: 部署主站
+        run: |
+          ossutil cp index.html oss://yiyeguizhen-web-hk/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+
+      - name: 部署茶站
+        run: |
+          ossutil cp tea/index.html oss://yiyeguizhen-web-hk/tea/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
