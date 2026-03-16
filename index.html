@@ -567,6 +567,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
   .footer-left {
     display: flex;
@@ -592,6 +593,23 @@
     color: var(--text-dim);
     text-align: right;
     line-height: 1.8;
+  }
+  .footer-icp {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(201,168,76,0.08);
+  }
+  .footer-icp a {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-icp a:hover {
+    color: var(--gold);
   }
 
   /* ─── ANIMATIONS ─── */
@@ -872,6 +890,13 @@
       font-size: 10px;
       letter-spacing: 1px;
     }
+    .footer-icp {
+      padding-top: 14px;
+      margin-top: 14px;
+    }
+    .footer-icp a {
+      font-size: 10px;
+    }
   }
 
   /* 平板竖屏 */
@@ -1127,6 +1152,9 @@
   <div class="footer-info">
     北京一叶归真生物科技有限公司<br>
     集团入口站 · 具体产品及招商详情请进入对应招商站了解
+  </div>
+  <div class="footer-icp">
+    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener noreferrer">京ICP备2025106012号-2</a>
   </div>
 </footer>
 
