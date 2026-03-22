@@ -33,3 +33,8 @@ jobs:
         run: |
           ossutil cp tea/index.html oss://yiyeguizhen-web-hk/tea/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+
+      - name: 部署公安备案徽章图片
+        run: |
+          ossutil cp huizhang.jpeg oss://yiyeguizhen-web-hk/huizhang.jpeg -f
+          ossutil cp huizhang.jpeg oss://yiyeguizhen-web-hk/tea/huizhang.jpeg -f
