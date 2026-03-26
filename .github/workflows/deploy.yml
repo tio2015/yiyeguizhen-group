@@ -38,3 +38,8 @@ jobs:
         run: |
           ossutil cp huizhang.jpeg oss://yiyeguizhen-web-hk/huizhang.jpeg -f
           ossutil cp huizhang.jpeg oss://yiyeguizhen-web-hk/tea/huizhang.jpeg -f
+
+      - name: 部署解酒产品数据库（jp站）
+        run: |
+          ossutil cp jp/index.html oss://yiyeguizhen-web-hk/jp/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
