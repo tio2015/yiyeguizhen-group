@@ -175,6 +175,70 @@
     .footer-dot { width: 5px; height: 5px; background: var(--green); border-radius: 50%; box-shadow: 0 0 5px var(--green); }
 
     ::-webkit-scrollbar{width:5px} ::-webkit-scrollbar-track{background:var(--bg)} ::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+
+    /* ── COMPARE ── */
+    .compare-btn{position:absolute;top:.55rem;right:.55rem;width:24px;height:24px;border-radius:6px;border:1px solid var(--border);background:rgba(255,255,255,.04);color:var(--text3);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .18s;font-size:.8rem;flex-shrink:0;z-index:2}
+    .compare-btn:hover{border-color:rgba(6,182,212,.4);color:var(--cyan)}
+    .product-card{position:relative}
+    .product-card.in-compare{border-color:rgba(6,182,212,.6)!important;box-shadow:0 0 22px rgba(6,182,212,.14)!important}
+    .product-card.in-compare .compare-btn{background:rgba(6,182,212,.22);border-color:rgba(6,182,212,.7);color:var(--cyan)}
+    .compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:300;background:rgba(3,7,18,.96);border-top:1px solid rgba(6,182,212,.25);backdrop-filter:blur(20px);padding:.7rem 2rem;display:flex;align-items:center;gap:.9rem;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+    .compare-bar.show{transform:translateY(0)}
+    .compare-bar-items{display:flex;gap:.5rem;flex:1;flex-wrap:wrap}
+    .compare-chip{display:flex;align-items:center;gap:.4rem;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.3);border-radius:8px;padding:.28rem .65rem;font-size:.73rem;color:var(--cyan)}
+    .compare-chip-x{cursor:pointer;opacity:.55;transition:opacity .15s;margin-left:.2rem}
+    .compare-chip-x:hover{opacity:1}
+    .compare-count{font-size:.73rem;color:var(--text3);white-space:nowrap}
+    .compare-start-btn{background:linear-gradient(135deg,var(--cyan),var(--blue));border:none;border-radius:9px;color:#fff;font-size:.8rem;font-weight:600;padding:.48rem 1.3rem;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+    .compare-start-btn:hover{opacity:.85}
+    .compare-clear-btn{background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text3);font-size:.75rem;padding:.38rem .85rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+    .compare-clear-btn:hover{border-color:rgba(255,255,255,.2);color:var(--text2)}
+
+    /* ── MODAL ── */
+    .modal-overlay{position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.72);backdrop-filter:blur(10px);display:flex;align-items:flex-start;justify-content:center;padding:2.5rem 1rem 1rem;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity .25s}
+    .modal-overlay.show{opacity:1;pointer-events:all}
+    .modal-box{background:var(--bg2);border:1px solid rgba(6,182,212,.18);border-radius:20px;max-width:920px;width:100%;margin:auto}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border)}
+    .modal-title{font-size:.98rem;font-weight:600;display:flex;align-items:center;gap:.5rem}
+    .modal-close{background:transparent;border:1px solid var(--border);border-radius:7px;color:var(--text3);font-size:.78rem;padding:.28rem .7rem;cursor:pointer;transition:all .2s}
+    .modal-close:hover{border-color:rgba(255,255,255,.2);color:var(--text)}
+    .compare-table-wrap{padding:1.2rem 1.5rem 1.6rem;overflow-x:auto}
+    .compare-table{width:100%;border-collapse:collapse;min-width:480px}
+    .compare-table .row-label{font-size:.7rem;color:var(--text3);white-space:nowrap;padding:.55rem .7rem;border-bottom:1px solid rgba(255,255,255,.04)}
+    .compare-table td{font-size:.78rem;color:var(--text2);padding:.55rem .7rem;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;line-height:1.5}
+    .compare-table tr:last-child td{border-bottom:none}
+    .compare-table .col-head{font-size:.8rem;font-weight:600;color:var(--text);padding:.55rem .7rem .3rem}
+    .compare-table .col-sub{font-size:.67rem;color:var(--cyan);padding:0 .7rem .5rem;border-bottom:1px solid rgba(6,182,212,.18)}
+    .highlight-match{background:rgba(6,182,212,.18);color:var(--cyan2);border-radius:2px;padding:0 2px}
+
+    /* ── GRAPH ── */
+    .graph-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;backdrop-filter:blur(20px)}
+    #graph-canvas{width:100%;height:430px;cursor:grab;display:block}
+    #graph-canvas:active{cursor:grabbing}
+    .graph-hint{font-size:.7rem;color:var(--text3);padding:.65rem 1.4rem;border-top:1px solid var(--border);text-align:center}
+    .graph-legend{display:flex;align-items:center;gap:1.4rem;padding:.8rem 1.4rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+    .graph-legend-item{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:var(--text3)}
+    .graph-legend-dot{width:8px;height:8px;border-radius:50%}
+
+    /* ── FORM MODAL ── */
+    .form-modal{max-width:560px}
+    .form-body{padding:1.3rem 1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+    .form-group{display:flex;flex-direction:column;gap:.3rem}
+    .form-group.full{grid-column:1/-1}
+    .form-label{font-size:.7rem;color:var(--text2);letter-spacing:.03em}
+    .form-input,.form-select,.form-textarea{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;padding:.42rem .75rem;color:var(--text);font-size:.8rem;outline:none;transition:border-color .2s;font-family:inherit;width:100%}
+    .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(6,182,212,.45)}
+    .form-select option{background:#0d1117}
+    .form-textarea{resize:vertical;min-height:68px}
+    .form-footer{padding:.85rem 1.5rem 1.3rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:.55rem}
+    .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--blue));border:none;border-radius:8px;color:#fff;font-size:.8rem;font-weight:600;padding:.45rem 1.3rem;cursor:pointer;transition:opacity .2s}
+    .btn-primary:hover{opacity:.85}
+    .btn-secondary{background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text3);font-size:.8rem;padding:.45rem .95rem;cursor:pointer;transition:all .2s}
+    .btn-secondary:hover{border-color:rgba(255,255,255,.2);color:var(--text2)}
+    .badge-new{background:rgba(16,185,129,.15)!important;border-color:rgba(16,185,129,.4)!important;color:var(--green2)!important}
+    .add-product-btn{display:flex;align-items:center;gap:.35rem;padding:.3rem .85rem;border-radius:8px;border:1px solid rgba(6,182,212,.3);background:rgba(6,182,212,.07);color:var(--cyan);font-size:.76rem;cursor:pointer;transition:all .2s;margin-left:.5rem}
+    .add-product-btn:hover{background:rgba(6,182,212,.15)}
   </style>
 </head>
 <body>
@@ -183,6 +247,7 @@
   <div class="nav-brand"><div class="nav-dot"></div>上海润茗本草科技有限公司</div>
   <ul class="nav-links">
     <li><a href="#overview">数据概览</a></li>
+    <li><a href="#graph">成分图谱</a></li>
     <li><a href="#products">产品目录</a></li>
   </ul>
   <div class="nav-badge">初版 · 2025</div>
@@ -256,11 +321,35 @@
 
   <div class="glow-divider"></div>
 
+  <!-- GRAPH SECTION -->
+  <section class="section" id="graph" style="padding-top:3rem;padding-bottom:3rem">
+    <div class="section-header">
+      <div class="section-line"></div>
+      <div class="section-title">成分关系图谱</div>
+      <div class="section-count">点击节点筛选产品</div>
+    </div>
+    <div class="graph-card">
+      <div class="graph-legend">
+        <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#06b6d4"></div>核心成分（节点大小 = 产品数）</div>
+        <div class="graph-legend-item"><div class="graph-legend-dot" style="background:#3b82f6;opacity:.5"></div>连线越粗 = 共现产品越多</div>
+        <div class="graph-legend-item" style="color:var(--amber)">★ = 稀缺高端成分</div>
+      </div>
+      <canvas id="graph-canvas"></canvas>
+      <div class="graph-hint">拖拽节点调整布局 · 点击节点跳转至产品列表并自动筛选 · 点击空白区域取消选中</div>
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
   <section class="section" id="products">
     <div class="section-header">
       <div class="section-line"></div>
       <div class="section-title">产品目录</div>
       <div class="section-count" id="result-count">共 128 条记录</div>
+      <button class="add-product-btn" id="add-product-btn">
+        <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        录入新品
+      </button>
     </div>
     <div class="filter-bar">
       <div class="search-wrap">
@@ -344,6 +433,83 @@
   <div class="footer-sub">解酒产品归档数据库 · 初版</div>
   <div class="footer-updated"><div class="footer-dot"></div>最近更新：2025年3月23日 · 共 128 款产品</div>
 </footer>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compare-bar">
+  <span class="compare-count" id="compare-count">已选 0/4</span>
+  <div class="compare-bar-items" id="compare-chips"></div>
+  <button class="compare-clear-btn" id="compare-clear-btn">清空</button>
+  <button class="compare-start-btn" id="compare-start-btn">开始对比 →</button>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="modal-overlay" id="compare-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/></svg>
+        产品对比
+      </div>
+      <button class="modal-close" id="compare-modal-close">✕ 关闭</button>
+    </div>
+    <div class="compare-table-wrap">
+      <table class="compare-table" id="compare-table"></table>
+    </div>
+  </div>
+</div>
+
+<!-- FORM MODAL -->
+<div class="modal-overlay" id="form-modal">
+  <div class="modal-box form-modal">
+    <div class="modal-header">
+      <div class="modal-title">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+        录入新产品
+      </div>
+      <button class="modal-close" id="form-modal-close">✕ 关闭</button>
+    </div>
+    <div class="form-body">
+      <div class="form-grid">
+        <div class="form-group full"><label class="form-label">产品名称 *</label><input class="form-input" id="f-name" placeholder="如：葛根枳椇子压片糖果"></div>
+        <div class="form-group"><label class="form-label">品牌名称 *</label><input class="form-input" id="f-brand" placeholder="品牌"></div>
+        <div class="form-group"><label class="form-label">产品形态</label>
+          <select class="form-select" id="f-type">
+            <option value="饮品">饮品</option><option value="饮料">饮料</option><option value="片剂">片剂</option>
+            <option value="糖果">糖果</option><option value="胶囊">胶囊</option><option value="口服液">口服液</option>
+            <option value="粉剂">粉剂</option><option value="果冻">果冻</option><option value="丸剂">丸剂</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">来源</label>
+          <select class="form-select" id="f-origin">
+            <option value="国内">国内</option><option value="国外">国外</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">产地/城市</label><input class="form-input" id="f-location" placeholder="如：广东佛山"></div>
+        <div class="form-group"><label class="form-label">价格区间</label>
+          <select class="form-select" id="f-price">
+            <option value="亲民产品（100元以下）">亲民（＜100元）</option>
+            <option value="中端产品（100-300元）">中端（100-300元）</option>
+            <option value="高端产品（300元以上）">高端（＞300元）</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">产品标签</label>
+          <select class="form-select" id="f-tag">
+            <option value="中国普通食品（天然原料）">中国普通食品（天然原料）</option>
+            <option value="中国普通食品（含食品添加物）">中国普通食品（含食品添加物）</option>
+            <option value="中国保健食品（带蓝帽子）">中国保健食品（蓝帽子）</option>
+            <option value="国外普通食品">国外普通食品</option>
+            <option value="国外保健食品">国外保健食品</option>
+          </select>
+        </div>
+        <div class="form-group full"><label class="form-label">配料表</label><textarea class="form-textarea" id="f-ing" placeholder="如：葛根、枳椇子、姜黄、水飞蓟提取物…"></textarea></div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="btn-secondary" id="form-cancel-btn">取消</button>
+      <button class="btn-primary" id="form-submit-btn">保存入库</button>
+    </div>
+  </div>
+</div>
 
 <script>
 // ══════════════════════════════════════════════
@@ -597,12 +763,16 @@ function renderProducts(list){
     const card=document.createElement('div');
     card.className='product-card';
     card.style.animationDelay=`${Math.min(i,30)*40}ms`;
+    const inCmp = compareSet.has(p.id);
+    if(inCmp) card.classList.add('in-compare');
     card.innerHTML=`
+      <button class="compare-btn" data-id="${p.id}" title="加入对比">${inCmp?'✓':'＋'}</button>
       <div class="card-header">
         <span class="card-id">#${String(p.id).padStart(3,'0')}</span>
         <div class="card-badges">
           <span class="badge type-${p.type}">${p.type}</span>
           <span class="badge origin-${p.origin}">${p.origin}</span>
+          ${p._new?'<span class="badge badge-new">NEW</span>':''}
         </div>
       </div>
       <div class="card-body">
@@ -614,10 +784,13 @@ function renderProducts(list){
           <span class="badge ${getTagClass(p.tag)}">${getTagShort(p.tag)}</span>
           <span class="card-location">
             <svg width="9" height="9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            ${p.location}
+            ${p.location||'—'}
           </span>
         </div>
       </div>`;
+    card.querySelector('.compare-btn').addEventListener('click',e=>{
+      e.stopPropagation(); toggleCompare(p.id);
+    });
     grid.appendChild(card);
   });
 }
@@ -763,6 +936,390 @@ document.getElementById('search-input').addEventListener('input',e=>{
   clearTimeout(timer);
   timer=setTimeout(()=>{searchQ=e.target.value.trim();applyFilters();},200);
 });
+
+// ══════════════════════════════════════════════
+// COMPARE LOGIC
+// ══════════════════════════════════════════════
+const compareSet = new Set();
+
+function toggleCompare(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  if(compareSet.has(id)){
+    compareSet.delete(id);
+  } else {
+    if(compareSet.size>=4){ alert('最多同时对比 4 款产品'); return; }
+    compareSet.add(id);
+  }
+  updateCompareBar();
+  // re-render just the affected card btn
+  const btn = document.querySelector(`.compare-btn[data-id="${id}"]`);
+  const card = btn?.closest('.product-card');
+  if(btn) btn.textContent = compareSet.has(id)?'✓':'＋';
+  if(card){ compareSet.has(id)?card.classList.add('in-compare'):card.classList.remove('in-compare'); }
+}
+
+function updateCompareBar(){
+  const bar = document.getElementById('compare-bar');
+  const chips = document.getElementById('compare-chips');
+  const count = document.getElementById('compare-count');
+  chips.innerHTML='';
+  count.textContent=`已选 ${compareSet.size}/4`;
+  if(compareSet.size===0){ bar.classList.remove('show'); return; }
+  bar.classList.add('show');
+  compareSet.forEach(id=>{
+    const p = products.find(x=>x.id===id);
+    if(!p) return;
+    const chip = document.createElement('div');
+    chip.className='compare-chip';
+    chip.innerHTML=`${p.brand}·${p.name.slice(0,10)}${p.name.length>10?'…':''}<span class="compare-chip-x" data-id="${id}">✕</span>`;
+    chip.querySelector('.compare-chip-x').addEventListener('click',()=>toggleCompare(id));
+    chips.appendChild(chip);
+  });
+}
+
+document.getElementById('compare-clear-btn').addEventListener('click',()=>{
+  compareSet.clear();
+  updateCompareBar();
+  document.querySelectorAll('.product-card.in-compare').forEach(c=>c.classList.remove('in-compare'));
+  document.querySelectorAll('.compare-btn').forEach(b=>b.textContent='＋');
+});
+
+document.getElementById('compare-start-btn').addEventListener('click',()=>{
+  if(compareSet.size<2){ alert('请至少选择 2 款产品'); return; }
+  const items = [...compareSet].map(id=>products.find(x=>x.id===id)).filter(Boolean);
+  const rows = [
+    ['产品名称', p=>p.name],
+    ['品牌', p=>p.brand],
+    ['形态', p=>p.type],
+    ['来源', p=>p.origin],
+    ['产地', p=>p.location||'—'],
+    ['价格区间', p=>getPriceLabel(p.price)],
+    ['产品标签', p=>getTagShort(p.tag)],
+    ['核心成分', p=>p.ing||'—'],
+  ];
+  const table = document.getElementById('compare-table');
+  // header
+  let html = '<tr><th style="width:90px"></th>';
+  items.forEach(p=>{ html+=`<th><div class="col-head">${p.brand}</div><div class="col-sub">${p.name}</div></th>`; });
+  html+='</tr>';
+  // rows
+  rows.forEach(([label, getter])=>{
+    html+=`<tr><td class="row-label">${label}</td>`;
+    const vals = items.map(p=>getter(p));
+    vals.forEach(v=>{ html+=`<td>${v}</td>`; });
+    html+='</tr>';
+  });
+  // ingredient overlap row
+  const allIngs = items.map(p=>(p.ing||'').split(/[，,、；;]+/).map(s=>s.trim()).filter(Boolean));
+  const common = allIngs[0].filter(ing=>allIngs.every(arr=>arr.some(a=>a.includes(ing)||ing.includes(a))));
+  if(common.length){
+    html+=`<tr><td class="row-label" style="color:var(--cyan)">共有成分</td>`;
+    items.forEach(()=>{ html+=`<td style="color:var(--cyan2)">${common.join('、')}</td>`; });
+    html+='</tr>';
+  }
+  table.innerHTML=html;
+  document.getElementById('compare-modal').classList.add('show');
+});
+
+document.getElementById('compare-modal-close').addEventListener('click',()=>{
+  document.getElementById('compare-modal').classList.remove('show');
+});
+document.getElementById('compare-modal').addEventListener('click',e=>{
+  if(e.target===e.currentTarget) document.getElementById('compare-modal').classList.remove('show');
+});
+
+// ══════════════════════════════════════════════
+// FORM — NEW PRODUCT ENTRY
+// ══════════════════════════════════════════════
+let nextId = 129;
+// Load saved from localStorage
+const saved = JSON.parse(localStorage.getItem('jiujie-custom')||'[]');
+saved.forEach(p=>{ products.push(p); nextId=Math.max(nextId,p.id+1); });
+
+document.getElementById('add-product-btn').addEventListener('click',()=>{
+  document.getElementById('form-modal').classList.add('show');
+});
+document.getElementById('form-modal-close').addEventListener('click',()=>{
+  document.getElementById('form-modal').classList.remove('show');
+});
+document.getElementById('form-cancel-btn').addEventListener('click',()=>{
+  document.getElementById('form-modal').classList.remove('show');
+});
+document.getElementById('form-modal').addEventListener('click',e=>{
+  if(e.target===e.currentTarget) document.getElementById('form-modal').classList.remove('show');
+});
+
+document.getElementById('form-submit-btn').addEventListener('click',()=>{
+  const name = document.getElementById('f-name').value.trim();
+  const brand = document.getElementById('f-brand').value.trim();
+  if(!name||!brand){ alert('产品名称和品牌为必填项'); return; }
+  const p = {
+    id: nextId++,
+    name,
+    brand,
+    type: document.getElementById('f-type').value,
+    origin: document.getElementById('f-origin').value,
+    location: document.getElementById('f-location').value.trim()||'—',
+    tag: document.getElementById('f-tag').value,
+    price: document.getElementById('f-price').value,
+    ing: document.getElementById('f-ing').value.trim(),
+    _new: true
+  };
+  products.push(p);
+  // persist
+  const custom = JSON.parse(localStorage.getItem('jiujie-custom')||'[]');
+  custom.push(p);
+  localStorage.setItem('jiujie-custom', JSON.stringify(custom));
+  // clear form
+  ['f-name','f-brand','f-location','f-ing'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('form-modal').classList.remove('show');
+  applyFilters();
+  // scroll to products
+  document.getElementById('products').scrollIntoView({behavior:'smooth'});
+});
+
+// ══════════════════════════════════════════════
+// INGREDIENT RELATIONSHIP GRAPH
+// ══════════════════════════════════════════════
+(function initGraph(){
+  const canvas = document.getElementById('graph-canvas');
+  if(!canvas) return;
+  const dpr = window.devicePixelRatio||1;
+  function resize(){
+    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    canvas.width = w*dpr; canvas.height = h*dpr;
+  }
+  resize();
+  const ctx = canvas.getContext('2d');
+
+  const KEYS = KEY_INGREDIENTS.map(k=>k.key);
+  const LABELS = {};
+  KEY_INGREDIENTS.forEach(k=>LABELS[k.key]=k.label);
+
+  // Build nodes
+  const nodes = KEYS.map(key=>{
+    const count = products.filter(p=>(p.ing||'').includes(key)).length;
+    return { key, label: LABELS[key], count, x:0, y:0, vx:0, vy:0, r:0, dragging:false };
+  }).filter(n=>n.count>0);
+
+  // Build edges (co-occurrence count)
+  const edges=[];
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      const co = products.filter(p=>(p.ing||'').includes(nodes[i].key)&&(p.ing||'').includes(nodes[j].key)).length;
+      if(co>0) edges.push({a:i,b:j,co});
+    }
+  }
+  const maxCo = Math.max(...edges.map(e=>e.co),1);
+  const maxCount = Math.max(...nodes.map(n=>n.count),1);
+
+  // Initial layout — circle
+  function layoutCircle(){
+    const W=canvas.width/dpr, H=canvas.height/dpr;
+    const R=Math.min(W,H)*0.34;
+    nodes.forEach((n,i)=>{
+      const a=(i/nodes.length)*Math.PI*2-Math.PI/2;
+      n.x=W/2+R*Math.cos(a); n.y=H/2+R*Math.sin(a);
+      n.r=8+16*(n.count/maxCount);
+    });
+  }
+  layoutCircle();
+
+  // Force simulation
+  let simRunning=true;
+  const SIM_STEPS=200;
+  let step=0;
+
+  function simulate(){
+    if(!simRunning||step>SIM_STEPS) return;
+    step++;
+    const W=canvas.width/dpr, H=canvas.height/dpr;
+    const alpha=1-step/SIM_STEPS;
+
+    // repulsion
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[j].x-nodes[i].x, dy=nodes[j].y-nodes[i].y;
+        const d=Math.sqrt(dx*dx+dy*dy)||1;
+        const f=2400/(d*d)*alpha;
+        nodes[i].vx-=dx/d*f; nodes[i].vy-=dy/d*f;
+        nodes[j].vx+=dx/d*f; nodes[j].vy+=dy/d*f;
+      }
+    }
+    // attraction along edges
+    edges.forEach(e=>{
+      const a=nodes[e.a],b=nodes[e.b];
+      const dx=b.x-a.x, dy=b.y-a.y;
+      const d=Math.sqrt(dx*dx+dy*dy)||1;
+      const ideal=120+30*(1-e.co/maxCo);
+      const f=(d-ideal)*0.04*alpha;
+      a.vx+=dx/d*f; a.vy+=dy/d*f;
+      b.vx-=dx/d*f; b.vy-=dy/d*f;
+    });
+    // centering
+    const cx=W/2, cy=H/2;
+    nodes.forEach(n=>{
+      n.vx+=(cx-n.x)*0.006*alpha;
+      n.vy+=(cy-n.y)*0.006*alpha;
+    });
+    // integrate
+    nodes.forEach(n=>{
+      if(n.dragging) return;
+      n.vx*=0.7; n.vy*=0.7;
+      n.x+=n.vx; n.y+=n.vy;
+      n.x=Math.max(n.r+10,Math.min(W-n.r-10,n.x));
+      n.y=Math.max(n.r+10,Math.min(H-n.r-10,n.y));
+    });
+  }
+
+  const PREMIUM = new Set(PREMIUM_KEYS);
+  let selectedNode=null;
+
+  function draw(){
+    const W=canvas.width/dpr, H=canvas.height/dpr;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.save(); ctx.scale(dpr,dpr);
+
+    // edges
+    edges.forEach(e=>{
+      const a=nodes[e.a],b=nodes[e.b];
+      const active=selectedNode===null||(e.a===selectedNode||e.b===selectedNode);
+      ctx.beginPath();
+      ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle=active?`rgba(59,130,246,${0.12+0.35*(e.co/maxCo)})`:'rgba(59,130,246,0.04)';
+      ctx.lineWidth=1+3*(e.co/maxCo);
+      ctx.stroke();
+    });
+
+    // nodes
+    nodes.forEach((n,i)=>{
+      const active=selectedNode===null||selectedNode===i;
+      const isPremium=PREMIUM.has(n.key);
+      const alpha=active?1:0.3;
+
+      // glow
+      if(active&&selectedNode===i){
+        const g=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*2.5);
+        g.addColorStop(0,'rgba(6,182,212,0.18)');
+        g.addColorStop(1,'transparent');
+        ctx.beginPath(); ctx.arc(n.x,n.y,n.r*2.5,0,Math.PI*2);
+        ctx.fillStyle=g; ctx.fill();
+      }
+
+      // circle
+      const c=isPremium?`rgba(245,158,11,${alpha})`:`rgba(6,182,212,${alpha})`;
+      const c2=isPremium?`rgba(251,191,36,${alpha})`:`rgba(34,211,238,${alpha})`;
+      const grd=ctx.createRadialGradient(n.x-n.r*.3,n.y-n.r*.3,0,n.x,n.y,n.r);
+      grd.addColorStop(0,c2); grd.addColorStop(1,c);
+      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle=grd; ctx.fill();
+      if(selectedNode===i){
+        ctx.strokeStyle=isPremium?'rgba(251,191,36,0.9)':'rgba(6,182,212,0.9)';
+        ctx.lineWidth=2; ctx.stroke();
+      }
+
+      // label
+      ctx.fillStyle=`rgba(241,245,249,${active?0.92:0.25})`;
+      ctx.font=`${active?600:400} ${Math.max(10,n.r*0.72)}px 'PingFang SC',sans-serif`;
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText(n.label||n.key,n.x,n.y);
+
+      // count badge
+      ctx.font=`500 9px monospace`;
+      ctx.fillStyle=`rgba(148,163,184,${active?0.8:0.2})`;
+      ctx.fillText(n.count,n.x,n.y+n.r+9);
+    });
+
+    ctx.restore();
+  }
+
+  function loop(){
+    simulate();
+    draw();
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+  // interaction — drag
+  let dragNode=null, dragOffX=0, dragOffY=0;
+  function getNode(ex,ey){
+    const rect=canvas.getBoundingClientRect();
+    const x=(ex-rect.left), y=(ey-rect.top);
+    return nodes.findIndex(n=>Math.hypot(n.x-x,n.y-y)<n.r+4);
+  }
+  canvas.addEventListener('mousedown',e=>{
+    const i=getNode(e.clientX,e.clientY);
+    if(i<0) return;
+    dragNode=i; nodes[i].dragging=true;
+    const rect=canvas.getBoundingClientRect();
+    dragOffX=nodes[i].x-(e.clientX-rect.left);
+    dragOffY=nodes[i].y-(e.clientY-rect.top);
+  });
+  canvas.addEventListener('mousemove',e=>{
+    if(dragNode===null) return;
+    const rect=canvas.getBoundingClientRect();
+    nodes[dragNode].x=e.clientX-rect.left+dragOffX;
+    nodes[dragNode].y=e.clientY-rect.top+dragOffY;
+  });
+  canvas.addEventListener('mouseup',e=>{
+    if(dragNode!==null){ nodes[dragNode].dragging=false; dragNode=null; }
+  });
+  // click
+  canvas.addEventListener('click',e=>{
+    if(dragNode!==null) return;
+    const i=getNode(e.clientX,e.clientY);
+    if(i<0){
+      selectedNode=null;
+      // clear ing filter
+      document.querySelectorAll('.ing-tag.active').forEach(t=>t.classList.remove('active'));
+      activeIngKeys.clear();
+      document.getElementById('ing-clear').classList.remove('show');
+      applyFilters();
+      return;
+    }
+    selectedNode = (selectedNode===i)?null:i;
+    if(selectedNode!==null){
+      const key=nodes[i].key;
+      // activate corresponding ing-tag
+      document.querySelectorAll('.ing-tag').forEach(t=>t.classList.remove('active'));
+      const tag=document.querySelector(`.ing-tag[data-key="${key}"]`);
+      if(tag){ tag.classList.add('active'); }
+      activeIngKeys = new Set([key]);
+      document.getElementById('ing-clear').classList.add('show');
+      applyFilters();
+      document.getElementById('products').scrollIntoView({behavior:'smooth'});
+    } else {
+      document.querySelectorAll('.ing-tag.active').forEach(t=>t.classList.remove('active'));
+      activeIngKeys.clear();
+      document.getElementById('ing-clear').classList.remove('show');
+      applyFilters();
+    }
+  });
+  // touch support
+  canvas.addEventListener('touchstart',e=>{
+    const t=e.touches[0];
+    const i=getNode(t.clientX,t.clientY);
+    if(i<0) return;
+    dragNode=i; nodes[i].dragging=true;
+    const rect=canvas.getBoundingClientRect();
+    dragOffX=nodes[i].x-(t.clientX-rect.left);
+    dragOffY=nodes[i].y-(t.clientY-rect.top);
+    e.preventDefault();
+  },{passive:false});
+  canvas.addEventListener('touchmove',e=>{
+    if(dragNode===null) return;
+    const t=e.touches[0], rect=canvas.getBoundingClientRect();
+    nodes[dragNode].x=t.clientX-rect.left+dragOffX;
+    nodes[dragNode].y=t.clientY-rect.top+dragOffY;
+    e.preventDefault();
+  },{passive:false});
+  canvas.addEventListener('touchend',e=>{
+    if(dragNode!==null){ nodes[dragNode].dragging=false; dragNode=null; }
+  });
+
+  window.addEventListener('resize',()=>{ resize(); layoutCircle(); step=0; });
+})();
 
 renderProducts(products);
 </script>
