@@ -43,3 +43,14 @@ jobs:
         run: |
           ossutil cp jp/index.html oss://yiyeguizhen-web-hk/jp/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+
+      - name: 上传产品图片（jp/img/）
+        run: |
+          if [ -d "jp/img" ] && [ "$(ls -A jp/img/*.jpg 2>/dev/null)" ]; then
+            ossutil cp jp/img/ oss://yiyeguizhen-web-hk/jp/img/ \
+              --meta "Cache-Control:public, max-age=604800" \
+              --include "*.jpg" -r -f
+            echo "✅ 图片上传完成"
+          else
+            echo "⚠️  jp/img/ 目录为空，跳过"
+          fi
