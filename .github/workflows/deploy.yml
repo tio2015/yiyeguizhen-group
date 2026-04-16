@@ -67,5 +67,5 @@ jobs:
             --meta "Cache-Control:public, max-age=604800" -f
           ossutil cp imgs/wananmima-product.jpg oss://yiyeguizhen-web-hk/imgs/wananmima-product.jpg \
             --meta "Cache-Control:public, max-age=604800" -f
-          ossutil cp imgs/og-flh.png oss://yiyeguizhen-web-hk/imgs/og-flh.png \
-            --meta "Cache-Control:public, max-age=604800" -f
+          ossutil cp imgs/og-flh2.png oss://yiyeguizhen-web-hk/imgs/og-flh2.png \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
