@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>樊文花 × 植养萃 · 商务合作提案</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f5f2ec;
+      --card: #ffffff;
+      --green: #1a3a2a;
+      --green-light: #2d5a3f;
+      --gold: #b8924a;
+      --gold-light: #d4ac6e;
+      --text: #2a2a2a;
+      --text-sec: #777;
+      --text-light: #aaa;
+      --radius: 20px;
+      --shadow: 0 8px 40px rgba(26,58,42,0.07);
+      --shadow-hover: 0 16px 56px rgba(26,58,42,0.13);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ====== NAV ====== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,242,236,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(26,58,42,0.06);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 64px;
+    }
+    .nav-brand {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px; font-weight: 600; color: var(--green);
+      letter-spacing: 1px;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--text-sec); text-decoration: none; font-size: 13px;
+      font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ====== COVER ====== */
+    .cover {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #0f1f17 0%, #1a3a2a 40%, #2a4f3a 100%);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,146,74,0.08) 0%, transparent 70%);
+    }
+    .cover-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 700; color: var(--gold);
+      line-height: 1.25; margin-bottom: 32px;
+      position: relative; z-index: 1;
+    }
+    .cover-subtitle {
+      font-size: clamp(14px, 2vw, 19px);
+      color: rgba(255,255,255,0.85);
+      font-weight: 300; letter-spacing: 4px;
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
+    }
+    .trust-anchors {
+      position: absolute; bottom: 48px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      letter-spacing: 1px; white-space: nowrap;
+    }
+
+    /* ====== SECTION ====== */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 140px 40px 60px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 8px; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: var(--green);
+      margin-bottom: 16px; line-height: 1.3;
+    }
+    .section-title::after {
+      content: '';
+      display: block; width: 48px; height: 3px;
+      background: var(--gold);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+    .section-desc {
+      font-size: 16px; color: var(--text-sec);
+      font-weight: 300; margin-top: 16px;
+    }
+
+    /* ====== CARD ====== */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ====== PART 01: RESOURCE CARDS ====== */
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 56px;
+    }
+    .res-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 44px 40px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .res-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .res-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    }
+    .res-icon {
+      display: none;
+    }
+    .res-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+    .res-list {
+      list-style: none; padding: 0;
+    }
+    .res-list li {
+      font-size: 14px; color: var(--text);
+      line-height: 2.2;
+      padding-left: 18px;
+      position: relative;
+    }
+    .res-list li::before {
+      content: '';
+      position: absolute; left: 0; top: 12px;
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ====== XKA HIGHLIGHT ====== */
+    .xka-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 56px;
+      margin-bottom: 56px;
+      position: relative;
+      overflow: hidden;
+      border-left: 5px solid var(--gold);
+    }
+    .xka-card::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(184,146,74,0.06) 0%, transparent 70%);
+    }
+    .xka-badge {
+      display: inline-block;
+      background: var(--green);
+      color: var(--gold);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3px;
+      padding: 6px 16px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+    }
+    .xka-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 32px;
+    }
+    .xka-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 48px;
+      margin-bottom: 36px;
+    }
+    .xka-item-label {
+      font-size: 12px; color: var(--text-sec);
+      font-weight: 500; letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .xka-item-value {
+      font-size: 15px; color: var(--text);
+      line-height: 1.7;
+    }
+    .xka-numbers {
+      display: flex; gap: 48px;
+      padding: 32px 0;
+      border-top: 1px solid rgba(26,58,42,0.08);
+      border-bottom: 1px solid rgba(26,58,42,0.08);
+      margin-bottom: 32px;
+    }
+    .xka-num {
+      text-align: center;
+    }
+    .xka-num strong {
+      display: block;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 36px; font-weight: 700;
+      color: var(--gold);
+      line-height: 1.2;
+    }
+    .xka-num span {
+      font-size: 13px; color: var(--text-sec);
+      margin-top: 4px; display: block;
+    }
+    .xka-bottom {
+      text-align: center;
+      padding: 20px;
+      background: rgba(184,146,74,0.06);
+      border-radius: 12px;
+      font-size: 15px; font-weight: 600;
+      color: var(--green);
+    }
+
+    /* ====== BAOYU HERO ====== */
+    .baoyu-hero {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 40px;
+      min-height: 320px;
+      background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3f 40%, #1a3a2a 100%);
+    }
+    .baoyu-hero-img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: none;
+    }
+    .baoyu-hero-overlay {
+      position: relative;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      padding: 60px 40px;
+      min-height: 320px;
+    }
+    .baoyu-hero-logo-img {
+      width: 72px; height: auto;
+      margin-bottom: 16px;
+      filter: brightness(1.1);
+    }
+    .baoyu-hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 32px; font-weight: 700;
+      color: #fff;
+      letter-spacing: 8px;
+      margin-bottom: 8px;
+    }
+    .baoyu-hero-sub {
+      font-size: 15px; color: #d4ac6e;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+    .baoyu-hero-slogan {
+      font-size: 13px; color: rgba(255,255,255,0.7);
+      letter-spacing: 2px;
+      max-width: 600px;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ====== BAOYU INTRO ====== */
+    .baoyu-intro {
+      display: flex; gap: 32px; align-items: stretch;
+      margin-bottom: 40px;
+    }
+    .baoyu-intro-text {
+      flex: 1;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .baoyu-intro-text h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .baoyu-intro-text p {
+      font-size: 14px; color: var(--text-sec);
+      line-height: 2; margin-bottom: 12px;
+    }
+    .baoyu-intro-img {
+      flex: 0 0 280px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .baoyu-intro-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    /* ====== BAOYU PRODUCTS ====== */
+    .baoyu-products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+    .baoyu-product {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(184,146,74,0.12);
+      box-shadow: 0 4px 24px rgba(26,18,16,0.06);
+    }
+    .baoyu-product-img-wrap {
+      position: relative;
+      height: 280px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f5efe6 0%, #e8ddd0 100%);
+    }
+    .baoyu-product-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 20px;
+    }
+    .baoyu-product-body {
+      padding: 28px 28px 24px;
+    }
+    .baoyu-product-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 24px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .baoyu-product-desc {
+      font-size: 14px; color: var(--text);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .baoyu-product-slogan {
+      font-size: 14px; color: var(--gold);
+      font-weight: 600;
+      font-style: italic;
+      padding-top: 14px;
+      border-top: 1px solid rgba(184,146,74,0.15);
+      letter-spacing: 1px;
+    }
+
+    /* ====== BAOYU STORE GALLERY ====== */
+    .baoyu-store-section {
+      margin-bottom: 40px;
+    }
+    .baoyu-store-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+    .baoyu-store-subtitle {
+      font-size: 14px; color: var(--text-sec);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+    .baoyu-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .baoyu-gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      position: relative;
+    }
+    .baoyu-gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.4s ease;
+    }
+    .baoyu-gallery-item:hover img {
+      transform: scale(1.05);
+    }
+    .baoyu-gallery-item .gallery-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 8px 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #fff; font-size: 12px;
+      letter-spacing: 1px;
+    }
+    .baoyu-store-features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .baoyu-store-feat {
+      text-align: center;
+      padding: 20px 12px;
+      background: rgba(26,58,42,0.03);
+      border-radius: 12px;
+    }
+    .baoyu-store-feat .feat-icon {
+      font-size: 13px; color: var(--gold);
+      font-weight: 600; letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .baoyu-store-feat .feat-text {
+      font-size: 12px; color: var(--text-sec);
+      line-height: 1.6;
+    }
+
+    /* ====== BAOYU SCIENCE ====== */
+    .baoyu-science {
+      display: flex; gap: 32px;
+      margin-bottom: 40px;
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(26,58,42,0.04) 0%, rgba(184,146,74,0.06) 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(26,58,42,0.06);
+    }
+    .baoyu-science-img {
+      flex: 0 0 200px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .baoyu-science-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .baoyu-science-body {
+      flex: 1;
+    }
+    .baoyu-science-body h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .baoyu-science-body p {
+      font-size: 14px; color: var(--text-sec);
+      line-height: 1.9; margin-bottom: 12px;
+    }
+    .baoyu-science-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 16px;
+    }
+    .baoyu-science-tags span {
+      display: inline-block;
+      padding: 5px 14px;
+      background: rgba(26,58,42,0.06);
+      border-radius: 20px;
+      font-size: 12px; color: var(--green);
+      font-weight: 500;
+    }
+
+    /* ====== BAOYU MENU ====== */
+    .baoyu-menu {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .baoyu-menu-card {
+      padding: 28px 24px;
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(26,58,42,0.06);
+      text-align: center;
+    }
+    .baoyu-menu-cat {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      background: var(--green);
+      color: var(--gold);
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      border-radius: 50%;
+      margin-bottom: 14px;
+    }
+    .baoyu-menu-cat-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 16px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .baoyu-menu-detail {
+      font-size: 13px; color: var(--text-sec);
+      line-height: 1.8;
+    }
+
+    /* ====== CHANNEL ENHANCED ====== */
+    .channel-card-enhanced {
+      text-align: left;
+      padding: 36px 32px;
+      position: relative;
+    }
+    .channel-card-enhanced .channel-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .channel-card-enhanced .channel-name {
+      margin-bottom: 8px;
+    }
+    .channel-tag {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--gold);
+      background: rgba(184,146,74,0.1);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* ====== CHANNEL SECTION TITLE ====== */
+    .channel-section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      margin-top: 64px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+    }
+
+    /* ====== CHANNEL CASES ====== */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+    }
+    .channel-card {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .channel-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .channel-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+    .channel-desc {
+      font-size: 13px; color: var(--text-sec);
+      line-height: 1.7;
+    }
+
+    /* ====== PART 02: TABLE ====== */
+    .table-wrap {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 48px;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      background: var(--green);
+      color: rgba(255,255,255,0.9);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 1px;
+      padding: 20px 28px;
+      text-align: left;
+    }
+    td {
+      padding: 22px 28px;
+      font-size: 15px; color: var(--text);
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) { background: rgba(245,242,236,0.4); }
+    tr.row-highlight {
+      background: rgba(184,146,74,0.08) !important;
+    }
+    .tag {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px; font-weight: 600;
+    }
+    .tag-green { background: #e8f5e9; color: #2e7d32; }
+    .tag-orange { background: #fff3e0; color: #e65100; }
+
+    .conclusion-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px 56px;
+      text-align: center;
+      border-bottom: 4px solid var(--gold);
+    }
+    .conclusion-card p {
+      font-size: 17px; line-height: 2;
+      color: var(--text);
+    }
+
+    /* ====== PART 03: PRODUCT ====== */
+    .product-hero {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+    .product-header {
+      background: linear-gradient(135deg, #1a1a2e, #2d1f4e);
+      padding: 56px;
+      text-align: center;
+    }
+    .product-name {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 36px; font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .product-slogan {
+      font-size: 16px; color: rgba(255,255,255,0.6);
+      font-weight: 300; letter-spacing: 2px;
+    }
+    .product-body {
+      padding: 48px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .product-col h4 {
+      font-size: 12px; color: var(--text-sec);
+      font-weight: 500; letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(184,146,74,0.3);
+    }
+    .product-item {
+      margin-bottom: 20px;
+    }
+    .product-item .label {
+      font-size: 12px; color: var(--text-sec);
+      font-weight: 500; margin-bottom: 4px;
+    }
+    .product-item .val {
+      font-size: 15px; color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ====== FORMULA ====== */
+    .formula-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 56px;
+      margin-bottom: 48px;
+    }
+    .formula-card > h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .molecule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .molecule-item {
+      background: rgba(184,146,74,0.04);
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+      border: 1px solid rgba(184,146,74,0.12);
+    }
+    .molecule-num {
+      width: 36px; height: 36px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 14px; font-weight: 700;
+      margin: 0 auto 16px;
+    }
+    .molecule-name {
+      font-size: 16px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+    .molecule-desc {
+      font-size: 13px; color: var(--text-sec);
+      line-height: 1.7;
+    }
+    .formula-levels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .formula-level {
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid rgba(26,58,42,0.08);
+      position: relative;
+    }
+    .formula-level::before {
+      content: '';
+      position: absolute; top: 0; left: 24px; right: 24px;
+      height: 3px; border-radius: 2px;
+    }
+    .fl-jun { background: rgba(184,146,74,0.06); }
+    .fl-jun::before { background: var(--gold); }
+    .fl-chen { background: rgba(26,58,42,0.03); }
+    .fl-chen::before { background: var(--green-light); }
+    .fl-zuo { background: rgba(119,119,119,0.03); }
+    .fl-zuo::before { background: var(--text-sec); }
+    .fl-tag {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 3px; color: var(--gold);
+      margin-bottom: 12px; padding-top: 8px;
+    }
+    .fl-name {
+      font-size: 15px; font-weight: 600;
+      color: var(--green); margin-bottom: 8px;
+    }
+    .fl-desc {
+      font-size: 13px; color: var(--text-sec);
+      line-height: 1.7;
+    }
+
+    /* ====== WHY THIS PRODUCT ====== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .why-grid .last-row {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .why-item {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 36px 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .why-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .why-dot {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .why-item h4 {
+      font-size: 16px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .why-item p {
+      font-size: 14px; color: var(--text-sec);
+      line-height: 1.8;
+    }
+
+    .diff-card {
+      background: var(--green);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .diff-card h4 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .diff-card p {
+      font-size: 16px; color: rgba(255,255,255,0.8);
+      line-height: 1.8; max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ====== CERTIFICATION ====== */
+    .cert-card-outer {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 56px;
+      margin-bottom: 48px;
+    }
+    .cert-card-outer > h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .cert-item {
+      padding: 32px 28px;
+      border-radius: 16px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cert-item::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+    }
+    .ci-green { background: #f0faf3; }
+    .ci-green::before { background: #2e7d32; }
+    .ci-blue { background: #f0f7ff; }
+    .ci-blue::before { background: #1565c0; }
+    .ci-purple { background: #f5f0ff; }
+    .ci-purple::before { background: #6a1b9a; }
+    .cert-item h4 {
+      font-size: 15px; font-weight: 700;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .cert-item p {
+      font-size: 13px; color: var(--text-sec);
+      line-height: 1.7;
+    }
+    .cert-footer {
+      text-align: center;
+      font-size: 12px; color: var(--text-light);
+      letter-spacing: 1px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* ====== COOPERATION TERMS ====== */
+    .terms-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 56px;
+    }
+    .terms-card > h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--green);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .price-highlight {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      border-radius: 16px;
+      padding: 36px 32px;
+      text-align: center;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-highlight::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(184,146,74,0.12) 0%, transparent 60%);
+    }
+    .price-main {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.6;
+      position: relative;
+    }
+    .price-main .price-num {
+      font-size: 32px;
+      color: #fff;
+    }
+    .price-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      margin-top: 12px;
+      position: relative;
+    }
+    .terms-price {
+      font-size: 15px; color: var(--text-sec);
+      text-align: center; line-height: 1.8;
+      margin-bottom: 40px;
+      max-width: 650px; margin-left: auto; margin-right: auto;
+    }
+    .terms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .term-item {
+      padding: 28px;
+      border-radius: 14px;
+      background: rgba(245,242,236,0.6);
+      border: 1px solid rgba(26,58,42,0.06);
+    }
+    .term-item h4 {
+      font-size: 15px; font-weight: 700;
+      color: var(--green); margin-bottom: 10px;
+    }
+    .term-item p {
+      font-size: 14px; color: var(--text-sec);
+      line-height: 1.7;
+    }
+
+    /* ====== PART 04: VALUES ====== */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .value-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px 40px;
+      display: flex; flex-direction: column;
+      min-height: 420px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .value-num {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 72px; font-weight: 700;
+      color: rgba(184,146,74,0.08);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .value-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 24px;
+      line-height: 1.4;
+      padding-bottom: 20px;
+      border-bottom: 2px solid rgba(184,146,74,0.2);
+    }
+    .value-intro {
+      font-size: 15px; color: var(--text);
+      margin-bottom: 20px; line-height: 1.7;
+    }
+    .value-list {
+      list-style: none; padding: 0;
+      flex: 1;
+    }
+    .value-list li {
+      font-size: 14px; color: var(--text);
+      line-height: 1.8;
+      padding: 8px 0 8px 22px;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.03);
+    }
+    .value-list li:last-child { border-bottom: none; }
+    .value-list li::before {
+      content: '';
+      position: absolute; left: 0; top: 16px;
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .value-extra {
+      font-size: 14px; color: var(--text-sec);
+      line-height: 1.7; margin-top: 16px;
+    }
+    .value-quote {
+      margin-top: auto;
+      padding: 20px 0 0;
+    }
+    .value-quote blockquote {
+      padding: 16px 20px;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--text-sec);
+      line-height: 1.7;
+      background: rgba(184,146,74,0.04);
+      border-radius: 0 10px 10px 0;
+    }
+
+    /* ====== PART 05: TIMELINE ====== */
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 32px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), rgba(184,146,74,0.15));
+    }
+    .tl-item {
+      display: flex; align-items: flex-start;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .tl-marker {
+      width: 64px; height: 64px;
+      background: var(--card);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      z-index: 2;
+      box-shadow: 0 4px 16px rgba(184,146,74,0.15);
+    }
+    .tl-content {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 32px 36px;
+      margin-left: 28px;
+      flex: 1;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .tl-content:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+    .tl-title {
+      font-size: 17px; font-weight: 700;
+      color: var(--green); margin-bottom: 8px;
+    }
+    .tl-desc {
+      font-size: 14px; color: var(--text-sec);
+      line-height: 1.7;
+    }
+    .vision-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px;
+      text-align: center;
+      border: 2px dashed rgba(184,146,74,0.3);
+      margin-top: 16px;
+    }
+    .vision-card p {
+      font-size: 16px; line-height: 2;
+      color: var(--text-sec);
+      max-width: 750px; margin: 0 auto;
+    }
+    .vision-card strong {
+      color: var(--green); font-weight: 700;
+    }
+
+    /* ====== APPENDIX ====== */
+    .app-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .app-card {
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 36px 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 4px solid;
+    }
+    .app-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+    .app-card:nth-child(1) { border-left-color: #e74c3c; }
+    .app-card:nth-child(2) { border-left-color: #3498db; }
+    .app-card:nth-child(3) { border-left-color: #2ecc71; }
+    .app-card:nth-child(4) { border-left-color: #f39c12; }
+    .app-card:nth-child(5) { border-left-color: #9b59b6; }
+    .app-card:nth-child(6) { border-left-color: #1abc9c; }
+    .app-title {
+      font-size: 17px; font-weight: 700;
+      color: var(--green); margin-bottom: 14px;
+    }
+    .app-desc {
+      font-size: 13px; color: var(--text-sec);
+      line-height: 1.8;
+    }
+
+    /* ====== FOOTER ====== */
+    .footer {
+      text-align: center;
+      padding: 60px 40px;
+      font-size: 13px; color: var(--text-light);
+    }
+
+    /* ====== RESPONSIVE ====== */
+    /* ====== 折叠展开组件 ====== */
+    .collapse-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: 24px 28px 24px 28px;
+      background: linear-gradient(135deg, rgba(26,58,42,0.06) 0%, rgba(184,146,74,0.08) 100%);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(26,58,42,0.08);
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+      user-select: none;
+      border: 2px solid rgba(184,146,74,0.25);
+      position: relative;
+    }
+    .collapse-trigger:hover {
+      box-shadow: 0 8px 32px rgba(184,146,74,0.15);
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(26,58,42,0.08) 0%, rgba(184,146,74,0.12) 100%);
+    }
+    .collapse-trigger.active {
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin-bottom: 0;
+      border-bottom: 1px solid rgba(26,58,42,0.06);
+      background: var(--card);
+    }
+    .collapse-trigger-text {
+      flex: 1;
+    }
+    .collapse-trigger-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .collapse-trigger-title::before {
+      content: '＋';
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; height: 24px;
+      background: var(--gold);
+      color: #fff;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: system-ui;
+      flex-shrink: 0;
+    }
+    .collapse-trigger.active .collapse-trigger-title::before {
+      content: '－';
+      background: var(--green);
+    }
+    .collapse-trigger-hint {
+      font-size: 13px;
+      color: var(--text-sec);
+      margin-top: 6px;
+      padding-left: 34px;
+    }
+    .collapse-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 10px;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+      margin-left: 16px;
+      animation: pulse-tag 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse-tag {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    .collapse-trigger.active .collapse-tag {
+      background: var(--green);
+      animation: none;
+    }
+    .collapse-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .collapse-body.open {
+      max-height: 5000px;
+    }
+    .collapse-body-inner {
+      background: var(--card);
+      border-radius: 0 0 var(--radius) var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(26,58,42,0.04);
+      border-top: none;
+    }
+
+    /* ====== 手机端适配 ====== */
+    @media (max-width: 900px) {
+      /* 基础网格全部单列 */
+      .res-grid, .xka-grid, .formula-levels, .molecule-grid,
+      .cert-grid, .terms-grid, .values-grid, .app-grid,
+      .why-grid { grid-template-columns: 1fr; }
+      .why-grid .last-row { grid-template-columns: 1fr; }
+      .channel-grid { grid-template-columns: 1fr !important; }
+      .baoyu-products { grid-template-columns: 1fr; gap: 20px; }
+      .baoyu-menu { grid-template-columns: 1fr; }
+      .product-body { grid-template-columns: 1fr; }
+
+      /* 全局 */
+      .section { padding: 60px 16px 32px; }
+      .nav-links { display: none; }
+      .nav-inner { padding: 0 16px; }
+      .cover-title { font-size: 28px; line-height: 1.4; }
+      .cover-subtitle { font-size: 14px; padding: 0 16px; }
+      .trust-anchors { font-size: 11px; padding: 0 16px; line-height: 1.6; }
+      .section-title { font-size: 22px; }
+      .section-desc { font-size: 14px; }
+
+      /* XKA & 宝玉煮茶大卡片 */
+      .xka-card { padding: 20px 14px; border-radius: 14px; }
+      .xka-badge { font-size: 11px; padding: 4px 14px; }
+      .xka-title { font-size: 16px; line-height: 1.5; }
+      .xka-grid { gap: 12px; }
+      .xka-item-label { font-size: 12px; }
+      .xka-item-value { font-size: 13px; line-height: 1.7; }
+      .xka-numbers { flex-direction: column; gap: 12px; }
+      .xka-num { padding: 16px; }
+      .xka-num strong { font-size: 22px; }
+      .xka-num span { font-size: 12px; }
+      .xka-bottom { font-size: 13px; padding: 14px; }
+      .xka-image img { border-radius: 10px !important; margin-top: 16px !important; }
+
+      /* 宝玉煮茶 Hero */
+      .baoyu-hero { min-height: 240px; border-radius: 14px; margin-bottom: 24px; }
+      .baoyu-hero-overlay { padding: 36px 20px; min-height: 240px; }
+      .baoyu-hero-logo-img { max-width: 60px; width: 60px; margin-bottom: 12px; }
+      .baoyu-hero-title { font-size: 24px; letter-spacing: 4px; }
+      .baoyu-hero-sub { font-size: 12px; letter-spacing: 2px; margin-bottom: 14px; }
+      .baoyu-hero-slogan { font-size: 12px; letter-spacing: 1px; line-height: 1.8; padding: 0 8px; }
+
+      /* 宝玉煮茶 品牌介绍 */
+      .baoyu-intro { flex-direction: column; gap: 16px; margin-bottom: 24px; }
+      .baoyu-intro-img { flex: none; max-width: 100%; height: 200px; border-radius: 12px; }
+      .baoyu-intro-img img { border-radius: 12px; height: 200px; }
+      .baoyu-intro-text h3 { font-size: 17px; line-height: 1.5; }
+      .baoyu-intro-text p { font-size: 13px; line-height: 1.8; }
+
+      /* 宝玉煮茶 产品卡片 */
+      .baoyu-product { border-radius: 14px; }
+      .baoyu-product-img-wrap { height: 200px; }
+      .baoyu-product-img { padding: 12px !important; }
+      .baoyu-product-body { padding: 18px 16px 16px; }
+      .baoyu-product-name { font-size: 18px; margin-bottom: 8px; }
+      .baoyu-product-desc { font-size: 13px; line-height: 1.8; margin-bottom: 12px; }
+      .baoyu-product-slogan { font-size: 13px; padding-top: 10px; }
+
+      /* 宝玉煮茶 门店画廊 */
+      .baoyu-store-section { margin-bottom: 24px; }
+      .baoyu-store-title { font-size: 18px; }
+      .baoyu-store-subtitle { font-size: 12px; line-height: 1.7; margin-bottom: 16px; }
+      .baoyu-gallery { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .baoyu-gallery-item { border-radius: 8px; }
+      .baoyu-gallery-item img { border-radius: 8px; }
+      .baoyu-gallery-item .gallery-label { font-size: 11px; padding: 6px 8px; }
+      .baoyu-store-features { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .baoyu-store-feat { padding: 14px 8px; border-radius: 10px; }
+      .baoyu-store-feat .feat-icon { font-size: 12px; }
+      .baoyu-store-feat .feat-text { font-size: 11px; }
+
+      /* 宝玉煮茶 科研背书 */
+      .baoyu-science { flex-direction: column; gap: 16px; padding: 20px 16px; border-radius: 14px; margin-bottom: 24px; }
+      .baoyu-science-img { flex: none; max-width: 100%; height: 180px; border-radius: 10px; }
+      .baoyu-science-img img { height: 180px; border-radius: 10px; }
+      .baoyu-science-body h3 { font-size: 16px; margin-bottom: 10px; }
+      .baoyu-science-body p { font-size: 13px; line-height: 1.8; margin-bottom: 8px; }
+      .baoyu-science-tags { gap: 6px; margin-top: 10px; }
+      .baoyu-science-tags span { font-size: 11px; padding: 3px 10px; }
+
+      /* 其他渠道能力 */
+      .channel-section-title { font-size: 18px; margin-top: 40px; margin-bottom: 16px; }
+      .channel-card { padding: 20px 16px; border-radius: 14px; }
+      .channel-card-enhanced { padding: 20px 16px; }
+      .channel-card-enhanced .channel-icon { font-size: 24px; margin-bottom: 10px; }
+      .channel-card-enhanced .channel-name { font-size: 15px; }
+      .channel-name { font-size: 15px; }
+      .channel-desc { font-size: 12px; line-height: 1.7; }
+      .channel-tag { font-size: 10px; margin-top: 10px; }
+
+      /* 资源卡片 */
+      .res-card { padding: 20px 16px; }
+      .res-icon { display: none; }
+      .res-title { font-size: 15px; }
+      .res-list li { font-size: 13px; }
+
+      /* 晚安密码产品区 */
+      .product-hero { padding: 20px 14px; border-radius: 14px; }
+      .product-header { margin-bottom: 12px; }
+      .product-name { font-size: 24px; }
+      .product-slogan { font-size: 13px; }
+      .product-image img,
+      .product-hero img { width: 200px !important; max-width: 80% !important; }
+      .product-col h4 { font-size: 15px; }
+      .product-item { padding: 10px 0; }
+      .product-item .label { font-size: 11px; min-width: 60px; }
+      .product-item .val { font-size: 13px; line-height: 1.6; }
+
+      /* 为什么找樊文花 - 表格 */
+      .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; margin-bottom: 24px; }
+      .table-wrap table { font-size: 12px; min-width: 0; width: 100%; }
+      .table-wrap th { padding: 10px 8px; font-size: 11px; letter-spacing: 0; white-space: nowrap; }
+      .table-wrap td { padding: 10px 8px; font-size: 12px; line-height: 1.4; }
+      .table-wrap .tag { font-size: 10px; padding: 2px 6px; white-space: nowrap; }
+      .conclusion-card { padding: 18px 14px; border-radius: 12px; }
+      .conclusion-card p { font-size: 13px; line-height: 1.7; }
+
+      /* 配方体系 */
+      .formula-card { padding: 20px 14px; border-radius: 14px; }
+      .formula-card > h3 { font-size: 16px; }
+      .molecule-grid { gap: 10px; }
+      .molecule-item { padding: 14px; }
+      .molecule-num { width: 28px; height: 28px; font-size: 13px; }
+      .molecule-name { font-size: 14px; }
+      .molecule-desc { font-size: 12px; }
+      .formula-level { padding: 14px; }
+      .fl-tag { font-size: 11px; padding: 2px 10px; }
+      .fl-name { font-size: 14px; }
+      .fl-desc { font-size: 12px; }
+
+      /* Why grid */
+      .why-item { padding: 18px 16px; }
+      .why-item h4 { font-size: 15px; }
+      .why-item p { font-size: 13px; }
+
+      /* 差异化 */
+      .diff-card { padding: 20px 16px; border-radius: 14px; }
+      .diff-card h4 { font-size: 15px; }
+      .diff-card p { font-size: 13px; }
+
+      /* 认证 */
+      .cert-card-outer { padding: 20px 14px; border-radius: 14px; }
+      .cert-card-outer > h3 { font-size: 15px; line-height: 1.5; }
+      .cert-item { padding: 16px; }
+      .cert-item h4 { font-size: 14px; }
+      .cert-item p { font-size: 12px; }
+      .cert-footer { font-size: 11px; line-height: 1.6; }
+
+      /* 合作条件 */
+      .terms-card { padding: 20px 14px; border-radius: 14px; }
+      .terms-card > h3 { font-size: 17px; }
+      .terms-price { font-size: 13px; line-height: 1.7; }
+      .term-item { padding: 16px; }
+      .term-item h4 { font-size: 14px; }
+      .term-item p { font-size: 12px; }
+
+      /* 三个价值 */
+      .value-card { padding: 20px 16px; border-radius: 14px; min-height: auto !important; }
+      .value-num { font-size: 32px; margin-bottom: 8px; }
+      .value-title { font-size: 16px; margin-bottom: 14px; padding-bottom: 12px; }
+      .value-intro { font-size: 13px; margin-bottom: 12px; line-height: 1.6; }
+      .value-list { flex: none; }
+      .value-list li { font-size: 13px; padding: 6px 0 6px 18px; line-height: 1.6; }
+      .value-list li::before { top: 12px; width: 6px; height: 6px; }
+      .value-extra { font-size: 12px; margin-top: 10px; }
+      .value-quote { padding-top: 12px; }
+      .value-quote blockquote { font-size: 13px; padding: 12px 14px; }
+
+      /* 合作路径时间线 */
+      .timeline { padding: 10px 0; }
+      .timeline::before { left: 20px; }
+      .tl-item { margin-bottom: 20px; }
+      .tl-marker { width: 40px; height: 40px; font-size: 10px; border-width: 2px; }
+      .tl-content { padding: 16px; margin-left: 16px; border-radius: 12px; }
+      .tl-title { font-size: 14px; margin-bottom: 4px; }
+      .tl-desc { font-size: 12px; line-height: 1.6; }
+      .vision-card { padding: 20px 16px; border-radius: 14px; }
+      .vision-card p { font-size: 13px; line-height: 1.8; }
+
+      /* 附录 */
+      .app-card { padding: 16px 14px; }
+      .app-title { font-size: 14px; }
+      .app-desc { font-size: 12px; line-height: 1.7; }
+
+      /* 页脚 */
+      .footer { font-size: 12px; padding: 20px 16px; }
+
+      /* 折叠组件 */
+      .collapse-trigger { padding: 14px 14px; border-radius: 14px; }
+      .collapse-trigger.active { border-radius: 14px 14px 0 0; }
+      .collapse-trigger-title { font-size: 14px; gap: 8px; }
+      .collapse-trigger-title::before { width: 20px; height: 20px; font-size: 12px; border-radius: 5px; }
+      .collapse-trigger-hint { font-size: 11px; padding-left: 28px; }
+      .collapse-tag { font-size: 10px; padding: 2px 8px; margin-left: 10px; }
+      .collapse-body-inner { padding: 14px; border-radius: 0 0 14px 14px; }
+
+      /* 价格区域 */
+      .price-highlight { padding: 24px 16px; border-radius: 12px; }
+      .price-main { font-size: 18px; }
+      .price-main .price-num { font-size: 22px; }
+      .price-sub { font-size: 12px; }
+
+      /* 全局图片防溢出 */
+      img { max-width: 100%; height: auto; }
+    }
+
+    /* 超小屏适配 iPhone SE 等 */
+    @media (max-width: 400px) {
+      .cover-title { font-size: 22px; }
+      .section { padding: 48px 12px 24px; }
+      .xka-card { padding: 16px 10px; }
+      .baoyu-hero-overlay { padding: 28px 14px; }
+      .baoyu-hero-title { font-size: 20px; letter-spacing: 3px; }
+      .baoyu-gallery { grid-template-columns: 1fr; }
+      .baoyu-store-features { grid-template-columns: 1fr; }
+      .baoyu-product-img-wrap { height: 160px; }
+      .product-hero img,
+      .product-image img { width: 160px !important; }
+      .xka-grid { gap: 8px; }
+      .section-title { font-size: 20px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">樊文花 × 植养萃</div>
+    <div class="nav-links">
+      <a href="#cover">封面</a>
+      <a href="#who">我们是谁</a>
+      <a href="#product">联名产品</a>
+      <a href="#value">核心价值</a>
+      <a href="#path">合作路径</a>
+    </div>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section id="cover" class="cover">
+  <h1 class="cover-title">外护一张脸<br>内养一杯植物饮</h1>
+  <p class="cover-subtitle">植养萃 × 樊文花<br>商务合作提案</p>
+  <div class="trust-anchors">
+    刘仲华院士团队科研支持<br>国家植物功能成分利用工程技术研究中心
+  </div>
+</section>
+
+<!-- PART 01 -->
+<section id="who" class="section">
+  <div class="section-header">
+    <div class="section-tag">PART 01</div>
+    <h2 class="section-title">我们是谁</h2>
+    <p class="section-desc">刘仲华院士团队 + 3个国家级科研平台，已与XKA跑通2000万保底的同款合作模式</p>
+  </div>
+
+  <div class="res-grid">
+    <div class="res-card">
+      <div class="res-icon">科</div>
+      <div class="res-title">科研背书</div>
+      <ul class="res-list">
+        <li>刘仲华院士（中国工程院院士）</li>
+        <li>湖南师范大学校长</li>
+        <li>2项国家科学技术进步奖</li>
+      </ul>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">研</div>
+      <div class="res-title">科研平台</div>
+      <ul class="res-list">
+        <li>3个国家级科研平台</li>
+        <li>国家植物功能成分利用工程技术研究中心（该领域国内唯一）</li>
+        <li>茶学教育部重点实验室</li>
+        <li>国家中医药管理局亚健康干预技术实验室</li>
+      </ul>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">发</div>
+      <div class="res-title">研发积累</div>
+      <ul class="res-list">
+        <li>100+种已研发植物功能成分</li>
+        <li>200+项省级以上科研项目</li>
+        <li>5年数百次试验，七味最优解配方</li>
+      </ul>
+    </div>
+    <div class="res-card">
+      <div class="res-icon">产</div>
+      <div class="res-title">生产与供应链</div>
+      <ul class="res-list">
+        <li>自有供应链 + GMP标准合作工厂</li>
+        <li>柔性生产线，支持ODM定制</li>
+        <li>上游四大产区茶园 + 道地药材网络</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 院士介绍 -->
+
+  <!-- XKA -->
+  <div class="xka-card">
+    <div class="xka-badge">核心案例</div>
+    <div class="xka-title">已验证的合作模式：XKA平台战略合作</div>
+    <div class="xka-image">
+      <img src="https://yiyeguizhen.com/imgs/xka-products.png" alt="XKA平台产品展示" style="width: 100%; border-radius: 12px; margin-top: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
+    </div>
+    <div class="xka-grid">
+      <div>
+        <div class="xka-item-label">合作方</div>
+        <div class="xka-item-value">国内头部私域平台，2400万用户，年营收30亿+</div>
+      </div>
+      <div>
+        <div class="xka-item-label">合作模式</div>
+        <div class="xka-item-value">基于平台用户画像，联合开发药食同源固体饮料（针对女性睡眠/气色改善）</div>
+      </div>
+      <div>
+        <div class="xka-item-label">技术支撑</div>
+        <div class="xka-item-value">刘仲华院士团队 + 国家植物功能成分利用工程技术研究中心</div>
+      </div>
+      <div>
+        <div class="xka-item-label">商业结果</div>
+        <div class="xka-item-value">平台独家包销，首批订单10万盒，签约保底金额2000万元</div>
+      </div>
+    </div>
+    <div class="xka-numbers">
+      <div class="xka-num">
+        <strong>2400万</strong>
+        <span>平台用户规模</span>
+      </div>
+      <div class="xka-num">
+        <strong>10万盒</strong>
+        <span>首批订单量</span>
+      </div>
+      <div class="xka-num">
+        <strong>2000万</strong>
+        <span>签约保底金额</span>
+      </div>
+    </div>
+    <div class="xka-bottom">这就是我们提议与樊文花合作的同一模式</div>
+  </div>
+
+  <!-- 宝玉煮茶 核心案例 -->
+  <div class="xka-card" style="margin-top: 56px;">
+    <div class="xka-badge">核心案例</div>
+    <div class="xka-title">已验证的合作模式：宝玉煮茶 · 院士轻养茶</div>
+
+    <!-- 品牌视觉 Hero -->
+    <div class="baoyu-hero">
+      <div class="baoyu-hero-overlay">
+        <img src="https://baoyutea.yiyeguizhen.com/imgs/img-010.jpg" alt="宝玉煮茶" class="baoyu-hero-logo-img">
+        <div class="baoyu-hero-title">宝玉煮茶</div>
+        <div class="baoyu-hero-sub">BAOYU TEA LAB · 院士轻养茶</div>
+        <div class="baoyu-hero-slogan">红楼文化 · 东方食养<br>中国工程院院士团队参与研发 · 院士独家授权合作</div>
+      </div>
+    </div>
+
+    <!-- 品牌介绍 -->
+    <div class="baoyu-intro">
+      <div class="baoyu-intro-text">
+        <h3>以大观园为文化原点<br>以院士研究成果为科学基底</h3>
+        <p>宝玉煮茶，取意《红楼梦》，以大观园为文化原点，以中国工程院院士团队研究成果为科学基底，将东方食养智慧重新注入现代都市的饮茶方式。</p>
+        <p>我方作为联合研发出品方，提供刘仲华院士团队研发配方与植养萃系列原料，宝玉煮茶负责品牌运营与终端门店，形成完整的"科研 + 品牌"合作链路。</p>
+      </div>
+      <div class="baoyu-intro-img">
+        <img src="https://baoyutea.yiyeguizhen.com/imgs/img-116.jpg" alt="红楼文化IP">
+      </div>
+    </div>
+
+    <div class="xka-grid">
+      <div>
+        <div class="xka-item-label">合作方</div>
+        <div class="xka-item-value">宝玉煮茶 BAOYU TEA LAB — 以《红楼梦》人物精神为文化线索，集茶饮、文创零售、文化互动于一体的中高端新式茶饮品牌</div>
+      </div>
+      <div>
+        <div class="xka-item-label">合作模式</div>
+        <div class="xka-item-value">联合开发"院士轻养茶"系列。我方提供院士团队研发配方与植养萃系列原料，宝玉煮茶负责品牌运营与终端门店</div>
+      </div>
+      <div>
+        <div class="xka-item-label">门店形态</div>
+        <div class="xka-item-value">"大观茶室" — 新型茶空间，覆盖大融城旗舰店、万柳华联、清河万象汇等核心商圈，开业即登顶大众点评</div>
+      </div>
+      <div>
+        <div class="xka-item-label">商业验证</div>
+        <div class="xka-item-value">大融城旗舰店2025年12月开业，奥运冠军任子威、王丽萍、岳清爽到场；支持抖音非遗之夜（2025年）</div>
+      </div>
+    </div>
+
+    <!-- 门店详情 (折叠) -->
+    <div class="collapse-trigger" onclick="toggleCollapse(this)" style="margin-top: 24px;">
+      <div class="collapse-trigger-text">
+        <div class="collapse-trigger-title">门店产品与空间详情</div>
+        <div class="collapse-trigger-hint">怡红公子、潇湘妃子等明星产品，大观茶室门店实拍 — 点击展开</div>
+      </div>
+      <div class="collapse-tag">展开</div>
+    </div>
+    <div class="collapse-body">
+      <div class="collapse-body-inner">
+        <!-- 核心产品：怡红公子 & 潇湘妃子 -->
+        <div class="baoyu-products">
+          <div class="baoyu-product">
+            <div class="baoyu-product-img-wrap">
+              <img src="https://baoyutea.yiyeguizhen.com/imgs/img-200.jpg" alt="怡红公子" class="baoyu-product-img">
+            </div>
+            <div class="baoyu-product-body">
+              <div class="baoyu-product-name">怡红公子</div>
+              <div class="baoyu-product-desc">以红枣为基底，结合院士团队长期关注的茶食养研究方向，匠心熬煮。适合应酬后、情绪与身体负担较重时饮用，以植养的方式关照身体。</div>
+              <div class="baoyu-product-slogan">匠心熬煮，东方食养，一杯添元气</div>
+            </div>
+          </div>
+          <div class="baoyu-product">
+            <div class="baoyu-product-img-wrap">
+              <img src="https://baoyutea.yiyeguizhen.com/imgs/img-201.jpg" alt="潇湘妃子" class="baoyu-product-img">
+            </div>
+            <div class="baoyu-product-body">
+              <div class="baoyu-product-name">潇湘妃子</div>
+              <div class="baoyu-product-desc">以洛神花为底，四物调和，无咖温润。偏清润内调取向，适合日常养颜、调和气色，让身体由内而外漾出光彩。</div>
+              <div class="baoyu-product-slogan">无咖温润，四物调和，一杯漾出桃花色</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 大观茶室 · 门店展示 -->
+    <div class="baoyu-store-section">
+      <div class="baoyu-store-title">大观茶室，溯源红楼</div>
+      <div class="baoyu-store-subtitle">不只是一家茶饮店 — 是一个可以品茶、办公、小聚、独处的理想场所。以考究的空间设计、高性价比的茶饮为核心，打造集茶饮、文创零售、文化互动于一体的新型茶空间。</div>
+      <div class="baoyu-gallery">
+        <div class="baoyu-gallery-item">
+          <img src="https://baoyutea.yiyeguizhen.com/imgs/img-401.jpg" alt="门店外观">
+          <div class="gallery-label">门店外观</div>
+        </div>
+        <div class="baoyu-gallery-item">
+          <img src="https://baoyutea.yiyeguizhen.com/imgs/img-402.jpg" alt="霓虹Logo">
+          <div class="gallery-label">霓虹 Logo</div>
+        </div>
+        <div class="baoyu-gallery-item">
+          <img src="https://baoyutea.yiyeguizhen.com/imgs/img-403.jpg" alt="室内空间">
+          <div class="gallery-label">茶室空间</div>
+        </div>
+        <div class="baoyu-gallery-item">
+          <img src="https://baoyutea.yiyeguizhen.com/imgs/img-404.jpg" alt="吧台出品">
+          <div class="gallery-label">吧台出品</div>
+        </div>
+      </div>
+      <div class="baoyu-store-features">
+        <div class="baoyu-store-feat">
+          <div class="feat-icon">茗 · 茶饮</div>
+          <div class="feat-text">院士研发特调<br>现场出品</div>
+        </div>
+        <div class="baoyu-store-feat">
+          <div class="feat-icon">珮 · 文创</div>
+          <div class="feat-text">红楼主题文创<br>可带走的记忆</div>
+        </div>
+        <div class="baoyu-store-feat">
+          <div class="feat-icon">酥 · 茶点</div>
+          <div class="feat-text">山楂牡丹酥<br>高颜值伴手礼</div>
+        </div>
+        <div class="baoyu-store-feat">
+          <div class="feat-icon">道 · 体验</div>
+          <div class="feat-text">茶道与红楼展陈<br>沉浸式美学空间</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 科研背书 -->
+    <div class="baoyu-science">
+      <div class="baoyu-science-img">
+        <img src="https://baoyutea.yiyeguizhen.com/imgs/img-020.jpg" alt="东方本草食材">
+      </div>
+      <div class="baoyu-science-body">
+        <h3>院士团队，国家级研究中心</h3>
+        <p>由中国工程院院士团队参与研发，将院士多年茶食养研究方向转化为大众可及的功能茶饮，让科研成果走进日常生活。</p>
+        <p>联合国家植物功能成分利用工程技术研究中心，深度提取草本植物精华调配，科学配伍，安全可靠。</p>
+        <div class="baoyu-science-tags">
+          <span>中国工程院院士团队</span>
+          <span>独家授权合作</span>
+          <span>国家级研究中心</span>
+          <span>深耕植物功能成分30年</span>
+        </div>
+      </div>
+    </div>
+      </div><!-- collapse-body-inner -->
+    </div><!-- collapse-body -->
+
+    <div class="xka-bottom">与宝玉煮茶的合作，验证了我方"院士研发 + 品牌联名"模式在中高端茶空间中的可复制性</div>
+  </div>
+
+  <!-- 其他渠道能力 -->
+  <div class="channel-section-title">其他渠道能力</div>
+  <div class="channel-grid" style="grid-template-columns: repeat(2, 1fr); gap: 24px;">
+    <div class="channel-card channel-card-enhanced">
+      <div class="channel-icon">🚄</div>
+      <div class="channel-name">京沪高铁</div>
+      <div class="channel-desc">商务座及商务休息室指定供应商，覆盖高净值商旅人群</div>
+      <div class="channel-tag">高端渠道</div>
+    </div>
+    <div class="channel-card channel-card-enhanced">
+      <div class="channel-icon">🏪</div>
+      <div class="channel-name">华润Ole'</div>
+      <div class="channel-desc">全上海门店入驻，精品超市渠道验证中高端消费力</div>
+      <div class="channel-tag">零售渠道</div>
+    </div>
+    <div class="channel-card channel-card-enhanced">
+      <div class="channel-icon">📱</div>
+      <div class="channel-name">快团团</div>
+      <div class="channel-desc">六堡茶类目第一名，单团3.5万人参团，私域转化率极高</div>
+      <div class="channel-tag">私域电商</div>
+    </div>
+    <div class="channel-card channel-card-enhanced">
+      <div class="channel-icon">🎬</div>
+      <div class="channel-name">如涵MCN</div>
+      <div class="channel-desc">茶叶品类独家供应商，头部达人矩阵带货，规模化内容分发</div>
+      <div class="channel-tag">内容电商</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PART 03 -->
+<section id="product" class="section">
+  <div class="section-header">
+    <div class="section-tag">PART 02</div>
+    <h2 class="section-title">联名产品：晚安密码</h2>
+    <p class="section-desc">一款现成的、不含褪黑素的院士配方睡眠饮，可直接贴牌联名，精准匹配30-50岁女性高频痛点</p>
+  </div>
+
+  <!-- Product Hero -->
+  <div class="product-hero">
+    <div class="product-header">
+      <div class="product-name">晚安密码</div>
+      <div class="product-slogan">一杯晚安密码，好梦整夜相伴</div>
+    </div>
+    <div class="product-image">
+      <img src="https://yiyeguizhen.com/imgs/wananmima-product.jpg" alt="晚安密码产品包装" style="width: 300px; border-radius: 16px; margin: 24px auto; display: block; box-shadow: 0 12px 40px rgba(0,0,0,0.15);">
+    </div>
+    <div class="product-body">
+      <div class="product-col">
+        <h4>产品信息</h4>
+        <div class="product-item">
+          <div class="label">品类</div>
+          <div class="val">普通食品（固体饮料），非保健品，合规门槛低</div>
+        </div>
+        <div class="product-item">
+          <div class="label">核心卖点</div>
+          <div class="val">不含褪黑素的七味药食同源植物配方</div>
+        </div>
+        <div class="product-item">
+          <div class="label">规格</div>
+          <div class="val">42克（21条×2g），条装冲泡。可根据樊文花需求定制</div>
+        </div>
+        <div class="product-item">
+          <div class="label">商标归属</div>
+          <div class="val">"晚安密码"为我司独家注册商标，是品名也是商标，可开放授权使用</div>
+        </div>
+        <div class="product-item">
+          <div class="label">包装</div>
+          <div class="val">配合樊文花视觉体系定制（我方承担设计和生产）</div>
+        </div>
+      </div>
+      <div class="product-col">
+        <h4>市场定位</h4>
+        <div class="product-item">
+          <div class="label">目标人群</div>
+          <div class="val">30-50岁职场女性、更年期睡眠调理、高压工作者</div>
+        </div>
+        <div class="product-item">
+          <div class="label">适用场景</div>
+          <div class="val">高压工作日睡前放松、深度睡眠调节、更年期睡眠调理、日常轻养睡前仪式</div>
+        </div>
+        <div class="product-item">
+          <div class="label">配方定位</div>
+          <div class="val">针对睡眠场景，重点提升人参皂苷与灵芝三萜的占比</div>
+        </div>
+        <div class="product-item">
+          <div class="label">品牌呈现</div>
+          <div class="val">「樊文花 × 植养萃」双品牌联名</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formula (折叠) -->
+  <div class="collapse-trigger" onclick="toggleCollapse(this)">
+    <div class="collapse-trigger-text">
+      <div class="collapse-trigger-title">配方体系 · 君臣佐使</div>
+      <div class="collapse-trigger-hint">七味药食同源配方，人参+灵芝双核驱动 — 点击展开详情</div>
+    </div>
+    <div class="collapse-tag">展开</div>
+  </div>
+  <div class="collapse-body">
+    <div class="collapse-body-inner">
+      <div class="molecule-grid">
+        <div class="molecule-item">
+          <div class="molecule-num">1</div>
+          <div class="molecule-name">人参皂苷Rb1</div>
+          <div class="molecule-desc">调节GABA受体和HPA轴，降低皮质醇水平</div>
+        </div>
+        <div class="molecule-item">
+          <div class="molecule-num">2</div>
+          <div class="molecule-name">灵芝三萜</div>
+          <div class="molecule-desc">调节血清素和多巴胺系统，促进深度睡眠</div>
+        </div>
+        <div class="molecule-item">
+          <div class="molecule-num">3</div>
+          <div class="molecule-name">葛根黄酮</div>
+          <div class="molecule-desc">扩张血管改善微循环，为安睡创造生理条件</div>
+        </div>
+      </div>
+      <div class="formula-levels">
+        <div class="formula-level fl-jun">
+          <div class="fl-tag">君药</div>
+          <div class="fl-name">人参</div>
+          <div class="fl-desc">人参皂苷Rb1、Rg1，压力轴调节</div>
+        </div>
+        <div class="formula-level fl-chen">
+          <div class="fl-tag">臣药</div>
+          <div class="fl-name">灵芝 + 茯砖茶 + 葛根</div>
+          <div class="fl-desc">灵芝三萜与人参双核协同，健脾解郁辅助</div>
+        </div>
+        <div class="formula-level fl-zuo">
+          <div class="fl-tag">佐使药</div>
+          <div class="fl-name">青苹果 + 罗汉果 + 高良姜</div>
+          <div class="fl-desc">调味和胃，提升口感</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why -->
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <h4>高频痛点匹配</h4>
+      <p>50%+消费者关注安神助眠，这是面部护理人群的高频痛点</p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <h4>自然闭环</h4>
+      <p>"白天外护一张脸，晚上内养一杯植物饮"——与面部护理形成自然闭环</p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <h4>精准人群</h4>
+      <p>30-50岁女性是樊文花的核心用户群体，也是睡眠困扰最集中的人群——晚安密码精准匹配这一人群</p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <h4>零学习成本</h4>
+      <p>"美容觉"概念天然成立，护理师推荐零学习成本</p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <h4>差异化优势</h4>
+      <p>不含褪黑素是最大差异点，62%消费者担心褪黑素依赖</p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot"></div>
+      <h4>快速落地</h4>
+      <p>已有完整产品线和供应链，可快速出联名版</p>
+    </div>
+  </div>
+
+  <!-- Differentiation -->
+  <div class="diff-card">
+    <h4>晚安密码的核心差异</h4>
+    <p>不含褪黑素、七味药食同源配方、院士团队研发<br>三个维度同时具备的产品，目前市场上没有第二个</p>
+  </div>
+
+  <!-- Certification (折叠) -->
+  <div class="collapse-trigger" onclick="toggleCollapse(this)">
+    <div class="collapse-trigger-text">
+      <div class="collapse-trigger-title">国家级检测认证</div>
+      <div class="collapse-trigger-hint">已通过3项国家级检测，安全性达专业运动员可服用标准 — 点击展开详情</div>
+    </div>
+    <div class="collapse-tag">展开</div>
+  </div>
+  <div class="collapse-body">
+    <div class="collapse-body-inner">
+      <div class="cert-grid">
+        <div class="cert-item ci-green">
+          <h4>国家反兴奋剂检测中心</h4>
+          <p>已通过全项检测，安全性达到专业运动员可服用标准</p>
+        </div>
+        <div class="cert-item ci-blue">
+          <h4>国家体育总局运动医学研究所</h4>
+          <p>营养成分检测完成，即将与国家队运动员小范围测试</p>
+        </div>
+        <div class="cert-item ci-purple">
+          <h4>协和药物研究所</h4>
+          <p>与协和药物研究所合作动物实验，提供临床前科研数据支撑</p>
+        </div>
+      </div>
+      <div class="cert-footer">
+        常规认证体系：CNAS认可 · CMA认证 · ILAC-MRA互认 · 中检集团 · Intertek天祥
+      </div>
+    </div>
+  </div>
+
+  <!-- Terms -->
+  <div class="terms-card">
+    <h3>首批合作条件</h3>
+    <div class="price-highlight">
+      <div class="price-main">建议零售价 <span class="price-num">¥238–268</span> 元/盒<br>门店毛利空间 <span class="price-num">55–65%</span></div>
+      <div class="price-sub">具体供货价与合作条款面议，确保门店有充足的利润驱动力</div>
+    </div>
+    <div class="terms-grid">
+      <div class="term-item">
+        <h4>高毛利空间</h4>
+        <p>激发门店销售积极性，为门店带来显著增量利润</p>
+      </div>
+      <div class="term-item">
+        <h4>试用装免费提供</h4>
+        <p>首批试点门店提供体验装，用于护理期间顾客试饮</p>
+      </div>
+      <div class="term-item">
+        <h4>包装定制</h4>
+        <p>配合樊文花视觉体系，我方全额承担设计和生产</p>
+      </div>
+      <div class="term-item">
+        <h4>护理师支持</h4>
+        <p>提供产品知识资料+推荐话术，配合樊文花内训体系</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 04 -->
+<section id="value" class="section">
+  <div class="section-header">
+    <div class="section-tag">PART 03</div>
+    <h2 class="section-title">对樊文花的三个价值</h2>
+    <p class="section-desc">零研发投入补品类空白，院士背书注入稀缺势能，高毛利增量SKU</p>
+  </div>
+
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="value-num">01</div>
+      <div class="value-title">补品类空白，零研发投入</div>
+      <p class="value-intro">一款现成产品，即可开启内服美容品类。</p>
+      <ul class="value-list">
+        <li>固体饮料属普通食品，合规门槛低</li>
+        <li>我方承担全部研发和生产</li>
+        <li>樊文花只需提供渠道</li>
+      </ul>
+    </div>
+
+    <div class="value-card">
+      <div class="value-num">02</div>
+      <div class="value-title">院士级科研背书，注入稀缺势能</div>
+      <p class="value-intro">樊文花现有科研合作尚未触及院士级别。通过本次合作可获得：</p>
+      <ul class="value-list">
+        <li>中国工程院院士团队背书</li>
+        <li>2项国家科技进步奖成果转化</li>
+        <li>3个国家级科研平台支撑</li>
+      </ul>
+      <p class="value-extra">可用于门店物料、电商详情页、行业大会、加盟商招商等全场景。</p>
+    </div>
+
+    <div class="value-card">
+      <div class="value-num">03</div>
+      <div class="value-title">门店增量利润</div>
+      <p class="value-intro">高毛利、高复购的增量SKU：</p>
+      <ul class="value-list">
+        <li>不增加人员、不增加设备</li>
+        <li>护理师现有推荐能力即可销售</li>
+        <li>"美容觉"概念天然成立</li>
+      </ul>
+      <div class="value-quote">
+        <blockquote>"姐，今天护理做完了，回去晚上泡一杯晚安密码，睡个美容觉，明天皮肤状态更好。"</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 05 -->
+<section id="path" class="section">
+  <div class="section-header">
+    <div class="section-tag">PART 04</div>
+    <h2 class="section-title">合作路径</h2>
+    <p class="section-desc">7周从意向确认到门店上架，先跑通一款再谈深度</p>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-marker">第1周</div>
+      <div class="tl-content">
+        <div class="tl-title">意向确认</div>
+        <div class="tl-desc">双方高层会面，确认合作意向和产品方向</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-marker">2-3周</div>
+      <div class="tl-content">
+        <div class="tl-title">样品与报价</div>
+        <div class="tl-desc">提供晚安密码样品 + 正式报价 + 联名包装方案</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-marker">第4周</div>
+      <div class="tl-content">
+        <div class="tl-title">签约下单</div>
+        <div class="tl-desc">签订合作协议，首批下单</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-marker">5-6周</div>
+      <div class="tl-content">
+        <div class="tl-title">生产交付</div>
+        <div class="tl-desc">联名包装生产 + 交付</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-marker">第7周</div>
+      <div class="tl-content">
+        <div class="tl-title">试点上架</div>
+        <div class="tl-desc">选定区域门店上架，收集数据和反馈</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="vision-card">
+    <p>首批合作跑通后，双方可进一步探讨：基于樊文花十种肤质体系的定制内调产品线、门店服务流程深度嵌入、线上联合营销等长期合作方向。<strong>第一步，先把一款产品卖起来。</strong></p>
+  </div>
+</section>
+
+<!-- APPENDIX -->
+<section id="appendix" class="section">
+  <div class="collapse-trigger" onclick="toggleCollapse(this)">
+    <div class="collapse-trigger-text">
+      <div class="collapse-trigger-title">附录 · 可供调用的资源清单</div>
+      <div class="collapse-trigger-hint">IP专家、体育资源、供应链、品牌内容等6大资源板块 — 点击展开</div>
+    </div>
+    <div class="collapse-tag">展开</div>
+  </div>
+  <div class="collapse-body">
+    <div class="collapse-body-inner">
+      <div class="app-grid">
+        <div class="app-card">
+          <div class="app-title">IP与专家资源</div>
+          <div class="app-desc">刘仲华院士可有限度参与战略发布、高端闭门会；院士团队专家、博士可提供内容支持、培训及内容背书</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">国家级体育资源</div>
+          <div class="app-desc">已通过国家反兴奋剂检测中心检测；即将与国家队运动员进行小范围测试；落地后将打开运动营养赛道</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">功效科研资源</div>
+          <div class="app-desc">与协和药物研究所合作动物实验；提供临床前科研数据支撑</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">产品与供应链</div>
+          <div class="app-desc">支持独家产品定制（ODM）；开放供应链，支持联合品牌开发；柔性生产线，小批量快速迭代</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">品牌与内容资源</div>
+          <div class="app-desc">商标授权与联合使用；内部内容团队全套素材支持；科普文章、短视频脚本</div>
+        </div>
+        <div class="app-card">
+          <div class="app-title">渠道与数据资源</div>
+          <div class="app-desc">高铁渠道网络（现成阵地）；可分享脱敏渠道数据和用户洞察；线上+私域+新零售联动营销</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  一叶归真·植养萃 × 樊文花·面部护理 · 商务合作提案
+</div>
+
+<script>
+function toggleCollapse(trigger) {
+  const body = trigger.nextElementSibling;
+  const tag = trigger.querySelector('.collapse-tag');
+  trigger.classList.toggle('active');
+  body.classList.toggle('open');
+  if (tag) tag.textContent = trigger.classList.contains('active') ? '收起' : '展开';
+}
+</script>
+
+</body>
+</html>
