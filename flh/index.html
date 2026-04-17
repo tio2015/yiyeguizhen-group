@@ -169,7 +169,7 @@
     /* SECTION */
     .section {
       max-width: 1200px; margin: 0 auto;
-      padding: 120px 40px;
+      padding: 72px 40px;
     }
     .section-header {
       margin-bottom: 64px;
@@ -696,10 +696,10 @@
       animation: shimmer 3s ease-in-out infinite;
     }
     .diff-card h4 {
-      font-size: 13px; font-weight: 600; letter-spacing: 0.15em;
-      color: var(--copper-light); margin-bottom: 20px;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.15em;
+      color: #fff; margin-bottom: 20px;
     }
-    .diff-card p { font-size: 18px; font-weight: 400; line-height: 1.8; color: rgba(255,255,255,0.8); }
+    .diff-card p { font-size: 20px; font-weight: 600; line-height: 1.8; color: rgba(255,255,255,0.95); }
 
     /* 认证 */
     .cert-grid {
@@ -722,8 +722,8 @@
       border-radius: var(--radius-l); overflow: hidden; margin-top: 48px;
     }
     .terms-card h3 {
-      font-size: 13px; font-weight: 600; letter-spacing: 0.15em;
-      color: var(--text-muted); padding: 32px 48px 0;
+      font-size: 22px; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--green-deep); padding: 32px 48px 0;
     }
     .price-highlight { padding: 24px 48px 40px; border-bottom: 1px solid var(--border); }
     .price-main { font-size: 18px; color: var(--text-primary); line-height: 1.8; }
@@ -779,7 +779,7 @@
     /* 时间线 */
     .timeline {
       display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 0; position: relative; margin-bottom: 48px;
+      gap: 0; position: relative; margin-bottom: 24px;
     }
     .timeline::before {
       content: ''; position: absolute;
@@ -798,7 +798,8 @@
     .tl-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; padding-right: 16px; }
     .vision-card {
       background: oklch(0.22 0.06 160 / 0.03);
-      border: 1px solid var(--border); border-radius: var(--radius-m); padding: 40px;
+      border: 1px solid var(--border); border-radius: var(--radius-m); padding: 32px;
+      margin-top: 0;
     }
     .vision-card p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
     .vision-card strong { color: var(--green-deep); }
@@ -878,12 +879,12 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 0;
-      margin-top: 40px;
+      margin-top: 24px;
       background: linear-gradient(135deg,
         oklch(0.98 0.005 320) 0%,
         oklch(0.99 0.003 340) 100%);
       border-radius: 0 0 var(--radius-l) var(--radius-l);
-      padding: 48px;
+      padding: 32px 48px;
       position: relative;
     }
 
@@ -905,7 +906,7 @@
     .product-cols-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 56px;
+      gap: 40px;
     }
 
     .product-col {
@@ -916,9 +917,9 @@
       font-size: 18px;
       font-weight: 700;
       color: oklch(0.45 0.15 335);
-      margin-bottom: 32px;
+      margin-bottom: 20px;
       position: relative;
-      padding-bottom: 16px;
+      padding-bottom: 12px;
     }
 
     .product-col h4::after {
@@ -935,8 +936,8 @@
     }
 
     .product-item {
-      margin-bottom: 24px;
-      padding: 20px 0;
+      margin-bottom: 12px;
+      padding: 14px 0;
       border-bottom: 1px solid oklch(0.95 0.01 335);
       position: relative;
       transition: all 0.3s ease;
@@ -1028,9 +1029,9 @@
       padding: 20px 24px; cursor: pointer;
       border: 1px solid var(--border); border-radius: var(--radius-m);
       margin-top: 24px; transition: border-color 0.3s, background 0.3s;
-      background: oklch(0.22 0.06 160 / 0.03);
+      background: #fff;
     }
-    .collapse-trigger:hover { border-color: var(--copper); background: oklch(0.22 0.06 160 / 0.06); }
+    .collapse-trigger:hover { border-color: var(--copper); background: oklch(0.99 0.005 160); }
     .collapse-trigger-title { font-size: 15px; font-weight: 600; color: var(--green-deep); }
     .collapse-trigger-hint { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
     .collapse-tag {
@@ -1089,7 +1090,7 @@
 
     /* ====== 手机适配 ====== */
     @media (max-width: 768px) {
-      .section { padding: 64px 20px; }
+      .section { padding: 48px 20px; }
       .section-header { grid-template-columns: 1fr; gap: 8px; margin-bottom: 40px; }
       .section-tag {
         writing-mode: horizontal-tb; transform: none;
