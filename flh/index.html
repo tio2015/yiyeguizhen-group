@@ -860,22 +860,65 @@
       letter-spacing: 0.02em;
     }
 
+    .product-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
     .product-image {
-      text-align: center;
-      margin: 40px 0;
+      background: oklch(0.97 0.008 55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 32px;
+      min-height: 400px;
     }
 
     .product-image img {
-      max-width: 280px;
+      max-width: 100%;
+      max-height: 420px;
       height: auto;
       border-radius: var(--radius-m);
+      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.12));
+    }
+
+    .product-info-panel {
+      padding: 48px 40px;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-info-panel .info-group {
+      margin-bottom: 28px;
+    }
+
+    .product-info-panel .info-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .product-info-panel .info-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: oklch(0.55 0.15 335);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .product-info-panel .info-value {
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.6;
     }
 
     .product-body {
       display: grid;
       grid-template-columns: 1fr;
       gap: 0;
-      margin-top: 24px;
+      margin-top: 0;
       background: linear-gradient(135deg,
         oklch(0.98 0.005 320) 0%,
         oklch(0.99 0.003 340) 100%);
@@ -1139,11 +1182,10 @@
       .product-header { padding: 32px 24px; }
       .product-name { font-size: 28px; letter-spacing: 0.1em; }
       .product-slogan { font-size: 13px; }
-      .product-image { padding: 24px; }
-      .product-image img { width: 200px !important; }
-      .product-body { grid-template-columns: 1fr; }
-      .product-col { padding: 24px; }
-      .product-col h4 { margin-bottom: 16px; }
+      .product-showcase { grid-template-columns: 1fr 1fr; }
+      .product-image { padding: 24px; min-height: 300px; }
+      .product-info-panel { padding: 32px 24px; }
+      .product-info-panel .info-group { margin-bottom: 20px; }
       .molecule-grid { grid-template-columns: 1fr; }
       .molecule-item { padding: 24px; }
       .molecule-num { font-size: 36px; }
@@ -1187,23 +1229,24 @@
       .collapse-trigger-title { font-size: 14px; }
       .collapse-trigger-hint { font-size: 12px; }
 
-      .product-hero { padding: 32px 24px; }
-      .product-header { margin: -32px -24px 32px -24px; padding: 48px 24px; }
+      .product-hero { padding: 0; }
+      .product-header { padding: 48px 24px; }
+      .product-showcase { grid-template-columns: 1fr; }
+      .product-image { min-height: 280px; padding: 32px 24px; }
+      .product-info-panel { padding: 32px 24px; }
       .product-body { padding: 32px 24px; }
-      .product-cols-container { grid-template-columns: 1fr; gap: 40px; }
       .formula-grid { grid-template-columns: 1fr; gap: 20px; }
       .product-name { font-size: 36px; }
       .product-slogan { font-size: 18px; }
     }
 
     @media (max-width: 420px) {
-      .product-hero { padding: 24px 20px; }
-      .product-header { margin: -24px -20px 24px -20px; padding: 40px 20px; }
+      .product-header { padding: 40px 20px; }
+      .product-image { min-height: 200px; padding: 24px 20px; }
+      .product-info-panel { padding: 24px 20px; }
       .product-body { padding: 24px 20px; }
-      .product-cols-container { gap: 32px; }
       .product-name { font-size: 28px; }
       .product-slogan { font-size: 16px; }
-      .product-image img { max-width: 200px; }
     }
 
     /* 小屏手机 */
@@ -1526,27 +1569,42 @@
       <div class="product-name">女神肌密</div>
       <div class="product-slogan">每天一杯女神肌密，喝出好气色</div>
     </div>
-    <div class="product-image">
-      <img src="https://yiyeguizhen.com/imgs/nvshenjimi-product.jpg" alt="女神肌密产品包装">
-    </div>
-    <div class="product-body">
-      <div class="product-cols-container">
-        <div class="product-col">
-          <h4>产品信息</h4>
-          <div class="product-item"><div class="label">品类</div><div class="val">普通食品（固体饮料），合规门槛低，便于推广</div></div>
-          <div class="product-item"><div class="label">核心卖点</div><div class="val">七味药食同源配方，人参+葛根双核驱动，日常养颜</div></div>
-          <div class="product-item"><div class="label">规格</div><div class="val">42克（21条×2g），条装冲泡，便携随时享用</div></div>
-          <div class="product-item"><div class="label">商标归属</div><div class="val">"女神肌密"专为樊文花定制，可开放授权使用</div></div>
-          <div class="product-item"><div class="label">包装</div><div class="val">配合樊文花视觉体系定制（我方承担设计和生产）</div></div>
+    <div class="product-showcase">
+      <div class="product-image">
+        <img src="https://yiyeguizhen.com/imgs/nvshenjimi-product.jpg" alt="女神肌密产品包装">
+      </div>
+      <div class="product-info-panel">
+        <div class="info-group">
+          <div class="info-label">品类</div>
+          <div class="info-value">普通食品（固体饮料），合规门槛低，便于推广</div>
         </div>
-        <div class="product-col">
-          <h4>市场定位</h4>
-        <div class="product-item"><div class="label">目标人群</div><div class="val">30-50岁女性，关注抗衰养颜，追求内调外护</div></div>
-        <div class="product-item"><div class="label">适用场景</div><div class="val">日常护肤后、餐后轻养、办公下午茶、护理后增值服务</div></div>
-        <div class="product-item"><div class="label">配方定位</div><div class="val">针对养颜场景，重点提升人参皂苷与葛根异黄酮的占比</div></div>
-          <div class="product-item"><div class="label">品牌呈现</div><div class="val">「樊文花 × 植养萃」双品牌联名</div></div>
+        <div class="info-group">
+          <div class="info-label">核心卖点</div>
+          <div class="info-value">七味药食同源配方，人参+葛根双核驱动，日常养颜</div>
+        </div>
+        <div class="info-group">
+          <div class="info-label">规格</div>
+          <div class="info-value">42克（21条×2g），条装冲泡，便携随时享用</div>
+        </div>
+        <div class="info-group">
+          <div class="info-label">目标人群</div>
+          <div class="info-value">30-50岁女性，关注抗衰养颜，追求内调外护</div>
+        </div>
+        <div class="info-group">
+          <div class="info-label">适用场景</div>
+          <div class="info-value">日常护肤后、餐后轻养、办公下午茶、护理后增值服务</div>
+        </div>
+        <div class="info-group">
+          <div class="info-label">商标归属</div>
+          <div class="info-value">"女神肌密"专为樊文花定制，可开放授权使用</div>
+        </div>
+        <div class="info-group">
+          <div class="info-label">品牌呈现</div>
+          <div class="info-value">「樊文花 × 植养萃」双品牌联名，我方承担设计和生产</div>
         </div>
       </div>
+    </div>
+    <div class="product-body">
     </div>
   </div>
 
