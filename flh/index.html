@@ -449,12 +449,20 @@
     .baoyu-hero {
       border-radius: var(--radius-m); overflow: hidden;
       margin: 24px 0; position: relative; height: 320px;
-      background: var(--green-deep);
+      background: linear-gradient(135deg,
+        oklch(0.55 0.20 15) 0%,
+        oklch(0.45 0.18 10) 50%,
+        oklch(0.40 0.16 5) 100%);
+      border: 2px solid oklch(0.60 0.22 15);
     }
     .baoyu-hero-overlay {
       position: absolute; inset: 0;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: rgba(0,0,0,0.4); text-align: center; padding: 40px;
+      background: linear-gradient(45deg,
+        rgba(220, 60, 40, 0.1) 0%,
+        rgba(180, 40, 30, 0.2) 50%,
+        rgba(160, 30, 20, 0.15) 100%);
+      text-align: center; padding: 40px;
     }
     .baoyu-hero-logo-img {
       width: 80px; height: 80px; object-fit: cover;
@@ -1327,20 +1335,6 @@
               <span class="xka-badge xka-badge-success">72%复购率</span>
             </div>
           </div>
-          <div class="xka-product-stats">
-            <div class="xka-stat">
-              <div class="xka-stat-num">10万盒</div>
-              <div class="xka-stat-label">首批销量</div>
-            </div>
-            <div class="xka-stat">
-              <div class="xka-stat-num">72%</div>
-              <div class="xka-stat-label">用户复购率</div>
-            </div>
-            <div class="xka-stat">
-              <div class="xka-stat-num">7味</div>
-              <div class="xka-stat-label">药食同源配方</div>
-            </div>
-          </div>
         </div>
 
         <div class="xka-product-right">
@@ -1371,25 +1365,25 @@
           </div>
         </div>
       </div>
-    </div>
-    </div>
-  </div>
 
-  <div class="xka-numbers">
-    <div class="xka-num">
-      <strong class="num-display counter" data-target="2400">0</strong><span class="unit">万</span>
-      <span>平台用户规模</span>
-    </div>
-    <div class="xka-num">
-      <strong class="num-display counter" data-target="10">0</strong><span class="unit">万盒</span>
-      <span>首批订单量</span>
-    </div>
-    <div class="xka-num">
-      <strong class="num-display counter" data-target="1000">0</strong><span class="unit">万</span>
-      <span>签约保底金额</span>
+      <div class="xka-numbers" style="margin: 48px 0 0 0; background: var(--surface); border-radius: var(--radius-l); padding: 32px;">
+        <div class="xka-num">
+          <strong class="num-display counter" data-target="2400">0</strong><span class="unit">万</span>
+          <span>平台用户规模</span>
+        </div>
+        <div class="xka-num">
+          <strong class="num-display counter" data-target="10">0</strong><span class="unit">万盒</span>
+          <span>首批订单量</span>
+        </div>
+        <div class="xka-num">
+          <strong class="num-display counter" data-target="1000">0</strong><span class="unit">万</span>
+          <span>签约保底金额</span>
+        </div>
+      </div>
+      <div class="xka-bottom" style="text-align: center; margin: 24px 0 0 0; color: var(--copper); font-weight: 500;">这就是我们提议与樊文花合作的同一模式</div>
+
     </div>
   </div>
-  <div class="xka-bottom">这就是我们提议与樊文花合作的同一模式</div>
 
   <div class="xka-card reveal" style="margin-top: 56px;">
     <div class="xka-badge">核心案例</div>
