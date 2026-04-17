@@ -212,15 +212,21 @@
       transition: background 0.3s;
     }
     .res-card:hover { background: oklch(0.98 0.01 155 / 0.5); }
-    .res-icon {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: var(--green-deep); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 700; margin-bottom: 20px;
-    }
     .res-title {
-      font-size: 17px; font-weight: 600; color: var(--green-deep);
-      margin-bottom: 16px;
+      font-size: 19px; font-weight: 700; color: var(--green-deep);
+      margin-bottom: 20px; position: relative; padding-left: 20px;
+    }
+    .res-title::before {
+      content: ''; position: absolute; left: 0; top: 50%;
+      transform: translateY(-50%); width: 3px; height: 20px;
+      background: linear-gradient(180deg, var(--copper), var(--green-light));
+      border-radius: 2px;
+    }
+    .res-title::after {
+      content: ''; position: absolute; left: 8px; top: 50%;
+      transform: translateY(-50%); width: 1px; height: 12px;
+      background: linear-gradient(180deg, var(--green-light), transparent);
+      border-radius: 1px;
     }
     .res-list {
       list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 2;
@@ -836,7 +842,6 @@
 
   <div class="res-grid reveal">
     <div class="res-card">
-      <div class="res-icon">科</div>
       <div class="res-title">科研背书</div>
       <ul class="res-list">
         <li>刘仲华院士（中国工程院院士）</li>
@@ -845,7 +850,6 @@
       </ul>
     </div>
     <div class="res-card">
-      <div class="res-icon">研</div>
       <div class="res-title">科研平台</div>
       <ul class="res-list">
         <li>国家植物功能成分利用工程技术研究中心（该领域国内唯一）</li>
@@ -854,7 +858,6 @@
       </ul>
     </div>
     <div class="res-card">
-      <div class="res-icon">发</div>
       <div class="res-title">研发积累</div>
       <ul class="res-list">
         <li>100+种已研发植物功能成分</li>
@@ -863,7 +866,6 @@
       </ul>
     </div>
     <div class="res-card">
-      <div class="res-icon">产</div>
       <div class="res-title">生产与供应链</div>
       <ul class="res-list">
         <li>自有供应链 + GMP标准合作工厂</li>
