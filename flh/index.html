@@ -827,12 +827,13 @@
     }
 
     .product-name {
-      font-size: 48px;
+      font-size: 36px;
       font-weight: 700;
       color: #fff;
       margin-bottom: 16px;
       text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
     }
 
     .product-slogan {
@@ -1049,6 +1050,7 @@
     .fi-main { border-left: 4px solid var(--copper); }
     .fi-assist { border-left: 4px solid var(--green-mid); }
     .fi-support { border-left: 4px solid var(--green-light); }
+    .fi-guide { border-left: 4px solid oklch(0.65 0.08 80); }
 
     .collapse-trigger {
       display: flex; align-items: center; justify-content: space-between;
@@ -1551,8 +1553,8 @@
 
   <div class="product-hero reveal">
     <div class="product-header">
-      <div class="product-name">女神肌密</div>
-      <div class="product-slogan">每天一杯女神肌密，喝出好气色</div>
+      <div class="product-name">由内而外的年轻态，从一杯植物精华开始</div>
+      <div class="product-slogan">女神肌密 · 每日养颜植物固体饮料</div>
     </div>
     <div class="product-showcase">
       <div class="product-carousel" id="productCarousel">
@@ -1587,7 +1589,7 @@
         </div>
         <div class="info-group">
           <div class="info-label">核心配方</div>
-          <div class="info-value">七味药食同源配方，以人参+葛根为双核驱动，辅以黄精、桑葚、枸杞、红枣、茯苓，君臣佐使经典组方</div>
+          <div class="info-value">七味药食同源配方，以葛根+灵芝为核心驱动，辅以青苹果、人参、高良姜、茯砖茶、罗汉果，君臣佐使经典组方</div>
         </div>
         <div class="info-group">
           <div class="info-label">产品规格</div>
@@ -1595,7 +1597,7 @@
         </div>
         <div class="info-group">
           <div class="info-label">核心卖点</div>
-          <div class="info-value">院士团队研发背书 · 不含激素/代糖 · 药食同源安全无负担 · 由内而外养出好气色</div>
+          <div class="info-value">院士团队研发背书 · 葛根黄酮+灵芝多糖双核驱动 · 药食同源安全无负担 · 由内而外养出好气色</div>
         </div>
         <div class="info-group">
           <div class="info-label">品牌呈现</div>
@@ -1627,7 +1629,7 @@
   <div class="collapse-trigger reveal" onclick="toggleCollapse(this)">
     <div class="collapse-trigger-text">
       <div class="collapse-trigger-title">配方体系 · 君臣佐使</div>
-      <div class="collapse-trigger-hint">七味药食同源配方，人参+葛根双核驱动 — 点击展开详情</div>
+      <div class="collapse-trigger-hint">七味药食同源配方，葛根+灵芝核心驱动 — 点击展开详情</div>
     </div>
     <div class="collapse-tag">展开</div>
   </div>
@@ -1635,17 +1637,19 @@
     <div class="collapse-body-inner">
       <div class="formula-grid">
         <div class="formula-item fi-main"><h4>君药 · 核心驱动</h4>
-          <div class="formula-ingred">人参</div><p>补气复脉，生津安神，提神抗疲劳</p>
-          <div class="formula-ingred">葛根</div><p>清热生津，升阳止泻，改善循环</p>
+          <div class="formula-ingred">葛根</div><p>葛根黄酮·大豆苷，养颜赛道最高配比，黄酮侧重（核心）</p>
+          <div class="formula-ingred">灵芝</div><p>多糖·三萜，多糖配比强化，睡眠赛道则三萜为主（核心）</p>
         </div>
-        <div class="formula-item fi-assist"><h4>臣药 · 效果增强</h4>
-          <div class="formula-ingred">枸杞</div><p>滋补肝肾，益精明目，美容养颜</p>
-          <div class="formula-ingred">桑葚</div><p>滋阴补血，润燥生津，抗氧化</p>
+        <div class="formula-item fi-assist"><h4>臣药 · 效果强化</h4>
+          <div class="formula-ingred">青苹果</div><p>苹果多酚·维C，养颜赛道专属加重，其余两款配比较低（强化）</p>
         </div>
-        <div class="formula-item fi-support"><h4>佐药 · 调和制衡</h4>
-          <div class="formula-ingred">红枣</div><p>补中益气，养血安神，调和药性</p>
-          <div class="formula-ingred">百合</div><p>养阴润肺，清心安神，美容润燥</p>
-          <div class="formula-ingred">茯苓</div><p>利水渗湿，健脾安神，增强吸收</p>
+        <div class="formula-item fi-support"><h4>佐药 · 协同基础</h4>
+          <div class="formula-ingred">人参</div><p>皂苷Rb1·Rg1，协同基础（基础）</p>
+          <div class="formula-ingred">高良姜</div><p>高良姜素，基础辅助（辅助）</p>
+          <div class="formula-ingred">茯砖茶</div><p>多酚·多糖，三款共用基础（基础）</p>
+        </div>
+        <div class="formula-item fi-guide"><h4>使药 · 调味基底</h4>
+          <div class="formula-ingred">罗汉果</div><p>罗汉果甜苷，调味基底（基底）</p>
         </div>
       </div>
     </div>
