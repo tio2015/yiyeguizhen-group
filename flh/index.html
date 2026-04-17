@@ -690,20 +690,52 @@
 
     .product-header {
       text-align: center;
-      margin-bottom: 40px;
+      margin: -48px -48px 40px -48px;
+      padding: 64px 48px;
+      background: linear-gradient(135deg,
+        oklch(0.40 0.18 320) 0%,
+        oklch(0.45 0.20 330) 25%,
+        oklch(0.50 0.22 340) 50%,
+        oklch(0.45 0.20 350) 75%,
+        oklch(0.40 0.18 360) 100%);
+      border-radius: var(--radius-l) var(--radius-l) 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg,
+        transparent 30%,
+        rgba(255,255,255,0.1) 50%,
+        transparent 70%);
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { transform: translateX(-100%); }
+      50% { transform: translateX(100%); }
     }
 
     .product-name {
-      font-size: 32px;
+      font-size: 36px;
       font-weight: 700;
-      color: var(--green-deep);
+      color: #fff;
       margin-bottom: 12px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+      letter-spacing: 0.05em;
     }
 
     .product-slogan {
-      font-size: 18px;
-      color: var(--text-secondary);
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
       font-weight: 400;
+      letter-spacing: 0.02em;
     }
 
     .product-image {
@@ -719,36 +751,110 @@
 
     .product-body {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      grid-template-columns: 1fr;
+      gap: 0;
       margin-top: 40px;
+      background: linear-gradient(135deg,
+        oklch(0.98 0.005 320) 0%,
+        oklch(0.99 0.003 340) 100%);
+      border-radius: 0 0 var(--radius-l) var(--radius-l);
+      padding: 48px;
+      position: relative;
+    }
+
+    .product-body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        oklch(0.85 0.02 330) 20%,
+        oklch(0.80 0.04 340) 50%,
+        oklch(0.85 0.02 350) 80%,
+        transparent 100%);
+    }
+
+    .product-cols-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+
+    .product-col {
+      position: relative;
     }
 
     .product-col h4 {
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: 24px;
+      font-size: 18px;
+      font-weight: 700;
+      color: oklch(0.45 0.15 335);
+      margin-bottom: 32px;
+      position: relative;
+      padding-bottom: 16px;
+    }
+
+    .product-col h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg,
+        oklch(0.55 0.18 320),
+        oklch(0.60 0.20 340));
+      border-radius: 2px;
     }
 
     .product-item {
-      display: flex;
-      margin-bottom: 16px;
-      align-items: flex-start;
+      margin-bottom: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid oklch(0.95 0.01 335);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .product-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .product-item:hover {
+      padding-left: 16px;
+    }
+
+    .product-item:hover::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 60%;
+      background: linear-gradient(180deg,
+        oklch(0.55 0.18 320),
+        oklch(0.60 0.20 340));
+      border-radius: 2px;
     }
 
     .product-item .label {
-      font-weight: 500;
-      color: var(--text-secondary);
-      min-width: 80px;
-      margin-right: 16px;
-      font-size: 14px;
+      font-weight: 600;
+      color: oklch(0.50 0.12 335);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: block;
     }
 
     .product-item .val {
       color: var(--text-primary);
-      line-height: 1.6;
-      font-size: 14px;
+      line-height: 1.7;
+      font-size: 15px;
+      padding-top: 4px;
     }
 
     /* 配方网格 */
@@ -954,14 +1060,21 @@
       .collapse-trigger-hint { font-size: 12px; }
 
       .product-hero { padding: 32px 24px; }
-      .product-body { grid-template-columns: 1fr; gap: 32px; }
+      .product-header { margin: -32px -24px 32px -24px; padding: 48px 24px; }
+      .product-body { padding: 32px 24px; }
+      .product-cols-container { grid-template-columns: 1fr; gap: 40px; }
       .formula-grid { grid-template-columns: 1fr; gap: 20px; }
-      .product-name { font-size: 24px; }
-      .product-slogan { font-size: 16px; }
+      .product-name { font-size: 28px; }
+      .product-slogan { font-size: 15px; }
     }
 
     @media (max-width: 420px) {
       .product-hero { padding: 24px 20px; }
+      .product-header { margin: -24px -20px 24px -20px; padding: 40px 20px; }
+      .product-body { padding: 24px 20px; }
+      .product-cols-container { gap: 32px; }
+      .product-name { font-size: 24px; }
+      .product-slogan { font-size: 14px; }
       .product-image img { max-width: 200px; }
     }
 
@@ -1255,20 +1368,22 @@
       <img src="https://yiyeguizhen.com/imgs/nvshenjimi-product.jpg" alt="女神肌密产品包装">
     </div>
     <div class="product-body">
-      <div class="product-col">
-        <h4>产品信息</h4>
-        <div class="product-item"><div class="label">品类</div><div class="val">普通食品（固体饮料），合规门槛低，便于推广</div></div>
-        <div class="product-item"><div class="label">核心卖点</div><div class="val">七味药食同源配方，人参+葛根双核驱动，日常养颜</div></div>
-        <div class="product-item"><div class="label">规格</div><div class="val">42克（21条×2g），条装冲泡，便携随时享用</div></div>
-        <div class="product-item"><div class="label">商标归属</div><div class="val">"女神肌密"专为樊文花定制，可开放授权使用</div></div>
-        <div class="product-item"><div class="label">包装</div><div class="val">配合樊文花视觉体系定制（我方承担设计和生产）</div></div>
-      </div>
-      <div class="product-col">
-        <h4>市场定位</h4>
+      <div class="product-cols-container">
+        <div class="product-col">
+          <h4>产品信息</h4>
+          <div class="product-item"><div class="label">品类</div><div class="val">普通食品（固体饮料），合规门槛低，便于推广</div></div>
+          <div class="product-item"><div class="label">核心卖点</div><div class="val">七味药食同源配方，人参+葛根双核驱动，日常养颜</div></div>
+          <div class="product-item"><div class="label">规格</div><div class="val">42克（21条×2g），条装冲泡，便携随时享用</div></div>
+          <div class="product-item"><div class="label">商标归属</div><div class="val">"女神肌密"专为樊文花定制，可开放授权使用</div></div>
+          <div class="product-item"><div class="label">包装</div><div class="val">配合樊文花视觉体系定制（我方承担设计和生产）</div></div>
+        </div>
+        <div class="product-col">
+          <h4>市场定位</h4>
         <div class="product-item"><div class="label">目标人群</div><div class="val">30-50岁女性，关注抗衰养颜，追求内调外护</div></div>
         <div class="product-item"><div class="label">适用场景</div><div class="val">日常护肤后、餐后轻养、办公下午茶、护理后增值服务</div></div>
         <div class="product-item"><div class="label">配方定位</div><div class="val">针对养颜场景，重点提升人参皂苷与葛根异黄酮的占比</div></div>
-        <div class="product-item"><div class="label">品牌呈现</div><div class="val">「樊文花 × 植养萃」双品牌联名</div></div>
+          <div class="product-item"><div class="label">品牌呈现</div><div class="val">「樊文花 × 植养萃」双品牌联名</div></div>
+        </div>
       </div>
     </div>
   </div>
