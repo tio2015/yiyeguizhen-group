@@ -127,10 +127,12 @@
     .cover-title {
       font-size: clamp(40px, 6vw, 72px); font-weight: 300;
       line-height: 1.15; letter-spacing: -0.02em;
-      color: rgba(255,255,255,0.95); margin-bottom: 24px;
+      background: linear-gradient(135deg, #fff, var(--copper-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 24px;
     }
     .cover-title strong {
-      font-weight: 300; color: #fff;
+      font-weight: 700; color: #fff;
       background: linear-gradient(135deg, #fff, var(--copper-light));
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
