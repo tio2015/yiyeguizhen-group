@@ -258,6 +258,25 @@
       padding: 48px; transition: border-color 0.4s;
     }
     .xka-card:hover { border-color: var(--copper); }
+    .xka-section-title {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 16px;
+      position: relative;
+      padding-left: 16px;
+    }
+    .xka-section-title::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--copper), var(--green-light));
+      border-radius: 2px;
+    }
     .xka-badge {
       display: inline-flex; font-size: 11px; font-weight: 600;
       letter-spacing: 0.15em; color: var(--copper);
@@ -1298,7 +1317,7 @@
   </div>
 
   <div class="xka-card reveal">
-    <div class="xka-badge">核心案例</div>
+    <h3 class="xka-section-title">核心案例</h3>
     <div class="xka-title">已验证的合作模式：XKA平台战略合作</div>
     <div class="xka-image">
       <img src="https://yiyeguizhen.com/imgs/xka-products.png" alt="XKA平台产品展示">
@@ -1391,16 +1410,9 @@
 </section>
 
 <section id="baoyu" class="section">
-  <div class="section-header reveal">
-    <div>
-      <h2 class="section-title">已验证的合作模式：宝玉煮茶 · 院士轻养茶</h2>
-      <p class="section-desc">以"院士研发 + 品牌联名"模式，成功打通中高端茶饮合作链路</p>
-    </div>
-  </div>
-
   <div class="xka-card reveal">
-    <div class="xka-badge">核心案例</div>
-    <div class="xka-title">宝玉煮茶 · 院士轻养茶</div>
+    <h3 class="xka-section-title">核心案例</h3>
+    <div class="xka-title">已验证的合作模式：宝玉煮茶 · 院士轻养茶</div>
     <div class="baoyu-hero">
       <div class="baoyu-hero-overlay">
         <img src="https://baoyutea.yiyeguizhen.com/imgs/img-010.jpg" alt="宝玉煮茶" class="baoyu-hero-logo-img">
