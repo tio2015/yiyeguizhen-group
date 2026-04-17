@@ -328,6 +328,19 @@
     .xka-product-header p {
       font-size: 14px; color: var(--text-secondary);
     }
+    .xka-product-image {
+      text-align: center;
+      margin: 32px 0;
+      padding: 24px;
+      background: var(--surface);
+      border-radius: var(--radius-m);
+      border: 1px solid var(--border-light);
+    }
+    .xka-product-image img {
+      max-width: 240px;
+      height: auto;
+      border-radius: var(--radius-s);
+    }
     .xka-product-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
       gap: 16px 24px;
@@ -564,8 +577,29 @@
 
     /* 差异 */
     .diff-card {
-      background: var(--green-deep); color: #fff;
+      background: linear-gradient(135deg,
+        oklch(0.60 0.12 320) 0%,
+        oklch(0.65 0.14 330) 25%,
+        oklch(0.70 0.16 340) 50%,
+        oklch(0.65 0.14 350) 75%,
+        oklch(0.60 0.12 360) 100%);
+      color: #fff;
       border-radius: var(--radius-l); padding: 56px; text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .diff-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg,
+        transparent 30%,
+        rgba(255,255,255,0.1) 50%,
+        transparent 70%);
+      animation: shimmer 3s ease-in-out infinite;
     }
     .diff-card h4 {
       font-size: 13px; font-weight: 600; letter-spacing: 0.15em;
@@ -1206,6 +1240,10 @@
         <p>已验证的睡眠调理植物饮，不含褪黑素的院士配方</p>
       </div>
 
+      <div class="xka-product-image">
+        <img src="https://yiyeguizhen.com/imgs/wananmima-product.jpg" alt="晚安密码产品包装">
+      </div>
+
       <div class="xka-product-grid">
         <div class="xka-product-item">
           <div class="xka-product-label">产品核心</div>
@@ -1362,7 +1400,7 @@
       <div class="product-slogan">每天一杯女神肌密，喝出好气色</div>
     </div>
     <div class="product-image">
-      <img src="https://yiyeguizhen.com/imgs/nvshenjimi-product.jpg" alt="女神肌密产品包装">
+      <img src="https://yiyeguizhen.com/imgs/nvshenjimi-product.png" alt="女神肌密产品包装">
     </div>
     <div class="product-body">
       <div class="product-cols-container">
