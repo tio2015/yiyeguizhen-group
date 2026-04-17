@@ -1278,17 +1278,17 @@
       .xka-card { padding: 24px; }
       .xka-title { font-size: 18px; }
       .xka-grid { grid-template-columns: 1fr; gap: 16px; }
-      .xka-numbers { grid-template-columns: repeat(3, 1fr); }
-      .xka-num { padding: 16px 8px; }
-      .xka-num strong { font-size: 24px; }
-      .xka-num .unit { font-size: 14px; }
-      .xka-num span:last-child { font-size: 10px; }
+      .xka-numbers { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .xka-num { padding: 16px 8px; text-align: center; }
+      .xka-num strong { font-size: 22px; display: block; }
+      .xka-num .unit { font-size: 12px; display: block; }
+      .xka-num span:last-child { font-size: 10px; display: block; }
       .xka-product-grid { grid-template-columns: 1fr; }
       .xka-product-details { padding: 24px 20px 20px; }
       .xka-product-showcase { grid-template-columns: 1fr; gap: 32px; }
       .xka-product-left { position: static; }
       .xka-product-image-container { padding: 24px; }
-      .xka-product-image-container img { max-width: 220px; }
+      .xka-product-image-container img { max-width: 100%; }
       .xka-product-stats { grid-template-columns: 1fr; gap: 12px; }
       .xka-stat { padding: 12px; }
       .baoyu-hero { height: 240px; }
@@ -1355,8 +1355,8 @@
       .collapse-trigger-title { font-size: 14px; }
       .collapse-trigger-hint { font-size: 12px; }
 
-      .product-hero { padding: 0; }
-      .product-header { padding: 48px 24px; }
+      .product-hero { padding: 0; border-radius: 0; border-left: none; border-right: none; }
+      .product-header { padding: 48px 24px; margin: 0; border-radius: 0; }
       .product-carousel { min-height: 280px; }
       .carousel-slide { padding: 16px; }
       .product-info-panel { padding: 24px 20px; grid-template-columns: 1fr; gap: 16px; }
@@ -1403,7 +1403,7 @@
       .cover-tag { font-size: 11px; padding: 6px 16px; }
       .section-title { font-size: 20px; }
       .section-desc { font-size: 13px; }
-      .product-header { padding: 36px 16px; }
+      .product-header { padding: 36px 16px; margin: 0; border-radius: 0; }
       .product-name { font-size: 28px; letter-spacing: 0.05em; }
       .product-slogan { font-size: 14px; }
       .product-carousel { min-height: 200px; }
@@ -1419,12 +1419,14 @@
       .xka-card { padding: 16px; }
       .xka-section-title { font-size: 18px; padding-left: 14px; margin-bottom: 16px; }
       .xka-title { font-size: 16px; }
-      .xka-numbers { grid-template-columns: 1fr; gap: 8px; }
-      .xka-num { padding: 12px; }
-      .xka-num strong { font-size: 20px; }
+      .xka-numbers { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+      .xka-num { padding: 10px 6px; }
+      .xka-num strong { font-size: 18px; }
+      .xka-num .unit { font-size: 11px; }
+      .xka-num span:last-child { font-size: 9px; }
       .xka-product-details { padding: 16px; }
       .xka-product-image-container { padding: 16px; }
-      .xka-product-image-container img { max-width: 180px; max-height: 200px; }
+      .xka-product-image-container img { max-width: 100%; max-height: none; }
       .channel-grid { grid-template-columns: 1fr !important; }
       .channel-card { padding: 16px 14px; }
       .terms-grid { grid-template-columns: 1fr; }
@@ -1498,16 +1500,11 @@
 
 <section id="cover" class="cover">
   <div class="cover-inner">
-    <div class="cover-tag">商务合作提案</div>
     <h1 class="cover-title">外护樊立花<br><strong>内用植养萃</strong></h1>
     <p class="cover-subtitle">植养萃 × 樊文花<br>商务合作提案</p>
     <div class="trust-anchors">
       刘仲华院士团队科研支持<br>国家植物功能成分利用工程技术研究中心
     </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="arrow"></div>
-    向下滚动
   </div>
 </section>
 
@@ -1556,7 +1553,7 @@
 
   <div class="xka-card reveal">
     <h3 class="xka-section-title">核心案例</h3>
-    <div class="xka-title">已验证的合作模式：XKA平台战略合作</div>
+    <div class="xka-title">XKA平台战略合作</div>
     <div class="xka-image">
       <img src="https://yiyeguizhen.com/imgs/xka-products.png" alt="XKA平台产品展示">
     </div>
@@ -1645,7 +1642,7 @@
 <section id="baoyu" class="section">
   <div class="xka-card reveal">
     <h3 class="xka-section-title">核心案例</h3>
-    <div class="xka-title">已验证的合作模式：宝玉煮茶 · 院士轻养茶</div>
+    <div class="xka-title">宝玉煮茶 · 院士轻养茶</div>
     <div class="baoyu-hero">
       <div class="baoyu-hero-overlay">
         <img src="https://baoyutea.yiyeguizhen.com/imgs/img-010.jpg" alt="宝玉煮茶" class="baoyu-hero-logo-img">
