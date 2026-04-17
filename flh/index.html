@@ -299,6 +299,38 @@
       text-align: center; padding: 20px;
       border-top: 1px solid var(--border);
     }
+    .xka-product-details {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px 24px;
+      background: oklch(0.22 0.06 160 / 0.02);
+    }
+    .xka-product-header {
+      margin-bottom: 24px;
+    }
+    .xka-product-header h4 {
+      font-size: 17px; font-weight: 700; color: var(--green-deep);
+      margin-bottom: 6px;
+    }
+    .xka-product-header p {
+      font-size: 14px; color: var(--text-secondary);
+    }
+    .xka-product-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 16px 24px;
+    }
+    .xka-product-item {
+      padding: 16px; background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-s);
+    }
+    .xka-product-label {
+      font-size: 12px; font-weight: 600; color: var(--copper);
+      margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .xka-product-value {
+      font-size: 14px; color: var(--text-primary);
+      line-height: 1.6;
+    }
 
     /* 宝玉煮茶 */
     .baoyu-hero {
@@ -630,6 +662,119 @@
     .vision-card strong { color: var(--green-deep); }
 
     /* 折叠 */
+    /* 产品展示样式 */
+    .product-hero {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-l);
+      padding: 48px;
+      margin: 48px 0;
+    }
+
+    .product-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .product-name {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 12px;
+    }
+
+    .product-slogan {
+      font-size: 18px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    .product-image {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .product-image img {
+      max-width: 280px;
+      height: auto;
+      border-radius: var(--radius-m);
+    }
+
+    .product-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 40px;
+    }
+
+    .product-col h4 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+
+    .product-item {
+      display: flex;
+      margin-bottom: 16px;
+      align-items: flex-start;
+    }
+
+    .product-item .label {
+      font-weight: 500;
+      color: var(--text-secondary);
+      min-width: 80px;
+      margin-right: 16px;
+      font-size: 14px;
+    }
+
+    .product-item .val {
+      color: var(--text-primary);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* 配方网格 */
+    .formula-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      margin: 32px 0;
+    }
+
+    .formula-item {
+      background: var(--bg-alt);
+      border-radius: var(--radius-m);
+      padding: 24px;
+      border: 1px solid var(--border-light);
+    }
+
+    .formula-item h4 {
+      color: var(--green-deep);
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .formula-ingred {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--copper);
+      margin: 12px 0 4px 0;
+    }
+
+    .formula-item p {
+      color: var(--text-secondary);
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .fi-main { border-left: 4px solid var(--copper); }
+    .fi-assist { border-left: 4px solid var(--green-mid); }
+    .fi-support { border-left: 4px solid var(--green-light); }
+
     .collapse-trigger {
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 24px; cursor: pointer;
@@ -722,6 +867,8 @@
       .xka-num strong { font-size: 24px; }
       .xka-num .unit { font-size: 14px; }
       .xka-num span:last-child { font-size: 10px; }
+      .xka-product-grid { grid-template-columns: 1fr; }
+      .xka-product-details { padding: 24px 20px 20px; }
       .baoyu-hero { height: 240px; }
       .baoyu-hero-title { font-size: 22px; }
       .baoyu-intro { grid-template-columns: 1fr; gap: 24px; }
@@ -788,6 +935,17 @@
       .collapse-trigger { padding: 16px 20px; }
       .collapse-trigger-title { font-size: 14px; }
       .collapse-trigger-hint { font-size: 12px; }
+
+      .product-hero { padding: 32px 24px; }
+      .product-body { grid-template-columns: 1fr; gap: 32px; }
+      .formula-grid { grid-template-columns: 1fr; gap: 20px; }
+      .product-name { font-size: 24px; }
+      .product-slogan { font-size: 16px; }
+    }
+
+    @media (max-width: 420px) {
+      .product-hero { padding: 24px 20px; }
+      .product-image img { max-width: 200px; }
     }
 
     /* 小屏手机 */
@@ -914,6 +1072,40 @@
       </div>
     </div>
     <div class="xka-bottom">这就是我们提议与樊文花合作的同一模式</div>
+
+    <div class="xka-product-details">
+      <div class="xka-product-header">
+        <h4>合作产品：晚安密码</h4>
+        <p>已验证的睡眠调理植物饮，不含褪黑素的院士配方</p>
+      </div>
+
+      <div class="xka-product-grid">
+        <div class="xka-product-item">
+          <div class="xka-product-label">产品核心</div>
+          <div class="xka-product-value">七味药食同源配方，人参+灵芝双核驱动，专注睡眠场景</div>
+        </div>
+        <div class="xka-product-item">
+          <div class="xka-product-label">核心差异</div>
+          <div class="xka-product-value">不含褪黑素 + 院士团队 + 药食同源，三重优势市场独家</div>
+        </div>
+        <div class="xka-product-item">
+          <div class="xka-product-label">目标人群</div>
+          <div class="xka-product-value">30-50岁职场女性，高压工作睡眠困扰，更年期睡眠调理</div>
+        </div>
+        <div class="xka-product-item">
+          <div class="xka-product-label">产品定位</div>
+          <div class="xka-product-value">一杯晚安密码，好梦整夜相伴 — 夜间睡眠调理专家</div>
+        </div>
+        <div class="xka-product-item">
+          <div class="xka-product-label">品类优势</div>
+          <div class="xka-product-value">普通食品（固体饮料），非保健品，合规门槛低，便于推广</div>
+        </div>
+        <div class="xka-product-item">
+          <div class="xka-product-label">验证结果</div>
+          <div class="xka-product-value">XKA平台专卖，首批10万盒售罄，用户复购率达72%</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="xka-card reveal" style="margin-top: 56px;">
@@ -1027,14 +1219,16 @@
   </div>
 </section>
 
+
 <section id="product" class="section">
   <div class="section-header reveal">
     <div class="section-tag">PART 02</div>
     <div>
       <h2 class="section-title">联名产品：女神肌密</h2>
-      <p class="section-desc">一款现成的、院士配方日常养颜植物饮，可直接贴牌联名，精准匹配30-50岁女性美肌需求</p>
+      <p class="section-desc">专为樊文花定制的日常养颜植物饮，精准匹配30-50岁女性内调外护需求</p>
     </div>
   </div>
+
   <div class="product-hero reveal">
     <div class="product-header">
       <div class="product-name">女神肌密</div>
@@ -1046,17 +1240,17 @@
     <div class="product-body">
       <div class="product-col">
         <h4>产品信息</h4>
-        <div class="product-item"><div class="label">品类</div><div class="val">普通食品（固体饮料），非保健品，合规门槛低</div></div>
-        <div class="product-item"><div class="label">核心卖点</div><div class="val">七味药食同源植物配方，由内而外养护肌肤</div></div>
-        <div class="product-item"><div class="label">规格</div><div class="val">42克（21条×2g），条装冲泡，随时享用。可根据樊文花需求定制</div></div>
-        <div class="product-item"><div class="label">商标归属</div><div class="val">"女神肌密"为我司独家注册商标，是品名也是商标，可开放授权使用</div></div>
+        <div class="product-item"><div class="label">品类</div><div class="val">普通食品（固体饮料），合规门槛低，便于推广</div></div>
+        <div class="product-item"><div class="label">核心卖点</div><div class="val">七味药食同源配方，人参+葛根双核驱动，日常养颜</div></div>
+        <div class="product-item"><div class="label">规格</div><div class="val">42克（21条×2g），条装冲泡，便携随时享用</div></div>
+        <div class="product-item"><div class="label">商标归属</div><div class="val">"女神肌密"专为樊文花定制，可开放授权使用</div></div>
         <div class="product-item"><div class="label">包装</div><div class="val">配合樊文花视觉体系定制（我方承担设计和生产）</div></div>
       </div>
       <div class="product-col">
         <h4>市场定位</h4>
-        <div class="product-item"><div class="label">目标人群</div><div class="val">30-50岁注重肌肤保养的女性、职场女性、需要抗衰养颜者</div></div>
-        <div class="product-item"><div class="label">适用场景</div><div class="val">晨起补充能量、睡前美肌充电、护理后内外同养、日常肌肤养护</div></div>
-        <div class="product-item"><div class="label">配方定位</div><div class="val">针对美肌养颜，重点提升人参皂苷与葛根异黄酮的占比</div></div>
+        <div class="product-item"><div class="label">目标人群</div><div class="val">30-50岁女性，关注抗衰养颜，追求内调外护</div></div>
+        <div class="product-item"><div class="label">适用场景</div><div class="val">日常护肤后、餐后轻养、办公下午茶、护理后增值服务</div></div>
+        <div class="product-item"><div class="label">配方定位</div><div class="val">针对养颜场景，重点提升人参皂苷与葛根异黄酮的占比</div></div>
         <div class="product-item"><div class="label">品牌呈现</div><div class="val">「樊文花 × 植养萃」双品牌联名</div></div>
       </div>
     </div>
@@ -1071,63 +1265,36 @@
   </div>
   <div class="collapse-body">
     <div class="collapse-body-inner">
-      <div class="molecule-grid">
-        <div class="molecule-item"><div class="molecule-num">1</div><div class="molecule-name">人参皂苷Rb1</div><div class="molecule-desc">刺激胶原蛋白合成，维持肌肤弹性与光泽</div></div>
-        <div class="molecule-item"><div class="molecule-num">2</div><div class="molecule-name">灵芝多糖</div><div class="molecule-desc">强效抗氧化，清除自由基，延缓肌肤衰老</div></div>
-        <div class="molecule-item"><div class="molecule-num">3</div><div class="molecule-name">葛根异黄酮</div><div class="molecule-desc">改善面部微循环，提亮肤色，焕发自然光彩</div></div>
-      </div>
-      <div class="formula-levels">
-        <div class="formula-level fl-jun"><div class="fl-tag">君药</div><div class="fl-name">人参 + 葛根</div><div class="fl-desc">人参皂苷促胶原生成，葛根异黄酮提亮肤色</div></div>
-        <div class="formula-level fl-chen"><div class="fl-tag">臣药</div><div class="fl-name">灵芝 + 茯苓</div><div class="fl-desc">灵芝多糖抗氧化，茯苓健脾祛湿调理内在</div></div>
-        <div class="formula-level fl-zuo"><div class="fl-tag">佐使药</div><div class="fl-name">青苹果 + 罗汉果 + 高良姜</div><div class="fl-desc">调味和胃，提升口感</div></div>
+      <div class="formula-grid">
+        <div class="formula-item fi-main"><h4>君药 · 核心驱动</h4>
+          <div class="formula-ingred">人参</div><p>补气复脉，生津安神，提神抗疲劳</p>
+          <div class="formula-ingred">葛根</div><p>清热生津，升阳止泻，改善循环</p>
+        </div>
+        <div class="formula-item fi-assist"><h4>臣药 · 效果增强</h4>
+          <div class="formula-ingred">枸杞</div><p>滋补肝肾，益精明目，美容养颜</p>
+          <div class="formula-ingred">桑葚</div><p>滋阴补血，润燥生津，抗氧化</p>
+        </div>
+        <div class="formula-item fi-support"><h4>佐药 · 调和制衡</h4>
+          <div class="formula-ingred">红枣</div><p>补中益气，养血安神，调和药性</p>
+          <div class="formula-ingred">百合</div><p>养阴润肺，清心安神，美容润燥</p>
+          <div class="formula-ingred">茯苓</div><p>利水渗湿，健脾安神，增强吸收</p>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="why-grid reveal">
-    <div class="why-item"><div class="why-dot"></div><h4>高频需求匹配</h4><p>80%+女性关注抗衰养颜，这是面部护理人群的核心诉求</p></div>
-    <div class="why-item"><div class="why-dot"></div><h4>自然闭环</h4><p>"外护樊立花，内用植养萃"——与面部护理形成内外同养闭环</p></div>
-    <div class="why-item"><div class="why-dot"></div><h4>精准人群</h4><p>30-50岁女性是樊文花的核心用户群体，也是最需要抗衰养颜的人群——女神肌密精准匹配这一需求</p></div>
-    <div class="why-item"><div class="why-dot"></div><h4>零学习成本</h4><p>"内调外护"概念天然成立，护理师推荐零学习成本</p></div>
-    <div class="why-item"><div class="why-dot"></div><h4>差异化优势</h4><p>七味药食同源配方是最大差异点，温和有效无副作用</p></div>
-    <div class="why-item"><div class="why-dot"></div><h4>快速落地</h4><p>已有完整产品线和供应链，可快速出联名版</p></div>
+    <div class="why-item"><div class="why-dot"></div><h4>内外同养闭环</h4><p>"外护樊立花，内用植养萃"——与面部护理形成完美闭环</p></div>
+    <div class="why-item"><div class="why-dot"></div><h4>精准人群匹配</h4><p>30-50岁女性是樊文花的核心用户群体，也是关注内调养颜的主要人群</p></div>
+    <div class="why-item"><div class="why-dot"></div><h4>零学习成本</h4><p>"每天一杯，喝出好气色"概念天然成立，护理师推荐零学习成本</p></div>
+    <div class="why-item"><div class="why-dot"></div><h4>差异化优势</h4><p>院士级配方 + 药食同源 + 日常植物饮，三重优势市场独家</p></div>
+    <div class="why-item"><div class="why-dot"></div><h4>门店增值服务</h4><p>护理完成后推荐女神肌密，形成自然的增值服务流程</p></div>
+    <div class="why-item"><div class="why-dot"></div><h4>快速落地</h4><p>已有完整产品线和供应链，可快速出樊文花定制版</p></div>
   </div>
 
   <div class="diff-card reveal">
-    <h4>女神肌密的核心差异</h4>
-    <p>日常养颜植物饮、七味药食同源配方、院士团队研发<br>三个维度同时具备的产品，目前市场上没有第二个</p>
-  </div>
-
-  <div class="collapse-trigger reveal" onclick="toggleCollapse(this)">
-    <div class="collapse-trigger-text">
-      <div class="collapse-trigger-title">国家级检测认证</div>
-      <div class="collapse-trigger-hint">已通过3项国家级检测，安全性达专业运动员可服用标准 — 点击展开详情</div>
-    </div>
-    <div class="collapse-tag">展开</div>
-  </div>
-  <div class="collapse-body">
-    <div class="collapse-body-inner">
-      <div class="cert-grid">
-        <div class="cert-item ci-green"><h4>国家反兴奋剂检测中心</h4><p>已通过全项检测，安全性达到专业运动员可服用标准</p></div>
-        <div class="cert-item ci-blue"><h4>国家体育总局运动医学研究所</h4><p>营养成分检测完成，即将与国家队运动员小范围测试</p></div>
-        <div class="cert-item ci-purple"><h4>协和药物研究所</h4><p>与协和药物研究所合作动物实验，提供临床前科研数据支撑</p></div>
-      </div>
-      <div class="cert-footer">常规认证体系：CNAS认可 · CMA认证 · ILAC-MRA互认 · 中检集团 · Intertek天祥</div>
-    </div>
-  </div>
-
-  <div class="terms-card reveal">
-    <h3>首批合作条件</h3>
-    <div class="price-highlight">
-      <div class="price-main">建议零售价 <span class="price-num num-display">¥238–268</span> 元/盒<br>门店毛利空间 <span class="price-num num-display">55–65%</span></div>
-      <div class="price-sub">具体供货价与合作条款面议，确保门店有充足的利润驱动力</div>
-    </div>
-    <div class="terms-grid">
-      <div class="term-item"><h4>高毛利空间</h4><p>激发门店销售积极性，为门店带来显著增量利润</p></div>
-      <div class="term-item"><h4>试用装免费提供</h4><p>首批试点门店提供体验装，用于护理期间顾客试饮</p></div>
-      <div class="term-item"><h4>包装定制</h4><p>配合樊文花视觉体系，我方全额承担设计和生产</p></div>
-      <div class="term-item"><h4>护理师支持</h4><p>提供产品知识资料+推荐话术，配合樊文花内训体系</p></div>
-    </div>
+    <h4>女神肌密的核心价值</h4>
+    <p>院士团队配方 + 七味药食同源 + 内外同养概念<br>三个维度同时具备的产品，精准匹配樊文花用户需求</p>
   </div>
 </section>
 
@@ -1187,7 +1354,7 @@
   </div>
   <div class="timeline reveal">
     <div class="tl-item"><div class="tl-marker">第1周</div><div class="tl-content"><div class="tl-title">意向确认</div><div class="tl-desc">双方高层会面，确认合作意向和产品方向</div></div></div>
-    <div class="tl-item"><div class="tl-marker">2-3周</div><div class="tl-content"><div class="tl-title">样品与报价</div><div class="tl-desc">提供晚安密码样品 + 正式报价 + 联名包装方案</div></div></div>
+    <div class="tl-item"><div class="tl-marker">2-3周</div><div class="tl-content"><div class="tl-title">样品与报价</div><div class="tl-desc">提供女神肌密样品 + 正式报价 + 联名包装方案</div></div></div>
     <div class="tl-item"><div class="tl-marker">第4周</div><div class="tl-content"><div class="tl-title">签约下单</div><div class="tl-desc">签订合作协议，首批下单</div></div></div>
     <div class="tl-item"><div class="tl-marker">5-6周</div><div class="tl-content"><div class="tl-title">生产交付</div><div class="tl-desc">联名包装生产 + 交付</div></div></div>
     <div class="tl-item"><div class="tl-marker">第7周</div><div class="tl-content"><div class="tl-title">试点上架</div><div class="tl-desc">选定区域门店上架，收集数据和反馈</div></div></div>
