@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>植养萃 × 樊文花 · 商务合作提案</title>
-  <meta name="description" content="重新定义面部护理的科学边界">
-  <meta property="og:title" content="植养萃 × 樊文花 · 商务合作提案">
-  <meta property="og:description" content="重新定义面部护理的科学边界">
+  <title>樊文花 × 植养萃 · 商务合作提案</title>
+  <meta name="description" content="外护樊立花，内用植养萃">
+  <meta property="og:title" content="樊文花 × 植养萃 · 商务合作提案">
+  <meta property="og:description" content="外护樊立花，内用植养萃">
   <meta property="og:image" content="https://yiyeguizhen.com/imgs/og-flh3.png">
   <meta property="og:url" content="https://yiyeguizhen.com/flh/">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after {
@@ -22,518 +22,182 @@
     }
 
     :root {
-      /* Modern OKLCH Color System */
-      --surface: oklch(0.98 0.005 240);
-      --surface-elevated: oklch(1 0 0);
-      --surface-subtle: oklch(0.95 0.008 240);
-
-      --primary: oklch(0.45 0.15 240);
-      --primary-hover: oklch(0.40 0.16 240);
-      --primary-subtle: oklch(0.95 0.02 240);
-
-      --text-primary: oklch(0.15 0.01 240);
-      --text-secondary: oklch(0.55 0.015 240);
-      --text-tertiary: oklch(0.70 0.01 240);
-
-      --accent: oklch(0.65 0.12 160);
-      --accent-subtle: oklch(0.93 0.04 160);
-
-      --border: oklch(0.88 0.008 240);
-      --border-subtle: oklch(0.92 0.006 240);
-
-      /* Spacing Scale */
-      --space-xs: 4px;
-      --space-sm: 8px;
-      --space-md: 16px;
-      --space-lg: 24px;
-      --space-xl: 32px;
-      --space-2xl: 48px;
-      --space-3xl: 64px;
-      --space-4xl: 96px;
-
-      /* Typography Scale */
-      --font-body: 'Work Sans', system-ui, sans-serif;
-      --font-display: 'Source Serif Pro', serif;
-
-      --text-xs: clamp(0.75rem, 0.7rem + 0.2vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.3vw, 1rem);
-      --text-base: clamp(1rem, 0.9rem + 0.4vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
-      --text-xl: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
-      --text-2xl: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
-      --text-3xl: clamp(1.875rem, 1.6rem + 1vw, 2.25rem);
-      --text-4xl: clamp(2.25rem, 2rem + 1.2vw, 3rem);
-
-      /* Shadows */
-      --shadow-sm: 0 1px 3px oklch(0.15 0.01 240 / 0.08);
-      --shadow-md: 0 4px 16px oklch(0.15 0.01 240 / 0.1), 0 1px 4px oklch(0.15 0.01 240 / 0.06);
-      --shadow-lg: 0 8px 32px oklch(0.15 0.01 240 / 0.12), 0 2px 8px oklch(0.15 0.01 240 / 0.08);
-
-      --radius-sm: 6px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
+      --bg: #f5f2ec;
+      --card: #ffffff;
+      --green: #1a3a2a;
+      --green-light: #2d5a3f;
+      --gold: #b8924a;
+      --gold-light: #d4ac6e;
+      --text: #2a2a2a;
+      --text-sec: #777;
+      --text-light: #aaa;
+      --radius: 20px;
+      --shadow: 0 8px 40px rgba(26,58,42,0.07);
+      --shadow-hover: 0 16px 56px rgba(26,58,42,0.13);
     }
 
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-body);
-      background: var(--surface);
-      color: var(--text-primary);
+      font-family: 'Noto Sans SC', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       font-weight: 400;
-      line-height: 1.6;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* ====== NAVIGATION ====== */
+    /* ====== NAV ====== */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: oklch(0.98 0.005 240 / 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border-subtle);
-      transition: all 0.3s ease;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,242,236,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(26,58,42,0.06);
     }
-
     .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 72px;
+      max-width: 1200px; margin: 0 auto; padding: 0 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      height: 64px;
     }
-
     .nav-brand {
-      font-family: var(--font-display);
-      font-size: var(--text-lg);
-      font-weight: 600;
-      color: var(--primary);
-      letter-spacing: -0.02em;
-      text-decoration: none;
-      transition: opacity 0.2s ease;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 15px; font-weight: 600; color: var(--green);
+      letter-spacing: 1px;
     }
-    .nav-brand:hover { opacity: 0.8; }
-
-    .nav-progress {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 2px;
-      background: var(--accent);
-      width: 0%;
-      transition: width 0.1s ease;
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--text-sec); text-decoration: none; font-size: 13px;
+      font-weight: 500; letter-spacing: 0.5px; transition: color 0.3s;
     }
+    .nav-links a:hover { color: var(--green); }
 
-    /* ====== HERO SECTION ====== */
-    .hero {
+    /* ====== COVER ====== */
+    .cover {
       min-height: 100vh;
-      background: var(--surface);
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding-top: 72px;
+      background: linear-gradient(160deg, #0f1f17 0%, #1a3a2a 40%, #2a4f3a 100%);
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      text-align: center; position: relative;
+      overflow: hidden;
     }
-
-    .hero-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-4xl);
-      align-items: center;
+    .cover::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,146,74,0.08) 0%, transparent 70%);
     }
-
-    .hero-content {
-      opacity: 0;
-      transform: translateY(32px);
-      animation: fadeInUp 0.8s ease forwards;
+    .cover-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(40px, 7vw, 72px);
+      font-weight: 700; color: var(--gold);
+      line-height: 1.25; margin-bottom: 32px;
+      position: relative; z-index: 1;
     }
-
-    .hero-badge {
-      display: inline-flex;
-      padding: var(--space-xs) var(--space-md);
-      background: var(--accent-subtle);
-      color: var(--accent);
-      border-radius: var(--radius-sm);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-lg);
+    .cover-subtitle {
+      font-size: clamp(14px, 2vw, 19px);
+      color: rgba(255,255,255,0.85);
+      font-weight: 300; letter-spacing: 4px;
+      margin-bottom: 20px;
+      position: relative; z-index: 1;
     }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: var(--text-4xl);
-      font-weight: 700;
-      color: var(--text-primary);
-      line-height: 1.1;
-      margin-bottom: var(--space-lg);
-      letter-spacing: -0.02em;
-    }
-
-    .hero-subtitle {
-      font-size: var(--text-xl);
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: var(--space-2xl);
-      font-weight: 300;
-    }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-lg);
-      margin-bottom: var(--space-2xl);
-    }
-
-    .stat-item {
-      text-align: left;
-    }
-
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: var(--text-2xl);
-      font-weight: 600;
-      color: var(--primary);
-      display: block;
-      margin-bottom: var(--space-xs);
-    }
-
-    .stat-label {
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-      font-weight: 400;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      padding: var(--space-md) var(--space-xl);
-      background: var(--primary);
-      color: var(--surface);
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: var(--text-base);
-      transition: all 0.2s ease;
-      box-shadow: var(--shadow-md);
-    }
-    .hero-cta:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .hero-visual {
-      position: relative;
-      opacity: 0;
-      transform: translateX(32px);
-      animation: fadeInRight 0.8s ease 0.2s forwards;
-    }
-
-    .hero-chart {
-      background: var(--surface-elevated);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      box-shadow: var(--shadow-lg);
-      border: 1px solid var(--border);
+    .trust-anchors {
+      position: absolute; bottom: 48px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px; color: rgba(255,255,255,0.35);
+      letter-spacing: 1px; white-space: nowrap;
     }
 
     /* ====== SECTION ====== */
     .section {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: var(--space-4xl) var(--space-lg);
+      padding: 140px 40px 60px;
     }
-
     .section-header {
       text-align: center;
-      margin-bottom: var(--space-3xl);
-      opacity: 0;
-      transform: translateY(24px);
-      animation: fadeInUp 0.6s ease forwards;
+      margin-bottom: 80px;
     }
-
-    .section-badge {
-      display: inline-flex;
-      padding: var(--space-xs) var(--space-md);
-      background: var(--primary-subtle);
-      color: var(--primary);
-      border-radius: var(--radius-sm);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-lg);
+    .section-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 8px; text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
     }
-
     .section-title {
-      font-family: var(--font-display);
-      font-size: var(--text-3xl);
-      font-weight: 600;
-      color: var(--text-primary);
-      line-height: 1.2;
-      margin-bottom: var(--space-md);
-      letter-spacing: -0.02em;
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700; color: var(--green);
+      margin-bottom: 16px; line-height: 1.3;
     }
-
+    .section-title::after {
+      content: '';
+      display: block; width: 48px; height: 3px;
+      background: var(--gold);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
     .section-desc {
-      font-size: var(--text-lg);
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 600px;
-      margin: 0 auto;
+      font-size: 16px; color: var(--text-sec);
+      font-weight: 300; margin-top: 16px;
     }
 
-    /* ====== MODERN CARD SYSTEM ====== */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: var(--space-xl);
-    }
-
+    /* ====== CARD ====== */
     .card {
-      background: var(--surface-elevated);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      padding: var(--space-xl);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 48px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
-
     .card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--border);
+      box-shadow: var(--shadow-hover);
     }
 
-    .card-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--accent-subtle);
-      border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: var(--space-lg);
-      font-size: var(--text-xl);
-      color: var(--accent);
+    /* ====== PART 01: RESOURCE CARDS ====== */
+    .res-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 56px;
     }
-
-    .card-title {
-      font-family: var(--font-display);
-      font-size: var(--text-xl);
-      font-weight: 600;
-      color: var(--text-primary);
-      margin-bottom: var(--space-md);
-      line-height: 1.3;
-    }
-
-    .card-desc {
-      font-size: var(--text-base);
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: var(--space-lg);
-    }
-
-    .card-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: var(--space-md);
-      border-top: 1px solid var(--border-subtle);
-      font-size: var(--text-sm);
-      color: var(--text-tertiary);
-    }
-
-    /* ====== ANIMATIONS ====== */
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: all 0.6s ease;
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ====== DATA VISUALIZATION ====== */
-    .metric-highlight {
-      background: var(--surface-elevated);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      text-align: center;
-      border: 1px solid var(--border);
+    .res-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 44px 40px;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
       position: relative;
       overflow: hidden;
     }
-
-    .metric-highlight::before {
+    .res-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+    .res-card::after {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
     }
-
-    .metric-value {
-      font-family: var(--font-display);
-      font-size: var(--text-4xl);
-      font-weight: 700;
-      color: var(--primary);
-      display: block;
-      margin-bottom: var(--space-sm);
-      line-height: 1;
+    .res-icon {
+      display: none;
     }
-
-    .metric-label {
-      font-size: var(--text-sm);
-      color: var(--text-secondary);
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .res-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--green);
+      margin-bottom: 20px;
     }
-
-    .metric-desc {
-      font-size: var(--text-xs);
-      color: var(--text-tertiary);
-      margin-top: var(--space-xs);
+    .res-list {
+      list-style: none; padding: 0;
     }
-
-    /* ====== TIMELINE COMPONENT ====== */
-    .timeline {
+    .res-list li {
+      font-size: 14px; color: var(--text);
+      line-height: 2.2;
+      padding-left: 18px;
       position: relative;
-      padding: var(--space-lg) 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border);
-      transform: translateX(-50%);
-    }
-
-    .timeline-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: var(--space-2xl);
-      position: relative;
-    }
-
-    .timeline-item:nth-child(odd) {
-      flex-direction: row-reverse;
-    }
-
-    .timeline-content {
-      flex: 1;
-      max-width: calc(50% - var(--space-xl));
-      background: var(--surface-elevated);
-      padding: var(--space-xl);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-    }
-
-    .timeline-marker {
-      width: 16px;
-      height: 16px;
-      background: var(--accent);
-      border-radius: 50%;
-      border: 4px solid var(--surface);
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-    }
-
-    /* ====== RESPONSIVE DESIGN ====== */
-    @media (max-width: 768px) {
-      .hero-container {
-        grid-template-columns: 1fr;
-        gap: var(--space-2xl);
-        text-align: center;
-      }
-
-      .hero-stats {
-        grid-template-columns: repeat(3, 1fr);
-        gap: var(--space-md);
-      }
-
-      .timeline::before {
-        left: var(--space-lg);
-      }
-
-      .timeline-item {
-        flex-direction: row !important;
-        margin-left: var(--space-xl);
-      }
-
-      .timeline-content {
-        max-width: none;
-        margin-left: var(--space-lg);
-      }
-
-      .timeline-marker {
-        left: var(--space-lg);
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-inner {
-        padding: 0 var(--space-md);
-      }
-
-      .section {
-        padding: var(--space-3xl) var(--space-md);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-stats {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
-      }
-
-      .stat-item {
-        text-align: center;
-        padding: var(--space-lg);
-        background: var(--surface-elevated);
-        border-radius: var(--radius-md);
-        border: 1px solid var(--border);
-      }
-    }
     }
     .res-list li::before {
       content: '';
@@ -1839,210 +1503,29 @@
       .section-title { font-size: 20px; }
     }
 
-    /* ====== SCROLL PROGRESS ====== */
-    .scroll-progress {
-      position: fixed;
-      top: 71px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: var(--accent);
-      z-index: 101;
-      transition: width 0.1s ease;
-    }
-
-    /* ====== UTILITY CLASSES ====== */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: var(--space-md) var(--space-xl);
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-      font-size: var(--text-base);
-    }
-
-    .btn-primary {
-      background: var(--primary);
-      color: var(--surface);
-    }
-    .btn-primary:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: var(--surface-elevated);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-    }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#hero" class="nav-brand">植养萃 × 樊文花</a>
-      <div class="nav-progress"></div>
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">樊文花 × 植养萃</div>
+    <div class="nav-links">
+      <a href="#cover">封面</a>
+      <a href="#who">我们是谁</a>
+      <a href="#product">联名产品</a>
+      <a href="#value">核心价值</a>
+      <a href="#path">合作路径</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Scroll Progress -->
-  <div class="scroll-progress"></div>
-
-  <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-container">
-      <div class="hero-content">
-        <div class="hero-badge">商务合作提案</div>
-        <h1 class="hero-title">重新定义面部护理的科学边界</h1>
-        <p class="hero-subtitle">植养萃与樊文花的战略合作，将为市场带来革新性的"晚安密码"产品，融合植物萃取精华与专业护理技术。</p>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number">1000万</span>
-            <span class="stat-label">保底签约</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">55-65%</span>
-            <span class="stat-label">门店毛利</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">7周</span>
-            <span class="stat-label">合作周期</span>
-          </div>
-        </div>
-
-        <a href="#details" class="btn btn-primary hero-cta">了解合作详情</a>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-chart">
-          <div class="metric-highlight">
-            <span class="metric-value">¥238-268</span>
-            <div class="metric-label">建议零售价</div>
-            <div class="metric-desc">42克装 (21条×2g)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="section-header">
-      <div class="section-badge">关于我们</div>
-      <h2 class="section-title">植养萃科研实力</h2>
-      <p class="section-desc">依托科研院所技术平台，专注植物萃取技术创新，已获得多项发明专利和产品认证。</p>
-    </div>
-
-    <div class="card-grid">
-      <div class="card">
-        <div class="card-icon">🧪</div>
-        <h3 class="card-title">科研平台</h3>
-        <p class="card-desc">与多所科研院所建立技术合作，拥有专业的植物萃取研发团队。</p>
-        <div class="card-meta">
-          <span>研发实力</span>
-          <span>⭐⭐⭐⭐⭐</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🤝</div>
-        <h3 class="card-title">XKA合作案例</h3>
-        <p class="card-desc">XKA签约保底1000万，已建立成熟的品牌合作模式。</p>
-        <div class="card-meta">
-          <span>合作经验</span>
-          <span>1000万保底</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">🏪</div>
-        <h3 class="card-title">宝玉煮茶案例</h3>
-        <p class="card-desc">成功打造宝玉煮茶品牌，具备完整的产品开发和市场推广能力。</p>
-        <div class="card-meta">
-          <span>品牌案例</span>
-          <span>成功案例</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">📈</div>
-        <h3 class="card-title">多渠道能力</h3>
-        <p class="card-desc">覆盖线上线下多个销售渠道，具备强大的市场推广和销售能力。</p>
-        <div class="card-meta">
-          <span>渠道覆盖</span>
-          <span>全渠道</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Section -->
-  <section id="product" class="section" style="background: var(--surface-subtle);">
-    <div class="section-header">
-      <div class="section-badge">联名产品</div>
-      <h2 class="section-title">晚安密码</h2>
-      <p class="section-desc">植养萃独家注册商标产品，融合先进植物萃取技术与樊文花专业护理理念。</p>
-    </div>
-
-    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-4xl); align-items: center;">
-      <div>
-        <div class="card">
-          <h3 class="card-title">产品配方体系 · 君臣佐使</h3>
-          <p class="card-desc">采用传统中医理论指导，结合现代萃取技术，打造科学配比的护理配方。</p>
-
-          <div style="margin: var(--space-xl) 0;">
-            <h4 style="margin-bottom: var(--space-md); color: var(--text-primary);">核心成分：</h4>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-md);">
-              <div style="padding: var(--space-md); background: var(--surface-elevated); border-radius: var(--radius-sm);">
-                <strong style="color: var(--primary);">君药</strong> - 主要活性成分
-              </div>
-              <div style="padding: var(--space-md); background: var(--surface-elevated); border-radius: var(--radius-sm);">
-                <strong style="color: var(--primary);">臣药</strong> - 辅助增效成分
-              </div>
-              <div style="padding: var(--space-md); background: var(--surface-elevated); border-radius: var(--radius-sm);">
-                <strong style="color: var(--primary);">佐药</strong> - 调和稳定成分
-              </div>
-              <div style="padding: var(--space-md); background: var(--surface-elevated); border-radius: var(--radius-sm);">
-                <strong style="color: var(--primary);">使药</strong> - 引导吸收成分
-              </div>
-            </div>
-          </div>
-
-          <div class="card-meta">
-            <span>独家商标</span>
-            <span style="color: var(--accent);">可开放授权</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="metric-highlight">
-        <span class="metric-value">¥238-268</span>
-        <div class="metric-label">建议零售价</div>
-        <div class="metric-desc">42克装 (21条×2g)</div>
-        <div style="margin-top: var(--space-md); padding-top: var(--space-md); border-top: 1px solid var(--border-subtle);">
-          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-xs);">
-            <span style="font-size: var(--text-sm); color: var(--text-secondary);">门店毛利</span>
-            <span style="font-size: var(--text-sm); font-weight: 600; color: var(--accent);">55-65%</span>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="font-size: var(--text-sm); color: var(--text-secondary);">认证标准</span>
-            <span style="font-size: var(--text-sm); font-weight: 600; color: var(--accent);">全面检测</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- COVER -->
+<section id="cover" class="cover">
+  <h1 class="cover-title">外护樊立花<br>内用植养萃</h1>
+  <p class="cover-subtitle">植养萃 × 樊文花<br>商务合作提案</p>
+  <div class="trust-anchors">
     刘仲华院士团队科研支持<br>国家植物功能成分利用工程技术研究中心
   </div>
 </section>
@@ -2671,184 +2154,15 @@
   一叶归真·植养萃 × 樊文花·面部护理 · 商务合作提案
 </div>
 
-  <!-- Value Section -->
-  <section id="value" class="section">
-    <div class="section-header">
-      <div class="section-badge">合作价值</div>
-      <h2 class="section-title">对樊文花的三个核心价值</h2>
-      <p class="section-desc">为樊文花品牌带来技术、市场和品牌三重价值提升，共创双赢局面。</p>
-    </div>
-
-    <div class="card-grid">
-      <div class="card animate-on-scroll">
-        <div class="card-icon">🔬</div>
-        <h3 class="card-title">技术价值</h3>
-        <p class="card-desc">植物萃取专利技术与樊文花护理专业相结合，提升产品科技含量和差异化竞争力。</p>
-        <div style="margin-top: var(--space-lg);">
-          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
-            <span style="font-size: var(--text-sm);">专利技术</span>
-            <span style="color: var(--accent); font-weight: 600;">多项发明</span>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="font-size: var(--text-sm);">技术门槛</span>
-            <span style="color: var(--accent); font-weight: 600;">行业领先</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card animate-on-scroll">
-        <div class="card-icon">💰</div>
-        <h3 class="card-title">市场价值</h3>
-        <p class="card-desc">1000万保底签约，55-65%门店毛利空间，为樊文花创造可观的经济回报。</p>
-        <div style="margin-top: var(--space-lg);">
-          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
-            <span style="font-size: var(--text-sm);">保底签约</span>
-            <span style="color: var(--accent); font-weight: 600;">1000万</span>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="font-size: var(--text-sm);">毛利空间</span>
-            <span style="color: var(--accent); font-weight: 600;">55-65%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card animate-on-scroll">
-        <div class="card-icon">✨</div>
-        <h3 class="card-title">品牌价值</h3>
-        <p class="card-desc">通过联名合作拓展樊文花在植物护理领域的品牌影响力，开拓新的市场空间。</p>
-        <div style="margin-top: var(--space-lg);">
-          <div style="display: flex; justify-content: space-between; margin-bottom: var(--space-sm);">
-            <span style="font-size: var(--text-sm);">品牌延展</span>
-            <span style="color: var(--accent); font-weight: 600;">植物护理</span>
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <span style="font-size: var(--text-sm);">市场机会</span>
-            <span style="color: var(--accent); font-weight: 600;">蓝海市场</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Timeline Section -->
-  <section id="timeline" class="section" style="background: var(--surface-subtle);">
-    <div class="section-header">
-      <div class="section-badge">合作路径</div>
-      <h2 class="section-title">7周合作时间线</h2>
-      <p class="section-desc">从洽谈到上市的完整合作流程规划，确保项目高效推进。</p>
-    </div>
-
-    <div class="timeline">
-      <div class="timeline-item animate-on-scroll">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4 style="color: var(--primary); margin-bottom: var(--space-sm);">第1周</h4>
-          <h3 style="margin-bottom: var(--space-sm);">合作洽谈</h3>
-          <p style="color: var(--text-secondary);">确定合作意向，签署框架协议，明确双方权责和合作模式。</p>
-        </div>
-      </div>
-
-      <div class="timeline-item animate-on-scroll">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4 style="color: var(--primary); margin-bottom: var(--space-sm);">第2-3周</h4>
-          <h3 style="margin-bottom: var(--space-sm);">产品研发</h3>
-          <p style="color: var(--text-secondary);">配方优化，样品制备，功效测试，确保产品质量达标。</p>
-        </div>
-      </div>
-
-      <div class="timeline-item animate-on-scroll">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4 style="color: var(--primary); margin-bottom: var(--space-sm);">第4-5周</h4>
-          <h3 style="margin-bottom: var(--space-sm);">品牌设计</h3>
-          <p style="color: var(--text-secondary);">包装设计，品牌视觉，营销物料，建立完整品牌形象。</p>
-        </div>
-      </div>
-
-      <div class="timeline-item animate-on-scroll">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4 style="color: var(--primary); margin-bottom: var(--space-sm);">第6周</h4>
-          <h3 style="margin-bottom: var(--space-sm);">生产准备</h3>
-          <p style="color: var(--text-secondary);">生产线调试，质量管控，首批产品生产，库存准备。</p>
-        </div>
-      </div>
-
-      <div class="timeline-item animate-on-scroll">
-        <div class="timeline-marker"></div>
-        <div class="timeline-content">
-          <h4 style="color: var(--primary); margin-bottom: var(--space-sm);">第7周</h4>
-          <h3 style="margin-bottom: var(--space-sm);">市场推广</h3>
-          <p style="color: var(--text-secondary);">产品上市，渠道铺货，营销推广，销售数据监测。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="section" style="text-align: center; border-top: 1px solid var(--border);">
-    <div style="margin-bottom: var(--space-xl);">
-      <h3 style="color: var(--primary); margin-bottom: var(--space-md);">开启合作</h3>
-      <p style="color: var(--text-secondary); margin-bottom: var(--space-lg);">期待与樊文花携手，共创面部护理行业新标杆</p>
-      <a href="https://yiyeguizhen.com" class="btn btn-primary">联系植养萃团队</a>
-    </div>
-
-    <p style="color: var(--text-tertiary); font-size: var(--text-sm);">
-      © 2024 北京一叶归真生物科技有限公司 · 植养萃品牌
-    </p>
-  </footer>
-
-  <script>
-    // Scroll progress indicator
-    function updateScrollProgress() {
-      const scrollTop = window.pageYOffset;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = (scrollTop / docHeight) * 100;
-      document.querySelector('.scroll-progress').style.width = scrollPercent + '%';
-      document.querySelector('.nav-progress').style.width = scrollPercent + '%';
-    }
-
-    // Scroll-triggered animations
-    function animateOnScroll() {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('visible');
-        }
-      });
-    }
-
-    // Smooth scrolling for anchor links
-    function initSmoothScroll() {
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        });
-      });
-    }
-
-    // Initialize all functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      initSmoothScroll();
-      animateOnScroll();
-
-      window.addEventListener('scroll', () => {
-        updateScrollProgress();
-        animateOnScroll();
-      });
-    });
-  </script>
+<script>
+function toggleCollapse(trigger) {
+  const body = trigger.nextElementSibling;
+  const tag = trigger.querySelector('.collapse-tag');
+  trigger.classList.toggle('active');
+  body.classList.toggle('open');
+  if (tag) tag.textContent = trigger.classList.contains('active') ? '收起' : '展开';
+}
+</script>
 
 </body>
 </html>
