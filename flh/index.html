@@ -328,18 +328,104 @@
     .xka-product-header p {
       font-size: 14px; color: var(--text-secondary);
     }
-    .xka-product-image {
-      text-align: center;
+    .xka-product-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 48px;
       margin: 32px 0;
-      padding: 24px;
+      align-items: start;
+    }
+
+    .xka-product-left {
+      position: sticky;
+      top: 100px;
+    }
+
+    .xka-product-image-container {
+      position: relative;
+      text-align: center;
+      padding: 32px;
+      background: linear-gradient(135deg,
+        var(--surface) 0%,
+        oklch(0.98 0.01 160) 100%);
+      border-radius: var(--radius-l);
+      border: 1px solid var(--border-light);
+      margin-bottom: 24px;
+    }
+
+    .xka-product-image-container img {
+      max-width: 280px;
+      height: auto;
+      border-radius: var(--radius-m);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+
+    .xka-product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .xka-badge {
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .xka-badge-primary {
+      background: oklch(0.40 0.15 160);
+      color: #fff;
+    }
+
+    .xka-badge-secondary {
+      background: oklch(0.58 0.14 55);
+      color: #fff;
+    }
+
+    .xka-badge-success {
+      background: oklch(0.55 0.12 145);
+      color: #fff;
+    }
+
+    .xka-product-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .xka-stat {
+      text-align: center;
+      padding: 16px 12px;
       background: var(--surface);
       border-radius: var(--radius-m);
       border: 1px solid var(--border-light);
+      transition: transform 0.2s ease;
     }
-    .xka-product-image img {
-      max-width: 240px;
-      height: auto;
-      border-radius: var(--radius-s);
+
+    .xka-stat:hover {
+      transform: translateY(-2px);
+    }
+
+    .xka-stat-num {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-deep);
+      margin-bottom: 4px;
+    }
+
+    .xka-stat-label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.3;
+    }
+
+    .xka-product-right .xka-product-grid {
+      gap: 20px;
     }
     .xka-product-grid {
       display: grid; grid-template-columns: repeat(2, 1fr);
@@ -1023,6 +1109,12 @@
       .xka-num span:last-child { font-size: 10px; }
       .xka-product-grid { grid-template-columns: 1fr; }
       .xka-product-details { padding: 24px 20px 20px; }
+      .xka-product-showcase { grid-template-columns: 1fr; gap: 32px; }
+      .xka-product-left { position: static; }
+      .xka-product-image-container { padding: 24px; }
+      .xka-product-image-container img { max-width: 220px; }
+      .xka-product-stats { grid-template-columns: 1fr; gap: 12px; }
+      .xka-stat { padding: 12px; }
       .baoyu-hero { height: 240px; }
       .baoyu-hero-title { font-size: 22px; }
       .baoyu-intro { grid-template-columns: 1fr; gap: 24px; }
@@ -1240,11 +1332,34 @@
         <p>已验证的睡眠调理植物饮，不含褪黑素的院士配方</p>
       </div>
 
-      <div class="xka-product-image">
-        <img src="https://yiyeguizhen.com/imgs/wananmima-product.jpg" alt="晚安密码产品包装">
-      </div>
+      <div class="xka-product-showcase">
+        <div class="xka-product-left">
+          <div class="xka-product-image-container">
+            <img src="https://yiyeguizhen.com/imgs/wananmima-product.jpg" alt="晚安密码产品包装">
+            <div class="xka-product-badges">
+              <span class="xka-badge xka-badge-primary">院士配方</span>
+              <span class="xka-badge xka-badge-secondary">不含褪黑素</span>
+              <span class="xka-badge xka-badge-success">72%复购率</span>
+            </div>
+          </div>
+          <div class="xka-product-stats">
+            <div class="xka-stat">
+              <div class="xka-stat-num">10万盒</div>
+              <div class="xka-stat-label">首批销量</div>
+            </div>
+            <div class="xka-stat">
+              <div class="xka-stat-num">72%</div>
+              <div class="xka-stat-label">用户复购率</div>
+            </div>
+            <div class="xka-stat">
+              <div class="xka-stat-num">7味</div>
+              <div class="xka-stat-label">药食同源配方</div>
+            </div>
+          </div>
+        </div>
 
-      <div class="xka-product-grid">
+        <div class="xka-product-right">
+          <div class="xka-product-grid">
         <div class="xka-product-item">
           <div class="xka-product-label">产品核心</div>
           <div class="xka-product-value">七味药食同源配方，人参+灵芝双核驱动，专注睡眠场景</div>
@@ -1265,11 +1380,13 @@
           <div class="xka-product-label">品类优势</div>
           <div class="xka-product-value">普通食品（固体饮料），非保健品，合规门槛低，便于推广</div>
         </div>
-        <div class="xka-product-item">
-          <div class="xka-product-label">验证结果</div>
-          <div class="xka-product-value">XKA平台专卖，首批10万盒售罄，用户复购率达72%</div>
+          <div class="xka-product-item">
+            <div class="xka-product-label">验证结果</div>
+            <div class="xka-product-value">XKA平台专卖，首批10万盒售罄，用户复购率达72%</div>
+          </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 
