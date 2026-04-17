@@ -213,34 +213,33 @@
     }
     .res-card:hover { background: oklch(0.98 0.01 155 / 0.5); }
     .res-title {
-      font-size: 20px; font-weight: 600; color: var(--green-deep);
-      margin-bottom: 20px; position: relative; padding: 12px 20px;
-      background: linear-gradient(135deg,
-        oklch(0.98 0.01 160) 0%,
-        oklch(0.95 0.02 160) 100%);
-      border-left: 4px solid var(--copper);
-      border-radius: 0 8px 8px 0;
+      font-size: 20px; font-weight: 700; color: var(--green-deep);
+      margin-bottom: 20px; position: relative; padding: 0;
+      background: none;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       transition: all 0.3s ease;
     }
-    .res-title:hover {
-      background: linear-gradient(135deg,
-        oklch(0.96 0.02 160) 0%,
-        oklch(0.93 0.03 160) 100%);
-      transform: translateX(4px);
-    }
     .res-title::before {
-      content: '→';
+      content: '';
+      display: inline-block;
+      width: auto;
+      padding: 4px 14px;
+      background: oklch(0.22 0.06 160 / 0.08);
+      border-radius: 20px;
       position: absolute;
-      right: 16px;
       top: 50%;
+      left: -6px;
       transform: translateY(-50%);
-      color: var(--copper);
-      font-size: 14px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      width: calc(100% + 12px);
+      height: 80%;
+      z-index: -1;
+      transition: all 0.3s ease;
     }
     .res-title:hover::before {
-      opacity: 1;
+      background: oklch(0.22 0.06 160 / 0.14);
     }
     .res-list {
       list-style: none; font-size: 14px; color: var(--text-secondary); line-height: 2;
