@@ -1052,6 +1052,133 @@
     .fi-support { border-left: 4px solid var(--green-light); }
     .fi-guide { border-left: 4px solid oklch(0.65 0.08 80); }
 
+    /* 配方详情网格 */
+    .formula-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .formula-detail-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 32px;
+    }
+    .formula-detail-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .formula-detail-card p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .formula-detail-desc {
+      font-size: 13px !important;
+      color: var(--text-muted) !important;
+      margin-bottom: 20px !important;
+    }
+    .formula-sub-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--copper);
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+    .formula-scene-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .formula-scene-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      padding-left: 20px;
+      position: relative;
+    }
+    .formula-scene-list li::before {
+      content: "\2714";
+      position: absolute;
+      left: 0;
+      color: var(--copper);
+      font-size: 12px;
+    }
+    .formula-molecule {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+    .molecule-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--green-mid);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .molecule-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .molecule-source {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+    .molecule-info p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .formula-synergy {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-m);
+      padding: 24px 32px;
+      margin-bottom: 16px;
+    }
+    .formula-synergy .formula-sub-title { margin-top: 0; }
+    .formula-synergy p {
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 500;
+    }
+    .formula-emphasis {
+      background: #fff;
+      border: 1px solid var(--copper);
+      border-radius: var(--radius-m);
+      padding: 24px 32px;
+    }
+    .formula-emphasis .formula-sub-title { margin-top: 0; }
+    .formula-emphasis p {
+      font-size: 16px;
+      color: var(--text-primary);
+      line-height: 1.7;
+      margin: 0;
+      font-weight: 600;
+    }
+
     .collapse-trigger {
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 24px; cursor: pointer;
@@ -1233,6 +1360,8 @@
       .product-info-panel { padding: 24px 20px; grid-template-columns: 1fr; gap: 16px; }
       .product-body { padding: 32px 24px; }
       .formula-grid { grid-template-columns: 1fr; gap: 20px; }
+      .formula-detail-grid { grid-template-columns: 1fr; }
+      .formula-detail-card { padding: 24px; }
       .product-name { font-size: 36px; }
       .product-slogan { font-size: 18px; }
     }
@@ -1635,20 +1764,53 @@
   </div>
   <div class="collapse-body">
     <div class="collapse-body-inner">
-      <div class="formula-grid">
-        <div class="formula-item fi-main"><h4>君药 · 核心驱动</h4>
-          <div class="formula-ingred">葛根</div><p>葛根黄酮·大豆苷 — 养颜赛道最高配比权重，黄酮侧重</p>
-          <div class="formula-ingred">人参</div><p>皂苷Rb1·Rg1 — 协同基础，补气扶正</p>
+      <div class="formula-detail-grid">
+        <div class="formula-detail-card">
+          <h4>场景定位</h4>
+          <p>同样的七味药食同源原料，在养颜场景下强化了葛根黄酮、灵芝多糖和人参皂苷的配比。葛根黄酮扩张血管改善微循环，灵芝多糖促进皮肤细胞代谢修复，青苹果和罗汉果提供强效抗氧化和排毒支持。</p>
+          <div class="formula-sub-title">目标人群</div>
+          <p>女性人群，关注由内而外的健康美</p>
+          <div class="formula-sub-title">应用场景</div>
+          <ul class="formula-scene-list">
+            <li>日常养颜的晨间仪式</li>
+            <li>熬夜后的肌肤修复</li>
+            <li>换季敏感期的内调</li>
+            <li>精致女性的健康管理</li>
+          </ul>
         </div>
-        <div class="formula-item fi-assist"><h4>臣药 · 效果增强</h4>
-          <div class="formula-ingred">灵芝</div><p>多糖·三萜 — 多糖配比强化，养颜赛道侧重多糖</p>
+        <div class="formula-detail-card">
+          <h4>核心活性分子</h4>
+          <p class="formula-detail-desc">该赛道被强化配比的关键分子及其作用机制</p>
+          <div class="formula-molecule">
+            <span class="molecule-num">1</span>
+            <div class="molecule-info">
+              <div class="molecule-name">葛根黄酮 <span class="molecule-source">来源：葛根</span></div>
+              <p>强效抗氧化，清除自由基，上调SOD/GSH，延缓皮肤氧化损伤</p>
+            </div>
+          </div>
+          <div class="formula-molecule">
+            <span class="molecule-num">2</span>
+            <div class="molecule-info">
+              <div class="molecule-name">灵芝多糖 <span class="molecule-source">来源：灵芝</span></div>
+              <p>促进皮肤细胞代谢和修复，调节免疫功能，增强皮肤屏障</p>
+            </div>
+          </div>
+          <div class="formula-molecule">
+            <span class="molecule-num">3</span>
+            <div class="molecule-info">
+              <div class="molecule-name">人参皂苷 <span class="molecule-source">来源：人参</span></div>
+              <p>扩张外周血管改善微循环，调节内分泌，让营养更好地到达皮肤</p>
+            </div>
+          </div>
         </div>
-        <div class="formula-item fi-support"><h4>佐使药 · 强化与调和</h4>
-          <div class="formula-ingred">青苹果</div><p>苹果多酚·维C — 养颜赛道专属加重，其余两款配比较低</p>
-          <div class="formula-ingred">高良姜</div><p>高良姜素 — 基础辅助，温中散寒</p>
-          <div class="formula-ingred">茯砖茶</div><p>多酚·多糖 — 三款共用基础成分</p>
-          <div class="formula-ingred">罗汉果</div><p>罗汉果甜苷 — 调味基底，天然甜味来源</p>
-        </div>
+      </div>
+      <div class="formula-synergy">
+        <div class="formula-sub-title">协同逻辑</div>
+        <p>葛根和人参改善微循环让营养到达皮肤，灵芝促进细胞修复和代谢，青苹果和罗汉果提供抗氧化和排毒支持。由内而外，先让身体健康，皮肤自然会好。</p>
+      </div>
+      <div class="formula-emphasis">
+        <div class="formula-sub-title">配比侧重</div>
+        <p>强化葛根黄酮 + 灵芝多糖 + 人参皂苷配比，突出抗氧化和微循环改善</p>
       </div>
     </div>
   </div>
