@@ -16,6 +16,9 @@
 
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    body { overflow-x: hidden; }
+    img { max-width: 100%; height: auto; }
 
     :root {
       --bg: oklch(0.97 0.008 85);
@@ -1361,23 +1364,118 @@
       .formula-grid { grid-template-columns: 1fr; gap: 20px; }
       .formula-detail-grid { grid-template-columns: 1fr; }
       .formula-detail-card { padding: 24px; }
+      .formula-detail-card h4 { font-size: 16px; }
+      .formula-synergy { padding: 20px 24px; }
+      .formula-synergy p { font-size: 14px; }
+      .formula-emphasis { padding: 20px 24px; }
+      .formula-emphasis p { font-size: 14px; }
+      .formula-molecule { gap: 12px; }
+      .molecule-name { font-size: 14px; }
+      .molecule-source { font-size: 11px; padding: 1px 6px; }
+      .molecule-info p { font-size: 13px; }
+      .molecule-num { width: 24px; height: 24px; font-size: 11px; }
       .product-name { font-size: 36px; }
-      .product-slogan { font-size: 18px; }
+      .product-slogan { font-size: 16px; }
+      .product-showcase { grid-template-columns: 1fr; }
+      .info-panel-header { font-size: 16px; }
+      .xka-section-title { font-size: 22px; padding-left: 16px; }
+      .xka-section-title::before { width: 4px; }
+      .xka-product-image-container img { max-height: 240px; }
+      /* 宝玉煮茶 */
+      .baoyu-hero { border-radius: 12px; }
+      .baoyu-gallery { grid-template-columns: 1fr; }
+      .baoyu-gallery-item img { height: 180px; object-fit: cover; }
+      /* 价值和路径 */
+      .value-num { font-size: 40px; }
+      .value-card { padding: 24px; }
+      .tl-content h4 { font-size: 15px; }
+      /* CTA */
+      .cta-section h2 { font-size: 22px; }
+      .cta-btn { width: 100%; text-align: center; box-sizing: border-box; }
     }
 
     /* 小屏手机 */
     @media (max-width: 420px) {
-      .cover-title { font-size: 28px; }
-      .product-header { padding: 40px 20px; }
-      .product-carousel { min-height: 220px; }
-      .carousel-nav { width: 32px; height: 32px; font-size: 14px; }
-      .product-body { padding: 24px 20px; }
-      .product-name { font-size: 28px; }
-      .product-slogan { font-size: 16px; }
-      .xka-numbers { grid-template-columns: 1fr; }
+      .section { padding: 36px 16px; }
+      .cover { padding: 0 16px 60px; }
+      .cover-title { font-size: 26px; }
+      .cover-subtitle { font-size: 13px; }
+      .cover-tag { font-size: 11px; padding: 6px 16px; }
+      .section-title { font-size: 20px; }
+      .section-desc { font-size: 13px; }
+      .product-header { padding: 36px 16px; }
+      .product-name { font-size: 28px; letter-spacing: 0.05em; }
+      .product-slogan { font-size: 14px; }
+      .product-carousel { min-height: 200px; }
+      .carousel-nav { width: 28px; height: 28px; font-size: 12px; }
+      .carousel-dots { bottom: 8px; gap: 6px; }
+      .carousel-dot { width: 6px; height: 6px; }
+      .product-info-panel { padding: 20px 16px; gap: 12px; }
+      .info-panel-header { font-size: 15px; padding-bottom: 8px; margin-bottom: 12px; }
+      .info-group { padding: 12px 14px; }
+      .info-label { font-size: 11px; }
+      .info-value { font-size: 13px; }
+      .product-body { padding: 24px 16px; }
+      .xka-card { padding: 16px; }
+      .xka-section-title { font-size: 18px; padding-left: 14px; margin-bottom: 16px; }
+      .xka-title { font-size: 16px; }
+      .xka-numbers { grid-template-columns: 1fr; gap: 8px; }
+      .xka-num { padding: 12px; }
+      .xka-num strong { font-size: 20px; }
+      .xka-product-details { padding: 16px; }
+      .xka-product-image-container { padding: 16px; }
+      .xka-product-image-container img { max-width: 180px; max-height: 200px; }
       .channel-grid { grid-template-columns: 1fr !important; }
+      .channel-card { padding: 16px 14px; }
       .terms-grid { grid-template-columns: 1fr; }
-      .baoyu-store-features { grid-template-columns: 1fr; }
+      .terms-card h3 { padding: 20px 16px 0; font-size: 18px; }
+      .price-highlight { padding: 12px 16px 24px; }
+      .price-num { font-size: 20px; }
+      .term-item { padding: 16px 12px; }
+      .baoyu-hero { height: 180px; border-radius: 8px; }
+      .baoyu-hero-title { font-size: 18px; }
+      .baoyu-intro-text h3 { font-size: 16px; }
+      .baoyu-product-img { height: 140px; }
+      .baoyu-store-features { grid-template-columns: 1fr; gap: 8px; }
+      .baoyu-store-feat { padding: 12px 8px; font-size: 12px; }
+      .formula-detail-card { padding: 16px; }
+      .formula-detail-card h4 { font-size: 15px; }
+      .formula-synergy { padding: 16px; }
+      .formula-emphasis { padding: 16px; }
+      .formula-emphasis p { font-size: 14px; }
+      .formula-scene-list li { font-size: 13px; }
+      .collapse-trigger { padding: 14px 16px; }
+      .collapse-trigger-title { font-size: 13px; }
+      .collapse-trigger-hint { font-size: 11px; }
+      .cert-item { padding: 16px; }
+      .cert-item h4 { font-size: 14px; }
+      .cert-item p { font-size: 12px; }
+      .cert-footer { font-size: 11px; }
+      .values-grid { gap: 12px; }
+      .value-card { padding: 20px; }
+      .value-num { font-size: 36px; }
+      .value-title { font-size: 15px; }
+      .value-intro { font-size: 13px; }
+      .timeline { padding-left: 16px; }
+      .tl-item { padding: 0 0 24px 16px; }
+      .tl-marker { font-size: 11px; padding: 4px 10px; }
+      .tl-content h4 { font-size: 14px; }
+      .tl-content p { font-size: 12px; }
+      .why-grid { gap: 12px; }
+      .why-item { padding: 16px; }
+      .why-item h4 { font-size: 14px; }
+      .why-item p { font-size: 12px; }
+      .diff-card { padding: 24px 16px; }
+      .diff-card h3 { font-size: 16px; }
+      .diff-card p { font-size: 14px; }
+      .cta-section { padding: 36px 16px; }
+      .cta-section h2 { font-size: 20px; }
+      .cta-section p { font-size: 13px; }
+      .cta-btn { padding: 14px 32px; font-size: 14px; }
+      .nav-inner { padding: 0 16px; height: 48px; }
+      .nav-brand { font-size: 12px; }
+      .res-card { padding: 20px; }
+      .res-list li { font-size: 13px; }
     }
   </style>
 </head>
