@@ -860,16 +860,17 @@
     }
 
     .product-showcase {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 0;
     }
 
     .product-carousel {
       position: relative;
       background: oklch(0.95 0.008 55);
-      min-height: 480px;
+      min-height: 520px;
       overflow: hidden;
+      width: 100%;
     }
 
     .carousel-track {
@@ -948,15 +949,23 @@
     .carousel-next { right: 12px; }
 
     .product-info-panel {
-      padding: 48px 40px;
+      padding: 40px;
       background: var(--surface);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 40px;
     }
 
     .product-info-panel .info-group {
-      margin-bottom: 28px;
+      padding: 16px 20px;
+      border-radius: 8px;
+      border: 1px solid oklch(0.22 0.06 160 / 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .product-info-panel .info-group:hover {
+      border-color: oklch(0.22 0.06 160 / 0.15);
+      background: oklch(0.22 0.06 160 / 0.02);
     }
 
     .product-info-panel .info-group:last-child {
@@ -964,18 +973,17 @@
     }
 
     .product-info-panel .info-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: oklch(0.55 0.15 335);
-      margin-bottom: 6px;
-      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--copper);
+      margin-bottom: 8px;
     }
 
     .product-info-panel .info-value {
       font-size: 15px;
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .product-body {
@@ -1246,10 +1254,8 @@
       .product-header { padding: 32px 24px; }
       .product-name { font-size: 28px; letter-spacing: 0.1em; }
       .product-slogan { font-size: 13px; }
-      .product-showcase { grid-template-columns: 1fr 1fr; }
       .product-carousel { min-height: 360px; }
-      .product-info-panel { padding: 32px 24px; }
-      .product-info-panel .info-group { margin-bottom: 20px; }
+      .product-info-panel { padding: 32px 24px; gap: 16px 24px; }
       .molecule-grid { grid-template-columns: 1fr; }
       .molecule-item { padding: 24px; }
       .molecule-num { font-size: 36px; }
@@ -1295,10 +1301,9 @@
 
       .product-hero { padding: 0; }
       .product-header { padding: 48px 24px; }
-      .product-showcase { grid-template-columns: 1fr; }
       .product-carousel { min-height: 280px; }
       .carousel-slide { padding: 16px; }
-      .product-info-panel { padding: 32px 24px; }
+      .product-info-panel { padding: 24px 20px; grid-template-columns: 1fr; gap: 16px; }
       .product-body { padding: 32px 24px; }
       .formula-grid { grid-template-columns: 1fr; gap: 20px; }
       .product-name { font-size: 36px; }
@@ -1309,7 +1314,6 @@
       .product-header { padding: 40px 20px; }
       .product-carousel { min-height: 220px; }
       .carousel-nav { width: 32px; height: 32px; font-size: 14px; }
-      .product-info-panel { padding: 24px 20px; }
       .product-body { padding: 24px 20px; }
       .product-name { font-size: 28px; }
       .product-slogan { font-size: 16px; }
