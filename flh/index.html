@@ -217,14 +217,30 @@
     .res-card:hover { background: oklch(0.98 0.01 155 / 0.5); }
     .res-title {
       font-size: 20px; font-weight: 700; color: var(--green-deep);
-      margin-bottom: 20px; position: relative; padding: 0;
+      margin-bottom: 0; position: relative; padding: 0;
       background: none;
       border: none;
-      display: inline-flex;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
       transition: all 0.3s ease;
     }
+    .res-toggle {
+      font-size: 12px; font-weight: 500; color: var(--copper);
+      border: 1px solid var(--copper); border-radius: 20px;
+      padding: 2px 12px; white-space: nowrap;
+      transition: all 0.3s;
+    }
+    .res-collapsible {
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.3s ease, margin 0.3s ease;
+      margin-top: 0;
+    }
+    .res-open .res-collapsible {
+      max-height: 300px; opacity: 1; margin-top: 20px;
+    }
+    .res-open .res-toggle { background: var(--copper); color: #fff; }
     .res-title::before {
       content: '';
       display: inline-block;
@@ -1524,33 +1540,33 @@
   </div>
 
   <div class="res-grid reveal">
-    <div class="res-card">
-      <div class="res-title">科研背书</div>
-      <ul class="res-list">
+    <div class="res-card" onclick="this.classList.toggle('res-open')" style="cursor:pointer;">
+      <div class="res-title">科研背书 <span class="res-toggle">展开</span></div>
+      <ul class="res-list res-collapsible">
         <li>刘仲华院士（中国工程院院士）</li>
         <li>湖南师范大学校长</li>
         <li>2项国家科学技术进步奖</li>
       </ul>
     </div>
-    <div class="res-card">
-      <div class="res-title">科研平台</div>
-      <ul class="res-list">
+    <div class="res-card" onclick="this.classList.toggle('res-open')" style="cursor:pointer;">
+      <div class="res-title">科研平台 <span class="res-toggle">展开</span></div>
+      <ul class="res-list res-collapsible">
         <li>国家植物功能成分利用工程技术研究中心（该领域国内唯一）</li>
         <li>茶学教育部重点实验室</li>
         <li>国家中医药管理局亚健康干预技术实验室</li>
       </ul>
     </div>
-    <div class="res-card">
-      <div class="res-title">研发积累</div>
-      <ul class="res-list">
+    <div class="res-card" onclick="this.classList.toggle('res-open')" style="cursor:pointer;">
+      <div class="res-title">研发积累 <span class="res-toggle">展开</span></div>
+      <ul class="res-list res-collapsible">
         <li>100+种已研发植物功能成分</li>
         <li>200+项省级以上科研项目</li>
         <li>5年数百次试验，七味最优解配方</li>
       </ul>
     </div>
-    <div class="res-card">
-      <div class="res-title">生产与供应链</div>
-      <ul class="res-list">
+    <div class="res-card" onclick="this.classList.toggle('res-open')" style="cursor:pointer;">
+      <div class="res-title">生产与供应链 <span class="res-toggle">展开</span></div>
+      <ul class="res-list res-collapsible">
         <li>自有供应链 + GMP标准合作工厂</li>
         <li>柔性生产线，支持ODM定制</li>
         <li>上游四大产区茶园 + 道地药材网络</li>
@@ -2123,6 +2139,13 @@ function toggleCollapse(trigger) {
   body.classList.toggle('open');
   if (tag) tag.textContent = trigger.classList.contains('active') ? '收起' : '展开';
 }
+
+document.querySelectorAll('.res-card[onclick]').forEach(card => {
+  card.addEventListener('click', function() {
+    const t = this.querySelector('.res-toggle');
+    if (t) t.textContent = this.classList.contains('res-open') ? '收起' : '展开';
+  });
+});
 
 const nav = document.querySelector('.nav');
 const cover = document.querySelector('.cover');
