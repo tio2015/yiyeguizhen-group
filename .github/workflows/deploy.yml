@@ -71,3 +71,9 @@ jobs:
             --meta "Cache-Control:public, max-age=604800" -f
           ossutil cp imgs/og-flh3.png oss://yiyeguizhen-web-hk/imgs/og-flh3.png \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+          ossutil cp imgs/nvshenjimi-01.jpg oss://yiyeguizhen-web-hk/imgs/nvshenjimi-01.jpg \
+            --meta "Cache-Control:public, max-age=604800" -f
+          ossutil cp imgs/nvshenjimi-02.jpg oss://yiyeguizhen-web-hk/imgs/nvshenjimi-02.jpg \
+            --meta "Cache-Control:public, max-age=604800" -f
+          ossutil cp imgs/nvshenjimi-03.jpg oss://yiyeguizhen-web-hk/imgs/nvshenjimi-03.jpg \
+            --meta "Cache-Control:public, max-age=604800" -f

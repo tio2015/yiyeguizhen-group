@@ -866,22 +866,87 @@
       gap: 0;
     }
 
-    .product-image {
-      background: oklch(0.97 0.008 55);
+    .product-carousel {
+      position: relative;
+      background: oklch(0.95 0.008 55);
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 48px 32px;
-      min-height: 400px;
+      padding: 24px;
     }
 
-    .product-image img {
-      max-width: 100%;
-      max-height: 420px;
-      height: auto;
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: var(--radius-m);
-      filter: drop-shadow(0 8px 32px rgba(0,0,0,0.12));
     }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: 1.5px solid rgba(255,255,255,0.8);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-dot.active {
+      background: var(--copper);
+      border-color: var(--copper);
+      transform: scale(1.2);
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--green-deep);
+      transition: all 0.3s ease;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .carousel-nav:hover {
+      background: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-prev { left: 12px; }
+    .carousel-next { right: 12px; }
 
     .product-info-panel {
       padding: 48px 40px;
@@ -1183,7 +1248,7 @@
       .product-name { font-size: 28px; letter-spacing: 0.1em; }
       .product-slogan { font-size: 13px; }
       .product-showcase { grid-template-columns: 1fr 1fr; }
-      .product-image { padding: 24px; min-height: 300px; }
+      .product-carousel { min-height: 360px; }
       .product-info-panel { padding: 32px 24px; }
       .product-info-panel .info-group { margin-bottom: 20px; }
       .molecule-grid { grid-template-columns: 1fr; }
@@ -1232,7 +1297,8 @@
       .product-hero { padding: 0; }
       .product-header { padding: 48px 24px; }
       .product-showcase { grid-template-columns: 1fr; }
-      .product-image { min-height: 280px; padding: 32px 24px; }
+      .product-carousel { min-height: 280px; }
+      .carousel-slide { padding: 16px; }
       .product-info-panel { padding: 32px 24px; }
       .product-body { padding: 32px 24px; }
       .formula-grid { grid-template-columns: 1fr; gap: 20px; }
@@ -1242,7 +1308,8 @@
 
     @media (max-width: 420px) {
       .product-header { padding: 40px 20px; }
-      .product-image { min-height: 200px; padding: 24px 20px; }
+      .product-carousel { min-height: 220px; }
+      .carousel-nav { width: 32px; height: 32px; font-size: 14px; }
       .product-info-panel { padding: 24px 20px; }
       .product-body { padding: 24px 20px; }
       .product-name { font-size: 28px; }
@@ -1570,8 +1637,25 @@
       <div class="product-slogan">每天一杯女神肌密，喝出好气色</div>
     </div>
     <div class="product-showcase">
-      <div class="product-image">
-        <img src="https://yiyeguizhen.com/imgs/nvshenjimi-product.jpg" alt="女神肌密产品包装">
+      <div class="product-carousel" id="productCarousel">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <img src="https://yiyeguizhen.com/imgs/nvshenjimi-01.jpg" alt="女神肌密产品包装展示">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://yiyeguizhen.com/imgs/nvshenjimi-02.jpg" alt="女神肌密产品正面">
+          </div>
+          <div class="carousel-slide">
+            <img src="https://yiyeguizhen.com/imgs/nvshenjimi-03.jpg" alt="女神肌密产品开箱">
+          </div>
+        </div>
+        <button class="carousel-nav carousel-prev" onclick="moveCarousel(-1)">&#10094;</button>
+        <button class="carousel-nav carousel-next" onclick="moveCarousel(1)">&#10095;</button>
+        <div class="carousel-dots">
+          <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+          <span class="carousel-dot" onclick="goToSlide(1)"></span>
+          <span class="carousel-dot" onclick="goToSlide(2)"></span>
+        </div>
       </div>
       <div class="product-info-panel">
         <div class="info-group">
@@ -1791,6 +1875,51 @@
 </div>
 
 <script>
+// 产品图片轮播
+let currentSlide = 0;
+const totalSlides = 3;
+let autoPlayTimer;
+
+function moveCarousel(dir) {
+  currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+  updateCarousel();
+  resetAutoPlay();
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  updateCarousel();
+  resetAutoPlay();
+}
+
+function updateCarousel() {
+  const track = document.getElementById('carouselTrack');
+  if (track) track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i === currentSlide);
+  });
+}
+
+function resetAutoPlay() {
+  clearInterval(autoPlayTimer);
+  autoPlayTimer = setInterval(() => moveCarousel(1), 4000);
+}
+
+// 启动自动轮播
+autoPlayTimer = setInterval(() => moveCarousel(1), 4000);
+
+// 触摸滑动支持
+(function() {
+  const carousel = document.getElementById('productCarousel');
+  if (!carousel) return;
+  let startX = 0;
+  carousel.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
+  carousel.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+  });
+})();
+
 function toggleCollapse(trigger) {
   const body = trigger.nextElementSibling;
   const tag = trigger.querySelector('.collapse-tag');
