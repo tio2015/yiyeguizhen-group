@@ -143,6 +143,54 @@ section{padding:80px 20px;max-width:1200px;margin:0 auto}
   .modal-vs-opp-name{font-size:1.15rem}
   .modal-battle-btn{padding:16px 28px;font-size:1.05rem;border-radius:14px}
 }
+/* ===== JUTSU DETAIL MODAL ===== */
+.modal-jutsu-item.jutsu-clickable{cursor:pointer;transition:.25s;position:relative}
+.modal-jutsu-item.jutsu-clickable:hover{background:rgba(78,205,196,0.18);transform:translateX(4px)}
+.modal-jutsu-arrow{margin-left:auto;color:var(--cyan);font-weight:900;opacity:.6;transition:.25s}
+.modal-jutsu-item.jutsu-clickable:hover .modal-jutsu-arrow{opacity:1;transform:translateX(2px)}
+.jutsu-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.93);z-index:2500;align-items:center;justify-content:center;padding:20px}
+.jutsu-modal-overlay.show{display:flex;animation:fadeUp .35s}
+.jutsu-modal-card{background:var(--navy);border:2px solid var(--cyan);border-radius:18px;max-width:580px;width:100%;max-height:90vh;overflow:hidden;position:relative;box-shadow:0 0 80px var(--cyan-glow)}
+.jutsu-close{position:absolute;top:14px;right:18px;background:rgba(0,0,0,0.55);border:none;color:var(--white);font-size:1.5rem;width:42px;height:42px;border-radius:50%;cursor:pointer;z-index:10;display:flex;align-items:center;justify-content:center;transition:.25s}
+.jutsu-close:hover{background:rgba(231,76,60,0.85);transform:scale(1.1)}
+.jutsu-fx{height:180px;position:relative;overflow:hidden;background:#05070f}
+.jutsu-fx::before,.jutsu-fx::after{content:'';position:absolute;inset:0;pointer-events:none}
+.jutsu-content{padding:28px 26px;max-height:calc(90vh - 180px);overflow-y:auto}
+.jutsu-name{font-size:2rem;font-weight:900;color:var(--white);letter-spacing:-1px;line-height:1.1}
+.jutsu-jp{font-size:.9rem;color:var(--cyan);margin-bottom:10px;letter-spacing:2px}
+.jutsu-tag{display:inline-block;padding:5px 14px;background:rgba(78,205,196,0.15);border:1px solid rgba(78,205,196,0.3);border-radius:8px;font-size:.75rem;color:var(--cyan);letter-spacing:1px;margin-bottom:18px;font-weight:700}
+.jutsu-desc{font-size:.95rem;line-height:1.8;color:var(--light);margin-bottom:22px;padding:16px 18px;background:var(--slate);border-radius:12px;border-left:3px solid var(--cyan)}
+.jutsu-users-label{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:3px;color:var(--cyan);margin-bottom:12px}
+.jutsu-users{display:flex;gap:10px;flex-wrap:wrap}
+.jutsu-user{display:flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;background:rgba(78,205,196,0.08);border:1px solid rgba(78,205,196,0.25);border-radius:24px;font-size:.85rem;color:var(--white);font-weight:700}
+.jutsu-user img,.jutsu-user-emoji{height:32px;width:32px;object-fit:contain;border-radius:50%;background:rgba(8,12,24,0.7);display:flex;align-items:center;justify-content:center;font-size:18px}
+@keyframes fxRotate{to{transform:rotate(360deg)}}
+@keyframes fxPulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.8;transform:scale(1.12)}}
+@keyframes fxFlash{0%,100%{opacity:.3}50%{opacity:.95}}
+.fx-blue::before{background:radial-gradient(circle,rgba(0,168,255,0.55) 0%,transparent 70%);animation:fxPulse 2s ease-in-out infinite}
+.fx-blue::after{background:conic-gradient(from 0deg,transparent,rgba(78,205,196,0.85) 15%,transparent 30%,transparent 50%,rgba(0,168,255,0.85) 65%,transparent 80%);animation:fxRotate 3s linear infinite}
+.fx-orange::before{background:radial-gradient(circle,rgba(243,156,18,0.6) 0%,transparent 70%);animation:fxPulse 1.8s ease-in-out infinite}
+.fx-orange::after{background:conic-gradient(from 0deg,transparent,rgba(231,76,60,0.8),rgba(243,156,18,0.95),rgba(231,76,60,0.8),transparent);animation:fxRotate 4s linear infinite}
+.fx-red::before{background:radial-gradient(circle,rgba(231,76,60,0.65) 0%,transparent 65%);animation:fxPulse 2s ease-in-out infinite}
+.fx-red::after{background:radial-gradient(circle at 50% 50%,#000 22%,transparent 23%,transparent 34%,rgba(231,76,60,0.9) 35%,transparent 42%,transparent 55%,rgba(231,76,60,0.4) 56%,transparent 65%);animation:fxRotate 6s linear infinite}
+.fx-purple::before{background:radial-gradient(circle,rgba(142,68,173,0.65) 0%,transparent 70%);animation:fxPulse 2.5s ease-in-out infinite}
+.fx-purple::after{background:repeating-radial-gradient(circle at 50% 50%,rgba(142,68,173,0.7) 0px,rgba(142,68,173,0.7) 5px,transparent 5px,transparent 28px);animation:fxRotate 10s linear infinite}
+.fx-gold::before{background:radial-gradient(circle,rgba(255,215,0,0.55) 0%,transparent 70%);animation:fxFlash 1.1s ease-in-out infinite}
+.fx-gold::after{background:conic-gradient(from 0deg,rgba(255,215,0,0.95),transparent 25%,rgba(255,215,0,0.95) 50%,transparent 75%,rgba(255,215,0,0.95));animation:fxRotate 2.2s linear infinite}
+.fx-green::before{background:radial-gradient(circle,rgba(46,204,113,0.55) 0%,transparent 70%);animation:fxPulse 2.2s ease-in-out infinite}
+.fx-green::after{background:linear-gradient(45deg,transparent 35%,rgba(46,204,113,0.65) 50%,transparent 65%),linear-gradient(-45deg,transparent 35%,rgba(46,204,113,0.4) 50%,transparent 65%);animation:fxRotate 8s linear infinite}
+@media (min-width:900px) and (orientation:landscape){
+  .jutsu-modal-card{max-width:720px}
+  .jutsu-fx{height:240px}
+  .jutsu-content{padding:36px 34px}
+  .jutsu-name{font-size:2.4rem}
+  .jutsu-jp{font-size:1rem;margin-bottom:14px}
+  .jutsu-tag{font-size:.85rem;padding:6px 18px;margin-bottom:24px}
+  .jutsu-desc{font-size:1.05rem;padding:18px 22px;line-height:1.8}
+  .jutsu-users-label{font-size:.8rem;margin-bottom:16px}
+  .jutsu-user{padding:8px 16px 8px 8px;font-size:1rem}
+  .jutsu-user img,.jutsu-user-emoji{height:40px;width:40px;font-size:22px}
+}
 /* ===== BATTLE ===== */
 .battle-section{padding:80px 20px;max-width:900px;margin:0 auto}
 .battle-arena{display:flex;align-items:stretch;gap:0;margin-bottom:30px}
@@ -378,6 +426,11 @@ footer{text-align:center;padding:30px;background:var(--navy);border-top:1px soli
   <div class="modal-card" id="modalCard"></div>
 </div>
 
+<!-- JUTSU DETAIL MODAL -->
+<div class="jutsu-modal-overlay" id="jutsuModal" onclick="if(event.target===this)closeJutsu()">
+  <div class="jutsu-modal-card" id="jutsuModalCard"></div>
+</div>
+
 <footer>
   <div class="footer-row"><img src="img/konoha.svg" alt=""><div class="footer-text">用 ♥ 为戴阅打造 — 2026</div><img src="img/konoha.svg" alt=""></div>
 </footer>
@@ -550,6 +603,43 @@ const rankings = [
   {id:'sakura',reason:'从弱到强，百豪之术觉醒后也很能打！'},
 ];
 
+const jutsuLib = {
+  '雷切':{jp:'らいきり',type:'S 级忍术',elem:'雷',fx:'blue',desc:'卡卡西自创的究极暗杀忍术。手中凝聚雷属性查克拉形成高速电刃，可以轻易劈开岩石和肉体。声音像千只鸟鸣，所以起源叫"千鸟"。'},
+  '螺旋丸':{jp:'らせんがん',type:'A 级忍术',elem:'无性质变化',fx:'blue',desc:'四代火影波风水门耗时三年研发的高密度查克拉忍术。查克拉在掌中急速旋转形成球形，击中瞬间爆发巨大破坏力。鸣人的招牌。'},
+  '千鸟':{jp:'ちどり',type:'S 级忍术',elem:'雷',fx:'blue',desc:'雷切的原型，被卡卡西开发后传给佐助。直线冲刺速度堪比闪电，声音像千只鸟同时鸣叫。'},
+  '月读':{jp:'つくよみ',type:'禁术瞳术',elem:'万花筒写轮眼',fx:'red',desc:'鼬的万花筒写轮眼最强幻术。能扭曲对方对时间的感觉，在瞬间让敌人体验数天甚至数十年的折磨。'},
+  '天照':{jp:'アマテラス',type:'禁术',elem:'万花筒写轮眼',fx:'red',desc:'鼬另一只眼发动的黑色火焰，温度堪比太阳，燃烧七天七夜不灭。目光所及之处皆可焚烧。'},
+  '须佐能乎':{jp:'スサノオ',type:'终极忍术',elem:'万花筒写轮眼',fx:'red',desc:'双眼开启万花筒写轮眼后才能使用的巨型查克拉守护神。鼬、佐助、斑、带土都使用过完全体。'},
+  '神威':{jp:'カムイ',type:'禁术瞳术',elem:'万花筒写轮眼',fx:'red',desc:'带土和卡卡西的招牌。能将物体吸入另一个次元空间，也能将自己变成虚幻状态穿越实体。'},
+  '飞雷神':{jp:'ひらいしん',type:'S 级时空术',elem:'时空忍术',fx:'gold',desc:'四代火影波风水门的招牌忍术。瞬间传送到标有飞雷神印记的位置，"黄色闪光"之名由此而来。'},
+  '八门遁甲':{jp:'はちもんとんこう',type:'禁术体术',elem:'体术',fx:'green',desc:'打开身体八个查克拉之门获得超越极限的体术能力。全部打开会导致死亡，凯用它击败了完全体斑。'},
+  '白眼':{jp:'びゃくがん',type:'血继限界',elem:'瞳术',fx:'purple',desc:'日向一族的家传瞳术。能看到查克拉经脉、几乎 360 度视野、看透实体，是柔拳的基础。'},
+  '八卦六十四掌':{jp:'はっけろくじゅうよんしょう',type:'A 级体术',elem:'柔拳',fx:'purple',desc:'日向柔拳的极意。通过 64 次精准打击封闭敌人的查克拉经脉，让对方无法使用忍术。'},
+  '写轮眼':{jp:'しゃりんがん',type:'血继限界',elem:'瞳术',fx:'red',desc:'宇智波一族的家传瞳术。能看穿查克拉流向、复制任何忍术（血继限界除外）、预测对手动作。'},
+  '万花筒写轮眼':{jp:'まんげきょうしゃりんがん',type:'禁术瞳术',elem:'瞳术',fx:'red',desc:'觉醒后的写轮眼上位形态。觉醒代价是失去最亲近的人。能使用月读、天照、神威、须佐能乎等禁术。'},
+  '轮回眼':{jp:'りんねがん',type:'最强瞳术',elem:'瞳术',fx:'purple',desc:'六道仙人的瞳力，所有瞳术的始祖。能使用六道忍术、操控生死、召唤神明。长门、斑、佐助都拥有过。'},
+  '地爆天星':{jp:'ちばくてんせい',type:'SS 级忍术',elem:'万有引力',fx:'purple',desc:'佩恩轮回眼的引力术。创造一颗漆黑引力球把周围一切吸附成星球，震撼毁灭了木叶村。'},
+  '神罗天征':{jp:'しんらてんせい',type:'SS 级忍术',elem:'斥力',fx:'purple',desc:'佩恩轮回眼的斥力忍术。能向所有方向发射强大冲击波摧毁一切。'},
+  '木遁':{jp:'もくとん',type:'血继限界',elem:'木（水+土）',fx:'green',desc:'初代火影千手柱间独有的血继限界。同时拥有水和土查克拉属性才能使用。真数千手是木遁的终极形态。'},
+  '影子模仿术':{jp:'かげまね',type:'秘传忍术',elem:'阴遁',fx:'purple',desc:'奈良一族秘传。通过连接敌人的影子，让对方身体跟自己做完全相同的动作。鹿丸的招牌。'},
+  '影分身':{jp:'かげぶんしん',type:'禁术',elem:'无性质变化',fx:'gold',desc:'禁术级分身术。分身是实体，可以独立攻击、学习。鸣人用它同时修炼几百倍速度成长。'},
+  '通灵之术':{jp:'こっくりのじゅつ',type:'高等忍术',elem:'血契约',fx:'gold',desc:'召唤契约动物协助战斗。自来也的蛤蟆、大蛇丸的蛇、纲手的蛞蝓、犬冢的狗都是通灵兽。'},
+  '仙人模式':{jp:'せんにんモード',type:'仙术',elem:'自然能量',fx:'gold',desc:'吸收自然能量增强查克拉的最高级形态。妙木山、龙地洞、九尾融合等多种形式。力量倍增但需静止吸气。'},
+  '秽土转生':{jp:'えどてんせい',type:'S 级禁术',elem:'复活术',fx:'red',desc:'二代火影扉间研发的禁术。用他人生命作祭品复活已死之人，复活体拥有完整生前实力且不会死。'},
+  '砂瀑送葬':{jp:'さばくそうそう',type:'A 级忍术',elem:'砂',fx:'orange',desc:'我爱罗的终极忍术。砂子包裹敌人后急速收紧，将对方压碎。砂隐村风影的绝技。'},
+  '创造再生':{jp:'そうぞうさいせい',type:'S 级医疗术',elem:'医疗',fx:'green',desc:'纲手的招牌医疗忍术。消耗大量查克拉瞬间修复身体伤害。实际是"百豪之术"的支撑术。'},
+  '百豪之术':{jp:'びゃくごうのじゅつ',type:'S 级医疗术',elem:'查克拉积蓄',fx:'green',desc:'纲手传给樱的终极医疗术。在额头积蓄查克拉长年不用，关键时刻瞬间释放获得超强治疗+力量。'},
+  '九尾查克拉':{jp:'きゅうびチャクラ',type:'人柱力之力',elem:'九尾',fx:'orange',desc:'鸣人体内九尾妖狐的查克拉。掌握后能变身九尾模式、仙人九尾模式，是鸣人超强力量的源泉。'},
+  '鲛肌':{jp:'サメハダ',type:'幻之刀',elem:'查克拉吸收',fx:'blue',desc:'雾隐忍刀七刀之一。会生长，能吸收敌人查克拉补充主人。持有者干柿鬼鲛。'},
+  '黏土爆弹':{jp:'ねんどばくだん',type:'禁术',elem:'土·爆炸',fx:'gold',desc:'迪达拉的艺术。手掌的嘴把查克拉混入黏土，塑形成动物命令爆炸。"艺术就是爆炸，嗯！"'},
+  '牙通牙':{jp:'がつがが',type:'秘传体术',elem:'兽化',fx:'orange',desc:'犬冢家秘传招式。人和犬一起旋转冲击敌人，是犬冢一族的绝招。'},
+  '魔幻·树缚杀':{jp:'まげん・じゅばくさつ',type:'A 级幻术',elem:'幻术',fx:'red',desc:'红的招牌幻术。让敌人陷入被树缠绕的幻觉，无法动弹最终被击杀。'},
+};
+function findJutsu(str){
+  const keys=Object.keys(jutsuLib).sort((a,b)=>b.length-a.length);
+  for(const k of keys){if(str.includes(k))return {key:k,data:jutsuLib[k]};}
+  return null;
+}
 const quizQs = [
   {q:'遇到危险你会怎么做？',opts:[
     {t:'🧠 冷静分析，找最佳策略',s:{kakashi:3,itachi:2,minato:2,sasuke:1}},
@@ -708,7 +798,7 @@ function openModal(id){
         <div class="modal-info-item"><span class="modal-info-label">稀有度：</span><span class="modal-info-value">${n.rarity}级</span></div>
       </div>
       <div class="modal-stats">${Object.entries(n.stats).map(([k,v])=>`<div class="modal-stat-row"><span class="modal-stat-label">${statLabels[k]}</span><div class="modal-stat-bar"><div class="modal-stat-fill" style="width:${v}%;background:${statColors[k]}"></div></div><span class="modal-stat-val">${v}</span></div>`).join('')}</div>
-      <div class="modal-jutsu-list">${n.jutsu.map(j=>`<div class="modal-jutsu-item">${j}</div>`).join('')}</div>
+      <div class="modal-jutsu-list">${n.jutsu.map(j=>{const jd=findJutsu(j);return `<div class="modal-jutsu-item${jd?' jutsu-clickable':''}"${jd?` onclick="openJutsu('${jd.key}')"`:''}>${j}${jd?'<span class="modal-jutsu-arrow">→</span>':''}</div>`;}).join('')}</div>
       <div class="modal-quote">${n.quote}</div>
       <div class="modal-vs-box">
         <div class="modal-vs-label">⚔ 随机挑战者 ⚔</div>
@@ -729,6 +819,27 @@ function randomBattleStart(lId,rId){
   closeModal();
   setTimeout(()=>document.getElementById('battle').scrollIntoView({behavior:'smooth',block:'start'}),250);
 }
+function openJutsu(key){
+  const j=jutsuLib[key];if(!j)return;
+  const userList=ninjas.filter(n=>n.jutsu.some(x=>x.includes(key)));
+  const userHtml=userList.map(u=>{
+    const av=u.img?`<img src="${u.img}" alt="${u.name}">`:`<div class="jutsu-user-emoji">${u.emoji||'🥷'}</div>`;
+    return `<div class="jutsu-user">${av}<span>${u.name}</span></div>`;
+  }).join('');
+  document.getElementById('jutsuModalCard').innerHTML=`
+    <button class="jutsu-close" onclick="closeJutsu()">&times;</button>
+    <div class="jutsu-fx fx-${j.fx}"></div>
+    <div class="jutsu-content">
+      <div class="jutsu-name">${key}</div>
+      <div class="jutsu-jp">${j.jp}</div>
+      <div class="jutsu-tag">${j.type} · ${j.elem}</div>
+      <div class="jutsu-desc">${j.desc}</div>
+      <div class="jutsu-users-label">⚔ 会使用此忍术的忍者 ⚔</div>
+      <div class="jutsu-users">${userHtml}</div>
+    </div>`;
+  document.getElementById('jutsuModal').classList.add('show');
+}
+function closeJutsu(){document.getElementById('jutsuModal').classList.remove('show');}
 
 // ===== BATTLE =====
 function initBattle(){
