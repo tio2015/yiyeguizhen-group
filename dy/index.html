@@ -98,6 +98,34 @@ section{padding:80px 20px;max-width:1200px;margin:0 auto}
 .modal-jutsu-item{display:flex;gap:8px;padding:8px;background:rgba(78,205,196,0.06);border-radius:8px;margin-bottom:6px;font-size:.8rem;align-items:center}
 .modal-jutsu-icon{font-size:1.2rem}
 .modal-quote{padding:12px;background:var(--slate);border-radius:10px;border-left:3px solid var(--cyan);font-size:.85rem;color:var(--light);font-style:italic;line-height:1.6}
+/* ===== MODAL · iPad 横屏全屏详情页 ===== */
+@media (min-width:900px) and (orientation:landscape){
+  .modal-overlay{padding:0;background:rgba(0,0,0,0.96)}
+  .modal-card{max-width:none;width:100vw;height:100vh;max-height:100vh;border-radius:0;border:none;display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden;box-shadow:none}
+  .modal-close{top:28px;right:36px;font-size:2rem;width:52px;height:52px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.45);color:var(--white);z-index:20;transition:.2s}
+  .modal-close:hover{background:rgba(231,76,60,0.8);transform:scale(1.1)}
+  .modal-hero{height:100vh;padding:48px;background:radial-gradient(circle at 50% 55%,rgba(78,205,196,0.12) 0%,rgba(8,12,24,0.98) 70%),var(--bg);border-right:1px solid rgba(78,205,196,0.15);align-items:center}
+  .modal-hero img{max-height:92vh;max-width:100%;width:auto;filter:drop-shadow(0 12px 40px rgba(0,0,0,0.75)) drop-shadow(0 0 80px var(--cyan-glow));animation:heroFadeIn .6s ease-out}
+  @keyframes heroFadeIn{from{opacity:0;transform:translateY(20px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+  .modal-body{padding:64px 56px;overflow-y:auto;height:100vh;display:flex;flex-direction:column}
+  .modal-name{font-size:3rem;line-height:1.1;letter-spacing:-1px}
+  .modal-name-jp{font-size:1.15rem;margin-bottom:14px;letter-spacing:2px}
+  .modal-title-badge{font-size:1rem;padding:7px 20px;margin-bottom:32px;align-self:flex-start;border-radius:6px}
+  .modal-info{grid-template-columns:1fr 1fr;gap:16px 28px;margin-bottom:32px;padding:20px 0;border-top:1px solid rgba(78,205,196,0.1);border-bottom:1px solid rgba(78,205,196,0.1)}
+  .modal-info-item{font-size:1.05rem;display:flex;gap:8px;align-items:baseline}
+  .modal-info-label{font-size:.95rem;opacity:.75}
+  .modal-info-value{font-size:1.05rem}
+  .modal-stats{margin-bottom:32px}
+  .modal-stat-row{font-size:1.1rem;margin-bottom:14px;gap:16px}
+  .modal-stat-label{min-width:64px;font-size:1rem}
+  .modal-stat-bar{height:12px;border-radius:6px}
+  .modal-stat-fill{border-radius:6px}
+  .modal-stat-val{font-size:1.05rem;min-width:44px}
+  .modal-jutsu-list{margin-bottom:28px}
+  .modal-jutsu-item{font-size:1.1rem;padding:14px 18px;margin-bottom:10px;border-radius:10px}
+  .modal-jutsu-icon{font-size:1.5rem}
+  .modal-quote{font-size:1.1rem;padding:20px 22px;line-height:1.75;border-left-width:4px}
+}
 /* ===== BATTLE ===== */
 .battle-section{padding:80px 20px;max-width:900px;margin:0 auto}
 .battle-arena{display:flex;align-items:stretch;gap:0;margin-bottom:30px}
