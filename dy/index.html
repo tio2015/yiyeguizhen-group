@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>戴阅的火影世界 — 忍者卡牌图鉴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',sans-serif;background:#080c18;color:#c8d6e5;overflow-x:hidden;min-height:100vh}
+:root{
+  --bg:#080c18;--navy:#0d1225;--slate:#151b30;--card-bg:#111830;
+  --silver:#8e99a9;--light:#c8d6e5;--white:#eef2f7;
+  --cyan:#4ecdc4;--cyan-glow:rgba(78,205,196,0.35);
+  --red:#e74c3c;--orange:#f39c12;--purple:#8e44ad;--gold:#ffd700;
+  --blue:#00a8ff;--green:#2ecc71;--pink:#e91e8c;
+}
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:12px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(8,12,24,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(78,205,196,0.1)}
+.nav-logo{display:flex;align-items:center;gap:8px}
+.nav-logo img{height:24px;filter:brightness(0) invert(0.6) sepia(1) saturate(3) hue-rotate(135deg)}
+.nav-logo span{font-family:'Orbitron',sans-serif;font-weight:900;font-size:.9rem;color:var(--cyan);text-shadow:0 0 10px var(--cyan-glow);letter-spacing:2px}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{color:var(--silver);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:1px;transition:.3s}
+.nav-links a:hover{color:var(--cyan)}
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 20px 40px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 80%,rgba(78,205,196,0.06) 0%,transparent 60%),var(--bg)}
+.hero-chars{display:flex;align-items:flex-end;justify-content:center;gap:0;margin-bottom:20px;position:relative}
+.hero-char{transition:.3s;filter:drop-shadow(0 0 20px rgba(0,0,0,0.8))}
+.hero-char:nth-child(1){width:160px;transform:translateX(30px);z-index:1;opacity:.8}
+.hero-char:nth-child(2){width:240px;z-index:3;animation:hero-float 3s ease-in-out infinite}
+.hero-char:nth-child(3){width:160px;transform:translateX(-30px);z-index:1;opacity:.8}
+@keyframes hero-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero-badge{display:inline-block;padding:6px 20px;border:1px solid var(--cyan);border-radius:20px;font-size:.7rem;color:var(--cyan);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .8s .3s forwards}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(2rem,7vw,4.5rem);font-weight:900;color:var(--white);text-shadow:0 0 30px var(--cyan-glow);line-height:1.1;opacity:0;animation:fadeUp .8s .5s forwards}
+.hero h2{font-size:clamp(1.2rem,4vw,2rem);font-weight:900;color:var(--cyan);margin-top:8px;opacity:0;animation:fadeUp .8s .7s forwards}
+.hero-stats{display:flex;gap:40px;margin-top:30px;opacity:0;animation:fadeUp .8s .9s forwards}
+.hero-stat{text-align:center}
+.hero-stat-val{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:var(--cyan)}
+.hero-stat-label{font-size:.7rem;color:var(--silver);letter-spacing:2px;text-transform:uppercase}
+.scroll-down{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);opacity:0;animation:fadeUp 1s 1.5s forwards}
+.scroll-down span{font-size:.7rem;color:var(--silver);letter-spacing:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+/* ===== SECTION ===== */
+section{padding:80px 20px;max-width:1200px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:50px}
+.section-tag{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:6px;color:var(--cyan);text-transform:uppercase;margin-bottom:6px;opacity:.7}
+.section-title{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:var(--white);text-shadow:0 0 15px var(--cyan-glow)}
+/* ===== CARD GRID ===== */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.ninja-card{background:var(--card-bg);border:2px solid rgba(78,205,196,0.12);border-radius:16px;overflow:hidden;cursor:pointer;transition:.3s;position:relative}
+.ninja-card:hover{border-color:var(--cyan);transform:translateY(-6px);box-shadow:0 12px 40px rgba(78,205,196,0.15)}
+.ninja-card.rarity-s{border-color:rgba(255,215,0,0.3)}
+.ninja-card.rarity-s:hover{border-color:var(--gold);box-shadow:0 12px 40px rgba(255,215,0,0.15)}
+.ninja-card.rarity-a{border-color:rgba(142,68,173,0.3)}
+.ninja-card.rarity-a:hover{border-color:var(--purple);box-shadow:0 12px 40px rgba(142,68,173,0.15)}
+.card-rarity{position:absolute;top:12px;right:12px;padding:3px 10px;border-radius:4px;font-family:'Orbitron',sans-serif;font-size:.6rem;font-weight:900;letter-spacing:1px;z-index:2}
+.rarity-s .card-rarity{background:linear-gradient(135deg,var(--gold),#ff8c00);color:#1a1a2e}
+.rarity-a .card-rarity{background:var(--purple);color:#fff}
+.rarity-b .card-rarity{background:var(--cyan);color:#0a0e1a}
+.card-img-wrap{height:200px;display:flex;align-items:center;justify-content:center;padding:16px;background:linear-gradient(180deg,rgba(78,205,196,0.04),transparent)}
+.card-img-wrap img{max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.6));transition:.3s}
+.ninja-card:hover .card-img-wrap img{transform:scale(1.08)}
+.card-body{padding:16px}
+.card-name{font-size:1.1rem;font-weight:900;color:var(--white);margin-bottom:2px}
+.card-name-jp{font-size:.7rem;color:var(--silver);margin-bottom:10px}
+.card-stats{display:flex;flex-direction:column;gap:6px}
+.stat-row{display:flex;align-items:center;gap:8px;font-size:.75rem}
+.stat-label{color:var(--silver);min-width:32px}
+.stat-bar{flex:1;height:6px;background:var(--slate);border-radius:3px;overflow:hidden}
+.stat-fill{height:100%;border-radius:3px;transition:width 1s ease}
+.stat-val{color:var(--cyan);font-weight:700;font-family:'Orbitron',sans-serif;font-size:.65rem;min-width:24px;text-align:right}
+.card-jutsu{margin-top:10px;padding:8px;background:rgba(78,205,196,0.06);border-radius:8px;font-size:.75rem;color:var(--light)}
+.card-jutsu-label{font-size:.6rem;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:3px}
+/* ===== CARD DETAIL MODAL ===== */
+.modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:2000;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.show{display:flex}
+.modal-card{background:var(--navy);border:2px solid var(--cyan);border-radius:20px;max-width:500px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 0 60px var(--cyan-glow)}
+.modal-close{position:absolute;top:12px;right:16px;background:none;border:none;color:var(--silver);font-size:1.5rem;cursor:pointer;z-index:10}
+.modal-close:hover{color:var(--white)}
+.modal-hero{height:220px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(78,205,196,0.08),transparent)}
+.modal-hero img{max-height:200px;filter:drop-shadow(0 0 30px var(--cyan-glow))}
+.modal-body{padding:24px}
+.modal-name{font-size:1.8rem;font-weight:900;color:var(--white)}
+.modal-name-jp{font-size:.85rem;color:var(--cyan);margin-bottom:4px}
+.modal-title-badge{display:inline-block;padding:3px 12px;border-radius:4px;font-size:.7rem;font-weight:700;margin-bottom:16px}
+.modal-info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.modal-info-item{font-size:.8rem}.modal-info-label{color:var(--silver)}.modal-info-value{color:var(--white);font-weight:700}
+.modal-stats{margin-bottom:16px}
+.modal-stat-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:.85rem}
+.modal-stat-label{color:var(--silver);min-width:48px}
+.modal-stat-bar{flex:1;height:8px;background:var(--slate);border-radius:4px;overflow:hidden}
+.modal-stat-fill{height:100%;border-radius:4px}
+.modal-stat-val{color:var(--white);font-weight:900;font-family:'Orbitron',sans-serif;font-size:.8rem;min-width:28px;text-align:right}
+.modal-jutsu-list{margin-bottom:16px}
+.modal-jutsu-item{display:flex;gap:8px;padding:8px;background:rgba(78,205,196,0.06);border-radius:8px;margin-bottom:6px;font-size:.8rem;align-items:center}
+.modal-jutsu-icon{font-size:1.2rem}
+.modal-quote{padding:12px;background:var(--slate);border-radius:10px;border-left:3px solid var(--cyan);font-size:.85rem;color:var(--light);font-style:italic;line-height:1.6}
+/* ===== BATTLE ===== */
+.battle-section{padding:80px 20px;max-width:900px;margin:0 auto}
+.battle-arena{display:flex;align-items:stretch;gap:0;margin-bottom:30px}
+.battle-fighter{flex:1;text-align:center;padding:30px 16px;background:var(--card-bg);border:2px solid rgba(78,205,196,0.15);cursor:pointer;transition:.3s}
+.battle-fighter:first-child{border-radius:16px 0 0 16px}
+.battle-fighter:last-child{border-radius:0 16px 16px 0}
+.battle-fighter.active{border-color:var(--cyan);background:rgba(78,205,196,0.05)}
+.battle-fighter img{height:120px;margin-bottom:10px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.5))}
+.battle-fighter-name{font-weight:900;color:var(--white);font-size:1rem}
+.battle-vs{display:flex;align-items:center;justify-content:center;padding:0 4px;font-family:'Orbitron',sans-serif;font-size:1.5rem;font-weight:900;color:var(--red);text-shadow:0 0 15px rgba(231,76,60,0.5)}
+.battle-compare{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}
+.battle-row{display:contents}
+.battle-bar-l{height:8px;background:var(--slate);border-radius:4px;overflow:hidden;direction:rtl}
+.battle-bar-r{height:8px;background:var(--slate);border-radius:4px;overflow:hidden}
+.battle-fill-l{height:100%;border-radius:4px;background:var(--cyan)}
+.battle-fill-r{height:100%;border-radius:4px;background:var(--orange)}
+.battle-label{font-size:.75rem;color:var(--silver);text-align:center;min-width:48px}
+.battle-select{margin-bottom:20px}
+.battle-select label{font-size:.8rem;color:var(--silver);margin-right:8px}
+.battle-select select{padding:8px 16px;background:var(--slate);border:1px solid rgba(78,205,196,0.2);border-radius:8px;color:var(--white);font-size:.85rem;cursor:pointer}
+/* ===== QUIZ ===== */
+.quiz-section{padding:80px 20px;max-width:650px;margin:0 auto}
+.quiz-progress{display:flex;gap:6px;justify-content:center;margin-bottom:24px}
+.quiz-dot{width:10px;height:10px;border-radius:50%;background:var(--slate);border:2px solid rgba(78,205,196,0.25);transition:.3s}
+.quiz-dot.active{background:var(--cyan);border-color:var(--cyan);box-shadow:0 0 8px var(--cyan-glow)}
+.quiz-dot.done{background:var(--cyan);border-color:var(--cyan);opacity:.4}
+.quiz-card{background:var(--card-bg);border:2px solid rgba(78,205,196,0.15);border-radius:20px;padding:36px 28px;text-align:center}
+.quiz-num{font-family:'Orbitron',sans-serif;font-size:.65rem;color:var(--cyan);letter-spacing:4px;margin-bottom:14px}
+.quiz-q{font-size:1.2rem;font-weight:900;color:var(--white);margin-bottom:24px;line-height:1.5}
+.quiz-opts{display:flex;flex-direction:column;gap:10px}
+.quiz-opt{padding:14px 18px;background:var(--slate);border:2px solid rgba(78,205,196,0.08);border-radius:12px;color:var(--light);font-size:.9rem;font-weight:700;cursor:pointer;transition:.3s;text-align:left}
+.quiz-opt:hover{border-color:var(--cyan);background:rgba(78,205,196,0.06);color:var(--white);transform:translateX(5px)}
+.quiz-result{display:none;text-align:center}
+.quiz-result.show{display:block;animation:fadeUp .5s}
+.quiz-result-card{background:var(--card-bg);border:2px solid var(--cyan);box-shadow:0 0 40px var(--cyan-glow);border-radius:20px;padding:36px 24px}
+.quiz-result-img{height:180px;margin:0 auto 16px;filter:drop-shadow(0 0 20px var(--cyan-glow))}
+.quiz-result-name{font-size:1.8rem;font-weight:900;color:var(--white)}
+.quiz-result-jp{font-size:.9rem;color:var(--cyan);margin-bottom:16px}
+.quiz-result-desc{font-size:.9rem;color:var(--light);line-height:1.7;max-width:400px;margin:0 auto 24px}
+/* ===== TRIVIA ===== */
+.trivia-section{padding:80px 20px;max-width:700px;margin:0 auto}
+.trivia-hud{display:flex;justify-content:center;gap:40px;margin-bottom:24px}
+.trivia-hud-item{text-align:center}
+.trivia-hud-val{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:var(--cyan);text-shadow:0 0 10px var(--cyan-glow)}
+.trivia-hud-label{font-size:.65rem;color:var(--silver);letter-spacing:2px;text-transform:uppercase}
+.trivia-card{background:var(--card-bg);border:2px solid rgba(78,205,196,0.15);border-radius:20px;padding:36px 28px;text-align:center;min-height:280px}
+.trivia-q{font-size:1.15rem;font-weight:900;color:var(--white);margin-bottom:24px;line-height:1.5}
+.trivia-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.trivia-opt{padding:14px 12px;background:var(--slate);border:2px solid rgba(78,205,196,0.08);border-radius:12px;color:var(--light);font-size:.85rem;font-weight:700;cursor:pointer;transition:.3s;text-align:center}
+.trivia-opt:hover{border-color:var(--cyan);background:rgba(78,205,196,0.06);color:var(--white)}
+.trivia-opt.correct{border-color:var(--green);background:rgba(46,204,113,0.15);color:var(--green)}
+.trivia-opt.wrong{border-color:var(--red);background:rgba(231,76,60,0.15);color:var(--red)}
+.trivia-opt.disabled{pointer-events:none;opacity:.7}
+.trivia-feedback{margin-top:16px;font-size:.9rem;font-weight:700;min-height:24px}
+.trivia-end{text-align:center;padding:40px}
+.trivia-end-score{font-family:'Orbitron',sans-serif;font-size:3rem;font-weight:900;color:var(--cyan);text-shadow:0 0 20px var(--cyan-glow)}
+.trivia-end-label{font-size:1rem;color:var(--silver);margin-bottom:8px}
+.trivia-end-msg{font-size:1.1rem;color:var(--white);font-weight:700;margin:16px 0}
+.trivia-stars{font-size:2rem;margin-bottom:20px}
+/* ===== SHADOW GUESS ===== */
+.shadow-section{padding:80px 20px;max-width:600px;margin:0 auto}
+.shadow-hud{display:flex;justify-content:center;gap:40px;margin-bottom:24px}
+.shadow-hud-item{text-align:center}
+.shadow-hud-val{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:var(--cyan);text-shadow:0 0 10px var(--cyan-glow)}
+.shadow-hud-label{font-size:.65rem;color:var(--silver);letter-spacing:2px;text-transform:uppercase}
+.shadow-card{background:var(--card-bg);border:2px solid rgba(78,205,196,0.15);border-radius:20px;padding:30px;text-align:center}
+.shadow-img-wrap{width:200px;height:220px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center}
+.shadow-img{max-height:200px;max-width:180px;transition:filter .5s}
+.shadow-img.hidden{filter:brightness(0) drop-shadow(0 0 8px rgba(78,205,196,0.3))}
+.shadow-img.revealed{filter:none;animation:shadowReveal .5s}
+@keyframes shadowReveal{from{filter:brightness(0);transform:scale(1.1)}to{filter:none;transform:scale(1)}}
+.shadow-hint{font-size:.8rem;color:var(--silver);margin-bottom:16px;min-height:20px}
+.shadow-opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.shadow-opt{padding:12px 8px;background:var(--slate);border:2px solid rgba(78,205,196,0.08);border-radius:10px;color:var(--light);font-size:.8rem;font-weight:700;cursor:pointer;transition:.3s;text-align:center}
+.shadow-opt:hover{border-color:var(--cyan);color:var(--white)}
+.shadow-opt.correct{border-color:var(--green);background:rgba(46,204,113,0.15);color:var(--green)}
+.shadow-opt.wrong{border-color:var(--red);background:rgba(231,76,60,0.15);color:var(--red)}
+.shadow-opt.disabled{pointer-events:none;opacity:.6}
+.shadow-feedback{margin-top:14px;font-size:.9rem;font-weight:700;min-height:24px}
+.shadow-streak{font-size:.8rem;color:var(--gold);margin-top:8px}
+/* ===== RANKING ===== */
+.rank-grid{display:flex;flex-direction:column;gap:16px;max-width:700px;margin:0 auto}
+.rank-card{display:flex;align-items:center;gap:16px;padding:20px;border-radius:16px;background:var(--card-bg);border:2px solid rgba(78,205,196,0.1);transition:.3s;position:relative;overflow:hidden}
+.rank-card:hover{border-color:var(--cyan);transform:translateY(-3px)}
+.rank-card.rank-1{padding:28px;border-color:var(--gold);background:linear-gradient(135deg,var(--card-bg),rgba(255,215,0,0.06));box-shadow:0 0 25px rgba(255,215,0,0.1)}
+.rank-card.rank-1::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,215,0,0.08),transparent,transparent);animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.rank-num{font-family:'Orbitron',sans-serif;font-size:1.6rem;font-weight:900;color:var(--silver);min-width:44px;text-align:center;position:relative;z-index:1}
+.rank-1 .rank-num{font-size:2rem;color:var(--gold);text-shadow:0 0 15px rgba(255,215,0,0.4)}
+.rank-avatar{width:60px;height:60px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid rgba(78,205,196,0.2);background:var(--slate);position:relative;z-index:1;flex-shrink:0}
+.rank-1 .rank-avatar{width:80px;height:80px;border:3px solid var(--gold);box-shadow:0 0 15px rgba(255,215,0,0.25)}
+.rank-info{flex:1;position:relative;z-index:1}
+.rank-name{font-size:1.1rem;font-weight:900;color:var(--white);margin-bottom:3px}
+.rank-1 .rank-name{font-size:1.3rem}
+.rank-reason{font-size:.8rem;color:var(--silver);line-height:1.4}
+/* ===== BUTTON ===== */
+.btn{display:inline-block;padding:12px 32px;background:transparent;border:2px solid var(--cyan);color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:3px;border-radius:50px;cursor:pointer;transition:.3s;text-transform:uppercase}
+.btn:hover{background:var(--cyan);color:var(--bg);box-shadow:0 0 25px var(--cyan-glow)}
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:30px;background:var(--navy);border-top:1px solid rgba(78,205,196,0.1)}
+.footer-row{display:flex;align-items:center;justify-content:center;gap:10px}
+.footer-row img{width:18px;opacity:.3;filter:brightness(0) invert(.6) sepia(1) saturate(3) hue-rotate(135deg)}
+.footer-text{font-size:.75rem;color:var(--silver)}
+/* ===== PARTICLES ===== */
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.particle{position:absolute;width:2px;height:2px;background:var(--cyan);border-radius:50%;animation:floatUp linear infinite;opacity:0}
+@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:.5}90%{opacity:.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:.8s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:none}
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .card-img-wrap{height:140px}
+  .hero-char:nth-child(1),.hero-char:nth-child(3){width:100px}
+  .hero-char:nth-child(2){width:170px}
+  .battle-arena{flex-direction:column}.battle-vs{padding:8px 0}
+  .battle-fighter:first-child{border-radius:16px 16px 0 0}.battle-fighter:last-child{border-radius:0 0 16px 16px}
+  .battle-compare{grid-template-columns:1fr auto 1fr}
+  nav{padding:10px 16px}.nav-links{gap:12px}.nav-links a{font-size:.7rem}
+}
+</style>
+</head>
+<body>
+<div class="particles" id="particles"></div>
+<nav>
+  <div class="nav-logo"><img src="img/konoha.svg" alt=""><span>NARUTO TCG</span></div>
+  <ul class="nav-links">
+    <li><a href="#cards">卡牌</a></li>
+    <li><a href="#battle">对战</a></li>
+    <li><a href="#trivia">问答</a></li>
+    <li><a href="#shadow">猜影</a></li>
+    <li><a href="#quiz">测试</a></li>
+    <li><a href="#ranking">排行</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chars">
+    <img class="hero-char" src="img/sasuke.png" alt="佐助">
+    <img class="hero-char" src="img/kakashi.png" alt="卡卡西">
+    <img class="hero-char" src="img/naruto.png" alt="鸣人">
+  </div>
+  <div class="hero-badge">Ninja Card Game</div>
+  <h1>NARUTO TCG</h1>
+  <h2>戴阅的忍者卡牌图鉴</h2>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-val">20</div><div class="hero-stat-label">忍者</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">80</div><div class="hero-stat-label">忍术</div></div>
+    <div class="hero-stat"><div class="hero-stat-val">S</div><div class="hero-stat-label">最高稀有度</div></div>
+  </div>
+  <div class="scroll-down"><span>↓ 向下探索 ↓</span></div>
+</div>
+
+<!-- CARDS -->
+<section id="cards">
+  <div class="section-header reveal"><div class="section-tag">COLLECTION</div><div class="section-title">忍者卡牌图鉴</div></div>
+  <div class="card-grid reveal" id="cardGrid"></div>
+</section>
+
+<!-- BATTLE -->
+<div class="battle-section" id="battle">
+  <div class="section-header reveal"><div class="section-tag">VS BATTLE</div><div class="section-title">忍者对决</div></div>
+  <div class="reveal">
+    <div class="battle-select">
+      <label>左方：</label><select id="fighterL" onchange="renderBattle()"></select>
+      <label style="margin-left:16px">右方：</label><select id="fighterR" onchange="renderBattle()"></select>
+    </div>
+    <div class="battle-arena" id="battleArena"></div>
+    <div class="battle-compare" id="battleCompare"></div>
+  </div>
+</div>
+
+<!-- TRIVIA -->
+<div class="trivia-section" id="trivia">
+  <div class="section-header reveal"><div class="section-tag">TRIVIA</div><div class="section-title">火影知识问答 🧠</div></div>
+  <div class="reveal">
+    <div class="trivia-hud">
+      <div class="trivia-hud-item"><div class="trivia-hud-val" id="triviaScore">0</div><div class="trivia-hud-label">得分</div></div>
+      <div class="trivia-hud-item"><div class="trivia-hud-val" id="triviaQ">1/15</div><div class="trivia-hud-label">题目</div></div>
+      <div class="trivia-hud-item"><div class="trivia-hud-val" id="triviaStreak">0</div><div class="trivia-hud-label">连对</div></div>
+    </div>
+    <div class="trivia-card" id="triviaCard"></div>
+    <div style="text-align:center;margin-top:20px"><button class="btn" onclick="initTrivia()">重新开始</button></div>
+  </div>
+</div>
+
+<!-- SHADOW GUESS -->
+<div class="shadow-section" id="shadow">
+  <div class="section-header reveal"><div class="section-tag">GUESS WHO</div><div class="section-title">猜猜他是谁？👤</div></div>
+  <div class="reveal">
+    <div class="shadow-hud">
+      <div class="shadow-hud-item"><div class="shadow-hud-val" id="shadowScore">0</div><div class="shadow-hud-label">得分</div></div>
+      <div class="shadow-hud-item"><div class="shadow-hud-val" id="shadowRound">1/9</div><div class="shadow-hud-label">轮次</div></div>
+      <div class="shadow-hud-item"><div class="shadow-hud-val" id="shadowBest">0</div><div class="shadow-hud-label">最高连对</div></div>
+    </div>
+    <div class="shadow-card" id="shadowCard"></div>
+    <div style="text-align:center;margin-top:20px"><button class="btn" onclick="initShadow()">重新开始</button></div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-section" id="quiz">
+  <div class="section-header reveal"><div class="section-tag">PERSONALITY TEST</div><div class="section-title">测测你是火影里的谁？</div></div>
+  <div class="reveal">
+    <div class="quiz-progress" id="quizProg"></div>
+    <div class="quiz-card" id="quizCard">
+      <div class="quiz-num" id="quizNum"></div>
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-opts" id="quizOpts"></div>
+    </div>
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-result-card">
+        <img class="quiz-result-img" id="rImg" src="" alt="">
+        <div style="font-size:.75rem;color:var(--silver);letter-spacing:3px;margin-bottom:4px">你 是</div>
+        <div class="quiz-result-name" id="rName"></div>
+        <div class="quiz-result-jp" id="rJp"></div>
+        <div class="quiz-result-desc" id="rDesc"></div>
+        <button class="btn" onclick="initQuiz()">再测一次</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RANKING -->
+<section id="ranking">
+  <div class="section-header reveal"><div class="section-tag">MY FAVORITES</div><div class="section-title">戴阅の最爱排行榜</div></div>
+  <div class="rank-grid reveal" id="rankGrid"></div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-card" id="modalCard"></div>
+</div>
+
+<footer>
+  <div class="footer-row"><img src="img/konoha.svg" alt=""><div class="footer-text">用 ♥ 为戴阅打造 — 2026</div><img src="img/konoha.svg" alt=""></div>
+</footer>
+
+<script>
+// ===== DATA =====
+const ninjas = [
+  {id:'kakashi',name:'旗木卡卡西',nameJp:'はたけ カカシ',img:'img/kakashi.png',rarity:'S',title:'拷贝忍者 · 六代火影',village:'木叶',rank:'火影',element:'雷·水·土·火·风',
+   stats:{ninjutsu:90,taijutsu:78,genjutsu:85,intelligence:95,speed:88,stamina:72},
+   jutsu:['⚡ 雷切','📋 千鸟','👁️ 写轮眼·神威','🐕 通灵·忍犬'],
+   quote:'"不遵守规则的人是废物。但不珍惜同伴的人，比废物还不如。"',color:'var(--cyan)'},
+  {id:'naruto',name:'漩涡鸣人',nameJp:'うずまき ナルト',img:'img/naruto.png',rarity:'S',title:'七代火影 · 九尾人柱力',village:'木叶',rank:'火影',element:'风·仙术·九尾查克拉',
+   stats:{ninjutsu:92,taijutsu:80,genjutsu:40,intelligence:60,speed:85,stamina:100},
+   jutsu:['🌀 螺旋丸','👤 影分身之术','🦊 九尾查克拉模式','💨 仙人模式'],
+   quote:'"我从不放弃，也不会食言。这就是我的忍道！"',color:'var(--orange)'},
+  {id:'sasuke',name:'宇智波佐助',nameJp:'うちは サスケ',img:'img/sasuke.png',rarity:'S',title:'影之火影 · 宇智波末裔',village:'木叶',rank:'影之火影',element:'雷·火',
+   stats:{ninjutsu:95,taijutsu:82,genjutsu:90,intelligence:88,speed:90,stamina:78},
+   jutsu:['🔥 千鸟','👁️ 万花筒写轮眼','🔥 天照','🗡️ 须佐能乎'],
+   quote:'"我要让梦想变成现实。我要复兴宇智波一族。"',color:'var(--purple)'},
+  {id:'itachi',name:'宇智波鼬',nameJp:'うちは イタチ',img:'img/itachi.png',rarity:'S',title:'暗部天才 · 灭族叛忍',village:'木叶(叛)',rank:'暗部队长',element:'火·水·风',
+   stats:{ninjutsu:93,taijutsu:80,genjutsu:98,intelligence:96,speed:88,stamina:55},
+   jutsu:['👁️ 月读','🔥 天照','🗡️ 须佐能乎·十拳剑','🐦 乌鸦分身'],
+   quote:'"不必了解一个人才去爱他。"',color:'var(--red)'},
+  {id:'minato',name:'波风水门',nameJp:'なみかぜ ミナト',img:'img/minato.png',rarity:'S',title:'四代火影 · 黄色闪光',village:'木叶',rank:'火影',element:'风·雷·时空',
+   stats:{ninjutsu:95,taijutsu:85,genjutsu:70,intelligence:98,speed:100,stamina:75},
+   jutsu:['⚡ 飞雷神之术','🌀 螺旋丸（原创者）','🔏 尸鬼封尽','📌 飞雷神标记'],
+   quote:'"只要有树叶飞舞的地方，火就会燃烧。"',color:'var(--gold)'},
+  {id:'madara',name:'宇智波斑',nameJp:'うちは マダラ',img:'img/madara.png',rarity:'S',title:'传说中的忍者 · 宇智波始祖',village:'木叶(叛)',rank:'传说',element:'火·风·雷·土·水·木·阴阳',
+   stats:{ninjutsu:100,taijutsu:90,genjutsu:90,intelligence:90,speed:88,stamina:95},
+   jutsu:['☄️ 地爆天星','🔥 火遁·豪火灭却','🗡️ 完全体须佐能乎','🌳 木遁'],
+   quote:'"在这个诅咒的世界里，所谓的和平不过是表面的谎言。"',color:'var(--red)'},
+  {id:'hashirama',name:'千手柱间',nameJp:'せんじゅ ハシラマ',img:'img/hashirama.png',rarity:'S',title:'初代火影 · 忍者之神',village:'木叶',rank:'火影',element:'木·水·土·仙术',
+   stats:{ninjutsu:100,taijutsu:88,genjutsu:75,intelligence:85,speed:82,stamina:100},
+   jutsu:['🌳 木遁·真数千手','🌿 木遁·木龙之术','💨 仙法·明神门','🏔️ 木遁·花树界降临'],
+   quote:'"作为火影，不管付出什么代价，都要守护村子。"',color:'var(--green)'},
+  {id:'tobirama',name:'千手扉间',nameJp:'せんじゅ トビラマ',img:'img/tobirama.png',rarity:'S',title:'二代火影 · 忍术开发者',village:'木叶',rank:'火影',element:'水·雷·时空',
+   stats:{ninjutsu:95,taijutsu:78,genjutsu:72,intelligence:100,speed:92,stamina:70},
+   jutsu:['💧 水遁·水断波','⚡ 飞雷神之术（发明者）','💀 秽土转生（发明者）','👤 影分身之术（发明者）'],
+   quote:'"保护忍者村，就是保护每一个人。"',color:'var(--blue)'},
+  {id:'jiraiya',name:'自来也',nameJp:'じらいや',img:'img/jiraiya.png',rarity:'A',title:'传说中的三忍 · 蛤蟆仙人',village:'木叶',rank:'三忍',element:'火·土·仙术',
+   stats:{ninjutsu:88,taijutsu:75,genjutsu:72,intelligence:85,speed:72,stamina:82},
+   jutsu:['🐸 通灵·蛤蟆','🌀 螺旋丸','💨 仙人模式','🔥 蛤蟆油炎弹'],
+   quote:'"放弃不在我的字典里面。"',color:'var(--green)'},
+  {id:'orochimaru',name:'大蛇丸',nameJp:'オロチマル',img:'img/orochimaru.png',rarity:'A',title:'传说中的三忍 · 不死蛇仙',village:'木叶(叛)',rank:'三忍',element:'风·土·水',
+   stats:{ninjutsu:95,taijutsu:65,genjutsu:80,intelligence:96,speed:72,stamina:78},
+   jutsu:['🐍 通灵·万蛇','💀 秽土转生','🐍 潜影蛇手','🧬 不尸转生'],
+   quote:'"我要掌握所有忍术，解开这个世界的真理。"',color:'var(--purple)'},
+  {id:'obito',name:'宇智波带土',nameJp:'うちは オビト',img:'img/obito.png',rarity:'A',title:'面具男 · 十尾人柱力',village:'木叶(叛)',rank:'暗影',element:'火·土·木·阴阳',
+   stats:{ninjutsu:92,taijutsu:72,genjutsu:82,intelligence:80,speed:82,stamina:85},
+   jutsu:['👁️ 神威','🌀 虚化','🔥 火遁·豪火球之术','💀 六道之力'],
+   quote:'"在忍者世界里，不遵守规则的人是废物。但抛弃朋友的人比废物还不如。"',color:'var(--orange)'},
+  {id:'gaara',name:'我爱罗',nameJp:'ガアラ',img:'img/gaara.png',rarity:'A',title:'五代风影 · 一尾人柱力',village:'砂隐',rank:'风影',element:'风·砂',
+   stats:{ninjutsu:85,taijutsu:55,genjutsu:58,intelligence:80,speed:65,stamina:88},
+   jutsu:['🏜️ 砂瀑送葬','🛡️ 绝对防御','☄️ 砂瀑大葬','🌊 流砂瀑流'],
+   quote:'"只为自己而战，只爱自己而活。"',color:'var(--orange)'},
+  {id:'hinata',name:'日向雏田',nameJp:'ひゅうが ヒナタ',img:'img/hinata.png',rarity:'A',title:'白眼公主 · 鸣人之妻',village:'木叶',rank:'中忍',element:'无（柔拳体术）',
+   stats:{ninjutsu:65,taijutsu:78,genjutsu:50,intelligence:72,speed:70,stamina:68},
+   jutsu:['👁️ 白眼','🤲 柔拳法','🦁 柔拳·双狮拳','🌀 八卦六十四掌'],
+   quote:'"我再也不要逃跑，我要和鸣人君并肩作战！"',color:'var(--purple)'},
+  {id:'might-guy',name:'迈特凯',nameJp:'マイト ガイ',img:'img/might-guy.png',rarity:'A',title:'木叶苍蓝猛兽 · 体术之王',village:'木叶',rank:'上忍',element:'无（纯体术）',
+   stats:{ninjutsu:20,taijutsu:100,genjutsu:15,intelligence:60,speed:95,stamina:90},
+   jutsu:['🔥 八门遁甲·死门','💥 夜凯','🌀 朝孔雀','🦵 木叶旋风'],
+   quote:'"青春的力量是无限的！"',color:'var(--green)'},
+  {id:'tsunade',name:'纲手',nameJp:'つなで',emoji:'👩‍⚕️',rarity:'A',title:'传说中的三忍 · 五代火影',village:'木叶',rank:'火影',element:'医疗忍术',
+   stats:{ninjutsu:88,taijutsu:92,genjutsu:60,intelligence:80,speed:65,stamina:85},
+   jutsu:['💊 创造再生','👊 怪力拳','🐌 通灵·蛞蝓','💚 百豪之术'],
+   quote:'"赌上性命去守护的东西，才是真正重要的。"',color:'var(--pink)'},
+  {id:'pain',name:'佩恩（长门）',nameJp:'ペイン / ながと',emoji:'☠️',rarity:'S',title:'轮回眼之主 · 晓首领',village:'雨隐',rank:'晓首领',element:'风·火·水·土·雷·阴阳',
+   stats:{ninjutsu:98,taijutsu:65,genjutsu:75,intelligence:92,speed:78,stamina:72},
+   jutsu:['☄️ 地爆天星','💀 六道之力','🌊 神罗天征','👤 轮回眼·六道佩恩'],
+   quote:'"了解痛苦，才能了解和平。"',color:'var(--purple)'},
+  {id:'sakura',name:'春野樱',nameJp:'はるの サクラ',emoji:'🌸',rarity:'B',title:'医疗忍者 · 第七班',village:'木叶',rank:'上忍',element:'医疗忍术·土',
+   stats:{ninjutsu:72,taijutsu:78,genjutsu:55,intelligence:82,speed:68,stamina:72},
+   jutsu:['💊 医疗忍术','👊 怪力拳（纲手传授）','💚 百豪之术','🌸 樱花冲'],
+   quote:'"我不想只做被保护的人，我也要变强！"',color:'var(--pink)'},
+  {id:'shikamaru',name:'奈良鹿丸',nameJp:'なら シカマル',emoji:'🧠',rarity:'B',title:'天才军师 · IQ超200',village:'木叶',rank:'上忍',element:'阴（影）',
+   stats:{ninjutsu:68,taijutsu:50,genjutsu:55,intelligence:100,speed:60,stamina:55},
+   jutsu:['🌑 影子模仿术','🕳️ 影子绞杀术','🌑 影子缝合术','🧠 超高IQ战术'],
+   quote:'"真是麻烦啊…但没办法。"',color:'var(--green)'},
+  {id:'rocklee',name:'李洛克',nameJp:'ロック・リー',emoji:'💪',rarity:'B',title:'努力天才 · 体术专家',village:'木叶',rank:'上忍',element:'无（纯体术）',
+   stats:{ninjutsu:10,taijutsu:95,genjutsu:10,intelligence:50,speed:90,stamina:88},
+   jutsu:['🔥 八门遁甲','🌀 表莲华','💫 里莲华','🦵 木叶旋风'],
+   quote:'"即使不会忍术和幻术，也能成为优秀的忍者！"',color:'var(--green)'},
+  {id:'neji',name:'日向宁次',nameJp:'ひゅうが ネジ',emoji:'👁️',rarity:'B',title:'日向天才 · 白眼使者',village:'木叶',rank:'上忍',element:'无（柔拳体术）',
+   stats:{ninjutsu:62,taijutsu:88,genjutsu:50,intelligence:82,speed:80,stamina:65},
+   jutsu:['👁️ 白眼','🌀 八卦六十四掌','🔄 回天','🤲 柔拳法'],
+   quote:'"命运不是被决定的，命运是靠自己去改变的。"',color:'var(--light)'},
+];
+
+const rankings = [
+  {id:'kakashi',reason:'最酷的忍者！写轮眼、雷切、还当过火影，永远的偶像 ⚡'},
+  {id:'sasuke',reason:'二柱子虽然叛逃过，但实力超强，最后也回来了！'},
+  {id:'naruto',reason:'永远不放弃的热血笨蛋，从吊车尾到火影，太励志了！'},
+  {id:'itachi',reason:'表面叛忍，实际上是最爱弟弟和木叶的人。哭了。'},
+  {id:'minato',reason:'四代火影黄色闪光！鸣人的老爸，速度第一！'},
+  {id:'madara',reason:'宇智波传说，完全体须佐能乎太帅了！'},
+  {id:'hashirama',reason:'初代火影忍者之神！木遁真数千手震撼全场！'},
+  {id:'might-guy',reason:'八门全开打斑！体术之王，青春的力量！'},
+  {id:'pain',reason:'了解痛苦才能了解和平。轮回眼太强了！'},
+  {id:'jiraiya',reason:'好色仙人但是最好的师傅，对鸣人像亲爷爷一样。'},
+  {id:'obito',reason:'从好人变坏人又变回好人，人生太曲折了。'},
+  {id:'gaara',reason:'从杀人魔到风影，鸣人改变了他！砂瀑太酷了！'},
+  {id:'hinata',reason:'白眼公主！为了鸣人勇敢站出来的那一刻太感动！'},
+  {id:'tobirama',reason:'二代火影发明了飞雷神、影分身、秽土转生，天才发明家！'},
+  {id:'orochimaru',reason:'从反派变成木叶居民，蛇叔越来越萌了！'},
+  {id:'tsunade',reason:'五代火影！怪力拳一拳下去地面裂开！'},
+  {id:'rocklee',reason:'不会忍术也能当强者！努力型天才，太燃了！'},
+  {id:'shikamaru',reason:'IQ 200 的天才军师，虽然嘴上说麻烦但最靠谱！'},
+  {id:'neji',reason:'命运不是被决定的！日向天才，可惜走太早了😢'},
+  {id:'sakura',reason:'从弱到强，百豪之术觉醒后也很能打！'},
+];
+
+const quizQs = [
+  {q:'遇到危险你会怎么做？',opts:[
+    {t:'🧠 冷静分析，找最佳策略',s:{kakashi:3,itachi:2,minato:2,sasuke:1}},
+    {t:'💪 冲上去干就完了！',s:{naruto:3,jiraiya:1,obito:1}},
+    {t:'🗡️ 用压倒性力量碾压',s:{sasuke:2,madara:3,gaara:1}},
+    {t:'🛡️ 先保护身边的人',s:{gaara:2,naruto:1,minato:2,kakashi:1}},
+  ]},
+  {q:'你最想学哪种忍术？',opts:[
+    {t:'⚡ 雷切 — 电光石火',s:{kakashi:3,sasuke:1}},
+    {t:'🌀 螺旋丸 — 究极查克拉',s:{naruto:3,minato:2,jiraiya:1}},
+    {t:'👁️ 万花筒写轮眼 — 看穿一切',s:{sasuke:2,itachi:3,obito:1,madara:1}},
+    {t:'⚡ 飞雷神 — 瞬间移动',s:{minato:3,obito:1}},
+  ]},
+  {q:'放学后你最想做什么？',opts:[
+    {t:'📖 安静看书',s:{kakashi:3,itachi:2}},
+    {t:'🍜 吃超大份拉面！',s:{naruto:3,jiraiya:1}},
+    {t:'🏋️ 一个人训练变强',s:{sasuke:3,gaara:1,madara:1}},
+    {t:'🐸 去山里探险',s:{jiraiya:3,naruto:1,obito:1}},
+  ]},
+  {q:'朋友被欺负了你会？',opts:[
+    {t:'🤝 先了解情况再想办法',s:{kakashi:3,itachi:1,minato:1}},
+    {t:'🔥 二话不说冲上去！',s:{naruto:3,obito:2}},
+    {t:'😤 用眼神震慑对方',s:{sasuke:3,madara:2,itachi:1}},
+    {t:'🛡️ 用沙墙把朋友围住保护',s:{gaara:3}},
+  ]},
+  {q:'你觉得什么最重要？',opts:[
+    {t:'🏘️ 保护村子里每个人',s:{naruto:3,minato:2,gaara:1}},
+    {t:'⚖️ 用智慧维持平衡',s:{kakashi:3,itachi:2}},
+    {t:'🗡️ 拥有最强力量',s:{sasuke:2,madara:3}},
+    {t:'❤️ 守护最珍贵的人',s:{obito:3,itachi:2,minato:1}},
+  ]},
+  {q:'你的性格更像？',opts:[
+    {t:'😎 表面懒散，关键时刻超靠谱',s:{kakashi:3,jiraiya:1}},
+    {t:'🔥 热血开朗，永不放弃',s:{naruto:3,obito:1}},
+    {t:'🧊 冷静沉稳，目标明确',s:{sasuke:3,itachi:2,gaara:1}},
+    {t:'🎭 内心柔软，外表强硬',s:{gaara:2,itachi:2,obito:2}},
+  ]},
+  {q:'选一个超能力：',opts:[
+    {t:'⏱️ 时间暂停',s:{minato:3,itachi:1}},
+    {t:'👁️ 读心术',s:{itachi:3,kakashi:1}},
+    {t:'💪 无限力量',s:{naruto:2,madara:3}},
+    {t:'👻 穿墙术',s:{obito:3}},
+  ]},
+  {q:'你更认同哪句话？',opts:[
+    {t:'"规则很重要，但同伴更重要"',s:{kakashi:3,obito:2}},
+    {t:'"我从不放弃这就是我的忍道"',s:{naruto:3}},
+    {t:'"真正的强者是能忍受孤独的人"',s:{sasuke:2,itachi:3,gaara:1}},
+    {t:'"只要有火的意志传承就有希望"',s:{minato:3,jiraiya:1}},
+  ]},
+];
+
+const quizResults = {
+  kakashi:{desc:'你和卡卡西一样冷静聪明！看起来懒懒的，但关键时刻超靠谱。你是朋友们最值得信赖的人！'},
+  naruto:{desc:'你和鸣人一样热血勇敢！充满正能量，永不放弃。用努力证明自己，这就是你的忍道！'},
+  sasuke:{desc:'你和佐助一样有实力有决心！目标明确，做事认真专注。虽然酷酷的但内心重视身边的人！'},
+  itachi:{desc:'你和鼬一样深沉智慧！总是默默为身边的人付出，内心柔软但外表坚强。真正的天才！'},
+  minato:{desc:'你和水门一样温柔又强大！反应极快头脑聪明，总是在关键时刻保护重要的人。黄色闪光！'},
+  madara:{desc:'你和斑一样霸气侧漏！追求极致力量，有着改变世界的野心和实力。传说级忍者！'},
+  jiraiya:{desc:'你和自来也一样豁达乐观！看似不正经但内心充满智慧和爱。最好的师傅最棒的朋友！'},
+  obito:{desc:'你和带土一样重感情！为了珍贵的人可以改变整个世界。经历曲折但最终找回初心！'},
+  gaara:{desc:'你和我爱罗一样外冷内热！曾经孤独但遇到对的人后学会了爱和信任。最酷的风影！'},
+};
+
+// ===== RENDER CARDS =====
+function renderCards(){
+  const grid=document.getElementById('cardGrid');
+  grid.innerHTML=ninjas.map(n=>{
+    const r=n.rarity==='S'?'rarity-s':n.rarity==='A'?'rarity-a':'rarity-b';
+    const maxStat=Math.max(...Object.values(n.stats));
+    const topStats=Object.entries(n.stats).sort((a,b)=>b[1]-a[1]).slice(0,3);
+    const statLabels={ninjutsu:'忍',taijutsu:'体',genjutsu:'幻',intelligence:'智',speed:'速',stamina:'耐'};
+    const imgHtml=n.img?`<img src="${n.img}" alt="${n.name}">`:`<div style="font-size:72px">${n.emoji||'🥷'}</div>`;
+    return `<div class="ninja-card ${r}" onclick="openModal('${n.id}')">
+      <div class="card-rarity">${n.rarity}</div>
+      <div class="card-img-wrap">${imgHtml}</div>
+      <div class="card-body">
+        <div class="card-name">${n.name}</div>
+        <div class="card-name-jp">${n.nameJp}</div>
+        <div class="card-stats">${topStats.map(([k,v])=>`<div class="stat-row"><span class="stat-label">${statLabels[k]}</span><div class="stat-bar"><div class="stat-fill" style="width:${v}%;background:${n.color}"></div></div><span class="stat-val">${v}</span></div>`).join('')}</div>
+        <div class="card-jutsu"><div class="card-jutsu-label">招牌忍术</div>${n.jutsu[0]}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ===== MODAL =====
+function openModal(id){
+  const n=ninjas.find(x=>x.id===id);if(!n)return;
+  const statLabels={ninjutsu:'忍术',taijutsu:'体术',genjutsu:'幻术',intelligence:'智力',speed:'速度',stamina:'耐力'};
+  const statColors={ninjutsu:'#4ecdc4',taijutsu:'#e74c3c',genjutsu:'#8e44ad',intelligence:'#00a8ff',speed:'#ffd700',stamina:'#2ecc71'};
+  const heroHtml=n.img?`<img src="${n.img}" alt="${n.name}">`:`<div style="font-size:100px">${n.emoji||'🥷'}</div>`;
+  document.getElementById('modalCard').innerHTML=`
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-hero">${heroHtml}</div>
+    <div class="modal-body">
+      <div class="modal-name">${n.name}</div>
+      <div class="modal-name-jp">${n.nameJp}</div>
+      <div class="modal-title-badge" style="background:${n.color};color:#0a0e1a">${n.title}</div>
+      <div class="modal-info">
+        <div class="modal-info-item"><span class="modal-info-label">村落：</span><span class="modal-info-value">${n.village}</span></div>
+        <div class="modal-info-item"><span class="modal-info-label">等级：</span><span class="modal-info-value">${n.rank}</span></div>
+        <div class="modal-info-item"><span class="modal-info-label">属性：</span><span class="modal-info-value">${n.element}</span></div>
+        <div class="modal-info-item"><span class="modal-info-label">稀有度：</span><span class="modal-info-value">${n.rarity}级</span></div>
+      </div>
+      <div class="modal-stats">${Object.entries(n.stats).map(([k,v])=>`<div class="modal-stat-row"><span class="modal-stat-label">${statLabels[k]}</span><div class="modal-stat-bar"><div class="modal-stat-fill" style="width:${v}%;background:${statColors[k]}"></div></div><span class="modal-stat-val">${v}</span></div>`).join('')}</div>
+      <div class="modal-jutsu-list">${n.jutsu.map(j=>`<div class="modal-jutsu-item">${j}</div>`).join('')}</div>
+      <div class="modal-quote">${n.quote}</div>
+    </div>`;
+  document.getElementById('modal').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('modal').classList.remove('show');document.body.style.overflow=''}
+
+// ===== BATTLE =====
+function initBattle(){
+  const selL=document.getElementById('fighterL'),selR=document.getElementById('fighterR');
+  ninjas.forEach((n,i)=>{selL.add(new Option(n.name,n.id));selR.add(new Option(n.name,n.id))});
+  selL.value='kakashi';selR.value='naruto';
+  renderBattle();
+}
+function renderBattle(){
+  const lId=document.getElementById('fighterL').value,rId=document.getElementById('fighterR').value;
+  const l=ninjas.find(x=>x.id===lId),r=ninjas.find(x=>x.id===rId);
+  document.getElementById('battleArena').innerHTML=`
+    <div class="battle-fighter active"><img src="${l.img}" alt="${l.name}"><div class="battle-fighter-name">${l.name}</div></div>
+    <div class="battle-vs">VS</div>
+    <div class="battle-fighter active"><img src="${r.img}" alt="${r.name}"><div class="battle-fighter-name">${r.name}</div></div>`;
+  const labels={ninjutsu:'忍术',taijutsu:'体术',genjutsu:'幻术',intelligence:'智力',speed:'速度',stamina:'耐力'};
+  let lWins=0,rWins=0;
+  Object.keys(labels).forEach(k=>{if(l.stats[k]>r.stats[k])lWins++;else if(r.stats[k]>l.stats[k])rWins++});
+  document.getElementById('battleCompare').innerHTML=Object.entries(labels).map(([k,label])=>{
+    const lv=l.stats[k],rv=r.stats[k];
+    const lWin=lv>rv,rWin=rv>lv;
+    return `<div class="battle-bar-l"><div class="battle-fill-l" style="width:${lv}%;${lWin?'box-shadow:0 0 8px var(--cyan)':'opacity:.5'}"></div></div>
+      <div class="battle-label">${label}<br><span style="font-family:Orbitron;font-size:.7rem;color:${lWin?'var(--cyan)':rWin?'var(--orange)':'var(--silver)'}">${lv} : ${rv}</span></div>
+      <div class="battle-bar-r"><div class="battle-fill-r" style="width:${rv}%;${rWin?'box-shadow:0 0 8px var(--orange)':'opacity:.5'}"></div></div>`;
+  }).join('')+`<div style="grid-column:1/-1;text-align:center;margin-top:16px;font-weight:900;font-size:1.1rem;color:var(--white)">${lWins>rWins?'🏆 '+l.name+' 胜出！':rWins>lWins?'🏆 '+r.name+' 胜出！':'⚖️ 势均力敌！'}<br><span style="font-size:.8rem;color:var(--silver)">${lWins} : ${rWins}</span></div>`;
+}
+
+// ===== QUIZ =====
+let qIdx=0,qScores={};
+function initQuiz(){
+  qIdx=0;qScores={};ninjas.forEach(n=>qScores[n.id]=0);
+  document.getElementById('quizCard').style.display='block';
+  document.getElementById('quizResult').classList.remove('show');
+  renderQ();
+}
+function renderQ(){
+  const q=quizQs[qIdx];
+  document.getElementById('quizProg').innerHTML=quizQs.map((_,i)=>`<div class="quiz-dot${i<qIdx?' done':''}${i===qIdx?' active':''}"></div>`).join('');
+  document.getElementById('quizNum').textContent=`${qIdx+1} / ${quizQs.length}`;
+  document.getElementById('quizQ').textContent=q.q;
+  document.getElementById('quizOpts').innerHTML=q.opts.map((o,i)=>`<div class="quiz-opt" onclick="answerQ(${i})">${o.t}</div>`).join('');
+}
+function answerQ(i){
+  const s=quizQs[qIdx].opts[i].s;
+  for(const[k,v]of Object.entries(s))qScores[k]=(qScores[k]||0)+v;
+  qIdx++;
+  if(qIdx<quizQs.length){renderQ()}else{showQResult()}
+}
+function showQResult(){
+  let mk='kakashi',mv=0;
+  for(const[k,v]of Object.entries(qScores)){if(v>mv){mv=v;mk=k}}
+  const n=ninjas.find(x=>x.id===mk);
+  if(n.img){document.getElementById('rImg').src=n.img;document.getElementById('rImg').style.display='block'}
+  else{document.getElementById('rImg').style.display='none'}
+  document.getElementById('rName').textContent=n.name;
+  document.getElementById('rJp').textContent=n.nameJp;
+  document.getElementById('rDesc').textContent=quizResults[mk].desc;
+  document.getElementById('quizCard').style.display='none';
+  document.getElementById('quizProg').innerHTML='';
+  document.getElementById('quizResult').classList.add('show');
+}
+
+// ===== RANKING =====
+function renderRanking(){
+  document.getElementById('rankGrid').innerHTML=rankings.map((r,i)=>{
+    const n=ninjas.find(x=>x.id===r.id);
+    const avHtml=n.img?`<img class="rank-avatar" src="${n.img}" alt="${n.name}">`:`<div class="rank-avatar" style="display:flex;align-items:center;justify-content:center;font-size:28px">${n.emoji||'🥷'}</div>`;
+    return `<div class="rank-card${i===0?' rank-1':''}">
+      <div class="rank-num">#${i+1}</div>
+      ${avHtml}
+      <div class="rank-info"><div class="rank-name">${n.name}</div><div class="rank-reason">${r.reason}</div></div>
+    </div>`;
+  }).join('');
+}
+
+// ===== PARTICLES =====
+(function(){const c=document.getElementById('particles');for(let i=0;i<25;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.animationDuration=(8+Math.random()*12)+'s';p.style.animationDelay=(Math.random()*10)+'s';p.style.width=p.style.height=(1+Math.random()*2)+'px';c.appendChild(p)}})();
+
+// ===== SCROLL REVEAL =====
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ===== INIT =====
+// ===== TRIVIA GAME =====
+const triviaPool = [
+  {q:'卡卡西的招牌忍术叫什么？',a:'雷切',opts:['螺旋丸','雷切','天照','豪火球']},
+  {q:'七代目火影是谁？',a:'漩涡鸣人',opts:['宇智波佐助','旗木卡卡西','漩涡鸣人','纲手']},
+  {q:'四代火影的绰号是什么？',a:'黄色闪光',opts:['拷贝忍者','黄色闪光','三忍','影之火影']},
+  {q:'鸣人体内封印着几尾？',a:'九尾',opts:['一尾','五尾','七尾','九尾']},
+  {q:'宇智波一族的瞳术叫什么？',a:'写轮眼',opts:['白眼','写轮眼','轮回眼','转生眼']},
+  {q:'螺旋丸是谁发明的？',a:'波风水门',opts:['自来也','漩涡鸣人','波风水门','大蛇丸']},
+  {q:'佐助的哥哥叫什么？',a:'宇智波鼬',opts:['宇智波斑','宇智波带土','宇智波鼬','宇智波止水']},
+  {q:'自来也属于"传说中的三忍"，另外两个是谁？',a:'纲手和大蛇丸',opts:['卡卡西和凯','纲手和大蛇丸','鼬和斑','水门和佐助']},
+  {q:'六代目火影是谁？',a:'旗木卡卡西',opts:['纲手','旗木卡卡西','志村团藏','波风水门']},
+  {q:'我爱罗是哪个村子的风影？',a:'砂隐村',opts:['木叶村','砂隐村','雾隐村','岩隐村']},
+  {q:'鸣人最喜欢吃什么？',a:'一乐拉面',opts:['寿司','饭团','一乐拉面','烤肉']},
+  {q:'天照是谁的忍术？',a:'宇智波鼬/佐助',opts:['卡卡西','宇智波鼬/佐助','鸣人','斑']},
+  {q:'忍者学校毕业后的等级是什么？',a:'下忍',opts:['上忍','中忍','下忍','暗部']},
+  {q:'卡卡西总是在看的那本书叫什么？',a:'亲热天堂',opts:['忍术大全','亲热天堂','火影秘笈','木叶日报']},
+  {q:'须佐能乎是哪个家族的能力？',a:'宇智波',opts:['日向','千手','宇智波','大筒木']},
+  {q:'带土的面具忍术叫什么？',a:'神威',opts:['天照','月读','神威','别天神']},
+  {q:'鸣人的师傅（传授仙人模式）是谁？',a:'自来也',opts:['卡卡西','自来也','伊鲁卡','水门']},
+  {q:'木叶村的全称是什么？',a:'火之国木叶隐村',opts:['风之国木叶村','火之国木叶隐村','土之国木叶村','水之国木叶隐村']},
+  {q:'斑和谁一起创建了木叶村？',a:'千手柱间',opts:['千手扉间','千手柱间','大蛇丸','自来也']},
+  {q:'影分身之术最多可以分出多少个分身？',a:'上千个',opts:['10个','100个','上千个','只能1个']},
+];
+
+let tIdx=0,tScore=0,tStreak=0,tAnswered=false,tQuestions=[];
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function initTrivia(){
+  tQuestions=shuffle(triviaPool).slice(0,15);
+  tIdx=0;tScore=0;tStreak=0;tAnswered=false;
+  document.getElementById('triviaScore').textContent='0';
+  document.getElementById('triviaStreak').textContent='0';
+  renderTrivia();
+}
+function renderTrivia(){
+  if(tIdx>=tQuestions.length){showTriviaEnd();return}
+  tAnswered=false;
+  const q=tQuestions[tIdx];
+  const opts=shuffle(q.opts);
+  document.getElementById('triviaQ').textContent=`${tIdx+1}/${tQuestions.length}`;
+  document.getElementById('triviaCard').innerHTML=`
+    <div class="trivia-q">${q.q}</div>
+    <div class="trivia-opts">${opts.map((o,i)=>`<div class="trivia-opt" onclick="answerTrivia(this,'${o.replace(/'/g,"\\'")}','${q.a.replace(/'/g,"\\'")}')">${o}</div>`).join('')}</div>
+    <div class="trivia-feedback" id="triviaFb"></div>`;
+}
+function answerTrivia(el,picked,correct){
+  if(tAnswered)return;tAnswered=true;
+  const opts=el.parentElement.children;
+  for(const o of opts){
+    o.classList.add('disabled');
+    if(o.textContent===correct)o.classList.add('correct');
+  }
+  if(picked===correct){
+    tScore+=10+tStreak*2;tStreak++;
+    document.getElementById('triviaFb').innerHTML='<span style="color:var(--green)">✅ 正确！'+(tStreak>1?' 连对×'+tStreak+'！🔥':'')+'</span>';
+  }else{
+    el.classList.add('wrong');tStreak=0;
+    document.getElementById('triviaFb').innerHTML='<span style="color:var(--red)">❌ 答错了！正确答案：'+correct+'</span>';
+  }
+  document.getElementById('triviaScore').textContent=tScore;
+  document.getElementById('triviaStreak').textContent=tStreak;
+  setTimeout(()=>{tIdx++;renderTrivia()},1500);
+}
+function showTriviaEnd(){
+  const pct=Math.round(tScore/(tQuestions.length*10)*100);
+  const stars=pct>=90?'⭐⭐⭐⭐⭐':pct>=70?'⭐⭐⭐⭐':pct>=50?'⭐⭐⭐':pct>=30?'⭐⭐':'⭐';
+  const msg=pct>=90?'火影级！你是真正的火影迷！':pct>=70?'上忍级！知识很扎实！':pct>=50?'中忍级！还不错哦！':pct>=30?'下忍级！继续加油！':'忍者学校生！多看几遍火影吧！';
+  document.getElementById('triviaCard').innerHTML=`<div class="trivia-end">
+    <div class="trivia-end-label">最终得分</div>
+    <div class="trivia-end-score">${tScore}</div>
+    <div class="trivia-stars">${stars}</div>
+    <div class="trivia-end-msg">${msg}</div>
+  </div>`;
+}
+
+// ===== SHADOW GUESS GAME =====
+let sIdx=0,sScore2=0,sStreak2=0,sBest=0,sAnswered2=false,sOrder=[];
+function initShadow(){
+  sOrder=shuffle(ninjas.map(n=>n.id));
+  sIdx=0;sScore2=0;sStreak2=0;sBest=0;sAnswered2=false;
+  document.getElementById('shadowScore').textContent='0';
+  document.getElementById('shadowBest').textContent='0';
+  renderShadow();
+}
+function renderShadow(){
+  if(sIdx>=sOrder.length){showShadowEnd();return}
+  sAnswered2=false;
+  const correct=ninjas.find(x=>x.id===sOrder[sIdx]);
+  // Pick 2 random wrong answers
+  const wrongs=shuffle(ninjas.filter(x=>x.id!==correct.id)).slice(0,2);
+  const choices=shuffle([correct,...wrongs]);
+  const hint=correct.title.split('·')[0].trim();
+  document.getElementById('shadowRound').textContent=`${sIdx+1}/${sOrder.length}`;
+  const sImgHtml=correct.img?`<img class="shadow-img hidden" id="shadowImg" src="${correct.img}" alt="?">`:`<div id="shadowImg" class="shadow-img hidden" style="font-size:100px;filter:brightness(0)">${correct.emoji||'🥷'}</div>`;
+  document.getElementById('shadowCard').innerHTML=`
+    <div class="shadow-img-wrap">${sImgHtml}</div>
+    <div class="shadow-hint">提示：${hint}</div>
+    <div class="shadow-opts">${choices.map(c=>`<div class="shadow-opt" onclick="answerShadow(this,'${c.id}','${correct.id}')">${c.name}</div>`).join('')}</div>
+    <div class="shadow-feedback" id="shadowFb"></div>
+    <div class="shadow-streak" id="shadowStreakTxt"></div>`;
+}
+function answerShadow(el,picked,correctId){
+  if(sAnswered2)return;sAnswered2=true;
+  document.getElementById('shadowImg').classList.remove('hidden');
+  document.getElementById('shadowImg').classList.add('revealed');
+  const opts=el.parentElement.children;
+  for(const o of opts){
+    o.classList.add('disabled');
+    if(o.textContent===ninjas.find(x=>x.id===correctId).name)o.classList.add('correct');
+  }
+  if(picked===correctId){
+    sScore2+=10;sStreak2++;if(sStreak2>sBest)sBest=sStreak2;
+    document.getElementById('shadowFb').innerHTML='<span style="color:var(--green)">✅ 答对了！</span>';
+    document.getElementById('shadowStreakTxt').textContent=sStreak2>1?'🔥 连对 ×'+sStreak2:'';
+  }else{
+    el.classList.add('wrong');sStreak2=0;
+    document.getElementById('shadowFb').innerHTML='<span style="color:var(--red)">❌ 是 '+ninjas.find(x=>x.id===correctId).name+'！</span>';
+    document.getElementById('shadowStreakTxt').textContent='';
+  }
+  document.getElementById('shadowScore').textContent=sScore2;
+  document.getElementById('shadowBest').textContent=sBest;
+  setTimeout(()=>{sIdx++;renderShadow()},1800);
+}
+function showShadowEnd(){
+  const pct=Math.round(sScore2/(sOrder.length*10)*100);
+  const msg=pct>=90?'👁️ 写轮眼级！你一眼就能认出所有人！':pct>=70?'🥷 暗部级！识别能力很强！':pct>=50?'🎯 不错！大部分都猜到了！':'💪 继续练习，多看看角色图鉴！';
+  document.getElementById('shadowCard').innerHTML=`<div class="trivia-end">
+    <div class="trivia-end-label">识别得分</div>
+    <div class="trivia-end-score">${sScore2}/${sOrder.length*10}</div>
+    <div style="font-size:1.5rem;margin:12px 0">最高连对：${sBest}</div>
+    <div class="trivia-end-msg">${msg}</div>
+  </div>`;
+}
+
+renderCards();initBattle();initTrivia();initShadow();initQuiz();renderRanking();
+</script>
+</body>
+</html>

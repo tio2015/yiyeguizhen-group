@@ -77,3 +77,19 @@ jobs:
             --meta "Cache-Control:public, max-age=604800" -f
           ossutil cp imgs/nvshenjimi-03.jpg oss://yiyeguizhen-web-hk/imgs/nvshenjimi-03.jpg \
             --meta "Cache-Control:public, max-age=604800" -f
+
+      - name: 部署戴阅火影站（dy站）
+        run: |
+          ossutil cp dy/index.html oss://yiyeguizhen-web-hk/dy/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
+
+      - name: 上传火影角色图片（dy/img/）
+        run: |
+          if [ -d "dy/img" ] && [ -n "$(ls -A dy/img/ 2>/dev/null)" ]; then
+            ossutil cp dy/img/ oss://yiyeguizhen-web-hk/dy/img/ \
+              --meta "Cache-Control:public, max-age=604800" \
+              -r -f
+            echo "✅ dy/img/ 上传完成"
+          else
+            echo "⚠️  dy/img/ 目录为空，跳过"
+          fi
