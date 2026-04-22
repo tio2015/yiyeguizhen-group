@@ -60,6 +60,9 @@ jobs:
           ossutil cp flh/index.html oss://yiyeguizhen-web-hk/flh/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" \
             --meta "Content-Type:text/html; charset=utf-8" -f
+          ossutil cp flh/index.html oss://yiyeguizhen-web-hk/flh \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
 
       - name: 上传提案配图
         run: |
