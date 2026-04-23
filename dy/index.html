@@ -283,13 +283,16 @@ section{padding:80px 20px;max-width:1200px;margin:0 auto}
 .rank-name{font-size:1.1rem;font-weight:900;color:var(--white);margin-bottom:3px}
 .rank-1 .rank-name{font-size:1.3rem}
 .rank-reason{font-size:.8rem;color:var(--silver);line-height:1.4}
-/* ===== DAIYUE LETTER ===== */
-.daiyue-section{padding:60px 20px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(255,200,80,0.07) 0%,transparent 60%);border-top:1px solid rgba(255,200,80,0.1);border-bottom:1px solid rgba(78,205,196,0.08)}
+/* ===== DAIYUE STORY ===== */
+.daiyue-section{padding:70px 20px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(255,200,80,0.07) 0%,transparent 60%);border-top:1px solid rgba(255,200,80,0.12);border-bottom:1px solid rgba(78,205,196,0.08)}
 .daiyue-title{font-size:.65rem;font-family:'Orbitron',sans-serif;letter-spacing:6px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;opacity:.8}
-.daiyue-subtitle{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;color:var(--white);margin-bottom:32px;text-shadow:0 0 20px rgba(255,200,80,0.3)}
-.daiyue-comic{display:inline-block;max-width:min(480px,90vw);border-radius:20px;overflow:hidden;box-shadow:0 0 60px rgba(255,200,80,0.15),0 20px 60px rgba(0,0,0,0.6);border:2px solid rgba(255,200,80,0.2);animation:letterFloat 5s ease-in-out infinite}
-.daiyue-comic img{width:100%;display:block}
-@keyframes letterFloat{0%,100%{transform:translateY(0) rotate(-.3deg)}50%{transform:translateY(-10px) rotate(.3deg)}}
+.daiyue-subtitle{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;color:var(--white);margin-bottom:40px;text-shadow:0 0 20px rgba(255,200,80,0.3)}
+.daiyue-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px;margin:0 auto}
+.daiyue-episode{border-radius:16px;overflow:hidden;border:2px solid rgba(255,200,80,0.2);box-shadow:0 8px 40px rgba(0,0,0,0.5),0 0 30px rgba(255,200,80,0.08);transition:.4s;cursor:pointer;position:relative}
+.daiyue-episode:hover{transform:translateY(-6px) scale(1.02);border-color:rgba(255,200,80,0.5);box-shadow:0 16px 60px rgba(0,0,0,0.6),0 0 40px rgba(255,200,80,0.15)}
+.daiyue-episode img{width:100%;display:block}
+.daiyue-episode-num{position:absolute;top:10px;left:10px;background:rgba(255,200,80,0.9);color:#1a1000;font-family:'Orbitron',sans-serif;font-size:.6rem;font-weight:900;padding:4px 10px;border-radius:20px;letter-spacing:1px}
+@media(max-width:600px){.daiyue-grid{grid-template-columns:1fr;max-width:420px}}
 /* ===== BUTTON ===== */
 .btn{display:inline-block;padding:12px 32px;background:transparent;border:2px solid var(--cyan);color:var(--cyan);font-family:'Orbitron',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:3px;border-radius:50px;cursor:pointer;transition:.3s;text-transform:uppercase}
 .btn:hover{background:var(--cyan);color:var(--bg);box-shadow:0 0 25px var(--cyan-glow)}
@@ -346,12 +349,27 @@ footer{text-align:center;padding:30px;background:var(--navy);border-top:1px soli
   <div class="scroll-down"><span>↓ 向下探索 ↓</span></div>
 </div>
 
-<!-- DAIYUE LETTER -->
+<!-- DAIYUE STORY -->
 <div class="daiyue-section reveal">
-  <div class="daiyue-title">A Gift For You</div>
-  <div class="daiyue-subtitle">爸爸送给戴阅的小小礼物 🎁</div>
-  <div class="daiyue-comic">
-    <img src="img/daiyue-letter.png" alt="送给戴阅的小小忍者冒险">
+  <div class="daiyue-title">Daiyue's Adventure</div>
+  <div class="daiyue-subtitle">戴阅的忍者冒险故事 ⭐</div>
+  <div class="daiyue-grid">
+    <div class="daiyue-episode">
+      <div class="daiyue-episode-num">EP 01</div>
+      <img src="img/daiyue-ep1.png" alt="第1集：小小忍者冒险">
+    </div>
+    <div class="daiyue-episode">
+      <div class="daiyue-episode-num">EP 02</div>
+      <img src="img/daiyue-ep2.png" alt="第2集：森林卷轴大搜寻">
+    </div>
+    <div class="daiyue-episode">
+      <div class="daiyue-episode-num">EP 03</div>
+      <img src="img/daiyue-ep3.png" alt="第3集：营救小伙伴">
+    </div>
+    <div class="daiyue-episode">
+      <div class="daiyue-episode-num">EP 04</div>
+      <img src="img/daiyue-ep4.png" alt="第4集：星夜忍者考试">
+    </div>
   </div>
 </div>
 
