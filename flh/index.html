@@ -1608,13 +1608,17 @@
   .variant-a .hero-illust {
     width: 100%; max-width: 880px; margin: 0 auto 56px;
     aspect-ratio: 1672/941;
-    
-    
   }
   .variant-a .hero-illust img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .variant-a .credentials { margin-bottom: 60px !important; }
   @media (max-width: 768px) {
-    .variant-a .hero-illust { max-width: 100%; margin-bottom: 40px; }
+    .variant-a { padding: 56px 12px 60px !important; }
+    .variant-a .hero-illust { max-width: 100%; margin-bottom: 36px; }
+    /* 让图横向超出 cover-inner 边距，贴到屏幕左右内边 */
+    .variant-a .hero-illust { width: calc(100% + 0px); }
+  }
+  @media (max-width: 420px) {
+    .variant-a { padding: 48px 8px 56px !important; }
   }
 </style>
 
