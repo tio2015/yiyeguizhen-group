@@ -109,7 +109,7 @@
     /* COVER */
     .cover {
       min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 0 40px 120px;
+      justify-content: center; padding: 80px 40px 120px;
       background: var(--green-deep);
       position: relative; overflow: hidden;
     }
@@ -122,6 +122,23 @@
     .cover-inner {
       max-width: 1200px; margin: 0 auto; width: 100%;
       position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+      align-items: center;
+    }
+    .cover-text { min-width: 0; }
+    .cover-hero-art {
+      position: relative;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .cover-hero-art img {
+      width: 100%; max-width: 540px; height: auto;
+      display: block;
+      filter: drop-shadow(0 12px 40px rgba(0,0,0,0.35));
+      animation: heroFadeIn 1.2s ease-out both;
+    }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     .cover-tag {
       font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
@@ -1287,7 +1304,10 @@
       }
       .section-title { font-size: 24px; }
       .section-desc { font-size: 14px; }
-      .cover { padding: 0 24px 80px; min-height: 100svh; }
+      .cover { padding: 56px 24px 80px; min-height: 100svh; }
+      .cover-inner { grid-template-columns: 1fr; gap: 16px; }
+      .cover-hero-art { order: -1; }
+      .cover-hero-art img { max-width: 360px; max-height: 42vh; object-fit: contain; }
       .cover-title { font-size: 32px; }
       .cover-subtitle { font-size: 15px; }
       .trust-anchors { font-size: 12px; margin-top: 32px; padding-top: 24px; }
@@ -1422,7 +1442,8 @@
     /* 小屏手机 */
     @media (max-width: 420px) {
       .section { padding: 24px 16px; }
-      .cover { padding: 0 16px 60px; }
+      .cover { padding: 40px 16px 60px; }
+      .cover-hero-art img { max-width: 300px; max-height: 38vh; }
       .cover-title { font-size: 26px; }
       .cover-subtitle { font-size: 13px; }
       .cover-tag { font-size: 11px; padding: 6px 16px; }
@@ -1529,10 +1550,15 @@
 
 <section id="cover" class="cover">
   <div class="cover-inner">
-    <h1 class="cover-title">外护樊文花<br><strong>内用植养萃</strong></h1>
-    <p class="cover-subtitle">植养萃 × 樊文花<br>商务合作提案</p>
-    <div class="trust-anchors">
-      刘仲华院士团队科研支持<br>国家植物功能成分利用工程技术研究中心
+    <div class="cover-hero-art">
+      <img src="/imgs/flh-cover-hero.png" alt="植养萃 × 樊文花 — 外护内养意象图" loading="eager" decoding="async">
+    </div>
+    <div class="cover-text">
+      <h1 class="cover-title">外护樊文花<br><strong>内用植养萃</strong></h1>
+      <p class="cover-subtitle">植养萃 × 樊文花<br>商务合作提案</p>
+      <div class="trust-anchors">
+        刘仲华院士团队科研支持<br>国家植物功能成分利用工程技术研究中心
+      </div>
     </div>
   </div>
 </section>
