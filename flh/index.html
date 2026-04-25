@@ -109,77 +109,100 @@
     /* COVER */
     .cover {
       min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; padding: 80px 40px 120px;
-      background: #001909;
+      justify-content: center; padding: 96px 40px 120px;
+      background: #011B06;
       position: relative; overflow: hidden;
     }
-    .cover::before {
-      content: ''; position: absolute; inset: 0;
-      background: transparent;
-    }
     .cover-inner {
-      max-width: 1200px; margin: 0 auto; width: 100%;
+      max-width: 980px; margin: 0 auto; width: 100%;
       position: relative; z-index: 1;
-      display: grid; grid-template-columns: 1fr; gap: 32px;
-      align-items: center;
-    }
-    .cover-text { min-width: 0; }
-    .cover-hero-art {
-      position: relative;
-      display: flex; justify-content: center; align-items: center;
-      width: 100%;
-    }
-    .cover-hero-art img {
-      width: 100%; max-width: 1200px; height: auto;
-      max-height: 85vh; object-fit: contain;
-      display: block;
-      background: transparent;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
       animation: heroFadeIn 1.2s ease-out both;
-    }
-    @media (min-width: 1024px) {
-      .cover-inner {
-        grid-template-columns: 1.05fr 1fr;
-        gap: 56px;
-        align-items: center;
-      }
-      .cover-text { order: 2; }
-      .cover-hero-art { order: 1; justify-content: flex-end; }
-      .cover-hero-art img { max-width: 1080px; max-height: 90vh; }
     }
     @keyframes heroFadeIn {
       from { opacity: 0; transform: translateY(12px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .cover-tag {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.2em;
-      color: var(--copper-light); margin-bottom: 32px;
-      display: flex; align-items: center; gap: 12px;
+
+    /* 院士背书 — 横向题头 */
+    .credentials {
+      display: flex; flex-direction: column; align-items: center;
+      gap: 18px;
+      margin-bottom: 96px;
+      width: 100%;
     }
-    .cover-tag::before {
-      content: ''; width: 40px; height: 1px; background: var(--copper-light);
+    .cred-org {
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 400;
+      color: #d4a574;
+      letter-spacing: 0.05em;
+      line-height: 1.3;
+      white-space: nowrap;
     }
+    .cred-rule {
+      width: 200px; height: 1px;
+      background: #d4a574;
+      opacity: 0.6;
+    }
+    .cred-team {
+      font-size: clamp(17px, 1.6vw, 22px);
+      font-weight: 400;
+      color: #d4a574;
+      letter-spacing: 0.2em;
+      line-height: 1.3;
+      padding-left: 0.2em;
+    }
+
+    /* 联名锁标 */
     .cover-title {
-      font-size: clamp(40px, 6vw, 72px); font-weight: 700;
-      line-height: 1.15; letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #fff, var(--copper-light));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; margin-bottom: 24px;
+      font-size: clamp(48px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      margin: 0 0 32px 0;
+      display: inline-flex; align-items: baseline; gap: 0.18em;
+      flex-wrap: nowrap;
     }
-    .cover-title strong {
-      font-weight: 700; color: #fff;
-      background: linear-gradient(135deg, #fff, var(--copper-light));
+    .cover-title .brand-name {
+      background: linear-gradient(135deg, #fff 0%, var(--copper-light) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
+      font-weight: 700;
     }
+    .cover-title .brand-cross {
+      color: var(--copper);
+      font-size: 0.6em; font-weight: 300;
+      transform: translateY(-0.05em);
+    }
+
+    /* 副标语：内调 · 外护 */
     .cover-subtitle {
-      font-size: 18px; font-weight: 400; color: rgba(255,255,255,0.6);
-      line-height: 1.6; max-width: 500px;
+      display: inline-flex; align-items: center; gap: 0.6em;
+      font-size: clamp(18px, 2.2vw, 26px);
+      letter-spacing: 0.5em;
+      padding-left: 0.5em;
+      color: rgba(255,255,255,0.85);
+      margin: 0 0 48px 0;
+      font-weight: 300;
     }
-    .trust-anchors {
-      margin-top: 48px; padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      font-size: 13px; color: rgba(255,255,255,0.4);
-      letter-spacing: 0.04em; line-height: 1.8;
+    .cover-subtitle .sub-dot {
+      color: var(--copper);
+      letter-spacing: 0;
+    }
+
+    /* 分隔金线 */
+    .cover-divider {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--copper), transparent);
+      margin-bottom: 24px;
+    }
+
+    /* 落款 */
+    .cover-signature {
+      font-size: 12px;
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.55);
     }
     .scroll-hint {
       position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
@@ -1314,11 +1337,13 @@
       }
       .section-title { font-size: 24px; }
       .section-desc { font-size: 14px; }
-      .cover { padding: 60px 24px 60px; min-height: 100svh; }
-      .cover-hero-art img { max-width: 1040px; max-height: 75vh; }
-      .cover-title { font-size: 32px; }
-      .cover-subtitle { font-size: 15px; max-width: none; }
-      .trust-anchors { font-size: 12px; margin-top: 32px; padding-top: 24px; }
+      .cover { padding: 72px 24px 60px; min-height: 100svh; }
+      .credentials { gap: 14px; margin-bottom: 64px; }
+      .cred-org { font-size: clamp(13px, 4.2vw, 18px); letter-spacing: 0.02em; }
+      .cred-rule { width: 140px; }
+      .cred-team { font-size: clamp(12px, 3.4vw, 15px); letter-spacing: 0.15em; }
+      .cover-subtitle { letter-spacing: 0.3em; }
+      .cover-divider { margin-bottom: 20px; }
       .scroll-hint { bottom: 24px; }
       .nav-inner { padding: 0 20px; height: 56px; }
       .nav-brand { font-size: 13px; }
@@ -1450,11 +1475,8 @@
     /* 小屏手机 */
     @media (max-width: 420px) {
       .section { padding: 24px 16px; }
-      .cover { padding: 40px 16px 60px; }
-      .cover-hero-art img { max-width: 680px; max-height: 60vh; }
-      .cover-title { font-size: 26px; }
-      .cover-subtitle { font-size: 13px; }
-      .cover-tag { font-size: 11px; padding: 6px 16px; }
+      .cover { padding: 56px 16px 60px; }
+      .cred-rule { width: 120px; }
       .section-title { font-size: 20px; }
       .section-desc { font-size: 13px; }
       .product-header { padding: 36px 16px; margin: 0; border-radius: 12px 12px 0 0; }
@@ -1556,20 +1578,45 @@
   </div>
 </nav>
 
-<section id="cover" class="cover">
+<section id="cover" class="cover variant-a">
   <div class="cover-inner">
-    <div class="cover-hero-art">
-      <img src="/imgs/flh-cover-hero.png?v=peony5" alt="植养萃 × 樊文花 — 外护内养意象图" loading="eager" decoding="async">
+    <div class="hero-illust">
+      <img src="/imgs/flh-hero-extract.png?v=extract1" alt="植物萃取意象图" loading="eager">
     </div>
-    <div class="cover-text">
-      <h1 class="cover-title">外护樊文花<br><strong>内用植养萃</strong></h1>
-      <p class="cover-subtitle">植养萃 × 樊文花<br>商务合作提案</p>
-      <div class="trust-anchors">
-        刘仲华院士团队科研支持<br>国家植物功能成分利用工程技术研究中心
-      </div>
+
+    <div class="credentials">
+      <div class="cred-org">国家植物功能成分利用工程技术研究中心</div>
+      <div class="cred-rule"></div>
+      <div class="cred-team">刘仲华院士团队 · 科研支持</div>
     </div>
+
+    <h1 class="cover-title">
+      <span class="brand-name">植养萃</span><span class="brand-cross">×</span><span class="brand-name">樊文花</span>
+    </h1>
+
+    <p class="cover-subtitle">
+      <span>内调</span><span class="sub-dot">·</span><span>外护</span>
+    </p>
+
+    <div class="cover-divider"></div>
+
+    <div class="cover-signature">商务合作提案</div>
   </div>
 </section>
+<style>
+  .variant-a { min-height: auto !important; padding: 64px 40px 96px !important; }
+  .variant-a .hero-illust {
+    width: 100%; max-width: 880px; margin: 0 auto 56px;
+    aspect-ratio: 1672/941;
+    
+    
+  }
+  .variant-a .hero-illust img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .variant-a .credentials { margin-bottom: 60px !important; }
+  @media (max-width: 768px) {
+    .variant-a .hero-illust { max-width: 100%; margin-bottom: 40px; }
+  }
+</style>
 
 <section id="who" class="section">
   <div class="section-header reveal">
