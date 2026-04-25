@@ -110,14 +110,12 @@
     .cover {
       min-height: 100vh; display: flex; flex-direction: column;
       justify-content: center; padding: 80px 40px 120px;
-      background: var(--green-deep);
+      background: #01200B;
       position: relative; overflow: hidden;
     }
     .cover::before {
       content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 80% 60% at 70% 30%, oklch(0.30 0.08 155 / 0.5), transparent),
-        radial-gradient(ellipse 60% 50% at 20% 70%, oklch(0.25 0.06 50 / 0.3), transparent);
+      background: transparent;
     }
     .cover-inner {
       max-width: 1200px; margin: 0 auto; width: 100%;
@@ -1551,7 +1549,7 @@
 <section id="cover" class="cover">
   <div class="cover-inner">
     <div class="cover-hero-art">
-      <img src="/imgs/flh-cover-hero.png?v=transparent2" alt="植养萃 × 樊文花 — 外护内养意象图" loading="eager" decoding="async">
+      <img src="/imgs/flh-cover-hero.png?v=greenbg" alt="植养萃 × 樊文花 — 外护内养意象图" loading="eager" decoding="async">
     </div>
     <div class="cover-text">
       <h1 class="cover-title">外护樊文花<br><strong>内用植养萃</strong></h1>
