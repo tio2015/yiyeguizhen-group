@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>植养萃 · 悦伴 | 京沪高铁专供功能糖</title>
+<meta property="og:title" content="植养萃 × 悦伴 | 京沪高铁在售爆品">
+<meta property="og:description" content="悦醒咖啡糖 · 悦清海盐柠檬糖 · 国家植物功能成分利用工程技术研究中心研发">
+<meta property="og:image" content="https://www.yiyeguizhen.com/gaotie/assets/og.jpg">
+<meta property="og:url" content="https://www.yiyeguizhen.com/gaotie/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --coffee: #C4620A;
+  --coffee-g: #F5A92B;
+  --lemon: #0A7EC4;
+  --lemon-g: #00D4F0;
+}
+html { scroll-behavior: smooth; }
+body { background: #000; font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif; color: #fff; }
+
+/* ── RAIL SECTION ── */
+#rail {
+  padding: 120px 40px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+#rail::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.95) 0%, rgba(10,8,5,0.9) 50%, rgba(0,0,0,0.95) 100%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 80px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 80px);
+  pointer-events: none;
+}
+.rail-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+
+.rail-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 20px;
+  background: rgba(196,98,10,0.12); border: 1px solid rgba(196,98,10,0.25);
+  font-size: 11px; letter-spacing: 3px; font-weight: 700; color: var(--coffee-g);
+  margin-bottom: 32px;
+}
+.rail-tag::before { content: '🚄'; font-size: 14px; }
+
+.rail-headline {
+  font-size: clamp(32px,5.5vw,68px);
+  font-weight: 900; line-height: 1.05; letter-spacing: -1.5px;
+  margin-bottom: 20px; color: #fff;
+}
+.rail-headline em { font-style: normal; color: var(--coffee-g); }
+
+.rail-sub {
+  font-size: clamp(14px,1.8vw,18px);
+  color: rgba(255,255,255,0.4); line-height: 1.8;
+  max-width: 600px; margin-bottom: 64px;
+}
+
+/* 数字条 */
+.rail-stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1px; background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 20px;
+  overflow: hidden; margin-bottom: 80px;
+}
+.rail-stat {
+  padding: 36px 28px; background: rgba(255,255,255,0.02);
+  text-align: center;
+}
+.rail-stat .rs-num {
+  font-size: clamp(28px,4vw,48px); font-weight: 900; line-height: 1;
+  background: linear-gradient(90deg, var(--coffee), var(--coffee-g));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.rail-stat .rs-unit { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 8px; letter-spacing: 1px; }
+
+/* 三痛点 */
+.rail-pains {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+  margin-bottom: 80px;
+}
+.rail-pain {
+  padding: 32px 24px; border-radius: 20px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  position: relative; overflow: hidden;
+}
+.rail-pain::before {
+  content: attr(data-num);
+  position: absolute; top: -10px; right: 16px;
+  font-size: 72px; font-weight: 900;
+  color: rgba(255,255,255,0.03); line-height: 1;
+  pointer-events: none;
+}
+.rail-pain .rp-icon { font-size: 32px; margin-bottom: 16px; }
+.rail-pain h4 { font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }
+.rail-pain p { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.8; }
+.rail-pain .rp-data {
+  display: inline-block; margin-top: 14px;
+  font-size: 11px; padding: 4px 12px; border-radius: 12px;
+  background: rgba(196,98,10,0.15); color: var(--coffee-g);
+  font-weight: 700; letter-spacing: 1px;
+}
+
+/* 解决方案双联 */
+.rail-solution-title {
+  text-align: center; margin-bottom: 40px;
+}
+.rail-solution-title h3 { font-size: clamp(20px,3vw,32px); font-weight: 800; }
+.rail-solution-title p { color: rgba(255,255,255,0.35); font-size: 14px; margin-top: 8px; }
+
+.rail-duo {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.rail-product {
+  padding: 36px 30px; border-radius: 22px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.rail-product.rp-coffee {
+  background: linear-gradient(135deg, rgba(196,98,10,0.18), rgba(100,40,0,0.25));
+  border: 1px solid rgba(245,169,43,0.2);
+}
+.rail-product.rp-lemon {
+  background: linear-gradient(135deg, rgba(10,126,196,0.18), rgba(0,30,60,0.25));
+  border: 1px solid rgba(0,212,240,0.2);
+}
+.rail-product .rp-name { font-size: 20px; font-weight: 800; color: #fff; }
+.rail-product .rp-hook { font-size: 14px; font-weight: 600; }
+.rp-coffee .rp-hook { color: var(--coffee-g); }
+.rp-lemon .rp-hook { color: var(--lemon-g); }
+.rail-product .rp-copy { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.8; }
+.rail-product .rp-vs {
+  font-size: 12px; color: rgba(255,255,255,0.3);
+  padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.07);
+}
+.rail-product .rp-vs strong { color: rgba(255,255,255,0.7); }
+
+@media (max-width: 768px) {
+  #rail { padding: 80px 20px; }
+  .rail-stats { grid-template-columns: 1fr; }
+  .rail-pains { grid-template-columns: 1fr; }
+  .rail-duo { grid-template-columns: 1fr; }
+}
+
+/* ── NAV ── */
+.snav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 54px;
+  background: rgba(0,0,0,0.8); backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px;
+}
+.snav-brand { font-size: 15px; font-weight: 800; letter-spacing: 3px; color: #fff; }
+.snav-links { display: flex; gap: 28px; list-style: none; }
+.snav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color .2s; }
+.snav-links a:hover { color: #fff; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 100px 24px 60px;
+  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30,15,0,1) 0%, #000 70%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,98,10,0.12) 0%, transparent 70%);
+  top: -100px; left: -100px; pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(10,126,196,0.12) 0%, transparent 70%);
+  bottom: -80px; right: -80px; pointer-events: none;
+}
+.institute-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 8px 20px; border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 30px; background: rgba(255,255,255,0.04); margin-bottom: 48px; position: relative;
+}
+.institute-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: #4CAF50; box-shadow: 0 0 6px #4CAF50; }
+.institute-badge span { font-size: 12px; letter-spacing: 1.5px; color: rgba(255,255,255,0.55); }
+.institute-badge strong { color: rgba(255,255,255,0.9); font-weight: 600; }
+.hero-brand { font-size: clamp(13px,2vw,16px); letter-spacing: 8px; color: rgba(255,255,255,0.3); text-transform: uppercase; margin-bottom: 24px; }
+.hero-title { font-size: clamp(42px,8vw,96px); font-weight: 900; line-height: 1; letter-spacing: -2px; margin-bottom: 32px; }
+.hero-title .w1 { background: linear-gradient(90deg, var(--coffee), var(--coffee-g)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-title .sep { color: rgba(255,255,255,0.15); font-weight: 200; margin: 0 12px; }
+.hero-title .w2 { background: linear-gradient(90deg, var(--lemon), var(--lemon-g)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { font-size: clamp(14px,2vw,18px); color: rgba(255,255,255,0.4); letter-spacing: 3px; margin-bottom: 64px; }
+.hero-cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.hero-card {
+  width: 200px; border-radius: 20px; overflow: hidden; cursor: pointer;
+  text-decoration: none; position: relative; aspect-ratio: 1/1.6;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.hero-card:hover { transform: translateY(-10px) scale(1.02); }
+.hero-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.hero-card-label { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px 16px; font-size: 14px; font-weight: 700; color: #fff; }
+.hero-card.c { box-shadow: 0 20px 60px rgba(196,98,10,0.4); }
+.hero-card.c .hero-card-label { background: linear-gradient(0deg, rgba(100,40,0,0.9), transparent); }
+.hero-card.l { box-shadow: 0 20px 60px rgba(10,126,196,0.4); }
+.hero-card.l .hero-card-label { background: linear-gradient(0deg, rgba(0,30,60,0.9), transparent); }
+.hero-card-label .sub { font-size: 11px; font-weight: 400; opacity: .7; margin-top: 2px; }
+.scroll-arrow {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: 2px;
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+.scroll-arrow svg { width: 18px; height: 18px; }
+
+/* ── HERO PROMINENCE ── */
+/* 国家研究中心 — 金色权威风格 */
+.inst-seal {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 32px;
+  background: linear-gradient(135deg, rgba(22,16,4,0.97), rgba(30,22,6,0.95));
+  border: 1px solid rgba(218,165,32,0.5);
+  border-radius: 16px;
+  margin-bottom: 36px; max-width: 720px; width: 100%;
+  position: relative; overflow: hidden;
+  box-shadow: 0 0 48px rgba(218,165,32,0.07), inset 0 1px 0 rgba(218,165,32,0.18);
+}
+.inst-seal::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 5%, rgba(218,165,32,0.85) 30%, rgba(218,165,32,0.85) 70%, transparent 95%);
+}
+.inst-seal::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 5%, rgba(218,165,32,0.25) 30%, rgba(218,165,32,0.25) 70%, transparent 95%);
+}
+/* 左侧徽章圆 */
+.seal-icon {
+  flex-shrink: 0;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(218,165,32,0.22), rgba(218,165,32,0.08));
+  border: 1.5px solid rgba(218,165,32,0.45);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.seal-text { text-align: left; flex: 1; }
+.seal-label {
+  font-size: 10px; letter-spacing: 4px; font-weight: 700;
+  color: rgba(218,165,32,0.7); margin-bottom: 6px; text-transform: uppercase;
+}
+.seal-main {
+  font-size: 16px; font-weight: 800; color: #fff; letter-spacing: 2px; line-height: 1.3;
+  background: linear-gradient(90deg, #fff 60%, rgba(218,165,32,0.9));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.seal-sub { font-size: 11px; color: rgba(218,165,32,0.55); letter-spacing: 2px; margin-top: 5px; }
+.seal-verify {
+  margin-left: 16px; flex-shrink: 0;
+  padding: 7px 16px; border-radius: 8px;
+  background: rgba(218,165,32,0.1); border: 1px solid rgba(218,165,32,0.4);
+  font-size: 12px; font-weight: 700; color: #DAA520; letter-spacing: 3px;
+  writing-mode: vertical-rl; text-orientation: upright;
+  line-height: 1.6;
+}
+
+/* 京沪高铁 — 定制图 */
+.train-badge-img {
+  width: 100%; max-width: 760px;
+  height: auto; display: block;
+  border-radius: 20px;
+  margin-bottom: 48px;
+  box-shadow: 0 8px 60px rgba(0,0,0,0.5);
+}
+@media (max-width: 768px) {
+  .train-badge-img { border-radius: 14px; margin-bottom: 36px; }
+}
+
+/* 京沪高铁 — 复兴号底图横幅（保留备用） */
+.rail-banner {
+  width: 100%; max-width: 760px;
+  border-radius: 20px; overflow: hidden;
+  position: relative; margin-bottom: 48px;
+  border: 1px solid rgba(245,169,43,0.2);
+  box-shadow: 0 8px 60px rgba(0,0,0,0.6), 0 0 40px rgba(196,98,10,0.1);
+}
+.rail-banner-bg {
+  position: absolute; inset: 0;
+  background-image: url('assets/fuxing_dark.jpg');
+  background-size: cover; background-position: center 45%;
+}
+.rail-banner-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    rgba(0,0,0,0.88) 0%,
+    rgba(5,3,0,0.65) 40%,
+    rgba(0,0,0,0.78) 100%);
+}
+.rail-banner-content {
+  position: relative; z-index: 2;
+  padding: 36px 44px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.rb-left {}
+.rb-tag {
+  font-size: 10px; letter-spacing: 4px; font-weight: 700;
+  color: rgba(245,169,43,0.7); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.rb-tag::before { content: ''; display: block; width: 20px; height: 1px; background: rgba(245,169,43,0.5); }
+.rb-title {
+  font-size: clamp(26px, 4vw, 38px); font-weight: 900;
+  color: #fff; letter-spacing: 4px; line-height: 1.1;
+}
+.rb-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, #F5A92B, #FFD700);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.rb-detail { font-size: 12px; color: rgba(255,255,255,0.38); margin-top: 10px; letter-spacing: 2px; }
+.rb-right {
+  flex-shrink: 0; text-align: center;
+  padding: 14px 24px; border-radius: 12px;
+  background: rgba(245,169,43,0.1); border: 1px solid rgba(245,169,43,0.3);
+}
+.rb-right .rb-num { font-size: 28px; font-weight: 900; color: #F5A92B; line-height: 1; }
+.rb-right .rb-unit { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 4px; letter-spacing: 1px; }
+
+@media (max-width: 768px) {
+  .inst-seal { padding: 16px 20px; gap: 14px; }
+  .seal-main { font-size: 13px; letter-spacing: 1px; }
+  .seal-verify { display: none; }
+  .rail-banner-content { padding: 28px 24px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .rb-right { align-self: flex-start; padding: 10px 18px; }
+}
+
+/* ── SHARED SECTION ── */
+.section-eyebrow { font-size: 11px; letter-spacing: 5px; font-weight: 700; text-transform: uppercase; margin-bottom: 14px; }
+.c-eye { color: var(--coffee-g); }
+.l-eye { color: var(--lemon-g); }
+.section-headline { font-size: clamp(36px,5vw,64px); font-weight: 900; line-height: 1.05; letter-spacing: -1px; margin-bottom: 16px; }
+.section-tagline { font-size: clamp(15px,2vw,20px); font-weight: 500; line-height: 1.6; margin-bottom: 32px; }
+.c-tag { color: rgba(245,169,43,0.85); }
+.l-tag { color: rgba(0,212,240,0.85); }
+.section-desc { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.55); max-width: 480px; }
+
+/* ── COFFEE ── */
+#coffee { background: linear-gradient(180deg,#0d0500 0%,#1c0a00 100%); padding-top: 100px; }
+.coffee-hero-row {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; align-items: end; padding: 0 40px;
+}
+.coffee-text { padding-bottom: 80px; }
+.vs-strip {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px; overflow: hidden; margin: 40px 0 48px; font-size: 13px;
+}
+.vs-col-head { padding: 12px 20px; font-size: 12px; letter-spacing: 2px; text-align: center; font-weight: 700; }
+.vs-col-head.bad { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.4); }
+.vs-col-head.good { background: rgba(196,98,10,0.3); color: var(--coffee-g); }
+.vs-badge { width: 48px; text-align: center; font-size: 15px; font-weight: 900; color: var(--coffee-g); }
+.vs-row { display: contents; }
+.vs-row > div { padding: 10px 20px; text-align: center; color: rgba(255,255,255,0.65); font-size: 13px; border-top: 1px solid rgba(255,255,255,0.05); }
+.vs-row > div.highlight { color: #fff; font-weight: 600; }
+.vs-row > .vs-label { color: rgba(255,255,255,0.25); font-size: 11px; }
+
+.plants-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+.block-title { text-align: center; margin-bottom: 48px; }
+.block-title h3 { font-size: clamp(22px,3.5vw,36px); font-weight: 800; margin-bottom: 8px; }
+.block-title h3 span { color: var(--coffee-g); }
+.block-title h3 span.lc { color: var(--lemon-g); }
+.block-title p { color: rgba(255,255,255,0.4); font-size: 14px; letter-spacing: 2px; }
+
+.plants-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 16px; }
+.plant-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 20px 12px; text-align: center; transition: background .2s; }
+.plant-item:hover { background: rgba(196,98,10,0.12); border-color: rgba(196,98,10,0.3); }
+.plant-item .p-icon { font-size: 28px; margin-bottom: 10px; }
+.plant-item .p-cn { font-size: 14px; font-weight: 700; }
+.plant-item .p-en { font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 2px; }
+
+.four-block { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.06); padding: 80px 40px; }
+.four-inner { max-width: 1100px; margin: 0 auto; }
+.four-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.four-card { padding: 28px 20px; border-radius: 18px; background: rgba(196,98,10,0.08); border: 1px solid rgba(196,98,10,0.15); }
+.four-card .fc-icon { font-size: 32px; margin-bottom: 14px; }
+.four-card h4 { font-size: 16px; font-weight: 800; color: var(--coffee-g); margin-bottom: 6px; }
+.four-card p { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+.scene-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+.scenes { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.scene-card { padding: 24px 20px; border-radius: 16px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+.scene-card .sc-icon { font-size: 36px; margin-bottom: 12px; }
+.scene-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.scene-card p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+/* ── LEMON ── */
+#lemon { background: linear-gradient(180deg,#000d1a 0%,#001525 100%); padding-top: 100px; }
+.lemon-hero-row {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; align-items: end; padding: 0 40px;
+}
+.lemon-text { padding-bottom: 80px; }
+
+.triple-section { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+.triple-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.triple-card { padding: 36px 24px; border-radius: 20px; text-align: center; background: rgba(10,126,196,0.08); border: 1px solid rgba(10,126,196,0.2); transition: background .2s; }
+.triple-card:hover { background: rgba(10,126,196,0.15); }
+.triple-card .tc-icon { font-size: 40px; margin-bottom: 16px; }
+.triple-card h4 { font-size: 20px; font-weight: 800; color: var(--lemon-g); margin-bottom: 8px; }
+.triple-card p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+.probiotic-wrap { padding: 80px 40px; max-width: 1100px; margin: 0 auto; }
+.probiotic-block {
+  background: linear-gradient(135deg, rgba(10,126,196,0.15), rgba(0,212,240,0.08));
+  border: 1px solid rgba(0,212,240,0.2); border-radius: 24px; padding: 60px 48px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.probiotic-block::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 50% 0%, rgba(0,212,240,0.08), transparent); }
+.probiotic-num { font-size: clamp(48px,8vw,80px); font-weight: 900; letter-spacing: -2px; background: linear-gradient(90deg, var(--lemon), var(--lemon-g)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; }
+.probiotic-unit { font-size: clamp(16px,2.5vw,24px); color: rgba(255,255,255,0.6); margin: 8px 0 12px; position: relative; }
+.probiotic-sub { font-size: 13px; color: rgba(255,255,255,0.35); letter-spacing: 2px; position: relative; }
+
+.zero-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; max-width: 1100px; padding: 0 40px; margin: 0 auto 80px; }
+.zero-card { text-align: center; padding: 28px 16px; border-radius: 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+.zero-card .zn { font-size: clamp(28px,4vw,42px); font-weight: 900; color: var(--lemon-g); }
+.zero-card .zu { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 4px; letter-spacing: 2px; }
+
+/* ── INSTITUTE ── */
+#institute { padding: 100px 40px; background: #050505; text-align: center; }
+.inst-inner { max-width: 800px; margin: 0 auto; }
+.inst-badge-big { display: inline-block; padding: 6px 18px; border-radius: 20px; font-size: 11px; letter-spacing: 3px; font-weight: 700; background: rgba(76,175,80,0.12); border: 1px solid rgba(76,175,80,0.3); color: #81C784; margin-bottom: 28px; }
+#institute h2 { font-size: clamp(24px,4vw,42px); font-weight: 900; margin-bottom: 16px; }
+#institute p { font-size: 15px; color: rgba(255,255,255,0.4); line-height: 1.9; max-width: 560px; margin: 0 auto 50px; }
+.inst-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.inst-item { flex: 1; min-width: 160px; max-width: 200px; padding: 28px 20px; border-radius: 18px; text-align: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+.inst-item .ii-num { font-size: 28px; font-weight: 900; color: #fff; }
+.inst-item .ii-label { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 6px; letter-spacing: 1px; }
+
+/* ── FOOTER ── */
+footer { padding: 50px 24px 60px; background: #000; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+footer .fb { font-size: 20px; font-weight: 800; letter-spacing: 5px; margin-bottom: 10px; }
+footer p { font-size: 12px; color: rgba(255,255,255,0.2); line-height: 2.5; letter-spacing: 1px; }
+
+/* ── LIGHTBOX ── */
+.lb { display: none; position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; padding: 16px; }
+.lb.on { display: flex; }
+.lb img { max-height: 92svh; max-width: 460px; width: 100%; object-fit: contain; border-radius: 10px; }
+.lb-x { position: absolute; top: 18px; right: 22px; font-size: 28px; color: rgba(255,255,255,0.45); cursor: pointer; transition: color .2s; }
+.lb-x:hover { color: #fff; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .coffee-hero-row, .lemon-hero-row { grid-template-columns: 1fr; padding: 0 20px; }
+  .coffee-text, .lemon-text { padding-bottom: 40px; order: 1; }
+  .lemon-img-col { order: 0; }
+  .plants-grid { grid-template-columns: repeat(3,1fr); }
+  .four-grid { grid-template-columns: repeat(2,1fr); }
+  .triple-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
+  .zero-row { padding: 0 20px; }
+  .scenes { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
+  .plants-section, .scene-section, .triple-section, .probiotic-wrap { padding: 60px 20px; }
+  .four-block { padding: 60px 20px; }
+  .probiotic-block { padding: 40px 24px; }
+  .snav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="snav">
+  <span class="snav-brand">植养萃</span>
+  <ul class="snav-links">
+    <li><a href="#coffee" onclick="goto('#coffee');return false">悦醒咖啡糖</a></li>
+    <li><a href="#lemon" onclick="goto('#lemon');return false">悦清海盐柠檬糖</a></li>
+    <li><a href="#institute" onclick="goto('#institute');return false">研发背书</a></li>
+    <li><a href="#pack" onclick="goto('#pack');return false">在线购买</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- 国家级研究中心背书 -->
+  <div class="inst-seal">
+    <div class="seal-icon">🔬</div>
+    <div class="seal-text">
+      <div class="seal-label">国家级研发背书</div>
+      <div class="seal-main">国家植物功能成分利用工程技术研究中心</div>
+      <div class="seal-sub">植物提取科研配方 · 官方研发支持</div>
+    </div>
+    <div class="seal-verify">研发<br>认证</div>
+  </div>
+
+  <p class="hero-brand">植养萃 × 悦伴</p>
+  <h1 class="hero-title">
+    <span class="w1">悦醒</span><span class="sep">·</span><span class="w2">悦清</span>
+  </h1>
+
+  <!-- 京沪高铁背书 — 定制图 -->
+  <img src="assets/train_badge.jpg" alt="京沪高铁独家在售" class="train-badge-img">
+  <div class="hero-cards">
+    <a class="hero-card c" href="#coffee" onclick="goto('#coffee');return false">
+      <img src="assets/coffee_hero.jpg" alt="悦醒咖啡糖">
+      <div class="hero-card-label">悦醒咖啡糖<div class="sub">一颗咖啡糖，不卡顿</div></div>
+    </a>
+    <a class="hero-card l" href="#lemon" onclick="goto('#lemon');return false">
+      <img src="assets/lemon_hero.jpg" alt="悦清海盐柠檬糖">
+      <div class="hero-card-label">悦清海盐柠檬糖<div class="sub">清新口气，刻不容缓</div></div>
+    </a>
+  </div>
+  <div class="scroll-arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    向下滑动
+  </div>
+</section>
+
+<!-- RAIL -->
+<section id="rail">
+  <div class="rail-inner">
+    <span class="rail-tag">京沪高铁在售爆品</span>
+    <h2 class="rail-headline">
+      被<em>京沪高铁选中</em>的<br>
+      那两颗糖
+    </h2>
+    <p class="rail-sub">
+      京沪高铁，日均14万人次，55%商务出行，
+      在几千款产品里，选了这两颗。<br>
+      不是因为好卖——是因为真的有用。
+    </p>
+
+    <div class="rail-stats">
+      <div class="rail-stat">
+        <div class="rs-num">14万+</div>
+        <div class="rs-unit">日均旅客人次</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;">来源：36氪/京沪高铁年报</div>
+      </div>
+      <div class="rail-stat">
+        <div class="rs-num">55%</div>
+        <div class="rs-unit">商务 · 公务出行占比</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;">来源：铁路客流调研数据</div>
+      </div>
+      <div class="rail-stat">
+        <div class="rs-num">CO₂ ×2.5</div>
+        <div class="rs-unit">满员车厢浓度参考值</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.2);margin-top:6px;">来源：界面新闻/澎湃新闻实测</div>
+      </div>
+    </div>
+
+    <div class="rail-pains">
+      <div class="rail-pain" data-num="01">
+        <div class="rp-icon">😴</div>
+        <h4>密闭车厢，自动催眠</h4>
+        <p>CO₂超标、低频震动、恒温暖气——高铁本身就是一台催眠机器。但你下车要直奔会议室。</p>
+        <span class="rp-data">CO₂最高实测 2207ppm</span>
+      </div>
+      <div class="rail-pain" data-num="02">
+        <div class="rp-icon">☕</div>
+        <h4>想喝咖啡，没法冲</h4>
+        <p>车上咖啡29元一杯，供应不稳定，还要排队。4小时里你只有一个选择：随身带着的那颗。</p>
+        <span class="rp-data">车载咖啡 ¥29 · 等待不确定</span>
+      </div>
+      <div class="rail-pain" data-num="03">
+        <div class="rp-icon">🫁</div>
+        <h4>密闭空间，口气放大</h4>
+        <p>对面坐陌生人、走廊擦肩、下车直接见客户——没有刷牙的机会，只有提前准备的那颗。</p>
+        <span class="rp-data">下车即开会，是京沪商务常态</span>
+      </div>
+    </div>
+
+    <div class="rail-solution-title">
+      <h3>京沪高铁的答案：就这两颗</h3>
+      <p>植养萃 × 悦伴 · 国家植物功能成分利用工程技术研究中心研发</p>
+    </div>
+
+    <div class="rail-duo">
+      <div class="rail-product rp-coffee">
+        <div class="rp-name">☕ 悦醒咖啡糖</div>
+        <div class="rp-hook">上车犯困？一颗，比咖啡更快</div>
+        <div class="rp-copy">
+          源自5种天然植物提取，含茶多酚 + 咖啡粉，
+          更便于随时享用，丝滑醇香不苦涩，
+          口袋里随时取，3秒入口，全程可用。
+        </div>
+        <div class="rp-vs">对比车载咖啡：<strong>不用排队 · 不用等 · 不烫嘴 · 0糖无负担</strong></div>
+      </div>
+      <div class="rail-product rp-lemon">
+        <div class="rp-name">🍋 悦清海盐柠檬糖</div>
+        <div class="rp-hook">下车见人？一颗，比漱口更彻底</div>
+        <div class="rp-copy">
+          三重配方：海盐 + 绿咖啡 + 150亿益生菌，
+          耐干酪乳杆菌ADP-1科学护口腔，
+          不只是掩盖口气，带来更持久的清新感受。
+        </div>
+        <div class="rp-vs">密闭车厢最佳伴侣：<strong>0糖0脂 · 随取随用 · 不影响邻座</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COFFEE -->
+<section id="coffee">
+  <div class="coffee-hero-row">
+    <div class="coffee-text">
+      <p class="section-eyebrow c-eye">随时随地 · 保持状态 · 植物配方</p>
+      <h2 class="section-headline">悦醒<br>咖啡糖</h2>
+      <p class="section-tagline c-tag">一颗悦醒，焕活能量<br>0糖 · 添加咖啡粉 · 含茶多酚</p>
+      <div class="vs-strip">
+        <div>
+          <div class="vs-col-head bad">黑咖啡</div>
+          <div class="vs-row"><div>冲泡麻烦</div><div class="vs-label">冲泡方式</div><div class="highlight">随时随地</div></div>
+          <div class="vs-row"><div>冲泡后饮用</div><div class="vs-label">饮用方式</div><div class="highlight">随取随用</div></div>
+          <div class="vs-row"><div>浓苦涩口</div><div class="vs-label">口感</div><div class="highlight">丝滑醇香</div></div>
+          <div class="vs-row"><div>价格不菲</div><div class="vs-label">价格</div><div class="highlight">性价比高</div></div>
+        </div>
+        <div class="vs-badge">VS</div>
+        <div><div class="vs-col-head good">咖啡糖</div></div>
+      </div>
+      <p class="section-desc">0糖 · 添加咖啡粉 · 含茶多酚<br>源自植物提取，古方灵感，一扫困境</p>
+    </div>
+  </div>
+
+  <div class="plants-section">
+    <div class="block-title">
+      <h3>源自植物提取</h3>
+      <p>5种草本精华 · 一颗劲凉到底</p>
+    </div>
+    <div class="plants-grid">
+      <div class="plant-item"><div class="p-icon">🍈</div><div class="p-cn">罗汉果</div><div class="p-en">Momordica grosvenori</div></div>
+      <div class="plant-item"><div class="p-icon">🍑</div><div class="p-cn">枇杷</div><div class="p-en">Loquat</div></div>
+      <div class="plant-item"><div class="p-icon">🍵</div><div class="p-cn">绿茶</div><div class="p-en">Green Tea</div></div>
+      <div class="plant-item"><div class="p-icon">🌿</div><div class="p-cn">桔梗</div><div class="p-en">Platycodon</div></div>
+      <div class="plant-item"><div class="p-icon">🌱</div><div class="p-cn">甘草</div><div class="p-en">Licorice</div></div>
+    </div>
+  </div>
+
+  <div class="four-block">
+    <div class="four-inner">
+      <div class="block-title">
+        <h3><span>4重</span>滋养成分加持</h3>
+        <p>每颗糖都是科研配方</p>
+      </div>
+      <div class="four-grid">
+        <div class="four-card"><div class="fc-icon">🍈</div><h4>罗汉果提取液</h4><p>果肉甘甜，口味独特，天然甜感</p></div>
+        <div class="four-card"><div class="fc-icon">🌿</div><h4>甘草提取液</h4><p>气微味甜而特殊，辅助舒缓</p></div>
+        <div class="four-card"><div class="fc-icon">🌱</div><h4>桔梗提取液</h4><p>味辛微温，传统草本精华</p></div>
+        <div class="four-card"><div class="fc-icon">🍑</div><h4>云雾枇杷粉</h4><p>酸甜多汁，口感清爽回甘</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scene-section">
+    <div class="block-title"><h3>专注时刻，一片搞定</h3><p>随身携带，随时开始</p></div>
+    <div class="scenes">
+      <div class="scene-card"><div class="sc-icon">🚗</div><h4>开车驾驶</h4><p>劲凉轻松，保持清醒专注</p></div>
+      <div class="scene-card"><div class="sc-icon">💼</div><h4>开会应酬</h4><p>瞬间清润，清新自信</p></div>
+      <div class="scene-card"><div class="sc-icon">🎤</div><h4>高频用嗓</h4><p>瞬间清润，护嗓舒爽</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEMON -->
+<section id="lemon" style="background:linear-gradient(180deg,#000d1a 0%,#001525 100%);padding-top:100px;">
+  <div class="lemon-hero-row">
+    <div class="lemon-text">
+      <p class="section-eyebrow l-eye">清爽 · 口气 · 益生菌</p>
+      <h2 class="section-headline">悦清<br>海盐柠檬糖</h2>
+      <p class="section-tagline l-tag">一颗悦清，清澈呼吸<br>0糖·0脂 · 添加益生菌 · 高维生素C</p>
+      <p class="section-desc">酸 + 柠檬双重结合，层层碰撞清爽感。<br>0糖0脂，轻享甜度。<br>耐干酪乳杆菌ADP-1，科学护口腔。</p>
+    </div>
+  </div>
+
+  <div class="triple-section">
+    <div class="block-title">
+      <h3><span class="lc">三重配方</span>，清新口气体验</h3>
+      <p>科学配伍，持久清新</p>
+    </div>
+    <div class="triple-grid">
+      <div class="triple-card"><div class="tc-icon">🧂</div><h4>海盐</h4><p>减少细菌节再生，保持口腔清洁环境</p></div>
+      <div class="triple-card"><div class="tc-icon">☕</div><h4>绿咖啡</h4><p>保持口气清新，辅助抑制口腔异味</p></div>
+      <div class="triple-card"><div class="tc-icon">🦠</div><h4>益生菌</h4><p>辅助带来清新口气体验</p></div>
+    </div>
+  </div>
+
+  <div class="probiotic-wrap">
+    <div class="probiotic-block">
+      <div class="probiotic-num">150亿</div>
+      <div class="probiotic-unit">Cells / 30g · 益生菌含量</div>
+      <div class="probiotic-sub">耐干酪乳杆菌 ADP-1 · 持续带来清新感</div>
+    </div>
+  </div>
+
+  <div class="zero-row">
+    <div class="zero-card"><div class="zn">0糖</div><div class="zu">无负担</div></div>
+    <div class="zero-card"><div class="zn">0脂</div><div class="zu">轻享甜度</div></div>
+    <div class="zero-card"><div class="zn">ADP-1</div><div class="zu">科研益生菌</div></div>
+  </div>
+
+  <div class="scene-section" style="padding-bottom:100px;">
+    <div class="block-title"><h3>嗨时来一颗，开心畅享每一刻</h3><p>社交 / 约会 / 出游 / 运动，随身伴侣</p></div>
+    <div class="scenes">
+      <div class="scene-card"><div class="sc-icon">💬</div><h4>社交场合</h4><p>快速清新口气，拉近距离</p></div>
+      <div class="scene-card"><div class="sc-icon">✈️</div><h4>出游伴侣</h4><p>让快乐旅途多一点甜</p></div>
+      <div class="scene-card"><div class="sc-icon">🏃</div><h4>运动补给</h4><p>运动后及时补充微量盐分</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTITUTE -->
+<section id="institute">
+  <div class="inst-inner">
+    <span class="inst-badge-big">双重背书</span>
+    <h2>两个理由，让你放心吃</h2>
+    <p>一个产品能同时拿下这两个背书，本身就说明了问题。</p>
+    <div class="inst-row">
+      <div class="inst-item" style="max-width:360px;text-align:left;padding:36px 32px;">
+        <div style="font-size:12px;letter-spacing:3px;color:var(--coffee-g);font-weight:700;margin-bottom:14px;">背书一 · 市场验证</div>
+        <div style="font-size:20px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:12px;">🚄 京沪高铁<br>在售爆款产品</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.9;">京沪高铁严格筛选在售产品。进入在售名单，意味着品质经过实际旅客检验——不是自我标榜，是被选中。</div>
+      </div>
+      <div class="inst-item" style="max-width:360px;text-align:left;padding:36px 32px;">
+        <div style="font-size:12px;letter-spacing:3px;color:#81C784;font-weight:700;margin-bottom:14px;">背书二 · 科研背景</div>
+        <div style="font-size:20px;font-weight:900;color:#fff;line-height:1.3;margin-bottom:12px;">🔬 国家植物功能成分<br>利用工程技术研究中心</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.45);line-height:1.9;">国家级研发机构出品，天然草本植物原料，科研级配方。每颗糖，都是科研配方——这句话印在包装上，也对得起。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGING SHOWCASE -->
+<section id="pack" style="background:#050505;padding:100px 40px;border-top:1px solid rgba(255,255,255,0.05);">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:60px;">
+      <div style="font-size:11px;letter-spacing:5px;color:rgba(255,255,255,0.3);font-weight:700;text-transform:uppercase;margin-bottom:16px;">植养萃 × 悦伴</div>
+      <h2 style="font-size:clamp(28px,4.5vw,52px);font-weight:900;line-height:1.1;margin-bottom:14px;">每颗糖，都是科研配方</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.35);letter-spacing:2px;">京沪高铁专供 · 国家植物功能成分利用工程技术研究中心研发</p>
+    </div>
+
+    <!-- 两款包装对比卡 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:60px;">
+
+      <!-- 咖啡糖包装卡 -->
+      <div style="border-radius:24px;overflow:hidden;background:linear-gradient(145deg,#3d1200,#1a0700);border:1px solid rgba(196,98,10,0.25);">
+        <div style="padding:36px 36px 24px;display:flex;align-items:flex-start;justify-content:space-between;">
+          <div>
+            <div style="font-size:11px;letter-spacing:3px;color:var(--coffee-g);font-weight:700;margin-bottom:10px;">植养萃 × 悦伴</div>
+            <div style="font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#fff;line-height:1;margin-bottom:8px;">悦醒</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.5);letter-spacing:3px;">醇香咖啡糖</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:6px;">净含量</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;">30g</div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;">
+          <div style="font-size:18px;color:var(--coffee-g);font-weight:700;margin-bottom:16px;font-style:italic;">一颗悦醒，焕活能量</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+            <span style="padding:5px 14px;border-radius:20px;background:rgba(196,98,10,0.2);border:1px solid rgba(196,98,10,0.35);font-size:12px;font-weight:700;color:var(--coffee-g);">0糖</span>
+            <span style="padding:5px 14px;border-radius:20px;background:rgba(196,98,10,0.2);border:1px solid rgba(196,98,10,0.35);font-size:12px;font-weight:700;color:var(--coffee-g);">添加咖啡粉</span>
+            <span style="padding:5px 14px;border-radius:20px;background:rgba(196,98,10,0.2);border:1px solid rgba(196,98,10,0.35);font-size:12px;font-weight:700;color:var(--coffee-g);">含茶多酚</span>
+          </div>
+        </div>
+        <div style="background:rgba(0,0,0,0.3);padding:20px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;font-size:11px;">
+          <div><div style="font-weight:700;color:#fff;">1733千焦</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">能量</div></div>
+          <div><div style="font-weight:700;color:#fff;">0克</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">糖</div></div>
+          <div><div style="font-weight:700;color:#fff;">97.0克</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">碳水/100g</div></div>
+          <div><div style="font-weight:700;color:#fff;">100mg</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">维生素C</div></div>
+        </div>
+        <div style="padding:18px 36px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:13px;color:rgba(255,255,255,0.35);">生产商：湖南卡米乐食品有限公司</div>
+          <div style="font-size:11px;color:var(--coffee-g);font-weight:700;">京沪高铁专供</div>
+        </div>
+      </div>
+
+      <!-- 柠檬糖包装卡 -->
+      <div style="border-radius:24px;overflow:hidden;background:linear-gradient(145deg,#001e40,#000c1a);border:1px solid rgba(0,212,240,0.2);">
+        <div style="padding:36px 36px 24px;display:flex;align-items:flex-start;justify-content:space-between;">
+          <div>
+            <div style="font-size:11px;letter-spacing:3px;color:var(--lemon-g);font-weight:700;margin-bottom:10px;">植养萃 × 悦伴</div>
+            <div style="font-size:clamp(28px,3.5vw,44px);font-weight:900;color:#fff;line-height:1;margin-bottom:8px;">悦清</div>
+            <div style="font-size:15px;color:rgba(255,255,255,0.5);letter-spacing:3px;">海盐柠檬糖</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:6px;">净含量</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;">30g</div>
+          </div>
+        </div>
+        <div style="padding:0 36px 20px;">
+          <div style="font-size:18px;color:var(--lemon-g);font-weight:700;margin-bottom:16px;font-style:italic;">一颗悦清，清澈呼吸</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;">
+            <span style="padding:5px 14px;border-radius:20px;background:rgba(0,212,240,0.12);border:1px solid rgba(0,212,240,0.25);font-size:12px;font-weight:700;color:var(--lemon-g);">0糖·0脂</span>
+            <span style="padding:5px 14px;border-radius:20px;background:rgba(0,212,240,0.12);border:1px solid rgba(0,212,240,0.25);font-size:12px;font-weight:700;color:var(--lemon-g);">添加益生菌</span>
+            <span style="padding:5px 14px;border-radius:20px;background:rgba(0,212,240,0.12);border:1px solid rgba(0,212,240,0.25);font-size:12px;font-weight:700;color:var(--lemon-g);">高维生素C</span>
+          </div>
+        </div>
+        <div style="background:rgba(0,0,0,0.3);padding:20px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center;font-size:11px;">
+          <div><div style="font-weight:700;color:#fff;">1634千焦</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">能量</div></div>
+          <div><div style="font-weight:700;color:#fff;">0克</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">糖</div></div>
+          <div><div style="font-weight:700;color:#fff;">96.1克</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">碳水/100g</div></div>
+          <div><div style="font-weight:700;color:#fff;">110mg</div><div style="color:rgba(255,255,255,0.3);margin-top:2px;">维生素C</div></div>
+        </div>
+        <div style="padding:18px 36px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:13px;color:rgba(255,255,255,0.35);">生产商：湖南卡米乐食品有限公司</div>
+          <div style="font-size:11px;color:var(--lemon-g);font-weight:700;">京沪高铁专供</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div style="text-align:center;padding:50px 24px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:24px;">
+      <div style="font-size:clamp(22px,3.5vw,38px);font-weight:900;color:#fff;margin-bottom:10px;">一口上头，再来一瓶！</div>
+      <div style="font-size:15px;color:rgba(255,255,255,0.4);margin-bottom:32px;letter-spacing:1px;">扫码第2瓶半价 · 线上下单 · 包邮到家</div>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <div style="padding:14px 36px;border-radius:50px;background:linear-gradient(90deg,var(--coffee),var(--coffee-g));color:#fff;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;">☕ 悦醒咖啡糖 · 立即购买</div>
+        <div style="padding:14px 36px;border-radius:50px;background:linear-gradient(90deg,var(--lemon),var(--lemon-g));color:#fff;font-size:15px;font-weight:700;cursor:pointer;letter-spacing:1px;">🍋 悦清柠檬糖 · 立即购买</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fb">植养萃 × 悦伴</div>
+  <p>
+    京沪高铁在售爆品 · 国家植物功能成分利用工程技术研究中心研发<br>
+    每颗糖，都是科研配方<br>
+    t.yiyeguizhen.com
+  </p>
+</footer>
+
+<div class="lb" id="lb" onclick="if(event.target===this)closeLB()">
+  <span class="lb-x" onclick="closeLB()">✕</span>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+function goto(id) { const el = document.querySelector(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
+function openLB(src) { document.getElementById('lbImg').src=src; document.getElementById('lb').classList.add('on'); document.body.style.overflow='hidden'; }
+function closeLB() { document.getElementById('lb').classList.remove('on'); document.body.style.overflow=''; }
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeLB(); });
+</script>
+</body>
+</html>

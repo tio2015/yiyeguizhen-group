@@ -85,6 +85,21 @@ jobs:
           ossutil cp imgs/nvshenjimi-03.jpg oss://yiyeguizhen-web-hk/imgs/nvshenjimi-03.jpg \
             --meta "Cache-Control:public, max-age=604800" -f
 
+      - name: 部署高铁糖落地页（gaotie站 · 京沪高铁悦清悦醒糖）
+        run: |
+          ossutil cp gaotie/index.html oss://yiyeguizhen-web-hk/gaotie/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          if [ -d "gaotie/assets" ] && [ -n "$(ls -A gaotie/assets/ 2>/dev/null)" ]; then
+            ossutil cp gaotie/assets/ oss://yiyeguizhen-web-hk/gaotie/assets/ \
+              --meta "Cache-Control:public, max-age=31536000" -r -f
+          fi
+          if [ -d "gaotie/images" ] && [ -n "$(ls -A gaotie/images/ 2>/dev/null)" ]; then
+            ossutil cp gaotie/images/ oss://yiyeguizhen-web-hk/gaotie/images/ \
+              --meta "Cache-Control:public, max-age=31536000" -r -f
+          fi
+          echo "✅ gaotie 站部署完成"
+
       - name: 部署戴阅火影站（dy站）
         run: |
           ossutil cp dy/index.html oss://yiyeguizhen-web-hk/dy/index.html \
