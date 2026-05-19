@@ -1,0 +1,19 @@
+{
+  "name": "yygz-gtxp-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js",
+    "worker": "AUTO_RUN=true node src/server.js",
+    "seed": "node scripts/seed.js",
+    "login-xhs": "HEADLESS=false node scripts/login-xhs.js",
+    "run-once": "node scripts/run-once.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "playwright": "^1.60.0"
+  },
+  "devDependencies": {}
+}

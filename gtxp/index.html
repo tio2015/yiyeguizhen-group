@@ -580,6 +580,15 @@
           <option value="放弃">放弃</option>
         </select>
       </div>
+      <div class="side-block">
+        <label for="apiBaseInput">后端服务</label>
+        <input id="apiBaseInput" placeholder="http://127.0.0.1:8787">
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button class="btn small primary" id="connectApiBtn" type="button">连接</button>
+          <button class="btn small" id="disconnectApiBtn" type="button">本地模式</button>
+        </div>
+        <div id="apiStatus" class="tag gray" style="margin-top:8px;">本地模式</div>
+      </div>
     </aside>
 
     <main>
@@ -904,6 +913,7 @@
 
 <script>
 const storageKey = "yygz_gtxp_radar_v1";
+const apiStorageKey = "yygz_gtxp_api_base";
 const taskVersion = 2;
 
 const seed = {
@@ -1063,6 +1073,7 @@ const sopTemplates = [
 ];
 
 let data = loadData();
+let backend = { connected: false, base: "" };
 
 function loadData() {
   const raw = localStorage.getItem(storageKey);
@@ -1086,6 +1097,100 @@ function loadData() {
 
 function saveData() {
   localStorage.setItem(storageKey, JSON.stringify(data));
+}
+
+function candidateList() {
+  return data.products || data.candidates || [];
+}
+
+function setCandidateList(list) {
+  data.products = list;
+  data.candidates = list;
+}
+
+function normalizeState(next) {
+  const state = next.state || next;
+  const products = state.products || state.candidates || [];
+  return {
+    ...data,
+    ...state,
+    products,
+    candidates: products,
+    evidence: state.evidence || [],
+    suppliers: state.suppliers || [],
+    tasks: state.tasks || [],
+    sops: state.sops || data.sops || [],
+    meta: state.meta || data.meta || {}
+  };
+}
+
+async function apiFetch(path, options = {}) {
+  if (!backend.connected || !backend.base) throw new Error("backend disconnected");
+  const response = await fetch(`${backend.base}${path}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {})
+    }
+  });
+  const json = await response.json();
+  if (!response.ok || json.ok === false) throw new Error(json.error || `API ${response.status}`);
+  return json;
+}
+
+async function tryConnectApi(base, { silent = false } = {}) {
+  const cleanBase = String(base || "").replace(/\/$/, "");
+  if (!cleanBase) return false;
+  try {
+    const health = await fetch(`${cleanBase}/api/health`, { cache: "no-store" });
+    const healthJson = await health.json();
+    if (!health.ok || !healthJson.ok) throw new Error("health check failed");
+    const stateJson = await fetch(`${cleanBase}/api/state`, { cache: "no-store" }).then((res) => res.json());
+    if (!stateJson.ok) throw new Error("state load failed");
+    backend = { connected: true, base: cleanBase };
+    localStorage.setItem(apiStorageKey, cleanBase);
+    document.getElementById("apiBaseInput").value = cleanBase;
+    data = normalizeState(stateJson);
+    saveData();
+    updateApiStatus();
+    renderAll();
+    return true;
+  } catch (error) {
+    if (!silent) alert(`后端连接失败：${error.message}`);
+    if (localStorage.getItem(apiStorageKey) === cleanBase) localStorage.removeItem(apiStorageKey);
+    backend = { connected: false, base: "" };
+    updateApiStatus();
+    return false;
+  }
+}
+
+async function autoConnectApi() {
+  const saved = localStorage.getItem(apiStorageKey);
+  const bases = [saved, "http://127.0.0.1:8787"].filter(Boolean);
+  for (const base of bases) {
+    if (await tryConnectApi(base, { silent: true })) return true;
+  }
+  updateApiStatus();
+  return false;
+}
+
+function disconnectApi() {
+  backend = { connected: false, base: "" };
+  localStorage.removeItem(apiStorageKey);
+  updateApiStatus();
+  renderAll();
+}
+
+function updateApiStatus() {
+  const node = document.getElementById("apiStatus");
+  if (!node) return;
+  if (backend.connected) {
+    node.className = "tag type3";
+    node.textContent = `已连接 ${backend.base}`;
+  } else {
+    node.className = "tag gray";
+    node.textContent = "本地模式";
+  }
 }
 
 function id(prefix) {
@@ -1120,7 +1225,7 @@ function escapeHtml(value) {
 }
 
 function productName(productId) {
-  const product = data.products.find(p => p.id === productId);
+  const product = candidateList().find(p => p.id === productId);
   return product ? product.name : "未关联";
 }
 
@@ -1128,7 +1233,7 @@ function filteredProducts() {
   const q = document.getElementById("searchInput").value.trim().toLowerCase();
   const type = document.getElementById("typeFilter").value;
   const status = document.getElementById("statusFilter").value;
-  return data.products.filter(product => {
+  return candidateList().filter(product => {
     const text = `${product.name} ${product.category} ${product.status} ${product.action} ${product.reason} ${product.risk}`.toLowerCase();
     return (!q || text.includes(q)) &&
       (type === "all" || product.category === type) &&
@@ -1149,7 +1254,7 @@ function renderAll() {
 }
 
 function renderKpis() {
-  const products = data.products;
+  const products = candidateList();
   const kpis = [
     { label: "候选品", num: products.length, hint: "全部产品池" },
     { label: "第二类", num: products.filter(p => p.category === "第二类").length, hint: "小红书已火，高铁未查到" },
@@ -1169,9 +1274,9 @@ function renderKpis() {
 function renderPipeline() {
   const stages = ["新发现", "观察", "供应链验证", "拿样", "小测", "放弃"];
   document.getElementById("pipeline").innerHTML = stages.map(stage => {
-    const items = data.products.filter(p => p.status === stage).slice(0, 4);
+    const items = candidateList().filter(p => p.status === stage).slice(0, 4);
     return `<div class="pipe">
-      <h3>${stage} <span class="mono">${data.products.filter(p => p.status === stage).length}</span></h3>
+      <h3>${stage} <span class="mono">${candidateList().filter(p => p.status === stage).length}</span></h3>
       ${items.length ? items.map(item => `<div class="pipe-item">${escapeHtml(item.name)}<br>${categoryTag(item.category)} ${actionTag(item.action)}</div>`).join("") : `<div class="empty">暂无</div>`}
     </div>`;
   }).join("");
@@ -1180,8 +1285,8 @@ function renderPipeline() {
 function renderProducts() {
   const rows = filteredProducts().sort((a, b) => totalScore(b) - totalScore(a)).map(product => {
     const score = totalScore(product);
-    const evidenceCount = data.evidence.filter(e => e.productId === product.id).length;
-    const supplierCount = data.suppliers.filter(s => s.productId === product.id).length;
+    const evidenceCount = data.evidence.filter(e => (e.productId || e.candidateId) === product.id).length;
+    const supplierCount = data.suppliers.filter(s => (s.productId || s.candidateId) === product.id).length;
     return `<tr>
       <td><strong>${escapeHtml(product.name)}</strong><br><span class="tag gray">${escapeHtml(product.reason).slice(0, 42)}${product.reason.length > 42 ? "..." : ""}</span></td>
       <td>${categoryTag(product.category)}</td>
@@ -1198,7 +1303,7 @@ function renderProducts() {
 }
 
 function renderTopProducts() {
-  const rows = [...data.products].sort((a, b) => totalScore(b) - totalScore(a)).slice(0, 6).map(product => {
+  const rows = [...candidateList()].sort((a, b) => totalScore(b) - totalScore(a)).slice(0, 6).map(product => {
     const score = totalScore(product);
     return `<tr>
       <td><strong>${escapeHtml(product.name)}</strong></td>
@@ -1214,7 +1319,7 @@ function renderTopProducts() {
 function renderEvidence() {
   const rows = [...data.evidence].reverse().map(item => `<tr>
     <td class="mono">${escapeHtml(item.date)}</td>
-    <td>${escapeHtml(productName(item.productId))}</td>
+    <td>${escapeHtml(productName(item.productId || item.candidateId))}</td>
     <td><span class="tag">${escapeHtml(item.platform)}</span></td>
     <td>${escapeHtml(item.query)}</td>
     <td>${escapeHtml(item.title)}</td>
@@ -1225,7 +1330,7 @@ function renderEvidence() {
 
 function renderSuppliers() {
   const rows = data.suppliers.map(supplier => `<tr>
-    <td>${escapeHtml(productName(supplier.productId))}</td>
+    <td>${escapeHtml(productName(supplier.productId || supplier.candidateId))}</td>
     <td><strong>${escapeHtml(supplier.name)}</strong></td>
     <td>${escapeHtml(supplier.spec)}</td>
     <td class="mono">${escapeHtml(supplier.moq)}</td>
@@ -1244,19 +1349,19 @@ function renderTasks() {
   document.getElementById("taskCards").innerHTML = data.tasks.map(task => `<div class="task">
     <h3>${escapeHtml(task.platform)} / ${escapeHtml(task.topic)}</h3>
     <p>${escapeHtml(task.status)} · ${escapeHtml(task.createdAt)}</p>
-    <code>${escapeHtml(task.queries.join("\\n"))}</code>
+    <code>${escapeHtml((task.queries || [task.query]).join("\\n"))}</code>
   </div>`).join("");
 }
 
 function renderProductOptions() {
-  const options = data.products.map(product => `<option value="${escapeHtml(product.id)}">${escapeHtml(product.name)}</option>`).join("");
+  const options = candidateList().map(product => `<option value="${escapeHtml(product.id)}">${escapeHtml(product.name)}</option>`).join("");
   document.getElementById("evidenceProduct").innerHTML = options;
   document.getElementById("supplierProduct").innerHTML = options;
 }
 
 function renderPrompt() {
   const activeTasks = data.tasks.length ? data.tasks : createTasks();
-  const taskText = activeTasks.map(task => `【${task.platform} / ${task.topic}】\\n${task.queries.map(q => `- ${q}`).join("\\n")}`).join("\\n\\n");
+  const taskText = activeTasks.map(task => `【${task.platform} / ${task.topic}】\\n${(task.queries || [task.query]).map(q => `- ${q}`).join("\\n")}`).join("\\n\\n");
   document.getElementById("promptBox").value =
 `你现在是“一叶归真高铁潜爆品雷达”的自动搜索研究员。
 
@@ -1319,6 +1424,16 @@ function createTasks() {
 }
 
 function regenerateTasks() {
+  if (backend.connected) {
+    apiFetch("/api/tasks/generate", { method: "POST" })
+      .then((json) => {
+        data = normalizeState(json);
+        saveData();
+        renderAll();
+      })
+      .catch((error) => alert(`生成任务失败：${error.message}`));
+    return;
+  }
   data.tasks = createTasks();
   data.meta = { ...(data.meta || {}), taskVersion };
   saveData();
@@ -1326,8 +1441,18 @@ function regenerateTasks() {
 }
 
 function recalculateProducts() {
-  data.products = data.products.map(product => {
-    const evidences = data.evidence.filter(e => e.productId === product.id);
+  if (backend.connected) {
+    apiFetch("/api/tasks/run-next", { method: "POST" })
+      .then((json) => {
+        data = normalizeState(json);
+        saveData();
+        renderAll();
+      })
+      .catch((error) => alert(`后端执行失败：${error.message}`));
+    return;
+  }
+  setCandidateList(candidateList().map(product => {
+    const evidences = data.evidence.filter(e => (e.productId || e.candidateId) === product.id);
     const hasRailHit = evidences.some(e => e.platform === "高铁排重" && /已出现|高铁西梅|高铁奶酪|可比克|鳕鱼/.test(e.title));
     const noRailHit = evidences.some(e => e.platform === "高铁排重" && /未查到|暂未查到/.test(e.title));
     const hasXhs = evidences.some(e => e.platform === "小红书");
@@ -1341,7 +1466,7 @@ function recalculateProducts() {
     scores.rail = hasRailHit ? Math.min(scores.rail || 1, 4) : Math.max(scores.rail || 0, noRailHit ? 14 : 10);
     scores.trend = Math.max(scores.trend || 0, rising ? 16 : 8);
     return { ...product, category, scores, updatedAt: new Date().toISOString().slice(0, 10) };
-  });
+  }));
   saveData();
   renderAll();
 }
@@ -1363,7 +1488,17 @@ function importJson(file) {
   reader.onload = () => {
     try {
       const next = JSON.parse(reader.result);
-      if (!next.products || !next.evidence || !next.suppliers) throw new Error("invalid data shape");
+      if (!(next.products || next.candidates) || !next.evidence || !next.suppliers) throw new Error("invalid data shape");
+      if (backend.connected) {
+        apiFetch("/api/import", { method: "POST", body: JSON.stringify(next) })
+          .then((json) => {
+            data = normalizeState(json);
+            saveData();
+            renderAll();
+          })
+          .catch((error) => alert(`导入后端失败：${error.message}`));
+        return;
+      }
       data = next;
       saveData();
       renderAll();
@@ -1404,6 +1539,10 @@ document.getElementById("importFile").addEventListener("change", event => {
   event.target.value = "";
 });
 document.getElementById("resetBtn").addEventListener("click", resetSeed);
+document.getElementById("connectApiBtn").addEventListener("click", () => {
+  tryConnectApi(document.getElementById("apiBaseInput").value.trim());
+});
+document.getElementById("disconnectApiBtn").addEventListener("click", disconnectApi);
 document.getElementById("copyPrompt").addEventListener("click", async () => {
   await navigator.clipboard.writeText(document.getElementById("promptBox").value);
   alert("已复制 Codex 执行提示词。");
@@ -1416,7 +1555,7 @@ document.getElementById("addProductToggle").addEventListener("click", () => {
 document.getElementById("productForm").addEventListener("submit", event => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
-  data.products.push({
+  const payload = {
     id: id("p"),
     name: form.get("name"),
     category: form.get("category"),
@@ -1426,7 +1565,19 @@ document.getElementById("productForm").addEventListener("submit", event => {
     risk: form.get("risk"),
     scores: { xhs: 8, trend: 8, rail: 10, scene: 10, supply: 8, risk: 6 },
     updatedAt: new Date().toISOString().slice(0, 10)
-  });
+  };
+  if (backend.connected) {
+    apiFetch("/api/candidates", { method: "POST", body: JSON.stringify(payload) })
+      .then((json) => {
+        data = normalizeState(json);
+        saveData();
+        event.currentTarget.reset();
+        renderAll();
+      })
+      .catch((error) => alert(`保存失败：${error.message}`));
+    return;
+  }
+  candidateList().push(payload);
   saveData();
   event.currentTarget.reset();
   renderAll();
@@ -1435,9 +1586,10 @@ document.getElementById("productForm").addEventListener("submit", event => {
 document.getElementById("evidenceForm").addEventListener("submit", event => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
-  data.evidence.push({
+  const payload = {
     id: id("e"),
     productId: form.get("productId"),
+    candidateId: form.get("productId"),
     date: new Date().toISOString().slice(0, 10),
     platform: form.get("platform"),
     query: form.get("query"),
@@ -1445,7 +1597,19 @@ document.getElementById("evidenceForm").addEventListener("submit", event => {
     engagement: form.get("engagement"),
     url: form.get("url"),
     screenshot: form.get("screenshot")
-  });
+  };
+  if (backend.connected) {
+    apiFetch("/api/evidence", { method: "POST", body: JSON.stringify(payload) })
+      .then((json) => {
+        data = normalizeState(json);
+        saveData();
+        event.currentTarget.reset();
+        renderAll();
+      })
+      .catch((error) => alert(`保存失败：${error.message}`));
+    return;
+  }
+  data.evidence.push(payload);
   saveData();
   event.currentTarget.reset();
   renderAll();
@@ -1454,22 +1618,36 @@ document.getElementById("evidenceForm").addEventListener("submit", event => {
 document.getElementById("supplierForm").addEventListener("submit", event => {
   event.preventDefault();
   const form = new FormData(event.currentTarget);
-  data.suppliers.push({
+  const payload = {
     id: id("s"),
     productId: form.get("productId"),
+    candidateId: form.get("productId"),
     name: form.get("name"),
     spec: form.get("spec"),
     moq: form.get("moq"),
     price: form.get("price"),
     sampleStatus: form.get("sampleStatus"),
     notes: form.get("notes")
-  });
+  };
+  if (backend.connected) {
+    apiFetch("/api/suppliers", { method: "POST", body: JSON.stringify(payload) })
+      .then((json) => {
+        data = normalizeState(json);
+        saveData();
+        event.currentTarget.reset();
+        renderAll();
+      })
+      .catch((error) => alert(`保存失败：${error.message}`));
+    return;
+  }
+  data.suppliers.push(payload);
   saveData();
   event.currentTarget.reset();
   renderAll();
 });
 
 renderAll();
+autoConnectApi();
 </script>
 </body>
 </html>
