@@ -100,6 +100,16 @@ jobs:
           fi
           echo "✅ gaotie 站部署完成"
 
+      - name: 部署高铁潜爆品雷达（gtxp 数据平台）
+        run: |
+          ossutil cp gtxp/index.html oss://yiyeguizhen-web-hk/gtxp/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          ossutil cp gtxp/index.html oss://yiyeguizhen-web-hk/gtxp \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          echo "✅ gtxp 数据平台部署完成"
+
       - name: 部署戴阅火影站（dy站）
         run: |
           ossutil cp dy/index.html oss://yiyeguizhen-web-hk/dy/index.html \

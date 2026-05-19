@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>高铁潜爆品雷达 | 一叶归真</title>
+<meta name="description" content="一叶归真高铁潜爆品雷达：小红书趋势搜索、高铁排重、1688 贴牌供应链验证与 AI 归类评分平台。">
+<meta property="og:title" content="一叶归真高铁潜爆品雷达">
+<meta property="og:description" content="AI 驱动的高铁场景潜爆品情报平台。">
+<meta property="og:url" content="https://www.yiyeguizhen.com/gtxp">
+<meta property="og:type" content="website">
+<style>
+  :root {
+    --bg: #f3f0e8;
+    --paper: #fbfaf6;
+    --panel: #ffffff;
+    --ink: #18201e;
+    --muted: #68716d;
+    --line: #d8d2c4;
+    --rail: #174a3a;
+    --rail-2: #23614e;
+    --copper: #a75f2b;
+    --amber: #d09b42;
+    --red: #9f3d33;
+    --blue: #315c83;
+    --green-soft: #dbe8df;
+    --amber-soft: #f2e5c8;
+    --red-soft: #f0d7d3;
+    --blue-soft: #d8e2ea;
+    --shadow: 0 18px 42px rgba(27, 35, 31, 0.10);
+    --mono: "SFMono-Regular", "Cascadia Mono", "Liberation Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--ink);
+    background:
+      linear-gradient(90deg, rgba(24, 32, 30, 0.035) 1px, transparent 1px),
+      linear-gradient(180deg, rgba(24, 32, 30, 0.035) 1px, transparent 1px),
+      var(--bg);
+    background-size: 44px 44px;
+    font-family: "Songti SC", "Noto Serif SC", "PingFang SC", "Microsoft YaHei", serif;
+    overflow-x: hidden;
+  }
+
+  button, input, select, textarea {
+    font: inherit;
+  }
+
+  button {
+    border: 0;
+    cursor: pointer;
+  }
+
+  a { color: inherit; }
+
+  .shell {
+    width: min(1520px, calc(100vw - 40px));
+    margin: 0 auto;
+    padding: 22px 0 52px;
+  }
+
+  .topbar {
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) auto;
+    gap: 18px;
+    align-items: start;
+    padding: 18px 0 20px;
+    border-bottom: 1px solid rgba(24, 32, 30, 0.18);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(23, 74, 58, 0.36);
+    background: var(--paper);
+    color: var(--rail);
+    font-weight: 900;
+    letter-spacing: 1px;
+  }
+
+  .brand h1 {
+    margin: 0;
+    font-size: clamp(22px, 2.6vw, 42px);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: 0;
+  }
+
+  .brand p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .top-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .btn {
+    min-height: 38px;
+    padding: 9px 13px;
+    border: 1px solid rgba(24, 32, 30, 0.16);
+    background: var(--panel);
+    color: var(--ink);
+    box-shadow: 0 1px 0 rgba(24, 32, 30, 0.05);
+  }
+
+  .btn:hover { border-color: rgba(23, 74, 58, 0.42); }
+  .btn.primary {
+    background: var(--rail);
+    border-color: var(--rail);
+    color: #fff;
+  }
+  .btn.warning {
+    background: var(--copper);
+    border-color: var(--copper);
+    color: #fff;
+  }
+  .btn.small {
+    min-height: 30px;
+    padding: 6px 9px;
+    font-size: 12px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 18px;
+  }
+
+  aside {
+    position: sticky;
+    top: 18px;
+    align-self: start;
+    border: 1px solid var(--line);
+    background: rgba(251, 250, 246, 0.88);
+    box-shadow: var(--shadow);
+  }
+
+  .side-head {
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .side-head strong {
+    display: block;
+    font-size: 15px;
+  }
+
+  .side-head span {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .nav {
+    display: grid;
+    gap: 2px;
+    padding: 8px;
+  }
+
+  .nav button {
+    text-align: left;
+    padding: 12px;
+    background: transparent;
+    color: var(--muted);
+    border-left: 3px solid transparent;
+  }
+
+  .nav button.active {
+    color: var(--ink);
+    background: #fff;
+    border-color: var(--rail);
+    font-weight: 700;
+  }
+
+  .side-block {
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .side-block label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .searchbox, select, textarea, input {
+    width: 100%;
+    min-height: 36px;
+    border: 1px solid var(--line);
+    background: #fff;
+    color: var(--ink);
+    padding: 8px 10px;
+    outline: none;
+  }
+
+  textarea {
+    min-height: 90px;
+    resize: vertical;
+    line-height: 1.55;
+  }
+
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--rail);
+    box-shadow: 0 0 0 3px rgba(23, 74, 58, 0.12);
+  }
+
+  main {
+    min-width: 0;
+  }
+
+  .view {
+    display: none;
+    animation: viewIn .18s ease-out;
+  }
+
+  .view.active { display: block; }
+
+  @keyframes viewIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .kpi {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    padding: 14px;
+    min-height: 100px;
+  }
+
+  .kpi .num {
+    display: block;
+    font: 800 30px/1 var(--mono);
+    letter-spacing: 0;
+  }
+
+  .kpi .label {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .kpi .hint {
+    display: block;
+    margin-top: 10px;
+    color: var(--rail);
+    font-size: 12px;
+  }
+
+  .section {
+    border: 1px solid var(--line);
+    background: var(--paper);
+    box-shadow: var(--shadow);
+    margin-bottom: 14px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .section-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    padding: 15px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: 17px;
+    letter-spacing: 0;
+  }
+
+  .section-head p {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .section-body {
+    padding: 16px;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+    gap: 14px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .form-grid .full { grid-column: 1 / -1; }
+
+  .field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .table-wrap {
+    overflow: auto;
+    border: 1px solid var(--line);
+    background: #fff;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 860px;
+    font-size: 13px;
+  }
+
+  th, td {
+    padding: 11px 10px;
+    border-bottom: 1px solid #e8e2d5;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #f7f4ec;
+    color: #39413e;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  tr:hover td {
+    background: #fcfbf7;
+  }
+
+  .mono { font-family: var(--mono); letter-spacing: 0; }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    padding: 3px 8px;
+    border: 1px solid rgba(24, 32, 30, 0.12);
+    background: #fff;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .tag.type1 { background: var(--blue-soft); color: var(--blue); }
+  .tag.type2 { background: var(--amber-soft); color: #7d5618; }
+  .tag.type3 { background: var(--green-soft); color: var(--rail); }
+  .tag.risk { background: var(--red-soft); color: var(--red); }
+  .tag.gray { background: #ece8de; color: var(--muted); }
+
+  .score {
+    display: inline-flex;
+    justify-content: center;
+    min-width: 42px;
+    padding: 4px 8px;
+    background: var(--ink);
+    color: #fff;
+    font-family: var(--mono);
+    font-weight: 800;
+  }
+
+  .score.good { background: var(--rail); }
+  .score.mid { background: var(--copper); }
+  .score.low { background: var(--muted); }
+
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .pipe {
+    background: #fff;
+    border: 1px solid var(--line);
+    min-height: 130px;
+    padding: 11px;
+  }
+
+  .pipe h3 {
+    margin: 0 0 9px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .pipe-item {
+    padding: 8px;
+    border-left: 3px solid var(--rail);
+    background: #f8f5ed;
+    margin-bottom: 7px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .task-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .task {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 13px;
+    min-height: 146px;
+  }
+
+  .task h3 {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  .task p {
+    margin: 8px 0 10px;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .task code {
+    display: block;
+    padding: 9px;
+    background: #f4f0e7;
+    border: 1px solid #e5decf;
+    color: #2c3531;
+    font-family: var(--mono);
+    font-size: 11px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .prompt-box {
+    min-height: 240px;
+    white-space: pre-wrap;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .note {
+    padding: 12px 13px;
+    border-left: 4px solid var(--rail);
+    background: #fff;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .empty {
+    padding: 30px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .footer {
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 1180px) {
+    .grid { grid-template-columns: 1fr; }
+    aside { position: static; }
+    .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 820px) {
+    .shell { width: min(100vw - 24px, 1520px); padding-top: 12px; }
+    .topbar { grid-template-columns: 1fr; }
+    .top-actions { justify-content: flex-start; }
+    .split, .two-col, .form-grid { grid-template-columns: 1fr; }
+    .task-grid { grid-template-columns: 1fr; }
+    .kpis { grid-template-columns: 1fr; }
+    .pipeline { grid-template-columns: 1fr; }
+    table { min-width: 760px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">GT</div>
+      <div>
+        <h1>高铁潜爆品雷达</h1>
+        <p>一叶归真内部数据平台：SOP 自动搜索、证据沉淀、AI 归类评分、供应链验证。</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="exportBtn" type="button">导出 JSON</button>
+      <button class="btn" id="importBtn" type="button">导入 JSON</button>
+      <button class="btn warning" id="resetBtn" type="button">恢复样板数据</button>
+      <button class="btn primary" id="generateTasksTop" type="button">生成今日任务</button>
+      <input id="importFile" type="file" accept="application/json" hidden>
+    </div>
+  </header>
+
+  <div class="grid">
+    <aside>
+      <div class="side-head">
+        <strong>雷达工作台</strong>
+        <span>当前版本先固定数据结构和 SOP。后续服务端自动搜索会把结果直接写回这些表。</span>
+      </div>
+      <nav class="nav" aria-label="工作台视图">
+        <button class="active" data-view="dashboard" type="button">总览看板</button>
+        <button data-view="candidates" type="button">候选品库</button>
+        <button data-view="evidence" type="button">原始证据录入</button>
+        <button data-view="tasks" type="button">SOP 搜索任务</button>
+        <button data-view="suppliers" type="button">1688 供应链</button>
+        <button data-view="manual" type="button">维护手册</button>
+      </nav>
+      <div class="side-block">
+        <label for="searchInput">全局搜索</label>
+        <input class="searchbox" id="searchInput" placeholder="口喷 / 高铁 / 供应链">
+      </div>
+      <div class="side-block">
+        <label for="typeFilter">产品池筛选</label>
+        <select id="typeFilter">
+          <option value="all">全部类别</option>
+          <option value="第一类">第一类：小红书已火 + 高铁已出现</option>
+          <option value="第二类">第二类：小红书已火 + 高铁未查到</option>
+          <option value="第三类">第三类：短期上升快 + 高铁未出现</option>
+        </select>
+      </div>
+      <div class="side-block">
+        <label for="statusFilter">状态筛选</label>
+        <select id="statusFilter">
+          <option value="all">全部状态</option>
+          <option value="新发现">新发现</option>
+          <option value="观察">观察</option>
+          <option value="供应链验证">供应链验证</option>
+          <option value="拿样">拿样</option>
+          <option value="小测">小测</option>
+          <option value="放弃">放弃</option>
+        </select>
+      </div>
+    </aside>
+
+    <main>
+      <section class="view active" id="dashboard">
+        <div class="kpis" id="kpis"></div>
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>今日工作流</h2>
+              <p>从 SOP 到候选品，再到供应链验证。平台长期运行时，每一步都应有证据和状态。</p>
+            </div>
+            <button class="btn primary" id="runAiBtn" type="button">AI 重新归类评分</button>
+          </div>
+          <div class="section-body">
+            <div class="pipeline" id="pipeline"></div>
+          </div>
+        </div>
+        <div class="split">
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h2>TOP 潜爆品</h2>
+                <p>按 AI 评分排序，优先看第二类和第三类。</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="table-wrap">
+                <table>
+                  <thead><tr><th>产品</th><th>类别</th><th>状态</th><th>分数</th><th>建议</th></tr></thead>
+                  <tbody id="topProducts"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="section">
+            <div class="section-head">
+              <div>
+                <h2>关键判断</h2>
+                <p>这不是选品表，是长期运行的数据资产入口。</p>
+              </div>
+            </div>
+            <div class="section-body">
+              <div class="note">
+                人员维护 SOP、关键词和异常复核。AI 执行搜索、抓取、整理、归类、评分和报告生成。第一版先建立数据底座；下一步接服务端浏览器自动化，把小红书、高铁排重、1688 任务跑成定时作业。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="candidates">
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>候选品库</h2>
+              <p>所有产品必须归入第一类、第二类或第三类，并关联原始证据。</p>
+            </div>
+            <button class="btn primary" id="addProductToggle" type="button">新增候选品</button>
+          </div>
+          <div class="section-body" id="productFormWrap" style="display:none;">
+            <form class="form-grid" id="productForm">
+              <div class="field">
+                <label>产品 / 品类</label>
+                <input name="name" required placeholder="例如：口喷 / 清新口气喷雾">
+              </div>
+              <div class="field">
+                <label>状态</label>
+                <select name="status">
+                  <option>新发现</option>
+                  <option>观察</option>
+                  <option>供应链验证</option>
+                  <option>拿样</option>
+                  <option>小测</option>
+                  <option>放弃</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>类别</label>
+                <select name="category">
+                  <option>第二类</option>
+                  <option>第三类</option>
+                  <option>第一类</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>建议</label>
+                <select name="action">
+                  <option>追</option>
+                  <option>小测</option>
+                  <option>观察</option>
+                  <option>放弃</option>
+                  <option>只学习</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>高铁场景理由</label>
+                <textarea name="reason" placeholder="为什么高铁旅客会当场买？乘务员一句话怎么卖？"></textarea>
+              </div>
+              <div class="field full">
+                <label>风险</label>
+                <textarea name="risk" placeholder="资质、强气味、液体、医疗暗示、负面舆论等"></textarea>
+              </div>
+              <div class="full">
+                <button class="btn primary" type="submit">保存候选品</button>
+              </div>
+            </form>
+          </div>
+          <div class="section-body">
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>产品</th><th>类别</th><th>状态</th><th>分数</th><th>建议</th><th>小红书</th><th>高铁</th><th>1688</th><th>更新</th>
+                  </tr>
+                </thead>
+                <tbody id="candidateRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="evidence">
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>原始证据录入</h2>
+              <p>人员录入或自动搜索回填的原数据都进入这里，再交给 AI 整理归类。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <form class="form-grid" id="evidenceForm">
+              <div class="field">
+                <label>关联产品</label>
+                <select name="productId" id="evidenceProduct"></select>
+              </div>
+              <div class="field">
+                <label>平台</label>
+                <select name="platform">
+                  <option>小红书</option>
+                  <option>高铁排重</option>
+                  <option>1688</option>
+                  <option>网页搜索</option>
+                </select>
+              </div>
+              <div class="field">
+                <label>搜索词</label>
+                <input name="query" required placeholder="例如：出差必备 口喷">
+              </div>
+              <div class="field">
+                <label>可见互动数</label>
+                <input name="engagement" placeholder="例如：4242 / 1.7万">
+              </div>
+              <div class="field full">
+                <label>代表标题 / 证据摘要</label>
+                <textarea name="title" required placeholder="复制代表笔记标题、排重结果或供应商摘要"></textarea>
+              </div>
+              <div class="field">
+                <label>链接</label>
+                <input name="url" placeholder="可选">
+              </div>
+              <div class="field">
+                <label>截图路径</label>
+                <input name="screenshot" placeholder="可选，例如 evidence/20260520/口喷/xhs-01.png">
+              </div>
+              <div class="full">
+                <button class="btn primary" type="submit">保存证据</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>证据流水</h2>
+              <p>每一条 AI 判断都要能追溯到证据。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>日期</th><th>产品</th><th>平台</th><th>搜索词</th><th>证据</th><th>互动</th></tr></thead>
+                <tbody id="evidenceRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="tasks">
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>SOP 搜索任务</h2>
+              <p>平台后续自动搜索会以这些任务为入口。当前版本先生成可执行任务队列和 Codex 提示词。</p>
+            </div>
+            <button class="btn primary" id="generateTasks" type="button">按 SOP 生成任务</button>
+          </div>
+          <div class="section-body">
+            <div class="task-grid" id="taskCards"></div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>Codex 执行提示词</h2>
+              <p>用于浏览器自动化搜索和结果回填。服务端自动化上线后，这段会变成后台任务配置。</p>
+            </div>
+            <button class="btn" id="copyPrompt" type="button">复制提示词</button>
+          </div>
+          <div class="section-body">
+            <textarea class="prompt-box" id="promptBox" readonly></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="suppliers">
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>1688 供应链验证</h2>
+              <p>进入供应链验证后，必须记录现货、贴牌、MOQ、报价、资质和样品状态。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <form class="form-grid" id="supplierForm">
+              <div class="field">
+                <label>关联产品</label>
+                <select name="productId" id="supplierProduct"></select>
+              </div>
+              <div class="field">
+                <label>供应商</label>
+                <input name="name" required placeholder="工厂或店铺名">
+              </div>
+              <div class="field">
+                <label>产品规格</label>
+                <input name="spec" placeholder="容量、重量、包装">
+              </div>
+              <div class="field">
+                <label>MOQ</label>
+                <input name="moq" placeholder="例如 1000 支">
+              </div>
+              <div class="field">
+                <label>单价</label>
+                <input name="price" placeholder="例如 2.8 元">
+              </div>
+              <div class="field">
+                <label>样品状态</label>
+                <select name="sampleStatus">
+                  <option>未联系</option>
+                  <option>待寄</option>
+                  <option>已寄</option>
+                  <option>已收到</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label>资质 / 备注</label>
+                <textarea name="notes" placeholder="备案、检测报告、生产许可证、风险点"></textarea>
+              </div>
+              <div class="full">
+                <button class="btn primary" type="submit">保存供应商</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>供应商清单</h2>
+              <p>后续可扩展为供应商评分和样品结果回流。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>产品</th><th>供应商</th><th>规格</th><th>MOQ</th><th>单价</th><th>样品</th><th>备注</th></tr></thead>
+                <tbody id="supplierRows"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="manual">
+        <div class="section">
+          <div class="section-head">
+            <div>
+              <h2>谢伟文维护手册</h2>
+              <p>人的角色不是手工搜索员，而是雷达维护员。</p>
+            </div>
+          </div>
+          <div class="section-body">
+            <div class="two-col">
+              <div class="note">
+                <strong>每天做什么</strong><br>
+                看自动任务结果；复核 AI 标出的第二类、第三类；对 TOP 5 发起供应链验证；补充样品、报价、资质状态；更新 SOP 关键词。
+              </div>
+              <div class="note">
+                <strong>什么情况人工介入</strong><br>
+                高铁证据不清楚、负面舆论过强、涉及食品/口腔护理/化妆品资质、供应商材料不完整、乘务员一句话讲不清。
+              </div>
+              <div class="note">
+                <strong>三类固定判断</strong><br>
+                第一类：小红书已火，高铁已出现。第二类：小红书已火，高铁未查到。第三类：短期上升快，高铁未出现。
+              </div>
+              <div class="note">
+                <strong>下一步系统化</strong><br>
+                接入服务端数据库、对象存储、浏览器自动化任务队列和 AI 分析接口，让平台每天自动跑 SOP。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        <strong>一叶归真高铁潜爆品雷达</strong><br>
+        当前为静态 MVP。数据存储在本浏览器 localStorage，可导出 JSON。服务端版本接入后，数据将迁移到数据库并由自动任务持续写入。
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+const storageKey = "yygz_gtxp_radar_v1";
+
+const seed = {
+  products: [
+    {
+      id: "p-mouth-spray",
+      name: "口喷 / 清新口气喷雾",
+      category: "第二类",
+      status: "供应链验证",
+      action: "追",
+      reason: "吃完盒饭、喝完咖啡、下车见客户或开会前，旅客有即时口气管理需求。乘务员一句话：下车见客户前喷一下，清新口气，小包装随身带。",
+      risk: "需确认普通口腔护理或化妆品备案边界，宣传不能出现治疗口臭、杀菌治病等医疗暗示。",
+      scores: { xhs: 18, trend: 14, rail: 14, scene: 20, supply: 13, risk: 7 },
+      updatedAt: "2026-05-20"
+    },
+    {
+      id: "p-jelly-mouthwash",
+      name: "果冻漱口水 / 便携漱口水",
+      category: "第二类",
+      status: "观察",
+      action: "小测",
+      reason: "饭后、咖啡后、长途旅行、下车见客户前都有明确使用场景，尤其适合高铁封闭空间和商务旅客。",
+      risk: "半液体或液体包装可能有漏液风险，需要核查口腔护理资质、备案、检测材料和车上垃圾处理。",
+      scores: { xhs: 20, trend: 13, rail: 14, scene: 19, supply: 12, risk: 6 },
+      updatedAt: "2026-05-20"
+    },
+    {
+      id: "p-freeze-fruit",
+      name: "冻干水果脆",
+      category: "第二类",
+      status: "观察",
+      action: "小测",
+      reason: "轻、干净、无强气味、不脏手，女性和儿童同行场景友好，可作为西梅和传统果脯的更新替代。",
+      risk: "即时痛点弱于口喷，容易与普通果干混同，需要靠包装和口味建立新鲜感。",
+      scores: { xhs: 17, trend: 11, rail: 12, scene: 14, supply: 14, risk: 8 },
+      updatedAt: "2026-05-20"
+    },
+    {
+      id: "p-rail-prune",
+      name: "高铁西梅 / 西梅干",
+      category: "第一类",
+      status: "放弃",
+      action: "只学习",
+      reason: "高铁已经验证过小包装、高客单、强话术的销售逻辑。",
+      risk: "负面集中在贵、套路、强推、不值，不建议追同款。",
+      scores: { xhs: 20, trend: 4, rail: 1, scene: 12, supply: 10, risk: 2 },
+      updatedAt: "2026-05-20"
+    },
+    {
+      id: "p-breath-scene",
+      name: "口气管理场景",
+      category: "第三类",
+      status: "新发现",
+      action: "追",
+      reason: "饭后清新口气、见客户前口气管理、小包必备等场景词可能比单个口喷产品更重要。",
+      risk: "需要连续 7 天监控，确认是否短期集中上升，而不是单一老品长尾。",
+      scores: { xhs: 15, trend: 18, rail: 15, scene: 20, supply: 10, risk: 7 },
+      updatedAt: "2026-05-20"
+    }
+  ],
+  evidence: [
+    { id: "e1", productId: "p-mouth-spray", date: "2026-05-20", platform: "小红书", query: "口喷 清新口气", title: "空瓶记8-口气清新喷雾；被好多人问的出门必备小包；这是一篇口喷分享", engagement: "1714 / 1182 / 1132", url: "", screenshot: "" },
+    { id: "e2", productId: "p-mouth-spray", date: "2026-05-20", platform: "高铁排重", query: "高铁 口喷 / 高铁小推车 口喷", title: "暂未查到高铁推车售卖口喷的明显帖子", engagement: "", url: "", screenshot: "" },
+    { id: "e3", productId: "p-jelly-mouthwash", date: "2026-05-20", platform: "小红书", query: "果冻漱口水 爆款", title: "日本 OKINA 便携装果冻漱口水；海底捞同款漱口水；口感最温和的果冻型便携漱口水", engagement: "1836 / 1929 / 1065", url: "", screenshot: "" },
+    { id: "e4", productId: "p-freeze-fruit", date: "2026-05-20", platform: "小红书", query: "冻干水果 爆款 零食", title: "冻干水果测评；泰国零食比较火爆的款式；6种莫名其妙的冻干水果吃吃", engagement: "7684 / 5308 / 4853", url: "", screenshot: "" },
+    { id: "e5", productId: "p-rail-prune", date: "2026-05-20", platform: "高铁排重", query: "高铁西梅", title: "真的有人在高铁买这个；我只培训完的西梅干 买吗买吗；高铁西梅有点强买强卖的意思", engagement: "3.8万 / 6.6万 / 597", url: "", screenshot: "" }
+  ],
+  suppliers: [
+    { id: "s1", productId: "p-mouth-spray", name: "待验证：口喷 OEM 供应商", spec: "便携喷雾，口气清新方向", moq: "待询价", price: "待询价", sampleStatus: "未联系", notes: "优先查现货贴牌、备案材料、检测报告、喷头质量。" }
+  ],
+  tasks: []
+};
+
+const sopTemplates = [
+  {
+    platform: "小红书",
+    topic: "口喷 / 口气管理",
+    queries: ["口喷 清新口气", "口喷 爆款", "接吻神器 口喷", "出差必备 口喷", "小包必备 口喷", "饭后 清新口气", "开会前 口气", "见客户前 口气"]
+  },
+  {
+    platform: "高铁排重",
+    topic: "口喷 / 口气管理",
+    queries: ["高铁 口喷", "高铁小推车 口喷", "高铁上卖的口喷", "火车上 口喷", "动车 口喷", "高铁 清新口气"]
+  },
+  {
+    platform: "1688",
+    topic: "口喷 / 口气管理",
+    queries: ["口喷 OEM", "口喷 贴牌", "清新口气喷雾 贴牌", "口气清新喷雾 OEM", "便携口喷 私标", "口腔喷雾 代工"]
+  },
+  {
+    platform: "小红书",
+    topic: "潜爆信号",
+    queries: ["刚发现 出差好物", "冷门但好用 小包必备", "后悔没早点买 饭后神器", "办公室必备 清新口气", "见客户前 好物"]
+  }
+];
+
+let data = loadData();
+
+function loadData() {
+  const raw = localStorage.getItem(storageKey);
+  if (!raw) {
+    localStorage.setItem(storageKey, JSON.stringify(seed));
+    return structuredClone(seed);
+  }
+  try {
+    return JSON.parse(raw);
+  } catch {
+    localStorage.setItem(storageKey, JSON.stringify(seed));
+    return structuredClone(seed);
+  }
+}
+
+function saveData() {
+  localStorage.setItem(storageKey, JSON.stringify(data));
+}
+
+function id(prefix) {
+  return `${prefix}-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`;
+}
+
+function totalScore(product) {
+  const s = product.scores || {};
+  return (s.xhs || 0) + (s.trend || 0) + (s.rail || 0) + (s.scene || 0) + (s.supply || 0) + (s.risk || 0);
+}
+
+function scoreClass(score) {
+  if (score >= 80) return "good";
+  if (score >= 62) return "mid";
+  return "low";
+}
+
+function categoryTag(category) {
+  const cls = category === "第一类" ? "type1" : category === "第二类" ? "type2" : "type3";
+  return `<span class="tag ${cls}">${escapeHtml(category)}</span>`;
+}
+
+function actionTag(action) {
+  const risk = action === "放弃" || action === "只学习" ? "risk" : "";
+  return `<span class="tag ${risk}">${escapeHtml(action || "观察")}</span>`;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+  }[ch]));
+}
+
+function productName(productId) {
+  const product = data.products.find(p => p.id === productId);
+  return product ? product.name : "未关联";
+}
+
+function filteredProducts() {
+  const q = document.getElementById("searchInput").value.trim().toLowerCase();
+  const type = document.getElementById("typeFilter").value;
+  const status = document.getElementById("statusFilter").value;
+  return data.products.filter(product => {
+    const text = `${product.name} ${product.category} ${product.status} ${product.action} ${product.reason} ${product.risk}`.toLowerCase();
+    return (!q || text.includes(q)) &&
+      (type === "all" || product.category === type) &&
+      (status === "all" || product.status === status);
+  });
+}
+
+function renderAll() {
+  renderKpis();
+  renderPipeline();
+  renderProducts();
+  renderTopProducts();
+  renderEvidence();
+  renderSuppliers();
+  renderTasks();
+  renderProductOptions();
+  renderPrompt();
+}
+
+function renderKpis() {
+  const products = data.products;
+  const kpis = [
+    { label: "候选品", num: products.length, hint: "全部产品池" },
+    { label: "第二类", num: products.filter(p => p.category === "第二类").length, hint: "小红书已火，高铁未查到" },
+    { label: "第三类", num: products.filter(p => p.category === "第三类").length, hint: "短期上升快，高铁未出现" },
+    { label: "证据", num: data.evidence.length, hint: "搜索、截图、排重记录" },
+    { label: "供应商", num: data.suppliers.length, hint: "1688 贴牌线索" }
+  ];
+  document.getElementById("kpis").innerHTML = kpis.map(kpi => `
+    <div class="kpi">
+      <span class="num">${kpi.num}</span>
+      <span class="label">${kpi.label}</span>
+      <span class="hint">${kpi.hint}</span>
+    </div>
+  `).join("");
+}
+
+function renderPipeline() {
+  const stages = ["新发现", "观察", "供应链验证", "拿样", "小测", "放弃"];
+  document.getElementById("pipeline").innerHTML = stages.map(stage => {
+    const items = data.products.filter(p => p.status === stage).slice(0, 4);
+    return `<div class="pipe">
+      <h3>${stage} <span class="mono">${data.products.filter(p => p.status === stage).length}</span></h3>
+      ${items.length ? items.map(item => `<div class="pipe-item">${escapeHtml(item.name)}<br>${categoryTag(item.category)} ${actionTag(item.action)}</div>`).join("") : `<div class="empty">暂无</div>`}
+    </div>`;
+  }).join("");
+}
+
+function renderProducts() {
+  const rows = filteredProducts().sort((a, b) => totalScore(b) - totalScore(a)).map(product => {
+    const score = totalScore(product);
+    const evidenceCount = data.evidence.filter(e => e.productId === product.id).length;
+    const supplierCount = data.suppliers.filter(s => s.productId === product.id).length;
+    return `<tr>
+      <td><strong>${escapeHtml(product.name)}</strong><br><span class="tag gray">${escapeHtml(product.reason).slice(0, 42)}${product.reason.length > 42 ? "..." : ""}</span></td>
+      <td>${categoryTag(product.category)}</td>
+      <td><span class="tag">${escapeHtml(product.status)}</span></td>
+      <td><span class="score ${scoreClass(score)}">${score}</span></td>
+      <td>${actionTag(product.action)}</td>
+      <td class="mono">${product.scores?.xhs ?? 0}/20</td>
+      <td class="mono">${product.scores?.rail ?? 0}/15</td>
+      <td>${supplierCount ? `<span class="tag type3">${supplierCount} 条</span>` : `<span class="tag gray">待验证</span>`}</td>
+      <td>${escapeHtml(product.updatedAt)}<br><span class="tag gray">证据 ${evidenceCount}</span></td>
+    </tr>`;
+  }).join("");
+  document.getElementById("candidateRows").innerHTML = rows || `<tr><td colspan="9" class="empty">没有匹配结果</td></tr>`;
+}
+
+function renderTopProducts() {
+  const rows = [...data.products].sort((a, b) => totalScore(b) - totalScore(a)).slice(0, 6).map(product => {
+    const score = totalScore(product);
+    return `<tr>
+      <td><strong>${escapeHtml(product.name)}</strong></td>
+      <td>${categoryTag(product.category)}</td>
+      <td><span class="tag">${escapeHtml(product.status)}</span></td>
+      <td><span class="score ${scoreClass(score)}">${score}</span></td>
+      <td>${actionTag(product.action)}</td>
+    </tr>`;
+  }).join("");
+  document.getElementById("topProducts").innerHTML = rows;
+}
+
+function renderEvidence() {
+  const rows = [...data.evidence].reverse().map(item => `<tr>
+    <td class="mono">${escapeHtml(item.date)}</td>
+    <td>${escapeHtml(productName(item.productId))}</td>
+    <td><span class="tag">${escapeHtml(item.platform)}</span></td>
+    <td>${escapeHtml(item.query)}</td>
+    <td>${escapeHtml(item.title)}</td>
+    <td class="mono">${escapeHtml(item.engagement)}</td>
+  </tr>`).join("");
+  document.getElementById("evidenceRows").innerHTML = rows || `<tr><td colspan="6" class="empty">暂无证据</td></tr>`;
+}
+
+function renderSuppliers() {
+  const rows = data.suppliers.map(supplier => `<tr>
+    <td>${escapeHtml(productName(supplier.productId))}</td>
+    <td><strong>${escapeHtml(supplier.name)}</strong></td>
+    <td>${escapeHtml(supplier.spec)}</td>
+    <td class="mono">${escapeHtml(supplier.moq)}</td>
+    <td class="mono">${escapeHtml(supplier.price)}</td>
+    <td><span class="tag">${escapeHtml(supplier.sampleStatus)}</span></td>
+    <td>${escapeHtml(supplier.notes)}</td>
+  </tr>`).join("");
+  document.getElementById("supplierRows").innerHTML = rows || `<tr><td colspan="7" class="empty">暂无供应商</td></tr>`;
+}
+
+function renderTasks() {
+  if (!data.tasks.length) {
+    data.tasks = createTasks();
+    saveData();
+  }
+  document.getElementById("taskCards").innerHTML = data.tasks.map(task => `<div class="task">
+    <h3>${escapeHtml(task.platform)} / ${escapeHtml(task.topic)}</h3>
+    <p>${escapeHtml(task.status)} · ${escapeHtml(task.createdAt)}</p>
+    <code>${escapeHtml(task.queries.join("\\n"))}</code>
+  </div>`).join("");
+}
+
+function renderProductOptions() {
+  const options = data.products.map(product => `<option value="${escapeHtml(product.id)}">${escapeHtml(product.name)}</option>`).join("");
+  document.getElementById("evidenceProduct").innerHTML = options;
+  document.getElementById("supplierProduct").innerHTML = options;
+}
+
+function renderPrompt() {
+  const activeTasks = data.tasks.length ? data.tasks : createTasks();
+  const taskText = activeTasks.map(task => `【${task.platform} / ${task.topic}】\\n${task.queries.map(q => `- ${q}`).join("\\n")}`).join("\\n\\n");
+  document.getElementById("promptBox").value =
+`你现在是“一叶归真高铁潜爆品雷达”的自动搜索研究员。
+
+任务目标：
+按 SOP 搜索小红书、高铁排重和 1688 供应链，寻找适合高铁小推车销售、可贴牌、能带来扫码转化的潜爆品。
+
+本轮任务：
+${taskText}
+
+输出要求：
+1. 每个候选品必须归入第一类、第二类或第三类。
+2. 必须记录搜索词、代表标题、可见互动数、发布时间、场景词。
+3. 必须做高铁排重：高铁 + 品类 / 高铁小推车 + 品类 / 火车上 + 品类 / 动车 + 品类。
+4. 如果高铁已经出现，记录线路、车次、铁路局；没有证据不能猜。
+5. 必须做 1688 初筛：是否现货、是否贴牌、MOQ、报价、资质。
+6. 最后给出追 / 小测 / 观察 / 放弃建议。
+
+不要凭想象推荐产品。没有查到就写未查到。`;
+}
+
+function createTasks() {
+  const today = new Date().toISOString().slice(0, 10);
+  return sopTemplates.map(template => ({
+    id: id("t"),
+    platform: template.platform,
+    topic: template.topic,
+    queries: template.queries,
+    status: "待运行",
+    createdAt: today
+  }));
+}
+
+function regenerateTasks() {
+  data.tasks = createTasks();
+  saveData();
+  renderAll();
+}
+
+function recalculateProducts() {
+  data.products = data.products.map(product => {
+    const evidences = data.evidence.filter(e => e.productId === product.id);
+    const hasRailHit = evidences.some(e => e.platform === "高铁排重" && /已出现|高铁西梅|高铁奶酪|可比克|鳕鱼/.test(e.title));
+    const noRailHit = evidences.some(e => e.platform === "高铁排重" && /未查到|暂未查到/.test(e.title));
+    const hasXhs = evidences.some(e => e.platform === "小红书");
+    const trendText = `${product.name} ${product.reason} ${evidences.map(e => e.query + e.title).join(" ")}`;
+    const rising = /刚发现|最近|冷门|小包必备|饭后|见客户|开会前|场景/.test(trendText);
+    let category = product.category;
+    if (hasXhs && hasRailHit) category = "第一类";
+    if (hasXhs && noRailHit) category = rising ? "第三类" : "第二类";
+    const scores = { ...(product.scores || {}) };
+    scores.xhs = Math.min(20, Math.max(scores.xhs || 0, evidences.filter(e => e.platform === "小红书").length * 5 + 10));
+    scores.rail = hasRailHit ? Math.min(scores.rail || 1, 4) : Math.max(scores.rail || 0, noRailHit ? 14 : 10);
+    scores.trend = Math.max(scores.trend || 0, rising ? 16 : 8);
+    return { ...product, category, scores, updatedAt: new Date().toISOString().slice(0, 10) };
+  });
+  saveData();
+  renderAll();
+}
+
+function exportJson() {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `yygz-gtxp-radar-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+function importJson(file) {
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const next = JSON.parse(reader.result);
+      if (!next.products || !next.evidence || !next.suppliers) throw new Error("invalid data shape");
+      data = next;
+      saveData();
+      renderAll();
+    } catch {
+      alert("导入失败：JSON 结构不符合雷达数据格式。");
+    }
+  };
+  reader.readAsText(file);
+}
+
+function resetSeed() {
+  if (!confirm("确认恢复样板数据？当前浏览器里的本地修改会被覆盖。")) return;
+  data = structuredClone(seed);
+  saveData();
+  renderAll();
+}
+
+document.querySelectorAll(".nav button").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll(".nav button").forEach(item => item.classList.remove("active"));
+    document.querySelectorAll(".view").forEach(view => view.classList.remove("active"));
+    button.classList.add("active");
+    document.getElementById(button.dataset.view).classList.add("active");
+  });
+});
+
+document.getElementById("searchInput").addEventListener("input", renderProducts);
+document.getElementById("typeFilter").addEventListener("change", renderProducts);
+document.getElementById("statusFilter").addEventListener("change", renderProducts);
+document.getElementById("runAiBtn").addEventListener("click", recalculateProducts);
+document.getElementById("generateTasks").addEventListener("click", regenerateTasks);
+document.getElementById("generateTasksTop").addEventListener("click", regenerateTasks);
+document.getElementById("exportBtn").addEventListener("click", exportJson);
+document.getElementById("importBtn").addEventListener("click", () => document.getElementById("importFile").click());
+document.getElementById("importFile").addEventListener("change", event => {
+  const file = event.target.files[0];
+  if (file) importJson(file);
+  event.target.value = "";
+});
+document.getElementById("resetBtn").addEventListener("click", resetSeed);
+document.getElementById("copyPrompt").addEventListener("click", async () => {
+  await navigator.clipboard.writeText(document.getElementById("promptBox").value);
+  alert("已复制 Codex 执行提示词。");
+});
+document.getElementById("addProductToggle").addEventListener("click", () => {
+  const wrap = document.getElementById("productFormWrap");
+  wrap.style.display = wrap.style.display === "none" ? "block" : "none";
+});
+
+document.getElementById("productForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+  data.products.push({
+    id: id("p"),
+    name: form.get("name"),
+    category: form.get("category"),
+    status: form.get("status"),
+    action: form.get("action"),
+    reason: form.get("reason"),
+    risk: form.get("risk"),
+    scores: { xhs: 8, trend: 8, rail: 10, scene: 10, supply: 8, risk: 6 },
+    updatedAt: new Date().toISOString().slice(0, 10)
+  });
+  saveData();
+  event.currentTarget.reset();
+  renderAll();
+});
+
+document.getElementById("evidenceForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+  data.evidence.push({
+    id: id("e"),
+    productId: form.get("productId"),
+    date: new Date().toISOString().slice(0, 10),
+    platform: form.get("platform"),
+    query: form.get("query"),
+    title: form.get("title"),
+    engagement: form.get("engagement"),
+    url: form.get("url"),
+    screenshot: form.get("screenshot")
+  });
+  saveData();
+  event.currentTarget.reset();
+  renderAll();
+});
+
+document.getElementById("supplierForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const form = new FormData(event.currentTarget);
+  data.suppliers.push({
+    id: id("s"),
+    productId: form.get("productId"),
+    name: form.get("name"),
+    spec: form.get("spec"),
+    moq: form.get("moq"),
+    price: form.get("price"),
+    sampleStatus: form.get("sampleStatus"),
+    notes: form.get("notes")
+  });
+  saveData();
+  event.currentTarget.reset();
+  renderAll();
+});
+
+renderAll();
+</script>
+</body>
+</html>
