@@ -30,6 +30,13 @@ jobs:
           ossutil cp index.html oss://yiyeguizhen-web-hk/index.html \
             --meta "Cache-Control:no-cache, no-store, must-revalidate" -f
 
+      - name: 部署植养萃产品介绍页（cp.html）
+        run: |
+          ossutil cp cp.html oss://yiyeguizhen-web-hk/cp.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          echo "✅ cp.html 部署完成"
+
       - name: 部署茶站
         run: |
           ossutil cp tea/index.html oss://yiyeguizhen-web-hk/tea/index.html \
