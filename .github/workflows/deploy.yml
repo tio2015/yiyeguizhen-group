@@ -110,6 +110,16 @@ jobs:
             --meta "Content-Type:text/html; charset=utf-8" -f
           echo "✅ gtxp 数据平台部署完成"
 
+      - name: 部署植养萃产品介绍页（catalog）
+        run: |
+          ossutil cp catalog/index.html oss://yiyeguizhen-web-hk/catalog/index.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          ossutil cp catalog/index.html oss://yiyeguizhen-web-hk/catalog \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          echo "✅ catalog 产品介绍页部署完成"
+
       - name: 部署戴阅火影站（dy站）
         run: |
           ossutil cp dy/index.html oss://yiyeguizhen-web-hk/dy/index.html \
