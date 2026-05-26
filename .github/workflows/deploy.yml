@@ -37,6 +37,13 @@ jobs:
             --meta "Content-Type:text/html; charset=utf-8" -f
           echo "✅ cp.html 部署完成"
 
+      - name: 部署植养萃产品手册页（zyccp.html）
+        run: |
+          ossutil cp zyccp.html oss://yiyeguizhen-web-hk/zyccp.html \
+            --meta "Cache-Control:no-cache, no-store, must-revalidate" \
+            --meta "Content-Type:text/html; charset=utf-8" -f
+          echo "✅ zyccp.html 部署完成"
+
       - name: 部署茶站
         run: |
           ossutil cp tea/index.html oss://yiyeguizhen-web-hk/tea/index.html \
