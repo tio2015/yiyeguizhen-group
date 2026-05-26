@@ -3,6 +3,7 @@ name: 部署主站和茶站到阿里云OSS
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
