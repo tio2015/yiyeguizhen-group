@@ -701,6 +701,108 @@ body{
 }
 .honor-desc{font-size:13px;color:var(--muted);line-height:1.85;}
 
+/* ── SALES CHANNELS ── */
+.sales-channels{
+  position:relative;
+  padding:84px 24px 96px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(184,133,46,0.11) 0%,rgba(184,133,46,0) 42%),
+    linear-gradient(180deg,#FAF3E4 0%,#FEFCF7 100%);
+  overflow:hidden;
+}
+.sales-channels::before{
+  content:'';
+  position:absolute;inset:0;
+  background:
+    linear-gradient(90deg,rgba(184,133,46,0.06) 1px,transparent 1px),
+    linear-gradient(180deg,rgba(184,133,46,0.05) 1px,transparent 1px);
+  background-size:56px 56px;
+  mask-image:linear-gradient(180deg,transparent 0%,#000 22%,#000 72%,transparent 100%);
+  pointer-events:none;
+}
+.sales-inner{position:relative;max-width:var(--page);margin:0 auto;}
+.sales-head{text-align:center;margin-bottom:42px;}
+.sales-kicker{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;
+  margin-bottom:14px;
+}
+.sales-kicker::before,.sales-kicker::after{
+  content:'';width:30px;height:1px;background:rgba(184,133,46,0.42);
+}
+.sales-title{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:clamp(30px,5vw,48px);font-weight:700;color:var(--ink);letter-spacing:4px;
+}
+.sales-sub{
+  margin-top:14px;font-size:14px;line-height:1.9;color:var(--muted);letter-spacing:1.5px;
+}
+.sales-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+@media(min-width:680px){.sales-grid{grid-template-columns:repeat(2,1fr);gap:20px;}}
+@media(min-width:1040px){.sales-grid{grid-template-columns:repeat(4,1fr);}}
+.sales-card{
+  position:relative;
+  min-height:214px;
+  padding:28px 22px 24px;
+  border:1px solid rgba(184,133,46,0.18);
+  border-radius:18px;
+  background:rgba(255,255,255,0.58);
+  box-shadow:0 18px 50px rgba(120,70,20,0.07);
+  display:flex;flex-direction:column;align-items:flex-start;
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease,background .28s ease;
+}
+.sales-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(184,133,46,0.32);
+  background:rgba(255,255,255,0.76);
+  box-shadow:0 24px 60px rgba(120,70,20,0.11);
+}
+.sales-logo-wrap{
+  height:62px;width:100%;
+  display:flex;align-items:center;justify-content:flex-start;
+  margin-bottom:24px;
+}
+.sales-logo{
+  max-width:138px;max-height:48px;object-fit:contain;display:block;
+  filter:drop-shadow(0 8px 18px rgba(120,70,20,0.08));
+}
+.sales-logo.square{width:52px;height:52px;border-radius:12px;}
+.sales-name{
+  font-family:'Noto Serif SC','Songti SC',serif;
+  font-size:18px;font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:10px;
+}
+.sales-desc{font-size:13px;line-height:1.85;color:var(--muted);}
+.sales-action{
+  margin-top:auto;
+  display:inline-flex;align-items:center;gap:8px;
+  height:38px;padding:0 16px;border-radius:999px;
+  border:1px solid rgba(184,133,46,0.30);
+  color:var(--ink);background:rgba(184,133,46,0.08);
+  font-size:12px;letter-spacing:1.2px;font-weight:600;
+  text-decoration:none;
+}
+.sales-action::after{content:'›';font-size:17px;line-height:1;color:var(--gold);}
+@media(max-width:600px){
+  .sales-channels{padding:66px 20px 78px;}
+  .sales-head{text-align:left;margin-bottom:28px;}
+  .sales-kicker::before{display:none;}
+  .sales-kicker::after{width:36px;}
+  .sales-title{letter-spacing:2px;}
+  .sales-sub{font-size:13px;letter-spacing:0.8px;}
+  .sales-card{min-height:auto;padding:24px 20px;}
+  .sales-logo-wrap{height:50px;margin-bottom:18px;}
+  .sales-logo{max-width:126px;max-height:42px;}
+  .sales-logo.square{width:46px;height:46px;}
+  .sales-desc{min-height:auto;margin-bottom:22px;}
+  .sales-grid{gap:12px;}
+  .sales-card{align-items:center;text-align:center;padding:18px 12px 16px;}
+  .sales-logo-wrap{height:42px;justify-content:center;margin-bottom:14px;}
+  .sales-logo{max-width:106px;max-height:36px;}
+  .sales-logo.square{width:38px;height:38px;border-radius:10px;}
+  .sales-name{font-size:14px;line-height:1.45;margin-bottom:14px;}
+  .sales-action{height:34px;padding:0 14px;font-size:12px;}
+}
+
 /* ── FOOTER ── */
 footer{background:linear-gradient(180deg,#201208 0%,#150C05 100%);padding:64px 0 0;}
 .footer-inner{
@@ -1104,6 +1206,47 @@ footer{background:linear-gradient(180deg,#201208 0%,#150C05 100%);padding:64px 0
         <div class="cert-badge-title"><span style="font-family:'Inter',sans-serif;letter-spacing:-0.5px;">248</span> 项检测</div>
         <div class="cert-badge-sub">禁用物质全项通过</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SALES CHANNELS ═══ -->
+<section id="sales-channels" class="sales-channels">
+  <div class="sales-inner">
+    <div class="sales-head reveal">
+      <div class="sales-kicker">SALES CHANNELS</div>
+      <h2 class="sales-title">销售渠道</h2>
+      <p class="sales-sub">植养萃系列产品可通过以下平台了解与购买</p>
+    </div>
+    <div class="sales-grid">
+      <article class="sales-card reveal">
+        <div class="sales-logo-wrap">
+          <img class="sales-logo" src="platform-logos/jd.png" alt="京东">
+        </div>
+        <h3 class="sales-name">一叶归真京东旗舰店</h3>
+        <a class="sales-action" href="https://mall.jd.com/index-12587428.html?from=pc" target="_blank" rel="noopener">购买</a>
+      </article>
+      <article class="sales-card reveal">
+        <div class="sales-logo-wrap">
+          <img class="sales-logo" src="platform-logos/tmall.svg" alt="天猫">
+        </div>
+        <h3 class="sales-name">一叶归真天猫旗舰店</h3>
+        <a class="sales-action" href="https://yiyeguizhen.tmall.com/" target="_blank" rel="noopener">购买</a>
+      </article>
+      <article class="sales-card reveal">
+        <div class="sales-logo-wrap">
+          <img class="sales-logo" src="platform-logos/youzan.png" alt="有赞">
+        </div>
+        <h3 class="sales-name">一叶归真有赞商城</h3>
+        <a class="sales-action" href="#小程序://一叶归真/ceECOT8WlabyQIp">购买</a>
+      </article>
+      <article class="sales-card reveal">
+        <div class="sales-logo-wrap">
+          <img class="sales-logo square" src="platform-logos/wechat-shop.png" alt="微信小店">
+        </div>
+        <h3 class="sales-name">一叶归真微信小店</h3>
+        <a class="sales-action" href="https://store.weixin.qq.com/shop/b/5fHiiO9ZBNEpben?entrance_id=h5" target="_blank" rel="noopener">购买</a>
+      </article>
     </div>
   </div>
 </section>

@@ -136,6 +136,11 @@ jobs:
           ossutil cp catalog/og-image.png oss://yiyeguizhen-web-hk/catalog/og-image.png \
             --meta "Cache-Control:public, max-age=604800" \
             --meta "Content-Type:image/png" -f
+          if [ -d "catalog/platform-logos" ] && [ -n "$(ls -A catalog/platform-logos/ 2>/dev/null)" ]; then
+            ossutil cp catalog/platform-logos/ oss://yiyeguizhen-web-hk/catalog/platform-logos/ \
+              --meta "Cache-Control:public, max-age=604800" \
+              -r -f
+          fi
           echo "✅ catalog 产品介绍页部署完成"
 
       - name: 部署戴阅火影站（dy站）
