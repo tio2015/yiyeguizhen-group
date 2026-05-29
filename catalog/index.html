@@ -159,7 +159,11 @@ body{
   border:1px solid var(--border);
   box-shadow:0 20px 56px rgba(80,40,0,0.11),0 0 0 6px rgba(184,133,46,0.05);
 }
-.auth-photo img{width:100%;height:auto;display:block;object-fit:cover;}
+.auth-photo img{
+  width:100%;height:auto;display:block;object-fit:cover;
+  transform:scale(1.12);
+  transform-origin:center center;
+}
 
 .auth-pillars{
   display:grid;grid-template-columns:repeat(3,1fr);
@@ -323,6 +327,10 @@ body{
 .product-meta-val{font-family:'Inter',sans-serif;font-size:22px;font-weight:700;color:var(--ink);white-space:nowrap;}
 .product-meta-val.price{color:var(--gold);font-size:36px;letter-spacing:-1px;}
 .product-meta-val.sm{font-size:18px;font-weight:600;}
+.product-meta-val.spec{white-space:normal;line-height:1.22;}
+.product-meta-val.spec .spec-main,
+.product-meta-val.spec .spec-sub{display:block;}
+.product-meta-val.spec .spec-sub{font-size:.9em;margin-top:6px;}
 
 /* ── CAROUSEL ── */
 .product-carousel{
@@ -889,7 +897,7 @@ footer{background:linear-gradient(180deg,#201208 0%,#150C05 100%);padding:64px 0
           <span class="product-tag">气色改善</span>
         </div>
         <div class="product-meta">
-          <div class="product-meta-cell"><div class="product-meta-label">规格</div><div class="product-meta-val sm">72克（24瓶×3克）</div></div>
+          <div class="product-meta-cell"><div class="product-meta-label">规格</div><div class="product-meta-val sm spec"><span class="spec-main">72克</span><span class="spec-sub">（24瓶×3克）</span></div></div>
           <div class="product-meta-cell"><div class="product-meta-label">零售价</div><div class="product-meta-val price">¥ 998</div></div>
         </div>
       </div>
@@ -931,7 +939,7 @@ footer{background:linear-gradient(180deg,#201208 0%,#150C05 100%);padding:64px 0
           <span class="product-tag">酒前酒后</span><span class="product-tag">从容应对</span>
         </div>
         <div class="product-meta">
-          <div class="product-meta-cell"><div class="product-meta-label">规格</div><div class="product-meta-val sm">72克（24瓶×3克）</div></div>
+          <div class="product-meta-cell"><div class="product-meta-label">规格</div><div class="product-meta-val sm spec"><span class="spec-main">72克</span><span class="spec-sub">（24瓶×3克）</span></div></div>
           <div class="product-meta-cell"><div class="product-meta-label">零售价</div><div class="product-meta-val price">¥ 998</div></div>
         </div>
       </div>
