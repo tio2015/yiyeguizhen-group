@@ -44,6 +44,13 @@ jobs:
             --meta "Content-Type:text/html; charset=utf-8" -f
           echo "✅ zyccp.html 部署完成"
 
+      - name: 上传金萃叶配图
+        run: |
+          ossutil cp imgs/jincuiye-featured-dahongpao-heicha.png oss://yiyeguizhen-web-hk/imgs/jincuiye-featured-dahongpao-heicha.png \
+            --meta "Cache-Control:public, max-age=604800" \
+            --meta "Content-Type:image/png" -f
+          echo "✅ 金萃叶配图上传完成"
+
       - name: 部署茶站
         run: |
           ossutil cp tea/index.html oss://yiyeguizhen-web-hk/tea/index.html \
